@@ -23,9 +23,11 @@ function MobileScrollingCard({ title, description, slug, index }: CardType) {
                     src={image}
                     alt={`Step ${index + 1}`}
                     fill
+                    sizes="(max-width: 640px) 100vw, 340px"
                     className="object-contain p-4"
                     priority={true}
                     fetchPriority="high"
+                    quality={90}
                 />
             </figure>
 

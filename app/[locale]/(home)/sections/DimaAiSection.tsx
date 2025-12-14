@@ -33,8 +33,10 @@ function DimaAiSection() {
               src="https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/HomePage%2Fdima%20AI%20.png?alt=media&token=d2c367d8-c754-4e1b-8dc3-d1c05a6473e5"
               alt="stats"
               fill
+              sizes="(max-width: 1024px) 100vw, 500px"
               className="object-contain "
               priority
+              quality={90}
             />
           </figure>
         </div>

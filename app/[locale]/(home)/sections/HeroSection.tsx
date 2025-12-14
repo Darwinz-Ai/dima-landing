@@ -78,9 +78,11 @@ export default function HeroSection() {
             src={`/hero-bg-${locale}.png`}
             alt="Hero image"
             fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
             priority={true}
             fetchPriority="high"
             className="object-contain"
+            quality={90}
           />
         </figure>
       </div>

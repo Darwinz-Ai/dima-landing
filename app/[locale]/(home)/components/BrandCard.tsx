@@ -8,9 +8,11 @@ function BrandCard({ image, companyName, description }: BrandCardInfo) {
                 <Image
                     src={image}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-contain"
                     alt={companyName}
                     priority
+                    quality={90}
                 />
             </figure>
 

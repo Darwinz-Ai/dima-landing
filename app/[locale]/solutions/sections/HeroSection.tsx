@@ -23,9 +23,11 @@ function HeroSection({ slug }: { slug: string }) {
                             src={solutionImages[slug].heroSingle}
                             alt="Hero Image Mobile"
                             fill
+                            sizes="(max-width: 768px) 300px, 400px"
                             className="object-contain"
                             priority={true}
                             fetchPriority="high"
+                            quality={90}
                         />
                     </figure>
 
@@ -35,9 +37,11 @@ function HeroSection({ slug }: { slug: string }) {
                             src={solutionImages[slug].heroGrouped}
                             alt="Hero Image Desktop"
                             fill
+                            sizes="711px"
                             className="object-contain"
                             priority={true}
                             fetchPriority="high"
+                            quality={90}
                         />
                     </figure>
                 </div>

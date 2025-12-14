@@ -51,9 +51,11 @@ export default function PinnedScrollSection({ cards, slug }: { cards: CardType[]
                                     src={images[currentStepIndex]}
                                     alt=""
                                     fill
+                                    sizes="(max-width: 1024px) 100vw, 600px"
                                     className="object-contain p-4"
                                     priority={true}
                                     fetchPriority="high"
+                                    quality={90}
                                 />
                             </motion.div>
                         )}

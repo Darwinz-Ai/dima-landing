@@ -87,7 +87,9 @@ export default function HeroCarousel({
                                     src={slide.image}
                                     alt={slide.title}
                                     fill
+                                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                                     className="object-contain drop-shadow-xl"
+                                    quality={90}
                                 />
                             </div>
                         </motion.div>

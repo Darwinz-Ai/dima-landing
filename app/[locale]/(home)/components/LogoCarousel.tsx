@@ -37,6 +37,7 @@ export default function LogoCarousel() {
                                 width={220}
                                 height={110}
                                 className="object-contain w-auto h-full bg-white"
+                                quality={90}
                             />
                         </div>
                     </CarouselItem>

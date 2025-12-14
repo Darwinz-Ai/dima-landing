@@ -1,6 +1,6 @@
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import type { Metadata } from "next";
-import { Geist, } from "next/font/google";
+import { Cairo, Geist, } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/navbar/Navbar";
 import { routing } from "@/i18n/routing";
@@ -12,9 +12,13 @@ import { Toaster } from "sonner";
 import Script from "next/script";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+
+const cairo = Cairo({
+  subsets: ["arabic"],
+  weight: ["400", "500", "600", "700"]
+})
 
 export const metadata: Metadata = {
   title: "TheDar.AI",
@@ -67,7 +71,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <body
-        className={`${geistSans.className} antialiased`}
+        className={`${locale === "ar" ? cairo.className : geistSans.className} antialiased`}
       >
         <NextIntlClientProvider>
           <ReactQueryProvider>
