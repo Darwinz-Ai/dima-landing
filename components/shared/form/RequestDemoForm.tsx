@@ -25,7 +25,7 @@ const FormSchema = z.object({
     firstName: z.string().min(2, "errors.firstNameTooShort"),
     lastName: z.string().min(2, "errors.lastNameTooShort"),
     email: z.email("errors.invalidEmail"),
-    phoneNumber: z.string().regex(/^\d{10,15}$/, "errors.invalidPhone").trim(),
+    phoneNumber: z.string().min(1, "errors.invalidPhone"),
     companyName: z.string().min(2, "errors.companyNameTooShort"),
 })
 

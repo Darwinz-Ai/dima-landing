@@ -74,7 +74,6 @@ function RequestDemoPage() {
                                 alt="phone image"
                                 fill
                                 className="object-contain"
-                                sizes="(max-width: 1024px) 100vw, 50vw"
                                 priority={true}
                                 fetchPriority="high"
                             />

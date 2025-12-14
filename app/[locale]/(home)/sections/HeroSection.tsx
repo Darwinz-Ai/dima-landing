@@ -15,6 +15,7 @@ export default function HeroSection() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const t = useTranslations("Home.hero");
   const locale = useLocale();
+  const isRTL = locale === "ar";
 
   const slides = heroSlides.map((slide) => ({
     title: t(slide.translationKey),
@@ -46,9 +47,16 @@ export default function HeroSection() {
               options={{
                 strings: [slides[selectedIndex].title],
                 autoStart: true,
-                delay: 35,
-                deleteSpeed: 25,
+                delay: isRTL ? 160 : 35,
+                deleteSpeed: isRTL ? 150 : 25,
                 wrapperClassName: "text-primary",
+                stringSplitter: (text: string) => {
+                  if (isRTL) {
+                    const words = text.split(" ");
+                    return words.map(word => `${word} `)
+                  }
+                  return text.split("");
+                },
               }}
               component={"span"}
             />
@@ -81,6 +89,7 @@ export default function HeroSection() {
             priority={true}
             fetchPriority="high"
             className="object-contain"
+            quality={90}
           />
         </figure>
       </div>
