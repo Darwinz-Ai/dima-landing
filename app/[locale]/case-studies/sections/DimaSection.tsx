@@ -20,14 +20,18 @@ function DimaSection() {
                                 src="/computer-black.svg"
                                 alt="black computer icon"
                                 fill
+                                sizes="30px"
                                 className="object-contain transition-opacity duration-300 group-hover:opacity-0"
+                                quality={90}
                             />
                             {/* White icon (shown on hover) */}
                             <Image
                                 src="/computer.svg"
                                 alt="white computer icon"
                                 fill
+                                sizes="30px"
                                 className="object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100 absolute top-0 left-0"
+                                quality={90}
                             />
                         </div>
 

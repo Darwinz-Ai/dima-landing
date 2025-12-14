@@ -23,7 +23,9 @@ function VideosSection({ title }: { title: string }) {
                                         src={video.src}
                                         alt={video.alt || `video ${i + 1}`}
                                         fill
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                         className="object-cover"
+                                        quality={90}
                                     />
                                     {
                                         video.href && (

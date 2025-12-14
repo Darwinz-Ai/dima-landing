@@ -24,6 +24,7 @@ function SolutionCard({ logo, href, translationKey }: SolutionLink) {
           width={80}
           height={60}
           className="object-contain min-h-[65px] max-h-[65px]"
+          quality={90}
         />
       </figure>
 

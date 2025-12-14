@@ -58,7 +58,9 @@ function CaseContent({ caseStudy }: { caseStudy: CaseStudy }) {
                                                         src={usedSolutionsAssets[solution].icon}
                                                         alt={usedSolutionsAssets[solution].href}
                                                         fill
+                                                        sizes="56px"
                                                         className="object-contain"
+                                                        quality={90}
                                                     />
                                                 </figure>
                                                 <p className="text-base sm:text-lg">{usedSolutionsAssets[solution].title[locale as "en" | "ar"]}</p>

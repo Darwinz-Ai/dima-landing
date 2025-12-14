@@ -14,7 +14,9 @@ function TestimonialCard({ companyLogo, translationKey }: TestimonialType) {
                         src="https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/HomePage%2FTestimonials%2Fopen-quote.svg?alt=media&token=4c89236c-9543-47e7-ad6d-fa8f95b58aa9"
                         alt="open quotes"
                         fill
+                        sizes="24px"
                         className={`object-contain ${isRTL ? 'rotate-180' : ''}`}
+                        quality={90}
                     />
                 </figure>
                 <p className="text-sm leading-relaxed"><bdi>{t(`${translationKey}.quote`)}</bdi></p>
@@ -32,6 +34,7 @@ function TestimonialCard({ companyLogo, translationKey }: TestimonialType) {
                         width={120}
                         height={60}
                         className="object-contain"
+                        quality={90}
                     />
                 </figure>
 

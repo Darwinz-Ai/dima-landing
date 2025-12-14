@@ -17,6 +17,7 @@ function TestimonialMobile({ slug }: { slug: string }) {
                         width={40}
                         height={30}
                         className="sm:w-[89px] sm:h-[73px]"
+                        quality={90}
                     />
                 </figure>
                 <h2 className="text-[22px] lg:text-[40px] font-medium capitalize leading-snug">
@@ -38,7 +39,9 @@ function TestimonialMobile({ slug }: { slug: string }) {
                                 src={assets.companyLogo}
                                 alt="wadi degla logo"
                                 fill
+                                sizes="(max-width: 640px) 64px, 80px"
                                 className="object-contain"
+                                quality={90}
                             />
                         </figure>
 
@@ -58,7 +61,9 @@ function TestimonialMobile({ slug }: { slug: string }) {
                             src="https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Solutions%2FTestimonial%2Fquote-marks-solutions.png?alt=media&token=f15801a5-6250-4d4e-9490-0afb97e2d9fc"
                             alt="quote marks"
                             fill
+                            sizes="80px"
                             className="object-contain p-4"
+                            quality={90}
                         />
                     </figure>
                 </div>

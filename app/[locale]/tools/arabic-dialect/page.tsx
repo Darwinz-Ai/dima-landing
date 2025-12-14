@@ -54,6 +54,7 @@ function ArabicDialectTool() {
                             width={200}
                             height={60}
                             className="h-12 md:h-14 w-auto"
+                            quality={90}
                         />
                     </div>
 

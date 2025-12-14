@@ -32,6 +32,7 @@ function RequestDemoButton({
           alt="monitor icon"
           width={28}
           height={28}
+          quality={90}
         />
         <span className="tracking-wide">{t("cta")}</span>
       </Button>

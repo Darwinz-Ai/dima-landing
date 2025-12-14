@@ -11,7 +11,9 @@ function SideInfo({ index, title, description }: CaseStudySideInfo) {
                     src={sideInfoIcons[index]}
                     alt="challenge icon"
                     fill
+                    sizes="40px"
                     className="object-contain"
+                    quality={90}
                 />
             </figure>
             <div className="flex-1">

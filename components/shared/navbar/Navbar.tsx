@@ -36,6 +36,7 @@ function Navbar() {
                             alt="Dima logo"
                             width={74}
                             height={30}
+                            quality={90}
                         />
                     </figure>
                 </Link>

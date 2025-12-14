@@ -13,7 +13,9 @@ function EntrepriseCard({ icon, title, description }: CardType) {
                             src={enterpriseIcons[icon!]}
                             alt="icon"
                             fill
+                            sizes="32px"
                             className="object-contain p-1"
+                            quality={90}
                         />
                     </figure>
 

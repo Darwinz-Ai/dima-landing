@@ -73,10 +73,11 @@ function RequestDemoPage() {
                                 src="/request-demo-image.png"
                                 alt="phone image"
                                 fill
-                                className="object-contain"
                                 sizes="(max-width: 1024px) 100vw, 50vw"
+                                className="object-contain"
                                 priority={true}
                                 fetchPriority="high"
+                                quality={90}
                             />
                         </figure>
                     </div>

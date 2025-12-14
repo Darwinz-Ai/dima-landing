@@ -20,6 +20,7 @@ function TestimonialWeb({ slug }: { slug: string }) {
                         width={70}
                         height={60}
                         className="sm:w-[89px] sm:h-[73px]"
+                        quality={90}
                     />
                 </figure>
 
@@ -39,7 +40,9 @@ function TestimonialWeb({ slug }: { slug: string }) {
                                 src={assets.companyLogo}
                                 alt="wadi degla logo"
                                 fill
+                                sizes="(max-width: 640px) 64px, 80px"
                                 className="object-contain"
+                                quality={90}
                             />
                         </figure>
 
@@ -61,8 +64,10 @@ function TestimonialWeb({ slug }: { slug: string }) {
                 <Image
                     src="https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Solutions%2FTestimonial%2Ftestimonial-image.png?alt=media&token=d0a324ab-4a0d-46ce-8467-93c9d659bcfb"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-contain"
                     alt="testimonial image"
+                    quality={90}
                 />
             </figure>
         </div>
