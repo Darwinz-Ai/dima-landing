@@ -167,9 +167,9 @@
       }
     },
     "dimaAi": {
-      "badge": "DIMA AI",
+      "badge": "DIMA",
       "title": "Your brand powered by Arabic-first AI",
-      "description": "Meet dima AI — your copilot for turning data into clarity. With Arabic-first intelligence, it understands all dialects, slang, and Franco-Arabic, transforming raw data into instant insights and clear reports, giving you the full picture global tools miss.",
+      "description": "Meet dima — your copilot for turning data into clarity. With Arabic-first intelligence, it understands all dialects, slang, and Franco-Arabic, transforming raw data into instant insights and clear reports, giving you the full picture global tools miss.",
       "cta": "Request a Demo"
     },
     "dimaSuite": {
@@ -991,7 +991,7 @@
     "description": "Discover how dima's arabic-first AI copilot helps your team unlock deeper insights, respond faster, protect reputation, and scale impact",
     "typeFilter": ["all", "customer success stories", "use cases"],
     "boostBusiness": {
-      "title": "Boost your business with dima AI",
+      "title": "Boost your business with dima ",
       "description": "Whether you're an agency or an enterprise, dima empowers you to monitor every mention, predict crises before they escalate, analyze conversations in real time, benchmark performance across competitors and deliver more accurate coverage with seamless reporting. Get your personalized demo today.",
       "requestDemo": "Request a Demo"
     },
@@ -1284,7 +1284,7 @@
         },
         "status-402": {
           "title": "Free Trial Ended",
-          "description": "Thanks for trying dima AI! Your free trial has ended. Learn more about our features or consider subscribing to continue."
+          "description": "Thanks for trying dima! Your free trial has ended. Learn more about our features or consider subscribing to continue."
         },
         "analysis-failed": {
           "title": "Analysis Failed",
@@ -1421,8 +1421,8 @@
   },
   "RequestDemo": {
     "titlePrefix": "— REQUEST A DEMO",
-    "title": "See dima AI in Action",
-    "subTitle": "Ready to explore how dima AI can transform the way your team works?",
+    "title": "See dima in Action",
+    "subTitle": "Ready to explore how dima can transform the way your team works?",
     "description": " Whether you're looking to automate tasks, analyze data at scale, or enhance your workflows with cutting-edge AI, our team is here to walk you through it. No pressure — just insights tailored to your business.",
     "form": {
       "name": "Name",
