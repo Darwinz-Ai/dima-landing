@@ -6,6 +6,16 @@ export const metadata: Metadata = {
     title: "Monitoring Stack Consolidation Calculator - dima Tool",
     description:
         "Compare your current 3-4 tool stack (social + online press + broadcast) against one Arabic-first AI copilot and discover your potential savings with dima.",
+    keywords: [
+        "monitoring stack consolidation",
+        "media monitoring tools",
+        "tool stack savings",
+        "TCO calculator",
+        "social listening tools",
+        "press monitoring tools",
+        "broadcast monitoring tools",
+        "Arabic-first AI copilot",
+    ],
 
     openGraph: {
         title: "Monitoring Stack Consolidation Calculator - dima Tool",

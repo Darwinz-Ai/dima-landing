@@ -24,7 +24,18 @@ export const metadata: Metadata = {
   title: "TheDar.AI",
   description:
     "A Saudi-Egyptian startup offering an AI Copilot for Brand Managers, Marketers & PR Professionals at leading agencies & enterprises in MENA. With the AI Copilot called dima©, users are able to enhance their daily productivity by up to 80% through finding innovative ways to truly understand brand & audience perception for their products & offerings, analyzing hundreds of thousands of data points from a variety of key channels.",
-
+  keywords: [
+    "TheDar.AI",
+    "dima",
+    "media monitoring",
+    "AI copilot",
+    "PR analytics",
+    "social listening",
+    "brand monitoring",
+    "Arabic media",
+    "MENA marketing",
+    "crisis detection",
+  ],
   metadataBase: new URL("https://thedar.ai"),
 
   openGraph: {

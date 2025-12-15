@@ -17,6 +17,14 @@ export async function generateMetadata(
     return {
         title: `${blog.content.title} - dima`,
         description: blog.content.description,
+        keywords: [
+            blog.content.title,
+            "dima blog",
+            "media monitoring",
+            "social listening",
+            "PR and communications",
+            "Arabic media analytics",
+        ],
         openGraph: {
             title: `${blog.content.title} - dima`,
             description: blog.content.description,

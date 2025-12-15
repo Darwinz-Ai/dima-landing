@@ -9,6 +9,15 @@ export const metadata: Metadata = {
     title: "Case Studies - How Teams Use dima",
     description:
         "Discover how leading brands and PR teams use dima to monitor media, track campaigns, detect PR crises, and automate reporting. Real-world examples of AI in action.",
+    keywords: [
+        "dima case studies",
+        "media monitoring case studies",
+        "PR crisis management examples",
+        "brand monitoring success stories",
+        "Arabic media analytics",
+        "campaign tracking results",
+        "AI in PR and communications",
+    ],
 
     openGraph: {
         title: "Case Studies - How Teams Use dima",

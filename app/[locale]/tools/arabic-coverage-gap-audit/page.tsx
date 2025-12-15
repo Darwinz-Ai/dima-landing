@@ -8,7 +8,15 @@ export const metadata: Metadata = {
     title: "Arabic Coverage Gap Audit - dima Tool",
     description:
         "A guided wizard that maps keyword lists to Arabic dialect variations, common misspellings, and colloquialisms by country — saving time and reducing blind spots in media monitoring.",
-
+    keywords: [
+        "Arabic coverage gap audit",
+        "Arabic dialect keywords",
+        "media monitoring blind spots",
+        "keyword expansion",
+        "Arabic misspellings",
+        "Arabic colloquialisms",
+        "MENA social listening",
+    ],
 
     openGraph: {
         title: "Arabic Coverage Gap Audit - dima Tool",

@@ -7,6 +7,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Request a Demo | dima AI",
     description: "Request a personalized demo of the dima AI platform. See how our AI tools can streamline workflows, boost efficiency, and empower your agency.",
+    keywords: [
+        "dima demo",
+        "request a demo",
+        "book demo",
+        "media monitoring platform demo",
+        "AI copilot demo",
+        "PR analytics software demo",
+        "social listening tool demo",
+    ],
     openGraph: {
         title: "Request a Demo | dima AI",
         description: "Get a personalized demo of the dima AI platform and discover how it can optimize your agency’s operations.",

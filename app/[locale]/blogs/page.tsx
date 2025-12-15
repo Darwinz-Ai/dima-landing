@@ -13,6 +13,16 @@ export const metadata: Metadata = {
     title: "Blogs - dima",
     description:
         "Insights, case studies, and practical guides on AI-powered media monitoring, social listening, and Arabic-language analytics.",
+    keywords: [
+        "dima blog",
+        "media monitoring insights",
+        "social listening guides",
+        "PR analytics articles",
+        "case studies",
+        "Arabic language analytics",
+        "marketing analytics blog",
+        "brand monitoring tips",
+    ],
 
     metadataBase: new URL("https://thedar.ai"),
 

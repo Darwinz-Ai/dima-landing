@@ -13,6 +13,17 @@ export const metadata: Metadata = {
     title: "Tools & Calculators - dima",
     description:
         "Explore dima's free AI tools for marketers and PR teams: Arabic Coverage Gap Audit, Arabic Dialect Accuracy Lab, Lost Mentions Calculator, Crisis Readiness Scorecard, and Monitoring Stack Consolidation Calculator. Analyze campaigns, detect blind spots, and optimize media monitoring.",
+    keywords: [
+        "dima tools",
+        "marketing calculators",
+        "PR tools",
+        "Arabic coverage gap audit",
+        "Arabic dialect accuracy lab",
+        "lost mentions calculator",
+        "crisis readiness scorecard",
+        "monitoring stack consolidation calculator",
+        "media monitoring tools",
+    ],
 
     openGraph: {
         title: "Tools & Calculators - dima",

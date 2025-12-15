@@ -8,6 +8,15 @@ export const metadata: Metadata = {
     title: "Crisis Readiness Scorecard - dima Tool",
     description:
         "A 5-minute self-assessment to evaluate your crisis detection, escalation speed, channel coverage, and Arabic sentiment accuracy — helping teams identify gaps and improve preparedness.",
+    keywords: [
+        "crisis readiness scorecard",
+        "PR crisis preparedness",
+        "crisis detection",
+        "escalation speed assessment",
+        "channel coverage",
+        "Arabic sentiment accuracy",
+        "PR risk assessment",
+    ],
 
     openGraph: {
         title: "Crisis Readiness Scorecard - dima Tool",

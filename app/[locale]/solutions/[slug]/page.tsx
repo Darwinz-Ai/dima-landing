@@ -13,32 +13,76 @@ type SolutionPageProps = {
 };
 
 // List of valid slugs and their metadata
-const SOLUTIONS_METADATA: Record<string, { title: string; description: string, image: string }> =
-{
+const SOLUTIONS_METADATA: Record<
+    string,
+    { title: string; description: string; image: string; keywords: string[] }
+> = {
     "social-listening-analytics": {
         title: "Social Listening & Analytics - dima",
-        description: "Monitor social media mentions, analyze sentiment, and get actionable insights with dima's AI-powered social listening solution.",
-        image: "/og/solutions/sl.png"
+        description:
+            "Monitor social media mentions, analyze sentiment, and get actionable insights with dima's AI-powered social listening solution.",
+        image: "/og/solutions/sl.png",
+        keywords: [
+            "social listening",
+            "social media analytics",
+            "sentiment analysis",
+            "media monitoring",
+            "campaign performance",
+            "Arabic social media",
+        ],
     },
     "pr-comms": {
         title: "PR & Comms - dima",
-        description: "Manage public relations, track press coverage, and detect PR crises faster with dima's AI PR tools.",
-        image: "/og/solutions/pr.png"
+        description:
+            "Manage public relations, track press coverage, and detect PR crises faster with dima's AI PR tools.",
+        image: "/og/solutions/pr.png",
+        keywords: [
+            "PR and communications",
+            "press coverage tracking",
+            "crisis detection",
+            "media monitoring for PR",
+            "PR reporting",
+            "Arabic media PR",
+        ],
     },
     "market-insights": {
         title: "Market Insights - dima",
-        description: "Gain deep market insights, monitor competitors, and track trends with AI-powered analytics from dima.",
-        image: "/og/solutions/mi.png"
+        description:
+            "Gain deep market insights, monitor competitors, and track trends with AI-powered analytics from dima.",
+        image: "/og/solutions/mi.png",
+        keywords: [
+            "market insights",
+            "competitive intelligence",
+            "trend tracking",
+            "AI market analytics",
+            "MENA market research",
+        ],
     },
     "consumer-insights": {
         title: "Consumer Insights - dima",
-        description: "Understand customer behavior and sentiment, and make data-driven decisions with dima's consumer insights solution.",
-        image: "/og/solutions/ci.png"
+        description:
+            "Understand customer behavior and sentiment, and make data-driven decisions with dima's consumer insights solution.",
+        image: "/og/solutions/ci.png",
+        keywords: [
+            "consumer insights",
+            "customer sentiment",
+            "voice of customer",
+            "customer behavior analytics",
+            "Arabic consumer insights",
+        ],
     },
     "own-page-intelligence": {
         title: "Own Page Intelligence - dima",
-        description: "Analyze your own digital presence, measure content performance, and optimize engagement with AI insights.",
-        image: "/og/solutions/oi.png"
+        description:
+            "Analyze your own digital presence, measure content performance, and optimize engagement with AI insights.",
+        image: "/og/solutions/oi.png",
+        keywords: [
+            "owned media analytics",
+            "page performance",
+            "content optimization",
+            "engagement analytics",
+            "social page intelligence",
+        ],
     },
 };
 
@@ -62,6 +106,7 @@ export async function generateMetadata({ params, }: { params: { slug: string }; 
     return {
         title: solutionMeta.title,
         description: solutionMeta.description,
+        keywords: solutionMeta.keywords,
 
         metadataBase: new URL(url),
 

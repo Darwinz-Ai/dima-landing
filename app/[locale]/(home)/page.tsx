@@ -13,7 +13,18 @@ export const metadata: Metadata = {
   title: "dima - Your Media Monitoring Copilot",
   description:
     "AI-powered media monitoring for marketers, PR teams, and brand managers. Track campaigns, detect crises, analyze competitors, and automate reporting — all in one place.",
-
+  keywords: [
+    "dima",
+    "media monitoring copilot",
+    "AI media monitoring",
+    "PR teams",
+    "brand managers",
+    "campaign tracking",
+    "crisis detection",
+    "competitor analysis",
+    "automated reporting",
+    "Arabic social listening",
+  ],
   metadataBase: new URL("https://thedar.ai"),
 
   openGraph: {

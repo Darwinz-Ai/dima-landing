@@ -8,6 +8,17 @@ export const metadata: Metadata = {
     title: "Arabic Dialect Accuracy Lab - dima Tool",
     description:
         "Live sandbox for testing sentiment and entity extraction across KSA, Egyptian, Levantine, Maghrebi, and Gulf Arabic dialects.",
+    keywords: [
+        "Arabic dialect accuracy",
+        "sentiment analysis Arabic",
+        "entity extraction Arabic",
+        "KSA Arabic",
+        "Egyptian Arabic",
+        "Levantine Arabic",
+        "Maghrebi Arabic",
+        "Gulf Arabic",
+        "Arabic NLP",
+    ],
 
     openGraph: {
         title: "Arabic Dialect Accuracy Lab - dima Tool",

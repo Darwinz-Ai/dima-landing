@@ -7,6 +7,14 @@ export const metadata: Metadata = {
     title: "Lost Mentions & Missed Sentiment Calculator - dima Tool",
     description:
         "Estimate how many Arabic posts are being missed or misclassified with current tooling using dima's Lost Mentions & Missed Sentiment Calculator.",
+    keywords: [
+        "lost mentions calculator",
+        "missed sentiment",
+        "Arabic posts missed",
+        "social listening gaps",
+        "media monitoring accuracy",
+        "Arabic sentiment analysis",
+    ],
 
     openGraph: {
         title: "Lost Mentions & Missed Sentiment Calculator - dima Tool",
