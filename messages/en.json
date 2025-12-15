@@ -1436,5 +1436,10 @@
     "searchPlaceholder": "Search language...",
     "emptyFind": "No languages found."
   },
-  "Loading": "Loading..."
+  "Loading": "Loading...",
+  "NotFound": {
+    "pageNotFound": "Page Not Found",
+    "description": " Sorry, the page you're looking for doesn't exist, may have been removed, or the URL is incorrect.",
+    "goHome": "Go Home"
+  }
 }
