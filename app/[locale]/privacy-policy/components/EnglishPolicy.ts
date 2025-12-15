@@ -31,7 +31,7 @@ We use the personal data we collect for the following purposes, which are in lin
 -   To improve and personalize the platform: We analyze personal data (including usage data and feedback) to understand how our Service is used and to make enhancements. This helps us troubleshoot issues, develop new features, and improve our AI algorithms and user interface. It also allows us to personalize your experience, such as by suggesting relevant content or customizing dashboards to your interests.
 -   Analytics and performance: We use data (including automatically-collected data and cookies) to perform analytics on usage trends and user behavior. This insight is used for internal research, to gauge the effectiveness of our features, and to make data-driven decisions about our business.
 -   Customer support and communication: We process your contact information and communications to provide support and respond to your inquiries. If you reach out for help, we will use your information to troubleshoot issues and provide assistance. We may also send you service-related announcements or administrative messages (for example, if we need to inform you of maintenance downtime, changes to our terms, or security alerts). These communications are necessary for us to fulfill our obligations and ensure a good user experience.
--   Marketing and promotional communications: With your consent where required, we may use your contact details (such as email) to send you marketing communications. These may include newsletters and product updates related to dima’s Services. We aim to send content that is relevant to you. If you no longer wish to receive marketing emails, you can opt out at any time by reaching out to info@darwinz.ai. We will not send you marketing communications if you have opted out.
+-   Marketing and promotional communications: With your consent where required, we may use your contact details (such as email) to send you marketing communications. These may include newsletters and product updates related to dima’s Services. We aim to send content that is relevant to you. If you no longer wish to receive marketing emails, you can opt out at any time by reaching out to info@thedar.ai. We will not send you marketing communications if you have opted out.
 -   Security and fraud prevention: We may use information (including logs and device identifiers) to protect the security of our platform, our users, and others.
 
 We only process personal data for purposes that we have informed you about. We do not use your personal data for any automated decision-making or profiling that has legal or similarly significant effects on you without your knowledge or consent.
@@ -44,7 +44,7 @@ dima’s platform may contain links to external websites or incorporate third-pa
 
 You have the right to request deletion of your account and any associated personal data at any time.
 
-To initiate this process, please email us at info@darwinz.ai with the subject line “Account Deletion Request.” Be sure to include your registered email address so we can verify your identity and process your request securely.
+To initiate this process, please email us at info@thedar.ai with the subject line “Account Deletion Request.” Be sure to include your registered email address so we can verify your identity and process your request securely.
 
 Note: We may retain certain limited information if required by law, for fraud prevention, or for resolving disputes.
 
@@ -58,7 +58,7 @@ dima may update this policy. You will be notified of significant changes via you
 
 ## 9. Contact Us
 
-If you have any questions, concerns, or requests regarding this Privacy Policy or the way we handle your personal data, please do not hesitate to contact us. You can reach our privacy team at info@darwinz.ai. We will gladly assist you and address any issues to the best of our ability.
+If you have any questions, concerns, or requests regarding this Privacy Policy or the way we handle your personal data, please do not hesitate to contact us. You can reach our privacy team at info@thedar.ai. We will gladly assist you and address any issues to the best of our ability.
 `
 }
 
