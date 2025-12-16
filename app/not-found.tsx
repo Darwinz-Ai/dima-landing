@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import "@/app/[locale]/globals.css"
 
 export default function NotFound() {
     const t = useTranslations("NotFound")

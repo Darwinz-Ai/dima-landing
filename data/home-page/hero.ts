@@ -19,7 +19,7 @@ export const heroSlides: HeroSlide[] = [
     },
     {
         image: "/hero-carousel/hero-carousel-item-5.webp",
-        translationKey: "slides.discoverCreators",
+        translationKey: "slides.consumerAndBusinessInsights",
     },
     {
         image: "/hero-carousel/hero-carousel-item-6.webp",
