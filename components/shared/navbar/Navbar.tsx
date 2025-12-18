@@ -8,6 +8,7 @@ import SolutionsDropdown from "./dropdowns/SolutionsDropdown";
 // import ResourcesDropdown from "./dropdowns/ResourcesDropdown";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { useLocale, useTranslations } from "next-intl";
+import dimaLogo from "@/public/dima-logo/dima-logo.png"
 
 function Navbar() {
     const t = useTranslations("Navbar");
@@ -32,7 +33,7 @@ function Navbar() {
                 <Link href="/" className="order-1">
                     <figure>
                         <Image
-                            src="/dima-logo.svg"
+                            src={dimaLogo}
                             alt="Dima logo"
                             width={74}
                             height={30}

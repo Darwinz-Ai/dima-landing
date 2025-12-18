@@ -47,7 +47,7 @@ function CrisisReadinessScorePage() {
                 {/* Logo */}
                 <div className="flex justify-center mb-8">
                     <Image
-                        src="/dima-logo.svg"
+                        src="/dima-logo.png"
                         alt="dima"
                         width={200}
                         height={60}

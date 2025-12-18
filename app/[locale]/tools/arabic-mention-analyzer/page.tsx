@@ -45,7 +45,7 @@ function ArabicMentionAnalyzerPage() {
             <div className="max-w-7xl mx-auto space-y-12">
                 <figure className="flex justify-center">
                     <Image
-                        src="/dima-logo.svg"
+                        src="/dima-logo.png"
                         alt="dima"
                         width={200}
                         height={60}

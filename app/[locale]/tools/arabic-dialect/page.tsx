@@ -49,7 +49,7 @@ function ArabicDialectTool() {
                     {/* Logo Section */}
                     <div className="flex justify-center mb-12">
                         <Image
-                            src="/dima-logo.svg"
+                            src="/dima-logo.png"
                             alt="dima"
                             width={200}
                             height={60}
