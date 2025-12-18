@@ -1,4 +1,5 @@
 import { Icon } from "@tabler/icons-react";
+import { StaticImageData } from "next/image";
 
 export type NavLink = {
     title: string;
@@ -23,7 +24,7 @@ export type SocialMediaLink = {
 export type LanguageLink = {
     locale: string;
     label: string;
-    flag: string;
+    flag: StaticImageData;
 };
 
 export type ToolLink = {

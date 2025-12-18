@@ -22,7 +22,7 @@ function Footer() {
           <div className="flex flex-col gap-4 mb-8">
             {/* Dima logo */}
             <figure>
-              <Image src={dimaLogoWhite} alt="dima logo white" width={120} height={50} />
+              <Image src={dimaLogoWhite} alt="dima logo white" width={120} height={50} unoptimized={true} />
             </figure>
             <h2 className="capitalize md:text-2xl">{t("dima.description")}</h2>
 
