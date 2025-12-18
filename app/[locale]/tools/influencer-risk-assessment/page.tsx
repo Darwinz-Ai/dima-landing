@@ -14,11 +14,12 @@ function InfluencerRiskAssessmentPage() {
                         {/* Logo Section */}
                         <div className="flex justify-center mb-12">
                             <Image
-                                src="/dima-logo.png"
+                                src="/dima-logo/dima-logo.png"
                                 alt="dima"
                                 width={200}
                                 height={60}
                                 className="h-12 md:h-14 w-auto"
+                                unoptimized={true}
                             />
                         </div>
 
