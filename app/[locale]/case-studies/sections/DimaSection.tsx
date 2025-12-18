@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-
+import blackComputerIcon from "@/public/computer-black.svg";
+import whiteComputerIocn from "@/public/computer.svg";
 function DimaSection() {
     const t = useTranslations("CaseStudies.boostBusiness")
     return (
@@ -17,21 +18,21 @@ function DimaSection() {
                         <div className="relative w-[30px] h-[30px]">
                             {/* Black icon (default) */}
                             <Image
-                                src="/computer-black.svg"
+                                src={blackComputerIcon}
                                 alt="black computer icon"
                                 fill
                                 sizes="30px"
                                 className="object-contain transition-opacity duration-300 group-hover:opacity-0"
-                                quality={90}
+                                unoptimized={true}
                             />
                             {/* White icon (shown on hover) */}
                             <Image
-                                src="/computer.svg"
+                                src={whiteComputerIocn}
                                 alt="white computer icon"
                                 fill
                                 sizes="30px"
                                 className="object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100 absolute top-0 left-0"
-                                quality={90}
+                                unoptimized={true}
                             />
                         </div>
 

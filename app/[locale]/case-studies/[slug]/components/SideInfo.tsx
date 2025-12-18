@@ -13,7 +13,7 @@ function SideInfo({ index, title, description }: CaseStudySideInfo) {
                     fill
                     sizes="40px"
                     className="object-contain"
-                    quality={90}
+                    unoptimized={true}
                 />
             </figure>
             <div className="flex-1">

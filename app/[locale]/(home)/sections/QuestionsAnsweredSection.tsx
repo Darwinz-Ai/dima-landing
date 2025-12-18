@@ -22,7 +22,7 @@ function QuestionsAnsweredSection({ slug }: QuestionsAnsweredSectionProps) {
                     <p className="text-muted-foreground text-lg">{t("description")}</p>
 
                     {/* CTA */}
-                    <div className="w-fit">
+                    <div className="w-fit" dir="ltr">
                         <Link href="/request-demo" className="text-[15px]">
                             <Button className="flex justify-between py-2 pl-4 pr-2.5">
                                 {t("requestDemo")}

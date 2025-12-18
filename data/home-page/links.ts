@@ -1,5 +1,7 @@
 import { LanguageLink, NavLink, SocialMediaLink, SolutionLink } from "@/types";
 import { IconBrandLinkedin } from "@tabler/icons-react";
+import enFlag from "@/public/flags/en.svg";
+import arFlag from "@/public/flags/ar.svg";
 
 export const footerResourcesLinks: NavLink[] = [
     {
@@ -74,6 +76,6 @@ export const socialMediaLinks: SocialMediaLink[] = [
 ]
 
 export const languages: LanguageLink[] = [
-    { locale: "en", label: "English", flag: "/flags/en.svg" },
-    { locale: "ar", label: "العربية", flag: "/flags/ar.svg" },
+    { locale: "en", label: "English", flag: enFlag },
+    { locale: "ar", label: "العربية", flag: arFlag },
 ];

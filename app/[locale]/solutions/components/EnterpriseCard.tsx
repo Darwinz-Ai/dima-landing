@@ -15,7 +15,7 @@ function EntrepriseCard({ icon, title, description }: CardType) {
                             fill
                             sizes="32px"
                             className="object-contain p-1"
-                            quality={90}
+                            unoptimized={true}
                         />
                     </figure>
 

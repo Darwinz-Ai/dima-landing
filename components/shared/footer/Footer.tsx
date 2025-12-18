@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { dimaSolutions, footerResourcesLinks } from "@/data/home-page";
+import dimaLogoWhite from "@/public/dima-logo/dima-logo-white.png"
 
 function Footer() {
   const t = useTranslations("Footer");
@@ -21,7 +22,7 @@ function Footer() {
           <div className="flex flex-col gap-4 mb-8">
             {/* Dima logo */}
             <figure>
-              <Image src="/dima-logo-white.svg" alt="dima logo white" width={120} height={50} quality={90} />
+              <Image src={dimaLogoWhite} alt="dima logo white" width={120} height={50} unoptimized={true} />
             </figure>
             <h2 className="capitalize md:text-2xl">{t("dima.description")}</h2>
 

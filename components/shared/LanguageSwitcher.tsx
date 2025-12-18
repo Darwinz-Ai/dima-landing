@@ -46,7 +46,7 @@ export default function LanguageSwitcher() {
               alt="current language flag"
               width={20}
               height={20}
-              quality={90}
+              unoptimized={true}
             />
           </figure>
           <ChevronDown className={`${isRTL ? "mr-2" : "ml-2"} h-4 w-4 shrink-0 opacity-50 text-muted-foreground`} />
