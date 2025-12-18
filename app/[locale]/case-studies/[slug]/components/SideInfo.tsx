@@ -12,6 +12,7 @@ function SideInfo({ index, title, description }: CaseStudySideInfo) {
                     alt="challenge icon"
                     fill
                     className="object-contain"
+                    unoptimized={true}
                 />
             </figure>
             <div className="flex-1">

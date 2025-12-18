@@ -14,6 +14,7 @@ function EntrepriseCard({ icon, title, description }: CardType) {
                             alt="icon"
                             fill
                             className="object-contain p-1"
+                            unoptimized={true}
                         />
                     </figure>
 
