@@ -1441,5 +1441,229 @@
     "pageNotFound": "Page Not Found",
     "description": " Sorry, the page you're looking for doesn't exist, may have been removed, or the URL is incorrect.",
     "goHome": "Go Home"
+  },
+  "SEO": {
+    "App": {
+      "title": "TheDar.AI",
+      "description": "A Saudi-Egyptian startup offering an AI Copilot for Brand Managers, Marketers & PR Professionals at leading agencies & enterprises in MENA. With the AI Copilot called dima, users are able to enhance their daily productivity by up to 80% through finding innovative ways to truly understand brand & audience perception for their products & offerings, analyzing hundreds of thousands of data points from a variety of key channels.",
+      "keywords": [
+        "TheDar.AI",
+        "dima",
+        "media monitoring",
+        "AI copilot",
+        "PR analytics",
+        "social listening",
+        "brand monitoring",
+        "Arabic media",
+        "MENA marketing",
+        "crisis detection"
+      ]
+    },
+    "Home": {
+      "title": "dima - Your Media Monitoring Copilot",
+      "description": "AI-powered media monitoring for marketers, PR teams, and brand managers. Track campaigns, detect crises, analyze competitors, and automate reporting — all in one place.",
+      "keywords": [
+        "dima",
+        "media monitoring copilot",
+        "AI media monitoring",
+        "PR teams",
+        "brand managers",
+        "campaign tracking",
+        "crisis detection",
+        "competitor analysis",
+        "automated reporting",
+        "Arabic social listening"
+      ]
+    },
+    "Blogs": {
+      "title": "Blogs - dima",
+      "description": "Insights, case studies, and practical guides on AI-powered media monitoring, social listening, and Arabic-language analytics.",
+      "keywords": [
+        "dima blog",
+        "media monitoring insights",
+        "social listening guides",
+        "PR analytics articles",
+        "case studies",
+        "Arabic language analytics",
+        "marketing analytics blog",
+        "brand monitoring tips"
+      ]
+    },
+    "CaseStudies": {
+      "title": "Case Studies - How Teams Use dima",
+      "description": "Discover how leading brands and PR teams use dima to monitor media, track campaigns, detect PR crises, and automate reporting. Real-world examples of AI in action.",
+      "keywords": [
+        "dima case studies",
+        "media monitoring case studies",
+        "PR crisis management examples",
+        "brand monitoring success stories",
+        "Arabic media analytics",
+        "campaign tracking results",
+        "AI in PR and communications"
+      ]
+    },
+    "RequestDemo": {
+      "title": "Request a Demo | dima",
+      "description": "Request a personalized demo of dima. See how dima can streamline workflows, boost efficiency, and empower your agency.",
+      "keywords": [
+        "dima demo",
+        "request a demo",
+        "book demo",
+        "media monitoring platform demo",
+        "AI copilot demo",
+        "PR analytics software demo",
+        "social listening tool demo"
+      ]
+    },
+    "Tools": {
+      "title": "Tools & Calculators - dima",
+      "description": "Explore dima's free AI tools for marketers and PR teams: Arabic Coverage Gap Audit, Arabic Dialect Accuracy Lab, Lost Mentions Calculator, Crisis Readiness Scorecard, and Monitoring Stack Consolidation Calculator. Analyze campaigns, detect blind spots, and optimize media monitoring.",
+      "keywords": [
+        "dima tools",
+        "marketing calculators",
+        "PR tools",
+        "Arabic coverage gap audit",
+        "Arabic dialect accuracy lab",
+        "lost mentions calculator",
+        "crisis readiness scorecard",
+        "monitoring stack consolidation calculator",
+        "media monitoring tools"
+      ]
+    },
+    "Tools-stack-consolidation-calculator": {
+      "title": "Monitoring Stack Consolidation Calculator - dima Tool",
+      "description": "Compare your current 3-4 tool stack (social + online press + broadcast) against one Arabic-first AI copilot and discover your potential savings with dima.",
+      "keywords": [
+        "monitoring stack consolidation",
+        "media monitoring tools",
+        "tool stack savings",
+        "TCO calculator",
+        "social listening tools",
+        "press monitoring tools",
+        "broadcast monitoring tools",
+        "Arabic-first AI copilot"
+      ]
+    },
+    "Tools-crisis-readiness-score": {
+      "title": "Crisis Readiness Scorecard - dima Tool",
+      "description": "A 5-minute self-assessment to evaluate your crisis detection, escalation speed, channel coverage, and Arabic sentiment accuracy — helping teams identify gaps and improve preparedness.",
+      "keywords": [
+        "crisis readiness scorecard",
+        "PR crisis preparedness",
+        "crisis detection",
+        "escalation speed assessment",
+        "channel coverage",
+        "Arabic sentiment accuracy",
+        "PR risk assessment"
+      ]
+    },
+    "Tools-arabic-dialect": {
+      "title": "Arabic Dialect Accuracy Lab - dima Tool",
+      "description": "Live sandbox for testing sentiment and entity extraction across KSA, Egyptian, Levantine, Maghrebi, and Gulf Arabic dialects.",
+      "keywords": [
+        "Arabic dialect accuracy",
+        "sentiment analysis Arabic",
+        "entity extraction Arabic",
+        "KSA Arabic",
+        "Egyptian Arabic",
+        "Levantine Arabic",
+        "Maghrebi Arabic",
+        "Gulf Arabic",
+        "Arabic NLP"
+      ]
+    },
+    "Tools-arabic-mention-analyzer": {
+      "title": "Lost Mentions & Missed Sentiment Calculator - dima Tool",
+      "description": "Estimate how many Arabic posts are being missed or misclassified with current tooling using dima's Lost Mentions & Missed Sentiment Calculator.",
+      "keywords": [
+        "lost mentions calculator",
+        "missed sentiment",
+        "Arabic posts missed",
+        "social listening gaps",
+        "media monitoring accuracy",
+        "Arabic sentiment analysis"
+      ]
+    },
+    "Tools-arabic-coverage-gap-audit": {
+      "title": "Arabic Coverage Gap Audit - dima Tool",
+      "description": "A guided wizard that maps keyword lists to Arabic dialect variations, common misspellings, and colloquialisms by country — saving time and reducing blind spots in media monitoring.",
+      "keywords": [
+        "Arabic coverage gap audit",
+        "Arabic dialect keywords",
+        "media monitoring blind spots",
+        "keyword expansion",
+        "Arabic misspellings",
+        "Arabic colloquialisms",
+        "MENA social listening"
+      ]
+    },
+    "PrivacyPolicy": {
+      "title": "Privacy Policy - dima",
+      "description": "Read how dima collects, uses, and protects your data across our media monitoring, analytics, and AI tools.",
+      "keywords": [
+        "dima privacy policy",
+        "data protection",
+        "user privacy",
+        "cookie policy",
+        "media monitoring privacy"
+      ]
+    },
+    "Solutions-social-listening-analytics": {
+      "title": "Social Listening & Analytics - dima",
+      "description": "Monitor social media mentions, analyze sentiment, and get actionable insights with dima's AI-powered social listening solution.",
+      "keywords": [
+        "social listening",
+        "social media analytics",
+        "sentiment analysis",
+        "media monitoring",
+        "campaign performance",
+        "Arabic social media"
+      ]
+    },
+    "Solutions-pr-comms": {
+      "title": "PR & Comms - dima",
+      "description": "Manage public relations, track press coverage, and detect PR crises faster with dima's AI PR tools.",
+      "keywords": [
+        "PR and communications",
+        "press coverage tracking",
+        "crisis detection",
+        "media monitoring for PR",
+        "PR reporting",
+        "Arabic media PR"
+      ]
+    },
+    "Solutions-market-insights": {
+      "title": "Market Insights - dima",
+      "description": "Gain deep market insights, monitor competitors, and track trends with AI-powered analytics from dima.",
+      "keywords": [
+        "market insights",
+        "competitive intelligence",
+        "trend tracking",
+        "AI market analytics",
+        "MENA market research"
+      ]
+    },
+    "Solutions-consumer-insights": {
+      "title": "Consumer Insights - dima",
+      "description": "Understand customer behavior and sentiment, and make data-driven decisions with dima's consumer insights solution.",
+      "keywords": [
+        "consumer insights",
+        "customer sentiment",
+        "voice of customer",
+        "customer behavior analytics",
+        "Arabic consumer insights"
+      ]
+    },
+    "Solutions-own-page-intelligence": {
+      "title": "Own Page Intelligence - dima",
+      "description": "Analyze your own digital presence, measure content performance, and optimize engagement with AI insights.",
+      "keywords": [
+        "owned media analytics",
+        "page performance",
+        "content optimization",
+        "engagement analytics",
+        "social page intelligence"
+      ]
+    }
   }
 }

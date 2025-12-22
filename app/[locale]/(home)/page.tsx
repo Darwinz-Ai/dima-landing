@@ -6,57 +6,47 @@ import DimaSuiteSection from "./sections/DimaSuiteSection";
 import CaseStudiesSection from "./sections/CaseStudiesSection";
 import TestimonialSection from "./sections/TestimonialSection";
 import QuestionsAnsweredSection from "@/app/[locale]/(home)/sections/QuestionsAnsweredSection";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "dima - Your Media Monitoring Copilot",
-  description:
-    "AI-powered media monitoring for marketers, PR teams, and brand managers. Track campaigns, detect crises, analyze competitors, and automate reporting — all in one place.",
-  keywords: [
-    "dima",
-    "media monitoring copilot",
-    "AI media monitoring",
-    "PR teams",
-    "brand managers",
-    "campaign tracking",
-    "crisis detection",
-    "competitor analysis",
-    "automated reporting",
-    "Arabic social listening",
-  ],
-  metadataBase: new URL("https://thedar.ai"),
-
-  openGraph: {
-    title: "dima – Your Media Monitoring Copilot",
-    description:
-      "AI-powered media monitoring for marketers, PR teams, and brand managers. Track campaigns, detect crises, analyze competitors, and automate reporting — all in one place.",
-    url: "https://thedar.ai",
-    siteName: "dima",
-    type: "website",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "dima OG Image",
-      },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "dima – Your Media Monitoring Copilot",
-    description:
-      "AI-powered media monitoring for marketers, PR teams, and brand managers. Track campaigns, detect crises, analyze competitors, and automate reporting — all in one place.",
-    images: ["/og-image.png"],
-  },
-
-  alternates: {
-    canonical: "https://thedar.ai",
-  },
+type HomePageProps = {
+  params: { locale: string };
 };
 
+export async function generateMetadata(
+  { params: { locale } }: HomePageProps
+): Promise<Metadata> {
+  return buildLocalizedMetadata(locale, "Home", {
+    overrides: {
+      metadataBase: new URL("https://thedar.ai"),
+      openGraph: {
+        url: "https://thedar.ai",
+        siteName: "dima",
+        type: "website",
+        images: [
+          {
+            url: "/og-image.png",
+            width: 1200,
+            height: 630,
+            alt: "dima OG Image",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        images: ["/og-image.png"],
+      },
+      alternates: {
+        canonical: "https://thedar.ai",
+        languages: {
+          "en-US": "https://thedar.ai/en",
+          "ar-SA": "https://thedar.ai/ar"
+        }
+      },
+    },
+  });
+}
 
 function HomePage() {
   return (

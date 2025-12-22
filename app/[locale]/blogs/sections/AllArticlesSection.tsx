@@ -4,7 +4,7 @@ import GroupedBlogs from "../components/GroupedBlogs";
 import VideosSection from "./VideosSection";
 import BlogCardSkeleton from "../components/BlogCardSkeleton";
 import BlogCard from "../components/BlogCard";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { usePaginatedBlogs } from "../hooks/usePaginatedBlogs";
 import PaginationWrapper from "../../case-studies/components/PaginationWrapper";
 

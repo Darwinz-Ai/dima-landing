@@ -2,51 +2,45 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 import { ArabicCoverageWizard } from "./components/ArabicCoverageWizard";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Arabic Coverage Gap Audit - dima Tool",
-    description:
-        "A guided wizard that maps keyword lists to Arabic dialect variations, common misspellings, and colloquialisms by country — saving time and reducing blind spots in media monitoring.",
-    keywords: [
-        "Arabic coverage gap audit",
-        "Arabic dialect keywords",
-        "media monitoring blind spots",
-        "keyword expansion",
-        "Arabic misspellings",
-        "Arabic colloquialisms",
-        "MENA social listening",
-    ],
-
-    openGraph: {
-        title: "Arabic Coverage Gap Audit - dima Tool",
-        description:
-            "Use dima's Arabic Coverage Gap Audit to map keywords to dialects, detect common misspellings, and identify blind spots in your media monitoring workflow.",
-        url: "https://thedar.ai/tools/arabic-coverage-gap-audit",
-        siteName: "dima",
-        type: "website",
-        images: [
-            {
-                url: "/og/tools/arabic-coverage.png",
-                width: 1200,
-                height: 630,
-                alt: "Arabic Coverage Gap Audit Tool OG Image",
-            },
-        ],
-    },
-
-    twitter: {
-        card: "summary_large_image",
-        title: "Arabic Coverage Gap Audit - dima Tool",
-        description:
-            "Map keywords to Arabic dialects, detect misspellings, and uncover media monitoring blind spots with dima’s Arabic Coverage Gap Audit.",
-        images: ["/og/tools/arabic-coverage.png"],
-    },
-
-    alternates: {
-        canonical: "https://thedar.ai/tools/arabic-coverage-gap-audit",
-    },
+type ArabicCoverageGapAuditPageProps = {
+    params: { locale: string };
 };
+
+export async function generateMetadata(
+    { params: { locale } }: ArabicCoverageGapAuditPageProps
+): Promise<Metadata> {
+    return buildLocalizedMetadata(locale, "Tools-arabic-coverage-gap-audit", {
+        overrides: {
+            openGraph: {
+                url: "https://thedar.ai/tools/arabic-coverage-gap-audit",
+                siteName: "dima",
+                type: "website",
+                images: [
+                    {
+                        url: "/og/tools/arabic-coverage.png",
+                        width: 1200,
+                        height: 630,
+                        alt: "Arabic Coverage Gap Audit Tool OG Image",
+                    },
+                ],
+            },
+            twitter: {
+                card: "summary_large_image",
+                images: ["/og/tools/arabic-coverage.png"],
+            },
+            alternates: {
+                canonical: "https://thedar.ai/tools/arabic-coverage-gap-audit",
+                languages: {
+                    "en-US": "https://thedar.ai/en/tools/arabic-coverage-gap-audit",
+                    "ar-SA": "https://thedar.ai/ar/tools/arabic-coverage-gap-audit",
+                }
+            },
+        },
+    });
+}
 
 function ArabicCoverageGapAudit() {
     const t = useTranslations("Tools.arabic-coverage-gap-audit");

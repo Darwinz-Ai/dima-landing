@@ -30,6 +30,13 @@ export async function generateMetadata(
                     },
                 ],
             },
+            alternates: {
+                canonical: `https://thedar.ai/case-studies/${slug}`,
+                languages: {
+                    "en-US": `https://thedar.ai/en/case-studies/${slug}`,
+                    "ar-SA": `https://thedar.ai/ar/case-studies/${slug}`,
+                }
+            }
         };
 
     } catch (error) {

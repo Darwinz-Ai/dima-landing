@@ -19,7 +19,7 @@ function CounterPercentage({ number, text, className }: CounterPercentageProps) 
             const controls = animate(count, number, { duration: 3, ease: easeOut });
             return () => controls.stop();
         }
-    }, [isInView, number]);
+    }, [isInView, number, count]);
 
     return (
         <div ref={ref} className={`flex flex-col items-center gap-4 px-6 py-8 rounded-2xl bg-muted lg:bg-white ${className}`}>

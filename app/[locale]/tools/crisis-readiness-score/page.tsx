@@ -2,51 +2,45 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import CrisisReadinessScore from "./components/CrisisReadinessScore";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Crisis Readiness Scorecard - dima Tool",
-    description:
-        "A 5-minute self-assessment to evaluate your crisis detection, escalation speed, channel coverage, and Arabic sentiment accuracy — helping teams identify gaps and improve preparedness.",
-    keywords: [
-        "crisis readiness scorecard",
-        "PR crisis preparedness",
-        "crisis detection",
-        "escalation speed assessment",
-        "channel coverage",
-        "Arabic sentiment accuracy",
-        "PR risk assessment",
-    ],
-
-    openGraph: {
-        title: "Crisis Readiness Scorecard - dima Tool",
-        description:
-            "Use dima's Crisis Readiness Scorecard to assess your team's ability to detect crises, respond quickly, monitor channels, and measure Arabic sentiment accuracy.",
-        url: "https://thedar.ai/tools/crisis-readiness-scorecard",
-        siteName: "dima",
-        type: "website",
-        images: [
-            {
-                url: "/og/tools/crisis-readiness.png",
-                width: 1200,
-                height: 630,
-                alt: "Crisis Readiness Scorecard Tool OG Image",
-            },
-        ],
-    },
-
-    twitter: {
-        card: "summary_large_image",
-        title: "Crisis Readiness Scorecard - dima Tool",
-        description:
-            "Evaluate your crisis detection, escalation speed, channel coverage, and Arabic sentiment accuracy with dima's Crisis Readiness Scorecard.",
-        images: ["/og/tools/crisis-readiness.png"],
-    },
-
-    alternates: {
-        canonical: "https://thedar.ai/tools/crisis-readiness-scorecard",
-    },
+type CrisisReadinessScorePageProps = {
+    params: { locale: string };
 };
+
+export async function generateMetadata(
+    { params: { locale } }: CrisisReadinessScorePageProps
+): Promise<Metadata> {
+    return buildLocalizedMetadata(locale, "Tools-crisis-readiness-score", {
+        overrides: {
+            openGraph: {
+                url: "https://thedar.ai/tools/crisis-readiness-score",
+                siteName: "dima",
+                type: "website",
+                images: [
+                    {
+                        url: "/og/tools/crisis-readiness.png",
+                        width: 1200,
+                        height: 630,
+                        alt: "Crisis Readiness Scorecard Tool OG Image",
+                    },
+                ],
+            },
+            twitter: {
+                card: "summary_large_image",
+                images: ["/og/tools/crisis-readiness.png"],
+            },
+            alternates: {
+                canonical: "https://thedar.ai/tools/crisis-readiness-score",
+                languages: {
+                    "en-US": "https://thedar.ai/en/tools/crisis-readiness-score",
+                    "ar-SA": "https://thedar.ai/ar/tools/crisis-readiness-score",
+                }
+            },
+        },
+    });
+}
 
 function CrisisReadinessScorePage() {
     const t = useTranslations("Tools.crisis-readiness-score");

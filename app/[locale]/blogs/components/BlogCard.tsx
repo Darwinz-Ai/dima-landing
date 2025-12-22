@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import { cn, timeAgo } from "@/lib/utils";
 import { Blog } from "@/types/blog";
 import { useLocale } from "next-intl";

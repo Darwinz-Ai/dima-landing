@@ -7,9 +7,10 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import Footer from "@/components/shared/footer/Footer";
 import ReactQueryProvider from "../ReactQueryProvider";
-import PageLoader from "@/components/shared/PageLoader";
+// import PageLoader from "@/components/shared/PageLoader";
 import { Toaster } from "sonner";
 import Script from "next/script";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -20,53 +21,41 @@ const cairo = Cairo({
   weight: ["400", "500", "600", "700"]
 })
 
-export const metadata: Metadata = {
-  title: "TheDar.AI",
-  description:
-    "A Saudi-Egyptian startup offering an AI Copilot for Brand Managers, Marketers & PR Professionals at leading agencies & enterprises in MENA. With the AI Copilot called dima©, users are able to enhance their daily productivity by up to 80% through finding innovative ways to truly understand brand & audience perception for their products & offerings, analyzing hundreds of thousands of data points from a variety of key channels.",
-  keywords: [
-    "TheDar.AI",
-    "dima",
-    "media monitoring",
-    "AI copilot",
-    "PR analytics",
-    "social listening",
-    "brand monitoring",
-    "Arabic media",
-    "MENA marketing",
-    "crisis detection",
-  ],
-  metadataBase: new URL("https://thedar.ai"),
+export async function generateMetadata(
+  { params }: { params: Promise<{ locale: string }> }
+): Promise<Metadata> {
+  const { locale } = await params;
 
-  openGraph: {
-    title: "dima - Your Media Monitoring Copilot",
-    description:
-      "AI-powered media monitoring for marketers, PR teams, and brand managers. Track campaigns, detect crises, analyze competitors, and automate reporting — all in one place.",
-    url: "https://thedar.ai",
-    siteName: "dima",
-    type: "website",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "dima OG Image",
+  return buildLocalizedMetadata(locale, "App", {
+    overrides: {
+      metadataBase: new URL("https://thedar.ai"),
+      openGraph: {
+        url: "https://thedar.ai",
+        siteName: "dima",
+        type: "website",
+        images: [
+          {
+            url: "/og-image.png",
+            width: 1200,
+            height: 630,
+            alt: "dima OG Image",
+          },
+        ],
       },
-    ],
-  },
-
-  twitter: {
-    card: "summary_large_image",
-    title: "dima - Your Media Monitoring Copilot",
-    description:
-      "AI-powered media monitoring for marketers, PR teams, and brand managers. Track campaigns, detect crises, analyze competitors, and automate reporting — all in one place.",
-    images: ["/og-image.png"],
-  },
-
-  alternates: {
-    canonical: "https://thedar.ai",
-  },
-};
+      twitter: {
+        card: "summary_large_image",
+        images: ["/og-image.png"],
+      },
+      alternates: {
+        canonical: "https://thedar.ai",
+        languages: {
+          "en-US": "https://thedar.ai/en",
+          "ar-SA": "https://thedar.ai/ar"
+        }
+      },
+    },
+  });
+}
 
 export default async function RootLayout({
   children,

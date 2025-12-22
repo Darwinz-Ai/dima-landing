@@ -2,58 +2,50 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { toolLinks } from "@/data/tools";
 import RequestDemoButton from "@/components/shared/form/RequestDemoButton";
 import LogoCarousel from "../(home)/components/LogoCarousel";
 import EmpoweringAgenciesSection from "../(home)/sections/EmpoweringAgenciesSection";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Tools & Calculators - dima",
-    description:
-        "Explore dima's free AI tools for marketers and PR teams: Arabic Coverage Gap Audit, Arabic Dialect Accuracy Lab, Lost Mentions Calculator, Crisis Readiness Scorecard, and Monitoring Stack Consolidation Calculator. Analyze campaigns, detect blind spots, and optimize media monitoring.",
-    keywords: [
-        "dima tools",
-        "marketing calculators",
-        "PR tools",
-        "Arabic coverage gap audit",
-        "Arabic dialect accuracy lab",
-        "lost mentions calculator",
-        "crisis readiness scorecard",
-        "monitoring stack consolidation calculator",
-        "media monitoring tools",
-    ],
-
-    openGraph: {
-        title: "Tools & Calculators - dima",
-        description:
-            "Use dima's AI tools to audit Arabic coverage gaps, test dialect accuracy, calculate missed mentions, evaluate crisis readiness, and consolidate monitoring stacks. Boost PR and marketing performance.",
-        url: "https://thedar.ai/tools",
-        siteName: "dima",
-        type: "website",
-        images: [
-            {
-                url: "/og/tools.png",
-                width: 1200,
-                height: 630,
-                alt: "dima Tools & Calculators OG Image",
-            },
-        ],
-    },
-
-    twitter: {
-        card: "summary_large_image",
-        title: "Tools & Calculators - dima",
-        description:
-            "Discover dima's free AI tools for Arabic media monitoring and PR: Coverage Gap Audit, Dialect Accuracy Lab, Lost Mentions Calculator, Crisis Scorecard, and Stack Consolidation Calculator.",
-        images: ["/og/tools.png"],
-    },
-
-    alternates: {
-        canonical: "https://thedar.ai/tools",
-    },
+type ToolsPageProps = {
+    params: { locale: string };
 };
+
+export async function generateMetadata(
+    { params: { locale } }: ToolsPageProps
+): Promise<Metadata> {
+    return buildLocalizedMetadata(locale, "Tools", {
+        overrides: {
+            openGraph: {
+                url: "https://thedar.ai/tools",
+                siteName: "dima",
+                type: "website",
+                images: [
+                    {
+                        url: "/og/tools.png",
+                        width: 1200,
+                        height: 630,
+                        alt: "dima Tools & Calculators OG Image",
+                    },
+                ],
+            },
+            twitter: {
+                card: "summary_large_image",
+                images: ["/og/tools.png"],
+            },
+            alternates: {
+                canonical: "https://thedar.ai/tools",
+                languages: {
+                    "en-US": "https://thedar.ai/en/tools",
+                    "ar-SA": "https://thedar.ai/ar/tools",
+                }
+            },
+        },
+    });
+}
 
 function ToolsPage() {
     const t = useTranslations("Tools");

@@ -31,6 +31,13 @@ export async function generateMetadata(
                 description: blog.content.description,
                 images: [blog.thumbnail],
                 type: "article"
+            },
+            alternates: {
+                canonical: `https://thedar.ai/blogs/${slug}`,
+                languages: {
+                    "en-US": `https://thedar.ai/en/blogs/${slug}`,
+                    "ar-SA": `https://thedar.ai/ar/blogs/${slug}`,
+                }
             }
         };
     } catch (error) {

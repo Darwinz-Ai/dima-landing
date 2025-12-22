@@ -3,44 +3,43 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import RequestDemoForm from "../../../components/shared/form/RequestDemoForm";
 import type { Metadata } from "next";
+import { buildLocalizedMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-    title: "Request a Demo | dima AI",
-    description: "Request a personalized demo of the dima AI platform. See how our AI tools can streamline workflows, boost efficiency, and empower your agency.",
-    keywords: [
-        "dima demo",
-        "request a demo",
-        "book demo",
-        "media monitoring platform demo",
-        "AI copilot demo",
-        "PR analytics software demo",
-        "social listening tool demo",
-    ],
-    openGraph: {
-        title: "Request a Demo | dima AI",
-        description: "Get a personalized demo of the dima AI platform and discover how it can optimize your agency’s operations.",
-        url: "https://thedar.ai/request-demo",
-        type: "website",
-        images: [
-            {
-                url: "/requestDemo.jpg",
-                width: 1200,
-                height: 630,
-                alt: "Request Demo Page Preview",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Request a Demo | dima AI",
-        description: "See dima AI in action and request your personalized platform demo.",
-        images: ["/requestDemo.jpg"],
-    },
-    alternates: {
-        canonical: "https://thedar.ai/request-demo",
-    },
+type RequestDemoPageProps = {
+    params: { locale: string };
 };
 
+export async function generateMetadata(
+    { params: { locale } }: RequestDemoPageProps
+): Promise<Metadata> {
+    return buildLocalizedMetadata(locale, "RequestDemo", {
+        overrides: {
+            openGraph: {
+                url: "https://thedar.ai/request-demo",
+                type: "website",
+                images: [
+                    {
+                        url: "/requestDemo.jpg",
+                        width: 1200,
+                        height: 630,
+                        alt: "Request Demo Page Preview",
+                    },
+                ],
+            },
+            twitter: {
+                card: "summary_large_image",
+                images: ["/requestDemo.jpg"],
+            },
+            alternates: {
+                canonical: "https://thedar.ai/request-demo",
+                languages: {
+                    "en-US": "https://thedar.ai/en/request-demo",
+                    "ar-SA": "https://thedar.ai/ar/request-demo",
+                }
+            },
+        },
+    });
+}
 
 function RequestDemoPage() {
     const t = useTranslations("RequestDemo");

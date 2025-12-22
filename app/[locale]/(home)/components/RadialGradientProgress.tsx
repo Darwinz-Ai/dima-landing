@@ -67,7 +67,7 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
             offsetAnimation.stop();
             numberAnimation.stop();
         };
-    }, [isInView, progress, circumference, duration, offset, number, maxValue]);
+    }, [isInView, progress, circumference, duration, offset, number, maxValue, gapValue]);
 
     return (
         <div
