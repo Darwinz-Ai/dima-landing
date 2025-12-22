@@ -10,6 +10,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import PhoneNumberInput from "./PhoneNumberInput";
+import { requestDemo } from "@/app/actions/demo.actions";
 
 // Form Type
 export type FormInputs = {
@@ -40,17 +41,16 @@ function RequestDemoForm({ className }: { className?: string }) {
 
     const onSubmit: SubmitHandler<FormInputs> = async (data) => {
         const fullPhoneNumber = `${countryCode}${data.phoneNumber}`;
-        try {
-            const response = await fetch("https://dimabackend-dev-34652492755.us-central1.run.app/api/v1/feedback/request-demo", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    ...data,
-                    phoneNumber: fullPhoneNumber
-                })
-            })
 
-            if (!response.ok) {
+        const passedData = {
+            ...data,
+            phoneNumber: fullPhoneNumber
+        }
+
+        try {
+            const response = await requestDemo(passedData);
+
+            if (!response.success) {
                 toast.error(t("form.somethingWentWrong"))
                 return null;
             }

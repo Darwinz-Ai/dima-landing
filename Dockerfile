@@ -31,8 +31,10 @@ RUN npm run build
 # ---------------------------------------------------------
 
 FROM node:20-alpine AS runner
-
 WORKDIR /app
+ENV NODE_ENV production
+ENV PORT 8080
+ENV HOSTNAME "0.0.0.0"
 
 # Copy standalone server
 COPY --from=builder /app/.next/standalone ./
@@ -43,6 +45,6 @@ COPY --from=builder /app/.next/static ./public/_next/static
 # Copy public folder
 COPY --from=builder /app/public ./public
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD [ "node","server.js" ]
