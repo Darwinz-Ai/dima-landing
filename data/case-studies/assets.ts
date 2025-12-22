@@ -1,60 +1,59 @@
 export const sideInfoIcons = [
-    "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/CaseStudy%2Fchallenge-icon.svg?alt=media&token=08229af5-fd4a-4007-b85c-3346e8105afc",
-    "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/CaseStudy%2Fsolution-icon.svg?alt=media&token=736fae21-7384-4f6b-abbb-4154715ffd5a",
-    "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/CaseStudy%2Fresult-icon.svg?alt=media&token=cfc2dc84-c9cc-4e33-a121-ddefdf42d642"
-]
+  "/case-study-icons/challenge-icon.png",
+  "/case-study-icons/solution-icon.png",
+  "/case-study-icons/result-icon.png",
+];
 
 export type SolutionKey = "sl" | "pr" | "oi" | "mi" | "ci";
 
 export interface SolutionAsset {
-    icon: string;
-    href: string;
-    title: {
-        en: string;
-        ar: string;
-    }
+  icon: string;
+  href: string;
+  title: {
+    en: string;
+    ar: string;
+  };
 }
 
 export const usedSolutionsAssets: Record<SolutionKey, SolutionAsset> = {
-    "sl": {
-        icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Fsl.svg?alt=media&token=5462149c-87b4-4471-9783-fa9cf99cda2e",
-        title: {
-            en: "Social Listening & Analytics",
-            ar: "الاستماع الاجتماعي والتحليلات"
-        },
-        href: "/solutions/social-listening-analytics"
+  sl: {
+    icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Fsl.svg?alt=media&token=5462149c-87b4-4471-9783-fa9cf99cda2e",
+    title: {
+      en: "Social Listening & Analytics",
+      ar: "الاستماع الاجتماعي والتحليلات",
     },
-    "pr": {
-        icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Fpr.svg?alt=media&token=d8cd7d25-eced-4ed4-afd3-9564be8db2ea",
-        title: {
-            en: "PR & Comms",
-            ar: " العلاقات العامة والاتصالات"
-        },
-        href: "/solutions/pr-comms"
+    href: "/solutions/social-listening-analytics",
+  },
+  pr: {
+    icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Fpr.svg?alt=media&token=d8cd7d25-eced-4ed4-afd3-9564be8db2ea",
+    title: {
+      en: "PR & Comms",
+      ar: " العلاقات العامة والاتصالات",
     },
-    "oi": {
-        icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Foi.svg?alt=media&token=cdcc2077-5cf0-4507-aa91-6728e1a18c96",
-        title: {
-            en: "Own Page Intelligence",
-            ar: "معلومات الصفحة الخاصة"
-        },
-        href: "/solutions/own-page-intelligence"
+    href: "/solutions/pr-comms",
+  },
+  oi: {
+    icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Foi.svg?alt=media&token=cdcc2077-5cf0-4507-aa91-6728e1a18c96",
+    title: {
+      en: "Own Page Intelligence",
+      ar: "معلومات الصفحة الخاصة",
     },
-    "mi": {
-        icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Fmi.svg?alt=media&token=f0d86772-8efa-4c75-84d7-566483983dad",
-        title: {
-            en: "Market Intelligence",
-            ar: "معلومات السوق"
-        },
-        href: "/solutions/market-intelligence"
+    href: "/solutions/own-page-intelligence",
+  },
+  mi: {
+    icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Fmi.svg?alt=media&token=f0d86772-8efa-4c75-84d7-566483983dad",
+    title: {
+      en: "Market Intelligence",
+      ar: "معلومات السوق",
     },
-    "ci": {
-        icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Fci.svg?alt=media&token=9feaeb34-a7d5-48d1-b08e-23f36d487c6c",
-        title: {
-            en: "Consumer Insights",
-            ar: "رؤى المستهلك"
-        },
-        href: "/solutions/consumer-insights"
-    }
-}
-
+    href: "/solutions/market-intelligence",
+  },
+  ci: {
+    icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Fci.svg?alt=media&token=9feaeb34-a7d5-48d1-b08e-23f36d487c6c",
+    title: {
+      en: "Consumer Insights",
+      ar: "رؤى المستهلك",
+    },
+    href: "/solutions/consumer-insights",
+  },
+};

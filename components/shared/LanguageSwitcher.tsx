@@ -93,6 +93,7 @@ export default function LanguageSwitcher() {
                     width={29}
                     height={29}
                     quality={90}
+                    unoptimized={true}
                   />
                   {lang.label}
                 </div>

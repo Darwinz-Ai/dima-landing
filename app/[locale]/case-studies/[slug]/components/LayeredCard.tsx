@@ -34,8 +34,6 @@ const getCardConfig = (index: number) => {
     }
 };
 
-// TODO: Fix card not going right when locale is ar
-
 function LayeredCard({ index, value, title, suffix, isLast }: LayeredCardProps) {
     const { bg, text: txt, rotation, suffixColor } = getCardConfig(index);
     const locale = useLocale();
