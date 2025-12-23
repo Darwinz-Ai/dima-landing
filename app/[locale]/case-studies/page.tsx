@@ -7,12 +7,13 @@ import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type CaseStudiesPageProps = {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
-    { params: { locale } }: CaseStudiesPageProps
+    { params }: CaseStudiesPageProps
 ): Promise<Metadata> {
+    const { locale } = await params;
     return buildLocalizedMetadata(locale, "CaseStudies", {
         overrides: {
             openGraph: {

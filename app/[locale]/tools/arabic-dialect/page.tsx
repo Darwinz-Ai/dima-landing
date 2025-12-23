@@ -6,12 +6,13 @@ import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type ArabicDialectToolPageProps = {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
-    { params: { locale } }: ArabicDialectToolPageProps
+    { params }: ArabicDialectToolPageProps
 ): Promise<Metadata> {
+    const { locale } = await params;
     return buildLocalizedMetadata(locale, "Tools-arabic-dialect", {
         overrides: {
             openGraph: {

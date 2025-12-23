@@ -9,12 +9,13 @@ import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type PrivacyPolicyPageProps = {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
-    { params: { locale } }: PrivacyPolicyPageProps
+    { params }: PrivacyPolicyPageProps
 ): Promise<Metadata> {
+    const { locale } = await params;
     return buildLocalizedMetadata(locale, "PrivacyPolicy", {
         overrides: {
             alternates: {

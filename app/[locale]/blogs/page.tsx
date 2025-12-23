@@ -6,12 +6,13 @@ import AllArticlesSection from "./sections/AllArticlesSection";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type BlogsPageProps = {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
-    { params: { locale } }: BlogsPageProps
+    { params }: BlogsPageProps
 ): Promise<Metadata> {
+    const { locale } = await params;
     return buildLocalizedMetadata(locale, "Blogs", {
         overrides: {
             metadataBase: new URL("https://thedar.ai"),

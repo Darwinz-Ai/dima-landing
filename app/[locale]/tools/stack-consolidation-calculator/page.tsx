@@ -4,12 +4,13 @@ import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type StackConsolidationCalculatorPageProps = {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
-    { params: { locale } }: StackConsolidationCalculatorPageProps
+    { params }: StackConsolidationCalculatorPageProps
 ): Promise<Metadata> {
+    const { locale } = await params;
     return buildLocalizedMetadata(locale, "Tools-stack-consolidation-calculator", {
         overrides: {
             openGraph: {

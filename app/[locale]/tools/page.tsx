@@ -11,12 +11,13 @@ import EmpoweringAgenciesSection from "../(home)/sections/EmpoweringAgenciesSect
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type ToolsPageProps = {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
-    { params: { locale } }: ToolsPageProps
+    { params }: ToolsPageProps
 ): Promise<Metadata> {
+    const { locale } = await params;
     return buildLocalizedMetadata(locale, "Tools", {
         overrides: {
             openGraph: {

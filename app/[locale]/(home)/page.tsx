@@ -11,12 +11,13 @@ import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type HomePageProps = {
-  params: { locale: string };
+  params: Promise<{ locale: string }>
 };
 
 export async function generateMetadata(
-  { params: { locale } }: HomePageProps
+  { params }: HomePageProps
 ): Promise<Metadata> {
+  const { locale } = await params;
   return buildLocalizedMetadata(locale, "Home", {
     overrides: {
       metadataBase: new URL("https://thedar.ai"),

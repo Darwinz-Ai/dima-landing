@@ -6,12 +6,13 @@ import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type RequestDemoPageProps = {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
-    { params: { locale } }: RequestDemoPageProps
+    { params }: RequestDemoPageProps
 ): Promise<Metadata> {
+    const { locale } = await params;
     return buildLocalizedMetadata(locale, "RequestDemo", {
         overrides: {
             openGraph: {

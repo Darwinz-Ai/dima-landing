@@ -6,12 +6,13 @@ import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type ArabicCoverageGapAuditPageProps = {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
-    { params: { locale } }: ArabicCoverageGapAuditPageProps
+    { params }: ArabicCoverageGapAuditPageProps
 ): Promise<Metadata> {
+    const { locale } = await params;
     return buildLocalizedMetadata(locale, "Tools-arabic-coverage-gap-audit", {
         overrides: {
             openGraph: {

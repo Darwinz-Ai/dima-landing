@@ -5,12 +5,13 @@ import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
 
 type ArabicMentionAnalyzerPageProps = {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 };
 
 export async function generateMetadata(
-    { params: { locale } }: ArabicMentionAnalyzerPageProps
+    { params }: ArabicMentionAnalyzerPageProps
 ): Promise<Metadata> {
+    const { locale } = await params;
     return buildLocalizedMetadata(locale, "Tools-arabic-mention-analyzer", {
         overrides: {
             openGraph: {
