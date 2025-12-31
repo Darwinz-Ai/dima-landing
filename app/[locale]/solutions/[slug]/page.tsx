@@ -38,6 +38,9 @@ const SOLUTIONS_METADATA: Record<
     "own-page-intelligence": {
         image: "https://thedar.ai/og/solutions/oi.png",
     },
+    "influencer-marketing": {
+        image: "https://thedar.ai/og/solutions/oi.png",
+    },
 };
 
 // Check if a slug exists

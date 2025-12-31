@@ -965,6 +965,131 @@
           "answer": "Yes, dima allows you to compare your social media pages, campaigns, and posts' performance to your competitors’. You can compare your performance to others by platform, by topics or during a specific date range. <link>Explore more</link>"
         }
       ]
+    },
+    "influencer-marketing": {
+      "hero": {
+        "title": "Influencer Marketing",
+        "subTitle": "Grow Your Brand With The Right Partners",
+        "metrics": [
+          {
+            "number": 85,
+            "title": "Time Saved"
+          },
+          {
+            "number": 75,
+            "title": "Campaign Planning Acceleration"
+          },
+          {
+            "number": 80,
+            "title": "Reduced Potential PR Risk"
+          }
+        ]
+      },
+      "expandingCards": {
+        "title": "Everything You Need To Vet Creators In One Place",
+        "cards": [
+          {
+            "title": "Complete Influencer Analysis",
+            "description": "A unified view of influencer performance, engagement quality, brand fit and risk assessment.",
+            "highlighted": "unified cross-platform metrics on engagement, sentiment, and more"
+          },
+          {
+            "title": "Arabic First AI Copilot",
+            "description": "Analyze influencer content with 97% Arabic accuracy across all dialects, slang and Franco-Arabic",
+            "highlighted": "all dialects, slang and Franco-Arabic"
+          },
+          {
+            "title": "Built for Scale",
+            "description": "Vet hundreds of influencers at once with no limits",
+            "highlighted": "No caps on reports, metrics, or users."
+          }
+        ]
+      },
+      "scrollingSection": {
+        "title": "Build Partnerships Backed by Data",
+        "subTitle": "Select influencers who reflect your brand values, resonate with your audience, and drive real impact.",
+        "cards": [
+          {
+            "title": "Ensure Brand-Safe Partnerships",
+            "description": "Vet every influencer with brand safety checks that flag personal controversies, political affiliations, and more that may conflict with your brand values"
+          },
+          {
+            "title": "Evaluate Engagement, Activity & Brand Fit",
+            "description": "Assess engagement quality, posting activity, brand relevance, and influencer tier to ensure their voice aligns with your brand.."
+          },
+          {
+            "title": "Measure Influencer Performance",
+            "description": "Track influencer performance across TikTok, Instagram, X, YouTube, Facebook, Snapchat, and more"
+          }
+        ],
+        "cta": "Invest in the right creators",
+        "requestDemo": "Request a Demo"
+      },
+      "cardsGrid": {
+        "title": "Capabilities That Power Your Influencer Strategy",
+        "cards": [
+          {
+            "title": "Influencer Vetting",
+            "description": "Identify potential risks by flagging controversial content, political affiliations, or more that may conflict with your brand values.",
+            "icon": "search"
+          },
+          {
+            "title": "Brand Relevance Scoring",
+            "description": "Assess how closely an influencer's content, language, and audience align with your brand.",
+            "icon": "speedOMeter"
+          },
+          {
+            "title": "Arabic-First Engine",
+            "description": "97% accuracy in detecting Arabic dialects, slang, Franco-Arabic, sarcasm & cultural context.",
+            "icon": "arabic"
+          },
+          {
+            "title": "Customizable Reports",
+            "description": "Deliver unlimited PPT, PDF, Excel, or HTML reports in branded templates",
+            "icon": "reports"
+          },
+          {
+            "title": "Unlimited Users",
+            "description": "No caps on team members.",
+            "icon": "users"
+          },
+          {
+            "title": "AI Coverage Summaries",
+            "description": "Receive daily, weekly, or monthly briefs that distill every key mention and trend.",
+            "icon": "coverage"
+          },
+          {
+            "title": "dima AI Assistant",
+            "description": "Ask plain-language questions about your coverage and get instant, actionable answers.",
+            "icon": "dima"
+          },
+          {
+            "title": "Unlimited Influencer Analysis",
+            "description": "Monitor and analyze an unlimited number of influencers across multiple platforms, markets, and languages in real-time.",
+            "icon": "influencer"
+          }
+        ]
+      },
+      "testimonial": {
+        "title": "Hear It From Our Clients",
+        "quote": "dima should be the go-to partner for any business serious about customer satisfaction and brand perception. Their ability to blend data, creativity and strategy makes a real difference",
+        "name": "Samer Yassa",
+        "jobRole": "Business Development Manager at Wadi Degla"
+      },
+      "faqs": [
+        {
+          "question": "How does dima ensure influencer audiences match our target market?",
+          "answer": "dima monitors all the influencers' content and analyzes their industries and topics of focus as segregated by the social media platforms themselves. In other words, Social Media platforms tailor each user's feed algorithm respecting their demographics & interests; categorized into specific topics. dima detects influencers' topics of focus thus giving you enough insights to choose the best influencer for your campaign in terms of demographics, performance, and best for ROI."
+        },
+        {
+          "question": "How do we avoid influencer scandals or brand reputation risks?",
+          "answer": "Once you identify an influencer on dima, your co-pilot simultaneously works on a full risk assessment report for your reference. dima searches on all platforms, traditional media and the web for any possible scandals, controversies, or any potential risks associated with the influencer in question. Shows you any piece of news that potentially could affect your campaign with link references to the original news."
+        },
+        {
+          "question": "How does dima improve ROI in influencer marketing campaigns?",
+          "answer": "dima uses AI-driven influencer scoring, audience relevance matching, analyzes categories with top engagement & views, and performance prediction to help brands select the influencers with the biggest impact on the targeted market. Customers typically see a higher ROI by reducing low-performing partnerships and reallocating budgets to influencers with proven impact."
+        }
+      ]
     }
   },
   "Blogs": {
@@ -1663,6 +1788,19 @@
         "content optimization",
         "engagement analytics",
         "social page intelligence"
+      ]
+    },
+    "Solutions-influencer-marketing": {
+      "title": "Influencer Marketing - dima",
+      "description": "Discover, evaluate, and collaborate with influencers seamlessly. Measure campaign impact and maximize ROI with dima's AI-driven influencer marketing insights.",
+      "keywords": [
+        "influencer marketing",
+        "influencer discovery",
+        "campaign measurement",
+        "influencer analytics",
+        "AI influencer management",
+        "influencer ROI",
+        "social media partnerships"
       ]
     }
   }
