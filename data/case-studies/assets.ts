@@ -4,7 +4,7 @@ export const sideInfoIcons = [
   "/case-study-icons/result-icon.png",
 ];
 
-export type SolutionKey = "sl" | "pr" | "oi" | "mi" | "ci";
+export type SolutionKey = "sl" | "pr" | "oi" | "mi" | "ci" | "im";
 
 export interface SolutionAsset {
   icon: string;
@@ -55,5 +55,13 @@ export const usedSolutionsAssets: Record<SolutionKey, SolutionAsset> = {
       ar: "رؤى المستهلك",
     },
     href: "/solutions/consumer-insights",
+  },
+  im: {
+    icon: "https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/Navbar%2Fnav-links%2Fim.svg?alt=media&token=53f4360a-8a98-4f52-8070-2e3f47f36430",
+    title: {
+      en: "Influencer Marketing",
+      ar: "تسويق المؤثرين",
+    },
+    href: "/solutions/influencer-marketing",
   },
 };
