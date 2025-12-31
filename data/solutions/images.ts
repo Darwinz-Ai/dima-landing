@@ -17,6 +17,8 @@ export const solutionImages: Record<
     heroGrouped: "/solutions/pr/grouped.png",
     scrollingSection: [
       "/solutions/pr/see the whole narrative.png",
+      "/solutions/pr/track.png",
+      "/solutions/pr/eliminate.png",
       "/solutions/pr/Measure what matters.png",
       "/solutions/pr/Client ready in every format.png",
     ],

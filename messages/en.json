@@ -510,8 +510,16 @@
             "description": "Analyze & monitor mentions and topics of interest across traditional & social media platforms around the world."
           },
           {
+            "title": "Track Every Press Release",
+            "description": "Monitor your press releases and measure their media reach and impact."
+          },
+          {
+            "title": "Eliminate Manual Print Monitoring",
+            "description": "Upload PDF versions of print newspapers and seamlessly monitor  coverage for all your clients"
+          },
+          {
             "title": "Measure what matters automatically",
-            "description": "Automatically calculate key KPIs like PRV, IMP, OTS, CIRC and customize your own seamlessly."
+            "description": "Automatically calculate KPIs like PRV, IMP, OTS, CIRC and customize your own seamlessly."
           },
           {
             "title": "Client-ready in every format",
