@@ -1049,8 +1049,8 @@
             "icon": "reports"
           },
           {
-            "title": "Unlimited Users",
-            "description": "No caps on team members.",
+            "title": "Unlimited Users & Keywords",
+            "description": "No caps on team members or keywords",
             "icon": "users"
           },
           {

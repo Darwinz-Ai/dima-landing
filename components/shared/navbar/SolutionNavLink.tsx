@@ -6,9 +6,7 @@ import { SolutionLink } from "@/types";
 function SolutionNavLink({ logo, href, translationKey, isRTL }: SolutionLink & { isRTL?: boolean }) {
     const t = useTranslations("Navbar.solutions.links");
 
-    const isDisabled =
-        href === "/solutions/influencer-marketing" ||
-        href === "/solutions/customer-experience";
+    const isDisabled = href === "/solutions/customer-experience";
 
     const content = (
         <article className={`flex items-center py-2 gap-4 ${isRTL ? "lg:flex-row-reverse" : "flex-row"} ${isDisabled && "opacity-60 cursor-auto"}`}>

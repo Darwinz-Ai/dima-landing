@@ -22,7 +22,7 @@ function CounterPercentage({ number, text, className }: CounterPercentageProps) 
     }, [isInView, number, count]);
 
     return (
-        <div ref={ref} className={`flex flex-col items-center gap-4 px-6 py-8 rounded-2xl bg-muted lg:bg-white ${className}`}>
+        <div ref={ref} className={`flex flex-col justify-center items-center gap-4 px-6 py-8 rounded-2xl bg-muted lg:bg-white ${className}`}>
             <span className="text-[26px] md:text-[30px] lg:text-[44px] font-extrabold text-primary">
                 <motion.span className="text-black">{rounded}</motion.span>%
             </span>
