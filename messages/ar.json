@@ -533,6 +533,14 @@
             "description": "تحليل ورصد الذكر والمواضيع ذات الاهتمام في وسائل الإعلام التقليدية والاجتماعية حول العالم."
           },
           {
+            "title": "تابع كل بيان صحفي",
+            "description": "راقب بياناتك الصحفية وقِس مدى انتشارها وتأثيرها في وسائل الإعلام."
+          },
+          {
+            "title": "تخلّص من المتابعة اليدوية للصحف المطبوعة",
+            "description": "ارفع نسخ PDF من الصحف المطبوعة وراقب التغطية بكل سلاسة لجميع عملائك"
+          },
+          {
             "title": "قياس ما يهم تلقائياً ",
             "description": "حساب مؤشرات الأداء الرئيسية مثل PRV و IMP و OTS و CIRC تلقائياً مع إمكانية تخصيص مؤشراتك بسهولة"
           },
@@ -594,11 +602,6 @@
         "quote": "على مدى أكثر من 30 عامًا عملنا عن قرب مع عملائنا لتقديم أحدث حلول العلاقات العامة عبر صناعات وقطاعات متعددة. مكّنتنا ديما من تقديم رصد وتحليلات إعلامية أسهل وأسرع وأكثر دقة",
         "name": "دينا السويفي",
         "jobRole": "الرئيس التنفيذي في MountPR"
-      },
-      "form": {
-        "title": "Request a Demo",
-        "subTitle": "Discover how dima's Arabic-first AI empowers your team with unparalleled monitoring, real-time insights, and competitive benchmarking.",
-        "note": "Add country code to phone number (default: Saudi Arabia)"
       },
       "faqs": [
         {

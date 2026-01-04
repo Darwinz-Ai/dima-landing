@@ -84,7 +84,7 @@ export default function PinnedScrollSection({ cards, slug }: { cards: CardType[]
                                 ref={(element) => { stepRefs.current[i] = element }}
                                 className="py-8 my-[43vh]"
                             >
-                                <h2 className="text-4xl">{card.title}</h2>
+                                <h2 className="text-4xl capitalize">{card.title}</h2>
                                 <p className="text-2xl font-light mt-4">{card.description}</p>
                             </div>
                         </Step>
