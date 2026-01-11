@@ -4,7 +4,6 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 interface CalculatorInputs {
@@ -86,18 +85,6 @@ export const TCOCalculator = () => {
   return (
     <div>
       <div className="max-w-6xl mx-auto">
-        {/* Logo */}
-        <div className="flex justify-center mb-12">
-          <Image
-            src="/dima-logo/dima-logo.png"
-            alt="dima"
-            width={200}
-            height={60}
-            className="h-12 md:h-14 w-auto"
-            unoptimized={true}
-          />
-        </div>
-
         {/* Main Content */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-foreground mb-4">
@@ -223,7 +210,7 @@ export const TCOCalculator = () => {
 
           {/* Results */}
           {results ? (
-            <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+            <Card className="p-8 bg-linear-to-br from-primary/5 to-primary/10 border-primary/20">
               <h2 className="text-2xl font-bold text-foreground mb-6">
                 {t('results.title')}
               </h2>
@@ -340,7 +327,7 @@ export const TCOCalculator = () => {
         {/* Dima Value Proposition */}
         {results && (
           <div className="mt-16 text-center">
-            <Card className="p-8 max-w-3xl mx-auto bg-gradient-to-br from-primary/10 to-primary/5">
+            <Card className="p-8 max-w-3xl mx-auto bg-linear-to-br from-primary/10 to-primary/5">
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 {t('dima.title')}
               </h3>

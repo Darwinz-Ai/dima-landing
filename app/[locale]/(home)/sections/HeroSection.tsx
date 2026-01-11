@@ -33,7 +33,7 @@ export default function HeroSection() {
   }, [slides.length])
 
   return (
-    <SectionWrapper className="flex-col justify-between min-h-dvh my-12">
+    <SectionWrapper className="flex-col justify-between min-h-dvh mt-12">
       <div
         className={`container mx-auto flex flex-col lg:flex-row items-center justify-between overflow-hidden grow pb-8 gap-4`}
         id="hero-section"

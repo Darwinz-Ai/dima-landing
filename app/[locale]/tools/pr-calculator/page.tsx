@@ -1,6 +1,5 @@
 "use client";
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import Image from "next/image";
 import { PRCalculator } from "./components/PRCalculator";
 import { useTranslations } from "use-intl";
 
@@ -10,18 +9,6 @@ function PrCalculator() {
         <main>
             <SectionWrapper className="min-h-dvh">
                 <div className="container mx-auto max-w-6xl mt-24">
-                    {/* Logo Section */}
-                    <div className="flex justify-center mb-12">
-                        <Image
-                            src="/dima-logo.png"
-                            alt="dima"
-                            width={200}
-                            height={60}
-                            className="h-12 md:h-14 w-auto"
-                            quality={90}
-                        />
-                    </div>
-
                     {/* Main Title */}
                     <div className="text-center mb-8">
                         <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-3">

@@ -1,6 +1,5 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import CrisisReadinessScore from "./components/CrisisReadinessScore";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
@@ -48,18 +47,6 @@ function CrisisReadinessScorePage() {
     return (
         <main>
             <SectionWrapper className="min-h-dvh mt-24 space-y-4">
-                {/* Logo */}
-                <div className="flex justify-center mb-8">
-                    <Image
-                        src="/dima-logo/dima-logo.png"
-                        alt="dima"
-                        width={200}
-                        height={60}
-                        className="h-12 md:h-14 w-auto"
-                        unoptimized={true}
-                    />
-                </div>
-
                 {/* Header */}
                 <div className="text-center space-y-4">
                     <h1 className="text-4xl font-bold">{t('title')}</h1>

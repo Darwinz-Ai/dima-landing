@@ -1,5 +1,4 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import Image from "next/image";
 import { RiskAssessmentForm } from "./components/RiskAssessmentForm";
 import { useTranslations } from "next-intl";
 
@@ -11,18 +10,6 @@ function InfluencerRiskAssessmentPage() {
             <SectionWrapper className="min-h-dvh mt-24">
                 <div className="max-w-6xl container mx-auto space-y-12">
                     <div className="text-center space-y-6">
-                        {/* Logo Section */}
-                        <div className="flex justify-center mb-12">
-                            <Image
-                                src="/dima-logo/dima-logo.png"
-                                alt="dima"
-                                width={200}
-                                height={60}
-                                className="h-12 md:h-14 w-auto"
-                                unoptimized={true}
-                            />
-                        </div>
-
                         <div className="space-y-4">
                             <h1 className="text-4xl sm:text-5xl font-bold text-foreground">
                                 {t("title")}
