@@ -16,7 +16,7 @@ function FooterLinks({ title, links, section }: FooterLinksProps) {
             <h3 className="md:text-xl font-medium mb-4">{title}</h3>
             <ul className="space-y-1">
                 {links.map((link) => {
-                    if (link.href !== "/solutions/influencer-marketing" && link.href !== "/solutions/customer-experience")
+                    if (link.href !== "/solutions/customer-experience")
                         return (
                             <li
                                 key={link.href}

@@ -38,8 +38,7 @@ function SolutionCard({ logo, href, translationKey }: SolutionLink) {
 
       {/* Explore / Coming Soon */}
       <div className={`w-full ${isRTL ? "text-right" : "text-left"}`}>
-        {href === "/solutions/influencer-marketing" ||
-          href === "/solutions/customer-experience" ? (
+        {href === "/solutions/customer-experience" ? (
           <p className="text-primary">{t("comingSoon")}</p>
         ) : (
           <Link href={href}>
