@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 function CardsGrid({ slug }: { slug: string }) {
     const t = useTranslations(`Solutions.${slug}.cardsGrid`)
     const cards = t.raw("cards") as CardType[];
-    console.log(cards)
+    // console.log(cards)
     return (
         <SectionWrapper>
             <div className="container mx-auto flex flex-col justify-center items-center gap-8 ">
