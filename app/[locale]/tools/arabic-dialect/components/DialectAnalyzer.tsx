@@ -47,7 +47,6 @@ export const DialectAnalyzer = () => {
       const data = await analyzeDialect(inputText, selectedDialect, locale);
       setResult(data);
     } catch (error) {
-      console.error('Analysis error:', error);
       setResult({
         sentiment: {
           label: 'neutral',

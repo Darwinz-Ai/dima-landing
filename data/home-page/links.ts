@@ -1,5 +1,5 @@
 import { LanguageLink, NavLink, SocialMediaLink, SolutionLink } from "@/types";
-import { IconBrandLinkedin } from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandTiktok, IconBrandX, IconBrandYoutube } from "@tabler/icons-react";
 import enFlag from "@/public/flags/en.png";
 import arFlag from "@/public/flags/ar.png";
 
@@ -72,6 +72,26 @@ export const socialMediaLinks: SocialMediaLink[] = [
   {
     href: "https://www.linkedin.com/company/darwinz-ai",
     icon: IconBrandLinkedin,
+  },
+  {
+    href: "https://www.instagram.com/thedar.ai",
+    icon: IconBrandInstagram,
+  },
+  {
+    href: "https://web.facebook.com/people/TheDarAI/61585271307642/",
+    icon: IconBrandFacebook,
+  },
+  {
+    href: "https://www.tiktok.com/@thedar.ai",
+    icon: IconBrandTiktok,
+  },
+  {
+    href: "https://x.com/TheDarAI",
+    icon: IconBrandX,
+  },
+  {
+    href: "https://www.youtube.com/@dima-social",
+    icon: IconBrandYoutube,
   },
 ];
 

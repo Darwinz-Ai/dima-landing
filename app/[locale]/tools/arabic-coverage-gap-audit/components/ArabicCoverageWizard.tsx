@@ -253,7 +253,6 @@ export const ArabicCoverageWizard = () => {
   //   // Save the PDF
   //   doc.save("arabic-coverage-analysis.pdf");
 
-  //   console.log("export successful")
   // };
 
   return (

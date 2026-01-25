@@ -45,7 +45,6 @@ export const RiskAssessmentForm = () => {
     //   });
 
     //   if (error) {
-    //     console.error('Edge function error:', error);
     //     throw new Error(error.message || 'Analysis failed');
     //   }
 
@@ -60,7 +59,6 @@ export const RiskAssessmentForm = () => {
     //   });
 
     // } catch (error) {
-    //   console.error('Analysis error:', error);
 
     //   const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
 

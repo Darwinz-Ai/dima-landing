@@ -58,7 +58,6 @@ function RequestDemoForm({ className }: { className?: string }) {
             toast.success(t("form.success"));
             reset();
         } catch (error) {
-            console.error(error);
             toast.error(t("form.errorOccurred"))
             return null;
         }

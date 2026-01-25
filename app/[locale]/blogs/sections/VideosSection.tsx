@@ -3,7 +3,7 @@ import { Play } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
-import { IconBrandLinkedin } from "@tabler/icons-react";
+import { socialMediaLinks } from "@/data/home-page";
 
 function VideosSection({ title }: { title: string }) {
     const t = useTranslations("Blogs.videosSection");
@@ -57,13 +57,15 @@ function VideosSection({ title }: { title: string }) {
                 <div className="inline-flex justify-end items-center gap-2">
                     <p className="text-lg font-bold text-end">{t("follow")}:</p>
                     <div className="inline-flex items-center gap-2">
-                        <Link
-                            href="https://www.linkedin.com/company/darwinz-ai/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <IconBrandLinkedin size={32} />
-                        </Link>
+                        {socialMediaLinks.map((social) => (
+                            <Link
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <social.icon size={32} />
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>
