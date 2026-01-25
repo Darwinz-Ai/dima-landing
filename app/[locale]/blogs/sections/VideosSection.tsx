@@ -59,6 +59,7 @@ function VideosSection({ title }: { title: string }) {
                     <div className="inline-flex items-center gap-2">
                         {socialMediaLinks.map((social) => (
                             <Link
+                                key={social.href}
                                 href={social.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
