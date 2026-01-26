@@ -70,7 +70,7 @@ export const dimaSolutions: SolutionLink[] = [
 
 export const socialMediaLinks: SocialMediaLink[] = [
   {
-    href: "https://www.linkedin.com/company/darwinz-ai",
+    href: "https://www.linkedin.com/company/thedar-ai/",
     icon: IconBrandLinkedin,
   },
   {
