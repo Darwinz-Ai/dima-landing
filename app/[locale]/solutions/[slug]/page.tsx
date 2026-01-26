@@ -65,32 +65,31 @@ export async function generateMetadata(
 
     return buildLocalizedMetadata(locale, `Solutions-${slug}` as SolutionsSeoKey, {
         overrides: {
-            metadataBase: new URL(`https://thedar.ai/solutions/${slug}`),
+            metadataBase: new URL(`https://thedar.ai/`),
             openGraph: {
-                title: undefined,
-                description: undefined,
-                type: "article",
                 url: `https://thedar.ai/solutions/${slug}`,
+                siteName: "dima",
+                locale,
+                type: "article",
                 images: [
                     {
                         url: solutionMeta.image,
                         width: 1200,
                         height: 630,
-                        alt: undefined,
+                        alt: `dima og image for ${slug}`
                     },
                 ],
             },
             twitter: {
                 card: "summary_large_image",
-                title: undefined,
-                description: undefined,
                 images: [solutionMeta.image],
             },
             alternates: {
-                canonical: `https://thedar.ai/solutions/${slug}`,
+                canonical: `https://thedar.ai/${locale}/solutions/${slug}`,
                 languages: {
-                    "en-US": `https://thedar.ai/en/solutions/${slug}`,
-                    "ar-SA": `https://thedar.ai/ar/solutions/${slug}`,
+                    en: `https://thedar.ai/en/solutions/${slug}`,
+                    ar: `https://thedar.ai/ar/solutions/${slug}`,
+                    "x-default": `https://thedar.ai/solutions/${slug}`
                 }
             },
         },

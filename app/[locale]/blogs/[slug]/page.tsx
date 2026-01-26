@@ -27,16 +27,24 @@ export async function generateMetadata(
                 "Arabic media analytics",
             ],
             openGraph: {
+                url: `https://thedar.ai/${locale}/${slug}`,
+                siteName: "dima",
+                locale,
                 title: `${blog.content.title} - dima`,
                 description: blog.content.description,
                 images: [blog.thumbnail],
-                type: "article"
+                type: "article",
+            },
+            twitter: {
+                card: "summary_large_image",
+                images: [blog.thumbnail]
             },
             alternates: {
-                canonical: `https://thedar.ai/blogs/${slug}`,
+                canonical: `https://thedar.ai/${locale}/blogs/${slug}`,
                 languages: {
-                    "en-US": `https://thedar.ai/en/blogs/${slug}`,
-                    "ar-SA": `https://thedar.ai/ar/blogs/${slug}`,
+                    en: `https://thedar.ai/en/blogs/${slug}`,
+                    ar: `https://thedar.ai/ar/blogs/${slug}`,
+                    "x-default": `https://thedar.ai/blogs/${slug}`
                 }
             }
         };

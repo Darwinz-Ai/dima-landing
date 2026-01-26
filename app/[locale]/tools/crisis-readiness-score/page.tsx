@@ -15,8 +15,9 @@ export async function generateMetadata(
     return buildLocalizedMetadata(locale, "Tools-crisis-readiness-score", {
         overrides: {
             openGraph: {
-                url: "https://thedar.ai/tools/crisis-readiness-score",
+                url: `https://thedar.ai/${locale}/tools/crisis-readiness-score`,
                 siteName: "dima",
+                locale,
                 type: "website",
                 images: [
                     {
@@ -32,10 +33,11 @@ export async function generateMetadata(
                 images: ["/og/tools/crisis-readiness.png"],
             },
             alternates: {
-                canonical: "https://thedar.ai/tools/crisis-readiness-score",
+                canonical: `https://thedar.ai/${locale}/tools/crisis-readiness-score`,
                 languages: {
-                    "en-US": "https://thedar.ai/en/tools/crisis-readiness-score",
-                    "ar-SA": "https://thedar.ai/ar/tools/crisis-readiness-score",
+                    en: "https://thedar.ai/en/tools/crisis-readiness-score",
+                    ar: "https://thedar.ai/ar/tools/crisis-readiness-score",
+                    "x-default": "https://thedar.ai/tools/crisis-readiness-score"
                 }
             },
         },

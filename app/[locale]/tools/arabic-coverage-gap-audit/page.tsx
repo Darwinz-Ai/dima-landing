@@ -14,9 +14,11 @@ export async function generateMetadata(
     const { locale } = await params;
     return buildLocalizedMetadata(locale, "Tools-arabic-coverage-gap-audit", {
         overrides: {
+            metadataBase: new URL("https://thedar.ai"),
             openGraph: {
-                url: "https://thedar.ai/tools/arabic-coverage-gap-audit",
+                url: `https://thedar.ai/${locale}/tools/arabic-coverage-gap-audit`,
                 siteName: "dima",
+                locale,
                 type: "website",
                 images: [
                     {
@@ -32,10 +34,11 @@ export async function generateMetadata(
                 images: ["/og/tools/arabic-coverage.png"],
             },
             alternates: {
-                canonical: "https://thedar.ai/tools/arabic-coverage-gap-audit",
+                canonical: `https://thedar.ai/${locale}/tools/arabic-coverage-gap-audit`,
                 languages: {
-                    "en-US": "https://thedar.ai/en/tools/arabic-coverage-gap-audit",
-                    "ar-SA": "https://thedar.ai/ar/tools/arabic-coverage-gap-audit",
+                    en: "https://thedar.ai/en/tools/arabic-coverage-gap-audit",
+                    ar: "https://thedar.ai/ar/tools/arabic-coverage-gap-audit",
+                    "x-default": "https://thedar.ai/tools/arabic-coverage-gap-audit"
                 }
             },
         },

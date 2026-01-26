@@ -18,11 +18,29 @@ export async function generateMetadata(
     const { locale } = await params;
     return buildLocalizedMetadata(locale, "PrivacyPolicy", {
         overrides: {
+            metadataBase: new URL("https://thedar.ai"),
+            openGraph: {
+                url: `https://thedar.ai/${locale}/privacy-policy`,
+                siteName: "dima",
+                locale,
+                type: "website",
+                images: [{
+                    url: "/og/privacy-policy.png",
+                    width: 1200,
+                    height: 630,
+                    alt: "dima privacy policy OG image"
+                }]
+            },
+            twitter: {
+                card: "summary_large_image",
+                images: ["/og/privacy-policy.png"]
+            },
             alternates: {
-                canonical: "https://thedar.ai/privacy-policy",
+                canonical: `https://thedar.ai/${locale}/privacy-policy`,
                 languages: {
-                    "en-US": "https://thedar.ai/en/privacy-policy",
-                    "ar-SA": "https://thedar.ai/ar/privacy-policy",
+                    en: "https://thedar.ai/en/privacy-policy",
+                    ar: "https://thedar.ai/ar/privacy-policy",
+                    "x-default": "https://thedar.ai/privacy-policy"
                 }
             },
         },

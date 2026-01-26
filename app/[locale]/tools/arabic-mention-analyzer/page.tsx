@@ -14,8 +14,9 @@ export async function generateMetadata(
     return buildLocalizedMetadata(locale, "Tools-arabic-mention-analyzer", {
         overrides: {
             openGraph: {
-                url: "https://thedar.ai/tools/arabic-mention-analyzer",
+                url: `https://thedar.ai/${locale}/tools/arabic-mention-analyzer`,
                 siteName: "dima",
+                locale,
                 type: "website",
                 images: [
                     {
@@ -31,10 +32,11 @@ export async function generateMetadata(
                 images: ["/og/tools/lost-mentions.png"],
             },
             alternates: {
-                canonical: "https://thedar.ai/tools/arabic-mention-analyzer",
+                canonical: `https://thedar.ai/${locale}/tools/arabic-mention-analyzer`,
                 languages: {
-                    "en-US": "https://thedar.ai/en/tools/arabic-mention-analyzer",
-                    "ar-SA": "https://thedar.ai/ar/tools/arabic-mention-analyzer",
+                    en: "https://thedar.ai/en/tools/arabic-mention-analyzer",
+                    ar: "https://thedar.ai/ar/tools/arabic-mention-analyzer",
+                    "x-default": "https://thedar.ai/tools/arabic-mention-analyzer"
                 }
             },
         },

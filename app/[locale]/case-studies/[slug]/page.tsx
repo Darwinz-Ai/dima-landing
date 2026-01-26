@@ -18,10 +18,13 @@ export async function generateMetadata(
         return {
             title: `${caseStudy.content.title} - dima`,
             description: caseStudy.content.description,
+            metadataBase: new URL("https://thedar.ai"),
             openGraph: {
                 title: `${caseStudy.content.title} - dima`,
                 description: caseStudy.content.description,
-                url: `https://thedar.ai/case-studies/${slug}`,
+                url: `https://thedar.ai/${locale}/case-studies/${slug}`,
+                locale,
+                siteName: "dima",
                 images: [
                     {
                         url: caseStudy.ogImage || "/og/caseStudy.png",
@@ -30,11 +33,16 @@ export async function generateMetadata(
                     },
                 ],
             },
+            twitter: {
+                card: "summary_large_image",
+                images: [caseStudy.ogImage || "/og/caseStudy.png"]
+            },
             alternates: {
-                canonical: `https://thedar.ai/case-studies/${slug}`,
+                canonical: `https://thedar.ai/${locale}/case-studies/${slug}`,
                 languages: {
-                    "en-US": `https://thedar.ai/en/case-studies/${slug}`,
-                    "ar-SA": `https://thedar.ai/ar/case-studies/${slug}`,
+                    en: `https://thedar.ai/en/case-studies/${slug}`,
+                    ar: `https://thedar.ai/ar/case-studies/${slug}`,
+                    "x-default": `https://thedar.ai/case-studies/${slug}`
                 }
             }
         };

@@ -16,9 +16,11 @@ export async function generateMetadata(
     const { locale } = await params;
     return buildLocalizedMetadata(locale, "CaseStudies", {
         overrides: {
+            metadataBase: new URL("https://thedar.ai"),
             openGraph: {
-                url: "https://thedar.ai/case-studies",
+                url: `https://thedar.ai/${locale}/case-studies`,
                 siteName: "dima",
+                locale,
                 type: "website",
                 images: [
                     {
@@ -34,10 +36,11 @@ export async function generateMetadata(
                 images: ["/og/caseStudies.png"],
             },
             alternates: {
-                canonical: "https://thedar.ai/case-studies",
+                canonical: `https://thedar.ai/${locale}/case-studies`,
                 languages: {
-                    "en-US": "https://thedar.ai/en/case-studies",
-                    "ar-SA": "https://thedar.ai/ar/case-studies"
+                    en: "https://thedar.ai/en/case-studies",
+                    ar: "https://thedar.ai/ar/case-studies",
+                    "x-default": "https://thedar.ai/case-studies"
                 }
             },
         },

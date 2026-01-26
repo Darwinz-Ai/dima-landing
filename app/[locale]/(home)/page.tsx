@@ -22,8 +22,9 @@ export async function generateMetadata(
     overrides: {
       metadataBase: new URL("https://thedar.ai"),
       openGraph: {
-        url: "https://thedar.ai",
+        url: `https://thedar.ai/${locale}`,
         siteName: "dima",
+        locale,
         type: "website",
         images: [
           {
@@ -39,10 +40,11 @@ export async function generateMetadata(
         images: ["/og-image.png"],
       },
       alternates: {
-        canonical: "https://thedar.ai",
+        canonical: `https://thedar.ai/${locale}`,
         languages: {
-          "en-US": "https://thedar.ai/en",
-          "ar-SA": "https://thedar.ai/ar"
+          en: "https://thedar.ai/en",
+          ar: "https://thedar.ai/ar",
+          "x-default": "https://thedar.ai/"
         }
       },
     },

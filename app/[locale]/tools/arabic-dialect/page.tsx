@@ -15,8 +15,9 @@ export async function generateMetadata(
     return buildLocalizedMetadata(locale, "Tools-arabic-dialect", {
         overrides: {
             openGraph: {
-                url: "https://thedar.ai/tools/arabic-dialect",
+                url: `https://thedar.ai/${locale}/tools/arabic-dialect`,
                 siteName: "dima",
+                locale,
                 type: "website",
                 images: [
                     {
@@ -32,10 +33,11 @@ export async function generateMetadata(
                 images: ["/og/tools/arabic-dialect.png"],
             },
             alternates: {
-                canonical: "https://thedar.ai/tools/arabic-dialect",
+                canonical: `https://thedar.ai/${locale}/tools/arabic-dialect`,
                 languages: {
-                    "en-US": "https://thedar.ai/en/tools/arabic-dialect",
-                    "ar-SA": "https://thedar.ai/ar/tools/arabic-dialect",
+                    en: "https://thedar.ai/en/tools/arabic-dialect",
+                    ar: "https://thedar.ai/ar/tools/arabic-dialect",
+                    "x-default": "https://thedar.ai/tools/arabic-dialect"
                 }
             },
         },

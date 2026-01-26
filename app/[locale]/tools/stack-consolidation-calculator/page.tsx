@@ -14,8 +14,9 @@ export async function generateMetadata(
     return buildLocalizedMetadata(locale, "Tools-stack-consolidation-calculator", {
         overrides: {
             openGraph: {
-                url: "https://thedar.ai/tools/stack-consolidation-calculator",
+                url: `https://thedar.ai/${locale}/tools/stack-consolidation-calculator`,
                 siteName: "dima",
+                locale,
                 type: "website",
                 images: [
                     {
@@ -31,10 +32,11 @@ export async function generateMetadata(
                 images: ["/og/tools/monitoring-stack.png"],
             },
             alternates: {
-                canonical: "https://thedar.ai/tools/stack-consolidation-calculator",
+                canonical: `https://thedar.ai/${locale}/tools/stack-consolidation-calculator`,
                 languages: {
-                    "en-US": "https://thedar.ai/en/tools/stack-consolidation-calculator",
-                    "ar-SA": "https://thedar.ai/ar/tools/stack-consolidation-calculator",
+                    en: "https://thedar.ai/en/tools/stack-consolidation-calculator",
+                    ar: "https://thedar.ai/ar/tools/stack-consolidation-calculator",
+                    "x-default": "https://thedar.ai/tools/stack-consolidation-calculator"
                 }
             },
         },
