@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import { BreadcrumbList, Organization, Service, WebApplication, WithContext } from "schema-dts"
 
 export const orgJsonLd: WithContext<Organization> = {
@@ -70,7 +71,6 @@ export const orgJsonLd: WithContext<Organization> = {
         "https://www.instagram.com/thedar.ai",
         "https://www.youtube.com/@dima-social",
         "https://www.linkedin.com/company/thedar-ai/",
-        "https://thedar.ai/en"
     ],
     knowsAbout: [
         "Artificial Intelligence",
@@ -127,10 +127,12 @@ export const productJsonLd: WithContext<WebApplication> = {
     alternateName: "dima AI Copilot",
     url: "https://thedar.ai/en",
     description: "dima is an Arabic-first AI copilot for media monitoring and brand intelligence. It helps marketers, brand managers, and PR professionals in the MENA region monitor traditional and social media, analyze sentiment, detect trends, and generate real-time insights. Unlike global tools, dima understands Arabic dialects, slang, and Franco-Arabic content.",
-    creator: "TheDar.AI",
+    creator: {
+        "@id": "https://thedar.ai/en#organization"
+    },
     applicationCategory: "BusinessApplication",
     applicationSubCategory: "Media Monitoring Software",
-    operatingSystem: "Web, iOs, Android",
+    operatingSystem: "Web",
     countriesSupported: ["SA", "AE", "BH", "OM", "QA", "KW", "EG", "MA", "DZ", "TN", "LY", "MR"],
     featureList: [
         "Social Listening & Analytics",
@@ -153,33 +155,33 @@ export const productJsonLd: WithContext<WebApplication> = {
         "Audience insights and demographics"
     ],
     screenshot: [
-        "https://thedar.ai/solutions/ci/build smarter campaigns.png",
-        "https://thedar.ai/solutions/ci/uncover what drives.png",
-        "https://thedar.ai/solutions/ci/understand ur audience.png",
+        "https://thedar.ai/solutions/ci/build%20smarter%20campaigns.png",
+        "https://thedar.ai/solutions/ci/uncover%20what%20drives.png",
+        "https://thedar.ai/solutions/ci/understand%20ur%20audience.png",
 
         "https://thedar.ai/solutions/im/ensure.png",
         "https://thedar.ai/solutions/im/evaluate.png",
         "https://thedar.ai/solutions/im/measure.png",
 
         "https://thedar.ai/solutions/mi/Benchmark.png",
-        "https://thedar.ai/solutions/mi/campaign impact.png",
-        "https://thedar.ai/solutions/mi/Capitalize on market.png",
+        "https://thedar.ai/solutions/mi/campaign%20impact.png",
+        "https://thedar.ai/solutions/mi/Capitalize%20on%20market.png",
 
-        "https://thedar.ai/solutions/oi/evaluate .png",
-        "https://thedar.ai/solutions/oi/optimize your messaging.png",
-        "https://thedar.ai/solutions/oi/Post when it matters.png",
-        "https://thedar.ai/solutions/oi/turn comments into.png",
+        "https://thedar.ai/solutions/oi/evaluate%20.png",
+        "https://thedar.ai/solutions/oi/optimize%20your%20messaging.png",
+        "https://thedar.ai/solutions/oi/Post%20when%20it%20matters.png",
+        "https://thedar.ai/solutions/oi/turn%20comments%20into.png",
 
-        "https://thedar.ai/solutions/pr/Client ready in every format.png",
+        "https://thedar.ai/solutions/pr/Client%20ready%20in%20every%20format.png",
         "https://thedar.ai/solutions/pr/eliminate.png",
-        "https://thedar.ai/solutions/pr/Measure what matters.png",
-        "https://thedar.ai/solutions/pr/see the whole narrative.png",
+        "https://thedar.ai/solutions/pr/Measure%20what%20matters.png",
+        "https://thedar.ai/solutions/pr/see%20the%20whole%20narrative.png",
         "https://thedar.ai/solutions/pr/track.png",
 
         "https://thedar.ai/solutions/sl/communities.png",
-        "https://thedar.ai/solutions/sl/go beyond mention.png",
-        "https://thedar.ai/solutions/sl/Post vs comments.png",
-        "https://thedar.ai/solutions/sl/Trend detection.png",
+        "https://thedar.ai/solutions/sl/go%20beyond%20mention.png",
+        "https://thedar.ai/solutions/sl/Post%20vs%20comments.png",
+        "https://thedar.ai/solutions/sl/Trend%20detection.png",
     ],
     publisher: {
         "@id": "https://thedar.ai/en#organization"
@@ -218,8 +220,8 @@ export const productJsonLd: WithContext<WebApplication> = {
     browserRequirements: "Requires JavaScript and HTML5",
     countryOfOrigin: "Kingdom of Saudi Arabia",
     dateCreated: "2024",
-    isFamilyFriendly: "True",
-    isAccessibleForFree: "True",
+    isFamilyFriendly: true,
+    isAccessibleForFree: true,
     audience: ["Brand Managers", "PR & Marketing Experts", "Communication Specialists", "Agencies and Enterprises", "MENA region"]
 }
 
@@ -237,14 +239,16 @@ export const createBreadcrumbs = (parts: { name: string, path: string }[]): With
     }
 }
 
-export const getSolutionSchema = (
+export const getSolutionSchema = async (
     slug: string,
     locale: string,
-    title: string,
-    description: string,
     logoPath: string
 ) => {
+    const t = await getTranslations("SEO");
     const localizedPath = `/${locale}`;
+
+    const title = t(`Solutions-${slug}.title`)
+    const description = t(`Solutions-${slug}.description`)
 
     const breadcrumbs = createBreadcrumbs([
         { name: "Home", path: localizedPath },
@@ -257,11 +261,31 @@ export const getSolutionSchema = (
         "@type": "Service",
         name: title,
         description: description,
-        logo: logoPath,
-        provider: {
-            "@id": "https://thedar.ai/en#organization"
+        serviceType: `AI Powered ${title}`,
+        logo: {
+            "@type": "ImageObject",
+            url: logoPath,
+            caption: `Logo for ${slug}`
         },
-        areaServed: ["SA", "AE", "EG", "JO", "KW", "MA"],
+        provider: {
+            "@type": "Organization",
+            "@id": "https://thedar.ai/en#organization",
+            name: "TheDar.AI"
+        },
+        areaServed: [
+            { "@type": "Country", name: "Saudi Arabia", identifier: "SA" },
+            { "@type": "Country", name: "United Arab Emirates", identifier: "AE" },
+            { "@type": "Country", name: "Bahrain", identifier: "BH" },
+            { "@type": "Country", name: "Oman", identifier: "OM" },
+            { "@type": "Country", name: "Qatar", identifier: "QA" },
+            { "@type": "Country", name: "Kuwait", identifier: "KW" },
+            { "@type": "Country", name: "Egypt", identifier: "EG" },
+            { "@type": "Country", name: "Morocco", identifier: "MA" },
+            { "@type": "Country", name: "Algeria", identifier: "DZ" },
+            { "@type": "Country", name: "Tunisia", identifier: "TN" },
+            { "@type": "Country", name: "Libya", identifier: "LY" },
+            { "@type": "Country", name: "Mauritania", identifier: "MR" }
+        ],
         audience: {
             "@type": "Audience",
             audienceType: "PR and Marketing Professionals"

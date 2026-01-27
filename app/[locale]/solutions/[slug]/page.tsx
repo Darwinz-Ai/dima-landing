@@ -124,17 +124,14 @@ async function SolutionPage({ params }: SolutionPageProps) {
     const exists = await checkSlugExists(slug);
     if (!exists) return notFound();
 
-    const t = await getTranslations("SEO")
-    const seoKey = `Solutions-${slug}`;
     const solutionMetadata = SOLUTIONS_METADATA[slug];
 
-    const schemas = getSolutionSchema(
+    const schemas = await getSolutionSchema(
         slug,
         locale,
-        t(`${seoKey}.title`),
-        t(`${seoKey}.description`),
         solutionMetadata.logoPath
     )
+
     return (
         <main>
             <JsonLd data={schemas} />
