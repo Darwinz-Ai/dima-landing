@@ -8,6 +8,9 @@ import QuestionsAnsweredSection from "@/app/[locale]/(home)/sections/QuestionsAn
 import { notFound } from "next/navigation";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata, SolutionsSeoKey } from "@/lib/seo";
+import { getSolutionSchema } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
+import { getTranslations } from "next-intl/server";
 
 type SolutionPageParams = {
     slug: string;
@@ -21,25 +24,42 @@ type SolutionPageProps = {
 // List of valid slugs and their metadata
 const SOLUTIONS_METADATA: Record<
     string,
-    { image: string }
+    {
+        image: string,
+        title: string,
+        logoPath: string;
+    }
 > = {
     "social-listening-analytics": {
         image: "https://thedar.ai/og/solutions/sl.png",
+        title: "Social Listening & Analytics",
+        logoPath: "https://thedar.ai/nav-links/sl.svg"
+
     },
     "pr-comms": {
         image: "https://thedar.ai/og/solutions/pr.png",
+        title: "PR & Comms",
+        logoPath: "https://thedar.ai/nav-links/pr.svg"
     },
     "market-insights": {
         image: "https://thedar.ai/og/solutions/mi.png",
+        title: "Market Insights",
+        logoPath: "https://thedar.ai/nav-links/mi.svg"
     },
     "consumer-insights": {
         image: "https://thedar.ai/og/solutions/ci.png",
+        title: "Consumer Insights",
+        logoPath: "https://thedar.ai/nav-links/ci.svg"
     },
     "own-page-intelligence": {
         image: "https://thedar.ai/og/solutions/oi.png",
+        title: "Own Page Intelligence",
+        logoPath: "https://thedar.ai/nav-links/oi.svg"
     },
     "influencer-marketing": {
         image: "https://thedar.ai/og/solutions/oi.png",
+        title: "Influencer Marketing",
+        logoPath: "https://thedar.ai/nav-links/im.svg"
     },
 };
 
@@ -100,12 +120,25 @@ export async function generateMetadata(
 // Page Component
 // ---------------------------
 async function SolutionPage({ params }: SolutionPageProps) {
-    const { slug } = await params;
+    const { slug, locale } = await params;
     const exists = await checkSlugExists(slug);
     if (!exists) return notFound();
 
+    const t = await getTranslations("SEO")
+    const seoKey = `Solutions-${slug}`;
+    const solutionMetadata = SOLUTIONS_METADATA[slug];
+
+    const schemas = getSolutionSchema(
+        slug,
+        locale,
+        t(`${seoKey}.title`),
+        t(`${seoKey}.description`),
+        solutionMetadata.logoPath
+    )
     return (
         <main>
+            <JsonLd data={schemas} />
+
             <HeroSection slug={slug} />
             <ExpandingCardsSection slug={slug} />
             <ScrollingSection slug={slug} />
