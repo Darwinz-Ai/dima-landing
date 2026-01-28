@@ -249,50 +249,40 @@ export const getSolutionSchema = async (
 
     const title = t(`Solutions-${slug}.title`)
     const description = t(`Solutions-${slug}.description`)
-
+    const keywords = t.raw(`Solutions-${slug}.keywords`)
     const breadcrumbs = createBreadcrumbs([
         { name: "Home", path: localizedPath },
         { name: "Solutions", path: `${localizedPath}/solutions` },
         { name: title, path: `${localizedPath}/solutions/${slug}` },
     ]);
 
-    const service: WithContext<Service> = {
+    const jsonLd: WithContext<WebApplication> = {
         "@context": "https://schema.org",
-        "@type": "Service",
+        "@type": "WebApplication",
         name: title,
         description: description,
-        serviceType: `AI Powered ${title}`,
-        logo: {
+        url: `https://thedar.ai${localizedPath}/solutions/${slug}`,
+        image: {
             "@type": "ImageObject",
             url: logoPath,
             caption: `Logo for ${slug}`
         },
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        browserRequirements: "Requires Chrome, Safari, or Firefox",
         provider: {
             "@type": "Organization",
             "@id": "https://thedar.ai/en#organization",
             name: "TheDar.AI"
         },
-        areaServed: [
-            { "@type": "Country", name: "Saudi Arabia", identifier: "SA" },
-            { "@type": "Country", name: "United Arab Emirates", identifier: "AE" },
-            { "@type": "Country", name: "Bahrain", identifier: "BH" },
-            { "@type": "Country", name: "Oman", identifier: "OM" },
-            { "@type": "Country", name: "Qatar", identifier: "QA" },
-            { "@type": "Country", name: "Kuwait", identifier: "KW" },
-            { "@type": "Country", name: "Egypt", identifier: "EG" },
-            { "@type": "Country", name: "Morocco", identifier: "MA" },
-            { "@type": "Country", name: "Algeria", identifier: "DZ" },
-            { "@type": "Country", name: "Tunisia", identifier: "TN" },
-            { "@type": "Country", name: "Libya", identifier: "LY" },
-            { "@type": "Country", name: "Mauritania", identifier: "MR" }
-        ],
         audience: {
             "@type": "Audience",
             audienceType: "PR and Marketing Professionals"
-        }
+        },
+        keywords
     };
 
-    return [breadcrumbs, service];
+    return [breadcrumbs, jsonLd];
 };
 
 export interface ToolJsonLdParams {

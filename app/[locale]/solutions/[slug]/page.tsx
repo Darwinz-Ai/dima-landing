@@ -10,7 +10,6 @@ import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata, SolutionsSeoKey } from "@/lib/seo";
 import { getSolutionSchema } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
-import { getTranslations } from "next-intl/server";
 
 type SolutionPageParams = {
     slug: string;
