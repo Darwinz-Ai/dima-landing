@@ -1,5 +1,6 @@
+import { Blog } from "@/types/blog";
 import { getLocale, getTranslations } from "next-intl/server";
-import { BreadcrumbList, ItemList, Organization, Service, WebApplication, WithContext } from "schema-dts"
+import { BlogPosting, BreadcrumbList, ItemList, Organization, WebApplication, WithContext } from "schema-dts"
 
 export const orgJsonLd: WithContext<Organization> = {
     "@context": "https://schema.org",
@@ -414,4 +415,70 @@ export async function getToolPageJsonLd({
     });
 
     return { breadcrumbsJsonLd, toolJsonLd };
+}
+
+export const getBlogsPageJsonLd = async (blogs: Blog[]) => {
+    const t = await getTranslations("SEO.Blogs");
+    const locale = await getLocale();
+
+    const jsonLd: WithContext<ItemList> = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: t("title"),
+        description: t("description"),
+        url: `https://thedar.ai/${locale}/blogs`,
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `https://thedar.ai/${locale}/blogs`
+        },
+        itemListElement: blogs.map((blog, idx) => ({
+            "@type": "ListItem",
+            position: idx + 1,
+            name: blog.content.title,
+            description: blog.content.description,
+            url: `https://thedar.ai/${locale}/blogs/${blog.id}`,
+            image: {
+                "@type": "ImageObject",
+                url: blog.thumbnail,
+                caption: `Thumbnail of blog ${blog.content.title}`
+            }
+        }))
+    }
+
+    return jsonLd
+}
+
+export const getSingleBlogJsonLd = async (blog: Blog) => {
+    const locale = await getLocale();
+
+    const jsonLd: WithContext<BlogPosting> = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        mainEntity: {
+            "@type": "WebPage",
+            "@id": `https://thedar.ai/${locale}/blogs/${blog.id}`
+        },
+        headline: blog.content.title,
+        description: blog.content.description,
+        articleBody: blog.content.body,
+        image: blog.thumbnail,
+        author: {
+            "@type": "Organization",
+            name: "TheDar.AI",
+            url: `https://thedar.ai/${locale}#organization`
+        },
+        publisher: {
+            "@type": "Organization",
+            name: "TheDar.AI",
+            logo: {
+                "@type": "ImageObject",
+                url: "https://thedar.ai/web-app-manifest-512x512.png",
+                caption: "TheDar.AI Logo"
+            },
+        },
+        dateCreated: blog.dateCreated.toDate().toISOString(),
+        keywords: blog.tags
+    }
+
+    return jsonLd;
 }

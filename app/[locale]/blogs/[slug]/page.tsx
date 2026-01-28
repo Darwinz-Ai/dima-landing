@@ -1,6 +1,9 @@
 import { fetchSingleBlog } from "@/lib/firebase/blogsFunctions";
 import BlogContent from "../components/BlogContent";
 import { Metadata } from "next";
+import { getLocale } from "next-intl/server";
+import { getSingleBlogJsonLd } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
 
 type SingleViewBlogPageProps = {
     params: Promise<{ slug: string, locale: string }>
@@ -62,10 +65,16 @@ export async function generateMetadata(
 }
 
 export default async function SingleViewBlogPage({ params }: SingleViewBlogPageProps) {
-    const slug = (await params).slug;
+    const { slug } = await params;
 
+    const locale = await getLocale();
+    const blog = await fetchSingleBlog(locale, slug);
+
+    const blogJsonLd = await getSingleBlogJsonLd(blog);
     return (
         <main>
+            <JsonLd data={blogJsonLd} />
+
             <BlogContent slug={slug} />
         </main>
     );

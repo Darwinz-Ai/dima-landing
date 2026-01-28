@@ -4,6 +4,10 @@ import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import AllArticlesSection from "./sections/AllArticlesSection";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { fetchBlogs } from "@/lib/firebase/blogsFunctions";
+import { getLocale } from "next-intl/server";
+import { getBlogsPageJsonLd } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
 
 type BlogsPageProps = {
     params: Promise<{ locale: string }>;
@@ -46,9 +50,16 @@ export async function generateMetadata(
     });
 }
 
-function BlogsPage() {
+
+
+async function BlogsPage() {
+    const locale = await getLocale();
+    const blogs = await fetchBlogs(locale, [], null)
+
+    const blogsJsonLd = await getBlogsPageJsonLd(blogs);
     return (
         <main>
+            <JsonLd data={blogsJsonLd} />
             <SectionWrapper className="mt-20">
                 <HeroSection />
                 <AllArticlesSection />
