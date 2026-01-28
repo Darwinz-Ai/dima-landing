@@ -126,7 +126,7 @@ async function SolutionPage({ params }: SolutionPageProps) {
 
     const solutionMetadata = SOLUTIONS_METADATA[slug];
 
-    const schemas = await getSolutionSchema(
+    const [breadcrumbsJsonLd, serviceJsonLd] = await getSolutionSchema(
         slug,
         locale,
         solutionMetadata.logoPath
@@ -134,7 +134,8 @@ async function SolutionPage({ params }: SolutionPageProps) {
 
     return (
         <main>
-            <JsonLd data={schemas} />
+            <JsonLd data={breadcrumbsJsonLd} />
+            <JsonLd data={serviceJsonLd} />
 
             <HeroSection slug={slug} />
             <ExpandingCardsSection slug={slug} />

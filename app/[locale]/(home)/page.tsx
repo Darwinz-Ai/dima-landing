@@ -57,7 +57,9 @@ function HomePage() {
 
   return (
     <main className="h-full">
-      <JsonLd data={[orgJsonLd, productJsonLd]} />
+      <JsonLd data={orgJsonLd} />
+      <JsonLd data={productJsonLd} />
+
       <HeroSection />
       <EmpoweringAgenciesSection />
       <OwnConversationSection />
