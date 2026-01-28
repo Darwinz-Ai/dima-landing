@@ -1,9 +1,11 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
 import RequestDemoForm from "../../../components/shared/form/RequestDemoForm";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { getRequestDemonJsonLd } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
+import { getTranslations } from "next-intl/server";
 
 type RequestDemoPageProps = {
     params: Promise<{ locale: string }>;
@@ -46,8 +48,9 @@ export async function generateMetadata(
     });
 }
 
-function RequestDemoPage() {
-    const t = useTranslations("RequestDemo");
+async function RequestDemoPage() {
+    const t = await getTranslations("RequestDemo");
+    const requestDemoJsonLd = await getRequestDemonJsonLd();
     return (
         <main
             style={{
@@ -58,6 +61,8 @@ function RequestDemoPage() {
             }}
             className="bg-white"
         >
+            <JsonLd data={requestDemoJsonLd} />
+
             <SectionWrapper className="min-h-dvh mt-12">
                 <div className="container mx-auto flex flex-col-reverse lg:flex-row justify-center items-center lg:items-stretch gap-12 flex-1">
                     {/* Text & Form Section */}

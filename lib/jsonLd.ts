@@ -1,7 +1,7 @@
 import { CaseStudy } from "@/types";
 import { Blog } from "@/types/blog";
 import { getLocale, getTranslations } from "next-intl/server";
-import { Article, BlogPosting, BreadcrumbList, ItemList, Organization, WebApplication, WithContext } from "schema-dts"
+import { Article, BlogPosting, BreadcrumbList, ContactPage, ItemList, Organization, WebApplication, WithContext } from "schema-dts"
 
 export const orgJsonLd: WithContext<Organization> = {
     "@context": "https://schema.org",
@@ -540,5 +540,34 @@ export const getSingleCaseStudyPageJsonLd = async (caseStudy: CaseStudy) => {
         dateCreated: caseStudy.dateCreated.toDate().toISOString(),
     }
 
+    return jsonLd;
+}
+
+export const getRequestDemonJsonLd = async () => {
+    const locale = await getLocale();
+    const t = await getTranslations("SEO.RequestDemo");
+
+    const jsonLd: WithContext<ContactPage> = {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        name: t("title"),
+        description: t("description"),
+        potentialAction: {
+            "@type": "CommunicateAction",
+            name: t("title"),
+            target: {
+                "@type": "EntryPoint",
+                urlTemplate: `https://thedar.ai/${locale}/request-demo`,
+                actionPlatform: [
+                    "http://schema.org/DesktopWebPlatform",
+                    "http://schema.org/MobileWebPlatform"
+                ]
+            },
+            result: {
+                "@type": "ScheduleAction",
+                name: "Book a meeting"
+            }
+        },
+    }
     return jsonLd;
 }
