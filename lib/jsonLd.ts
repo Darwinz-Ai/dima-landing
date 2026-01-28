@@ -1,6 +1,7 @@
+import { CaseStudy } from "@/types";
 import { Blog } from "@/types/blog";
 import { getLocale, getTranslations } from "next-intl/server";
-import { BlogPosting, BreadcrumbList, ItemList, Organization, WebApplication, WithContext } from "schema-dts"
+import { Article, BlogPosting, BreadcrumbList, ItemList, Organization, WebApplication, WithContext } from "schema-dts"
 
 export const orgJsonLd: WithContext<Organization> = {
     "@context": "https://schema.org",
@@ -478,6 +479,65 @@ export const getSingleBlogJsonLd = async (blog: Blog) => {
         },
         dateCreated: blog.dateCreated.toDate().toISOString(),
         keywords: blog.tags
+    }
+
+    return jsonLd;
+}
+
+export const getCaseStudiesPageJsonLd = async (caseStudies: CaseStudy[]) => {
+    const t = await getTranslations("SEO.CaseStudies");
+    const locale = await getLocale();
+
+    const jsonLd: WithContext<ItemList> = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: t("title"),
+        description: t("description"),
+        url: `https://thedar.ai/${locale}/case-studies`,
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `https://thedar.ai/${locale}/case-studies`
+        },
+        itemListElement: caseStudies.map((caseStudy, idx) => ({
+            "@type": "ListItem",
+            position: idx + 1,
+            name: caseStudy.content.title,
+            description: caseStudy.content.description,
+            url: `https://thedar.ai/${locale}/case-studies/${caseStudy.id}`,
+        }))
+    }
+
+    return jsonLd
+}
+
+export const getSingleCaseStudyPageJsonLd = async (caseStudy: CaseStudy) => {
+    const locale = await getLocale();
+
+    const jsonLd: WithContext<Article> = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        mainEntity: {
+            "@type": "WebPage",
+            "@id": `https://thedar.ai/${locale}/case-studies/${caseStudy.id}`
+        },
+        headline: caseStudy.content.title,
+        description: caseStudy.content.description,
+        articleBody: caseStudy.content.body,
+        author: {
+            "@type": "Organization",
+            name: "TheDar.AI",
+            url: `https://thedar.ai/${locale}#organization`
+        },
+        publisher: {
+            "@type": "Organization",
+            name: "TheDar.AI",
+            logo: {
+                "@type": "ImageObject",
+                url: "https://thedar.ai/web-app-manifest-512x512.png",
+                caption: "TheDar.AI Logo"
+            },
+        },
+        dateCreated: caseStudy.dateCreated.toDate().toISOString(),
     }
 
     return jsonLd;

@@ -5,6 +5,10 @@ import DimaSection from "./sections/DimaSection";
 import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { getLocale } from "next-intl/server";
+import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
+import { getCaseStudiesPageJsonLd } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
 
 type CaseStudiesPageProps = {
     params: Promise<{ locale: string }>;
@@ -47,9 +51,15 @@ export async function generateMetadata(
     });
 }
 
-function CaseStudiesPage() {
+async function CaseStudiesPage() {
+    const locale = await getLocale();
+
+    const caseStudies = await fetchCaseStudies(locale, undefined, null)
+    const caseStudiesJsonLd = await getCaseStudiesPageJsonLd(caseStudies);
     return (
         <main>
+            <JsonLd data={caseStudiesJsonLd} />
+
             <HeroSection />
             <LogoCarousel />
             <FilterSection />

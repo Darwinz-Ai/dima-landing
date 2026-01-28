@@ -1,3 +1,4 @@
+"use client";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import CaseStudyCard from "../../components/CaseStudyCard";
 import CaseStudyCardSkeleton from "../../components/CaseStudyCardSkeleton";

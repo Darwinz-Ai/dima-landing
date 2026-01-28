@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import CaseStudyContent from "./components/CaseStudyContent";
 import { fetchSingleCaseStudy } from "@/lib/firebase/caseStudiesFunctions";
+import { getLocale } from "next-intl/server";
+import { getSingleCaseStudyPageJsonLd } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
 
 type SingleViewCaseStudiesPageProps = {
     params: Promise<{ slug: string, locale: string }>
@@ -63,9 +66,15 @@ export async function generateMetadata(
 
 
 async function SingleViewCaseStudiesPage({ params }: SingleViewCaseStudiesPageProps) {
-    const slug = (await params).slug
+    const { slug } = await params;
+    const locale = await getLocale();
+
+    const caseStudy = await fetchSingleCaseStudy(locale, slug)
+    const caseStudyJsonLd = await getSingleCaseStudyPageJsonLd(caseStudy);
     return (
         <main>
+            <JsonLd data={caseStudyJsonLd} />
+
             <CaseStudyContent slug={slug} />
         </main>
     );
