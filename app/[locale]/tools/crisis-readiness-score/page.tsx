@@ -1,8 +1,10 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import { useTranslations } from "next-intl";
 import CrisisReadinessScore from "./components/CrisisReadinessScore";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { getLocale, getTranslations } from "next-intl/server";
+import { getToolPageJsonLd } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
 
 type CrisisReadinessScorePageProps = {
     params: Promise<{ locale: string }>;
@@ -44,10 +46,22 @@ export async function generateMetadata(
     });
 }
 
-function CrisisReadinessScorePage() {
-    const t = useTranslations("Tools.crisis-readiness-score");
+async function CrisisReadinessScorePage() {
+    const t = await getTranslations("Tools.crisis-readiness-score");
+
+    const locale = await getLocale();
+    const { breadcrumbsJsonLd, toolJsonLd } = await getToolPageJsonLd({
+        locale,
+        seoKey: "Tools-crisis-readiness-score",
+        slug: "crisis-readiness-score",
+        displayName: "Crisis Readiness Scorecard",
+        imagePath: "https://thedar.ai/og/tools/crisis-readiness.png"
+    });
     return (
         <main>
+            <JsonLd data={breadcrumbsJsonLd} />
+            <JsonLd data={toolJsonLd} />
+
             <SectionWrapper className="min-h-dvh mt-24 space-y-4">
                 {/* Header */}
                 <div className="text-center space-y-4">

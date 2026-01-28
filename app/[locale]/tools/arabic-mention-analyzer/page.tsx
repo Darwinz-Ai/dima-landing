@@ -2,6 +2,9 @@ import Calculator from "./components/Calculator";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { getLocale } from "next-intl/server";
+import { getToolPageJsonLd } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
 
 type ArabicMentionAnalyzerPageProps = {
     params: Promise<{ locale: string }>;
@@ -43,13 +46,26 @@ export async function generateMetadata(
     });
 }
 
-function ArabicMentionAnalyzerPage() {
+async function ArabicMentionAnalyzerPage() {
+    const locale = await getLocale();
+    const { breadcrumbsJsonLd, toolJsonLd } = await getToolPageJsonLd({
+        locale,
+        seoKey: "Tools-arabic-mention-analyzer",
+        slug: "arabic-mention-analyzer",
+        displayName: "Lost Mentions & Missed Sentiment Calculator",
+        imagePath: "https://thedar.ai/og/tools/lost-mentions.png"
+    });
     return (
-        <SectionWrapper className="min-h-dvh mt-24">
-            <div className="max-w-7xl mx-auto space-y-12">
-                <Calculator />
-            </div>
-        </SectionWrapper>
+        <main>
+            <JsonLd data={breadcrumbsJsonLd} />
+            <JsonLd data={toolJsonLd} />
+
+            <SectionWrapper className="min-h-dvh mt-24">
+                <div className="max-w-7xl mx-auto space-y-12">
+                    <Calculator />
+                </div>
+            </SectionWrapper>
+        </main>
     );
 }
 

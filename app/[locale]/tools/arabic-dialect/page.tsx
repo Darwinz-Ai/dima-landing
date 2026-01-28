@@ -1,8 +1,10 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { DialectAnalyzer } from "./components/DialectAnalyzer";
-import { useTranslations } from "next-intl";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { getLocale, getTranslations } from "next-intl/server";
+import { getToolPageJsonLd } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
 
 type ArabicDialectToolPageProps = {
     params: Promise<{ locale: string }>;
@@ -44,10 +46,22 @@ export async function generateMetadata(
     });
 }
 
-function ArabicDialectTool() {
-    const t = useTranslations("Tools.arabic-dialect")
+async function ArabicDialectTool() {
+    const t = await getTranslations("Tools.arabic-dialect")
+
+    const locale = await getLocale();
+    const { breadcrumbsJsonLd, toolJsonLd } = await getToolPageJsonLd({
+        locale,
+        seoKey: "Tools-arabic-dialect",
+        slug: "arabic-dialect",
+        displayName: "Arabic Dialect Accuracy Lab",
+        imagePath: "https://thedar.ai/og/tools/arabic-dialect.png"
+    });
     return (
         <main>
+            <JsonLd data={breadcrumbsJsonLd} />
+            <JsonLd data={toolJsonLd} />
+
             <SectionWrapper className="min-h-dvh mt-24">
                 <div className="container mx-auto py-8 sm:py-12">
                     {/* Title Section */}

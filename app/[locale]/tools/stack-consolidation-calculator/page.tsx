@@ -2,6 +2,9 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 import { TCOCalculator } from "./components/TCOCalculator";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { getLocale } from "next-intl/server";
+import { getToolPageJsonLd } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
 
 type StackConsolidationCalculatorPageProps = {
     params: Promise<{ locale: string }>;
@@ -43,11 +46,24 @@ export async function generateMetadata(
     });
 }
 
-function StackConsolidationCalculatorPage() {
+async function StackConsolidationCalculatorPage() {
+    const locale = await getLocale();
+    const { breadcrumbsJsonLd, toolJsonLd } = await getToolPageJsonLd({
+        locale,
+        seoKey: "Tools-stack-consolidation-calculator",
+        slug: "stack-consolidation-calculator",
+        displayName: "Monitoring Stack Consolidation Calculator",
+        imagePath: "https://thedar.ai/og/tools/monitoring-stack.png"
+    });
     return (
-        <SectionWrapper className="min-h-dvh mt-24">
-            <TCOCalculator />
-        </SectionWrapper>
+        <main>
+            <JsonLd data={breadcrumbsJsonLd} />
+            <JsonLd data={toolJsonLd} />
+
+            <SectionWrapper className="min-h-dvh mt-24">
+                <TCOCalculator />
+            </SectionWrapper>
+        </main>
     );
 }
 

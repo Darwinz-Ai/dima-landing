@@ -225,7 +225,7 @@ export const productJsonLd: WithContext<WebApplication> = {
     audience: ["Brand Managers", "PR & Marketing Experts", "Communication Specialists", "Agencies and Enterprises", "MENA region"]
 }
 
-export const createBreadcrumbs = (parts: { name: string, path: string }[]): WithContext<BreadcrumbList> => {
+const createBreadcrumbs = (parts: { name: string, path: string }[]): WithContext<BreadcrumbList> => {
     const domain = "https://thedar.ai";
     return {
         "@context": "https://schema.org",
@@ -352,3 +352,76 @@ export const getToolsPageJsonLd = async (
 
     return jsonLd;
 };
+
+const formatSingleToolPageJsonLd = async (
+    tool: ToolJsonLdParams
+) => {
+    const locale = await getLocale();
+    const jsonLd: WithContext<WebApplication> = {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: tool.name,
+        description: tool.description,
+        url: tool.url,
+        image: {
+            "@type": "ImageObject",
+            url: tool.image,
+            caption: `Screenshot image of ${tool.name}`,
+        },
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        browserRequirements: "Requires Chrome, Safari, or Firefox",
+        isAccessibleForFree: true,
+        offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+        },
+        author: {
+            "@type": "Organization",
+            "@id": `https://thedar.ai/${locale}#organization`,
+            name: "TheDar.AI",
+        },
+        keywords: tool.keywords,
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": tool.url,
+        },
+    };
+
+    return jsonLd;
+};
+
+export type ToolJsonLdHelperParams = {
+    locale: string;
+    seoKey: string; // e.g. "Tools-arabic-coverage-gap-audit"
+    slug: string; // e.g. "arabic-coverage-gap-audit"
+    displayName: string; // for breadcrumb
+    imagePath: string; // absolute URL for OG image
+};
+
+export async function getToolPageJsonLd({
+    locale,
+    seoKey,
+    slug,
+    displayName,
+    imagePath,
+}: ToolJsonLdHelperParams) {
+    const tJsonLd = await getTranslations(`SEO.${seoKey}`);
+
+    const breadcrumbsJsonLd = createBreadcrumbs([
+        { name: "Home", path: `/${locale}` },
+        { name: "Tools", path: `/${locale}/tools` },
+        { name: displayName, path: `/${locale}/tools/${slug}` },
+    ]);
+
+    const toolJsonLd = await formatSingleToolPageJsonLd({
+        name: tJsonLd("title"),
+        description: tJsonLd("description"),
+        url: `https://thedar.ai/${locale}/tools/${slug}`,
+        image: imagePath,
+        keywords: tJsonLd.raw("keywords")
+    });
+
+    return { breadcrumbsJsonLd, toolJsonLd };
+}

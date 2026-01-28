@@ -1,8 +1,10 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { ArabicCoverageWizard } from "./components/ArabicCoverageWizard";
-import { useTranslations } from "next-intl";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { getToolPageJsonLd } from "@/lib/jsonLd";
+import { getLocale, getTranslations } from "next-intl/server";
+import JsonLd from "@/components/shared/JsonLd";
 
 type ArabicCoverageGapAuditPageProps = {
     params: Promise<{ locale: string }>;
@@ -45,11 +47,22 @@ export async function generateMetadata(
     });
 }
 
-function ArabicCoverageGapAudit() {
-    const t = useTranslations("Tools.arabic-coverage-gap-audit");
+async function ArabicCoverageGapAudit() {
+    const t = await getTranslations("Tools.arabic-coverage-gap-audit");
 
+    const locale = await getLocale();
+    const { breadcrumbsJsonLd, toolJsonLd } = await getToolPageJsonLd({
+        locale,
+        seoKey: "Tools-arabic-coverage-gap-audit",
+        slug: "arabic-coverage-gap-audit",
+        displayName: "Arabic Coverage Gap Audit",
+        imagePath: "https://thedar.ai/og/tools/arabic-coverage.png"
+    });
     return (
         <main>
+            <JsonLd data={breadcrumbsJsonLd} />
+            <JsonLd data={toolJsonLd} />
+
             <SectionWrapper className="min-h-dvh mt-24">
                 <div className="container mx-auto">
                     {/* Main heading */}
