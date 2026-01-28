@@ -1,6 +1,5 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { Badge } from "@/components/ui/badge";
-import { useTranslations } from "next-intl";
 import Link from "next/link";
 import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
@@ -9,6 +8,9 @@ import RequestDemoButton from "@/components/shared/form/RequestDemoButton";
 import LogoCarousel from "../(home)/components/LogoCarousel";
 import EmpoweringAgenciesSection from "../(home)/sections/EmpoweringAgenciesSection";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { getToolsPageJsonLd, ToolJsonLdParams } from "@/lib/jsonLd";
+import JsonLd from "@/components/shared/JsonLd";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type ToolsPageProps = {
     params: Promise<{ locale: string }>;
@@ -48,10 +50,56 @@ export async function generateMetadata(
     });
 }
 
-function ToolsPage() {
-    const t = useTranslations("Tools");
+async function ToolsPage() {
+    const t = await getTranslations("Tools");
+    const jsonLdT = await getTranslations("SEO");
+    const locale = await getLocale();
+
+    const domain = "https://thedar.ai";
+
+    const toolConfigs = [
+        {
+            key: "arabic-coverage-gap-audit",
+            image: "/og/tools/arabic-coverage.png",
+            slug: "arabic-coverage-gap-audit",
+        },
+        {
+            key: "arabic-dialect",
+            image: "/og/tools/arabic-dialect.png",
+            slug: "arabic-dialect",
+        },
+        {
+            key: "arabic-mention-analyzer",
+            image: "/og/tools/lost-mentions.png",
+            slug: "arabic-mention-analyzer",
+        },
+        {
+            key: "crisis-readiness-score",
+            image: "/og/tools/crisis-readiness.png",
+            slug: "crisis-readiness-score",
+        },
+        {
+            key: "stack-consolidation-calculator",
+            image: "/og/tools/monitoring-stack.png",
+            slug: "stack-consolidation-calculator",
+        },
+    ];
+
+    // Dynamically map configs into ToolJsonLdParams
+    const toolsArr: ToolJsonLdParams[] = toolConfigs.map(({ key, image, slug }) => ({
+        name: jsonLdT(`Tools-${key}.title`),
+        description: jsonLdT(`Tools-${key}.description`),
+        url: `${domain}/${locale}/tools/${slug}`,
+        image: `${domain}${image}`,
+        keywords: jsonLdT.raw(`Tools-${key}.keywords`),
+    }));
+
+    const toolsJsonLd = await getToolsPageJsonLd(toolsArr);
+
     return (
         <main>
+            <JsonLd data={toolsJsonLd} />
+
             {/* Header */}
             <SectionWrapper className="lg:py-0 px-0 justify-start">
                 <div className="w-full lg:pt-12 bg-muted rounded-b-[80px]">
@@ -66,7 +114,6 @@ function ToolsPage() {
                     <h2 className="text-[14px] sm:text-3xl text-center">{t("trustedBy")}</h2>
                     <LogoCarousel />
                 </div>
-
             </SectionWrapper>
 
             {/* Tools */}

@@ -1,5 +1,5 @@
-import { getTranslations } from "next-intl/server";
-import { BreadcrumbList, Organization, Service, WebApplication, WithContext } from "schema-dts"
+import { getLocale, getTranslations } from "next-intl/server";
+import { BreadcrumbList, ItemList, Organization, Service, WebApplication, WithContext } from "schema-dts"
 
 export const orgJsonLd: WithContext<Organization> = {
     "@context": "https://schema.org",
@@ -295,3 +295,60 @@ export const getSolutionSchema = async (
     return [breadcrumbs, service];
 };
 
+export interface ToolJsonLdParams {
+    name: string;
+    description: string;
+    url: string;
+    image: string;
+    keywords: string[];
+}
+
+export const getToolsPageJsonLd = async (
+    tools: ToolJsonLdParams[]
+) => {
+    const t = await getTranslations("SEO.Tools");
+    const locale = await getLocale();
+    const jsonLd: WithContext<ItemList> = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: t("title"),
+        description: t("description"),
+        url: `https://thedar.ai/${locale}/tools`,
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `https://thedar.ai/${locale}/tools`,
+        },
+        itemListElement: tools.map((tool, idx) => ({
+            "@type": "ListItem",
+            position: idx + 1,
+            item: {
+                "@type": "WebApplication",
+                name: tool.name,
+                description: tool.description,
+                url: tool.url,
+                image: {
+                    "@type": "ImageObject",
+                    url: tool.image,
+                    caption: `Screenshot image of ${tool.name}`,
+                },
+                applicationCategory: "BusinessApplication",
+                operatingSystem: "Web",
+                browserRequirements: "Requires Chrome, Safari, or Firefox",
+                isAccessibleForFree: true,
+                offers: {
+                    "@type": "Offer",
+                    price: "0",
+                    priceCurrency: "USD",
+                },
+                author: {
+                    "@type": "Organization",
+                    "@id": `https://thedar.ai/${locale}#organization`,
+                    name: "TheDar.AI",
+                },
+                keywords: tool.keywords,
+            },
+        })),
+    };
+
+    return jsonLd;
+};
