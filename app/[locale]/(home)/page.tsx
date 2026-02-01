@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import JsonLd from "@/components/shared/JsonLd";
-import { orgJsonLd, productJsonLd } from "@/lib/jsonLd";
+import { getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
 
 type HomePageProps = {
   params: Promise<{ locale: string }>
@@ -53,7 +53,9 @@ export async function generateMetadata(
   });
 }
 
-function HomePage() {
+async function HomePage() {
+  const orgJsonLd = await getOrganizationJsonLd();
+  const productJsonLd = await getProductJsonLd();
 
   return (
     <main className="h-full">

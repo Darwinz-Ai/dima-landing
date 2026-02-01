@@ -2,7 +2,7 @@ import { fetchSingleBlog } from "@/lib/firebase/blogsFunctions";
 import BlogContent from "../components/BlogContent";
 import { Metadata } from "next";
 import { getLocale } from "next-intl/server";
-import { getSingleBlogJsonLd } from "@/lib/jsonLd";
+import { createBreadcrumbs, getSingleBlogJsonLd } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
 
 type SingleViewBlogPageProps = {
@@ -71,8 +71,14 @@ export default async function SingleViewBlogPage({ params }: SingleViewBlogPageP
     const blog = await fetchSingleBlog(locale, slug);
 
     const blogJsonLd = await getSingleBlogJsonLd(blog);
+    const breadcrumbsJsonLd = createBreadcrumbs([
+        { name: "Home", path: `/${locale}` },
+        { name: "Blogs", path: `/${locale}/blogs` },
+        { name: blog.content.title, path: `/${locale}/solutions/${slug}` },
+    ]);
     return (
         <main>
+            <JsonLd data={breadcrumbsJsonLd} />
             <JsonLd data={blogJsonLd} />
 
             <BlogContent slug={slug} />

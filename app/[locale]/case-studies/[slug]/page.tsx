@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import CaseStudyContent from "./components/CaseStudyContent";
 import { fetchSingleCaseStudy } from "@/lib/firebase/caseStudiesFunctions";
 import { getLocale } from "next-intl/server";
-import { getSingleCaseStudyPageJsonLd } from "@/lib/jsonLd";
+import { createBreadcrumbs, getSingleCaseStudyPageJsonLd } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
 
 type SingleViewCaseStudiesPageProps = {
@@ -71,8 +71,14 @@ async function SingleViewCaseStudiesPage({ params }: SingleViewCaseStudiesPagePr
 
     const caseStudy = await fetchSingleCaseStudy(locale, slug)
     const caseStudyJsonLd = await getSingleCaseStudyPageJsonLd(caseStudy);
+    const breadcrumbsJsonLd = createBreadcrumbs([
+        { name: "Home", path: `/${locale}` },
+        { name: "Case Studies", path: `/${locale}/case-studies` },
+        { name: caseStudy.content.title, path: `/${locale}/case-studies/${slug}` },
+    ]);
     return (
         <main>
+            <JsonLd data={breadcrumbsJsonLd} />
             <JsonLd data={caseStudyJsonLd} />
 
             <CaseStudyContent slug={slug} />

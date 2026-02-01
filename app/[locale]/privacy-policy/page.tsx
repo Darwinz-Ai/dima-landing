@@ -1,5 +1,4 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import { useLocale } from "next-intl";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -7,6 +6,9 @@ import ArabicPolicy from "./components/ArabicPolicy";
 import EnglishPolicy from "./components/EnglishPolicy";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
+import { getPrivacyPolicyJsonLd } from "@/lib/jsonLd";
+import { getLocale } from "next-intl/server";
+import JsonLd from "@/components/shared/JsonLd";
 
 type PrivacyPolicyPageProps = {
     params: Promise<{ locale: string }>;
@@ -47,11 +49,14 @@ export async function generateMetadata(
     });
 }
 
-function PrivacyPolicyPage() {
-    const locale = useLocale();
+async function PrivacyPolicyPage() {
+    const privacyPolicyJsonLd = await getPrivacyPolicyJsonLd();
+    const locale = await getLocale();
     const isRTL = locale === "ar";
     return (
         <main>
+            <JsonLd data={privacyPolicyJsonLd} />
+
             <SectionWrapper className="min-h-dvh mt-24">
                 <div className="container max-w-7xl mx-auto prose text-lg lg:text-xl">
                     <ReactMarkdown
