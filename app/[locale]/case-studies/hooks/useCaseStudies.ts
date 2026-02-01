@@ -13,7 +13,7 @@ export const useCaseStudies = (limitCount: number | null = null, filters: CaseSt
 
     return useQuery({
         queryKey: ["more-case-studies", locale, filters.featured ?? null, limitCount],
-        queryFn: () => fetchCaseStudies(locale, filters, limitCount,),
+        queryFn: () => fetchCaseStudies(locale, filters, limitCount),
         staleTime: 1000 * 60
     });
 };

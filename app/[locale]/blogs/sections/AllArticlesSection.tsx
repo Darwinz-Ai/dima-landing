@@ -1,7 +1,7 @@
 "use client";
 import { useTranslations } from "next-intl";
 import GroupedBlogs from "../components/GroupedBlogs";
-import VideosSection from "./VideosSection";
+// import VideosSection from "./VideosSection";
 import BlogCardSkeleton from "../components/BlogCardSkeleton";
 import BlogCard from "../components/BlogCard";
 import { useRef, useState } from "react";
@@ -12,7 +12,6 @@ const PAGE_SIZE = 16;
 
 function AllArticlesSection() {
     const t = useTranslations("Blogs");
-    // const { data: blogs, isLoading, isError } = useBlogs(16)
     const [pageIndex, setPageIndex] = useState(0);
     const {
         data,
@@ -96,7 +95,7 @@ function AllArticlesSection() {
                                         <BlogCardSkeleton />
                                     </li>
                                 ))
-                                : currentPage?.slice(0, 8).map((blog) => (
+                                : currentPage?.map((blog) => (
                                     <li key={`blogs/${blog.id}`}>
                                         <BlogCard blog={blog} />
                                     </li>
@@ -104,25 +103,7 @@ function AllArticlesSection() {
                         }
                     </ul>
 
-                    <VideosSection title={t("videosSection.title")} />
-
-                    {/* Second grid */}
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 w-full">
-                        {isError && <p>Failed to load latest blogs</p>}
-                        {
-                            isLoading
-                                ? Array.from({ length: 8 }).map((_, i) => (
-                                    <li key={`skeleton-grid2-${i}`}>
-                                        <BlogCardSkeleton />
-                                    </li>
-                                ))
-                                : currentPage?.slice(8).map((blog) => (
-                                    <li key={`blogs/${blog.id}`}>
-                                        <BlogCard blog={blog} />
-                                    </li>
-                                ))
-                        }
-                    </ul>
+                    {/* <VideosSection title={t("videosSection.title")} /> */}
                 </GroupedBlogs>
 
                 {/* Pagination Component */}
