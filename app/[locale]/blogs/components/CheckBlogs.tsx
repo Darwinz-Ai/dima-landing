@@ -27,8 +27,9 @@ const CheckBlogs = async () => {
                 </div>
             </div>
         )
-    } catch (error: any) {
-        return <p>Error:{error.message}</p>
+    } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : "An unknown error occurred."
+        return <p>Error: {errorMessage}</p>
     }
 }
 

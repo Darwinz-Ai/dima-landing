@@ -5,7 +5,7 @@ import CaseStudyCard from "../../case-studies/components/CaseStudyCard";
 import CaseStudyCardSkeleton from "../../case-studies/components/CaseStudyCardSkeleton";
 import { fetchBlogs } from "@/lib/firebase/blogsFunctions";
 import { getLocale, getTranslations } from "next-intl/server";
-import { fetchCaseStudies, fetchSingleCaseStudy } from "@/lib/firebase/caseStudiesFunctions";
+import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
 
 async function HeroSection() {
     const t = await getTranslations("Blogs");

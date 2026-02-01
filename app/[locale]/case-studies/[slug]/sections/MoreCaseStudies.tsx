@@ -30,8 +30,9 @@ async function MoreCaseStudies() {
                 </div>
             </SectionWrapper>
         );
-    } catch (error: any) {
-        return null
+    } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : "An unknown error occurred."
+        return <p>Error: {errorMessage}</p>
     }
 
 }
