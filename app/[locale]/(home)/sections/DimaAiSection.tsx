@@ -30,12 +30,11 @@ function DimaAiSection() {
             className={`relative w-full lg:flex-1 h-[220px] sm:h-[300px] lg:h-[500px] max-w-[500px] mr-0 lg:-mr-6`}
           >
             <Image
-              src="https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/HomePage%2Fdima%20AI%20.png?alt=media&token=d2c367d8-c754-4e1b-8dc3-d1c05a6473e5"
+              src="/dima-phone.png"
               alt="stats"
               fill
               className="object-contain "
-              priority
-              quality={90}
+              loading="lazy"
             />
           </figure>
         </div>

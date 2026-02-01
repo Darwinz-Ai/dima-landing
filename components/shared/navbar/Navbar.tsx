@@ -5,7 +5,6 @@ import Image from "next/image";
 import NavigationDropdown from "./NavigationDropdown";
 import { ArrowRight } from "lucide-react";
 import SolutionsDropdown from "./dropdowns/SolutionsDropdown";
-// import ResourcesDropdown from "./dropdowns/ResourcesDropdown";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { useLocale, useTranslations } from "next-intl";
 import dimaLogo from "@/public/dima-logo/dima-logo.png"
@@ -18,7 +17,6 @@ function Navbar() {
     const navbarItems = [
         { name: t("home"), href: "/" },
         { name: t("solutions.title"), dropdown: <SolutionsDropdown /> },
-        // { name: t("resources.title"), dropdown: <ResourcesDropdown /> },
         { name: t("blogs"), href: "/blogs" },
         { name: t("caseStudies"), href: "/case-studies" },
         { name: t("tools"), href: "/tools" },

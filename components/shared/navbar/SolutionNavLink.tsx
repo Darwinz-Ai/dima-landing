@@ -10,7 +10,7 @@ function SolutionNavLink({ logo, href, translationKey, isRTL }: SolutionLink & {
 
     const content = (
         <article className={`flex items-center py-2 gap-4 ${isRTL ? "lg:flex-row-reverse" : "flex-row"} ${isDisabled && "opacity-60 cursor-auto"}`}>
-            <figure className="flex items-center w-[65px] h-[45px] lg:w-[80px] lg:h-[65px] shrink-0">
+            <figure className="flex items-center w-[65px] h-[45px] lg:w-20 lg:h-[65px] shrink-0">
                 <Image
                     src={logo}
                     alt={`${translationKey} logo`}

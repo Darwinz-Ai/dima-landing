@@ -7,13 +7,7 @@ function EmpoweringAgenciesSection() {
     const t = useTranslations("Home.empoweringAgencies");
     return (
         <SectionWrapper className="flex flex-col justify-center items-center px-4 sm:px-8 md:px-16">
-            <div className="container mx-auto space-y-6 md:space-y-14 bg-no-repeat bg-contain"
-            // style={{
-            //     backgroundImage: "url('https://firebasestorage.googleapis.com/v0/b/dima-landing.firebasestorage.app/o/HomePage%2Fempowering-agencies-bg.png?alt=media&token=44c924f7-d4dd-4ac9-9be4-65604eccdbde')",
-            //     backgroundPosition: "right center",
-            //     backgroundSize: "50%"
-            // }}
-            >
+            <div className="container mx-auto space-y-6 md:space-y-14 bg-no-repeat bg-contain" >
                 {/* Heading */}
                 <h2 className="text-[24px] md:text-[44px] font-normal text-center leading-tight">
                     {t("titlePrefix")} &nbsp;

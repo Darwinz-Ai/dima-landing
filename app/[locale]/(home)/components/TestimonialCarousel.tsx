@@ -17,6 +17,7 @@ export default function TestimonialCarousel({
 }: Props) {
     const locale = useLocale();
     const isRTL = locale === "ar";
+    const [mounted, setMounted] = useState(false);
 
     // Duplicate list for smooth infinite looping
     const cards = useMemo(() => [...items], [items]);
@@ -25,12 +26,15 @@ export default function TestimonialCarousel({
 
     // Auto-rotation
     useEffect(() => {
+        setMounted(true);
         if (!autoplay) return;
         const t = setInterval(() => {
             setActive((p) => (p + 1) % cards.length);
         }, interval);
         return () => clearInterval(t);
     }, [cards.length, autoplay, interval]);
+
+    if (!mounted) return null;
 
     const getPosition = (index: number) => {
         const len = cards.length;

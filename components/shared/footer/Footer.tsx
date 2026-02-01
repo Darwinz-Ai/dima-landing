@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import FooterLinks from "./FooterLinks";
 import SocialMediaLinks from "./SocialMediaLinks";
