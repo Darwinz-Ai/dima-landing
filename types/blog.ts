@@ -8,4 +8,6 @@ export type Blog = {
     dateCreated: Timestamp;
     tags: string[];
     thumbnail: string;
+    active: boolean;
+    editorsPick: boolean;
 };

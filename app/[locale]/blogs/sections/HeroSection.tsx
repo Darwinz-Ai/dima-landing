@@ -3,7 +3,7 @@ import BlogCard from "../components/BlogCard";
 import BlogCardSkeleton from "../components/BlogCardSkeleton";
 import CaseStudyCard from "../../case-studies/components/CaseStudyCard";
 import CaseStudyCardSkeleton from "../../case-studies/components/CaseStudyCardSkeleton";
-import { fetchBlogs } from "@/lib/firebase/blogsFunctions";
+import { fetchEditorsPickBlogs } from "@/lib/firebase/blogsFunctions";
 import { getLocale, getTranslations } from "next-intl/server";
 import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
 
@@ -17,7 +17,7 @@ async function HeroSection() {
     let caseStudyError = false;
 
     try {
-        blogs = await fetchBlogs(locale, [t("editorsPick")], 3);
+        blogs = await fetchEditorsPickBlogs(locale, 3);
     } catch (error) {
         blogsError = true;
     }
