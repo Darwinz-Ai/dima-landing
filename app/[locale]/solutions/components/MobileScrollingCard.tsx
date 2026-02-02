@@ -25,8 +25,9 @@ function MobileScrollingCard({ title, description, slug, index }: CardType) {
                     fill
                     sizes="(max-width: 640px) 100vw, 340px"
                     className="object-contain p-4"
-                    priority={true}
-                    fetchPriority="high"
+                    // priority={true}
+                    // fetchPriority="high"
+                    loading={"lazy"}
                     quality={90}
                 />
             </figure>

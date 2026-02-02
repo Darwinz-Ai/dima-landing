@@ -18,7 +18,7 @@ function HeroSection({ slug }: { slug: string }) {
                 {/* Images */}
                 <div className="flex flex-col lg:flex-row justify-center items-center gap-4 mt-4">
                     {/* Mobile View - Single Hero Image */}
-                    <figure className="relative w-[300px] md:w-[400px] lg:hidden h-[322px]">
+                    <figure className="relative w-[300px] md:w-[400px] md:hidden h-[322px]">
                         <Image
                             src={solutionImages[slug].heroSingle}
                             alt="Hero Image Mobile"
@@ -32,7 +32,7 @@ function HeroSection({ slug }: { slug: string }) {
                     </figure>
 
                     {/* Desktop View - Grouped Hero Images */}
-                    <figure className="hidden lg:block relative w-[711px] h-[383px]">
+                    <figure className="hidden md:block relative w-[711px] h-[383px]">
                         <Image
                             src={solutionImages[slug].heroGrouped}
                             alt="Hero Image Desktop"

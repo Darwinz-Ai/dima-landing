@@ -28,7 +28,17 @@ export default function HeroSection() {
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority={true}
             fetchPriority="high"
-            className="object-contain"
+            className="object-contain hidden sm:block"
+            quality={90}
+          />
+          <Image
+            src={`/hero-bg-${locale}-mobile.png`}
+            alt="Hero image"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority={true}
+            fetchPriority="high"
+            className="object-contain block sm:hidden"
             quality={90}
           />
         </figure>
