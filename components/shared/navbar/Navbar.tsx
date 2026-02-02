@@ -62,7 +62,7 @@ function Navbar() {
 
                 <div className="inline-flex items-center gap-4 order-3">
                     {/* Drawer for mobile screens */}
-                    <div className="block lg:hidden order-3">
+                    <div className="flex items-center lg:hidden order-3">
                         <NavDrawer />
                     </div>
 
@@ -73,7 +73,7 @@ function Navbar() {
                         </div>
 
                         {/* CTA */}
-                        <Link href="/request-demo" className="text-[15px]">
+                        <Link href="/request-demo" className="text-[15px]" aria-label="Go To Request A Demo">
                             <Button className="hidden lg:flex justify-between py-2 pl-4 pr-2.5">
                                 {t("requestDemo")}
                                 <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center">

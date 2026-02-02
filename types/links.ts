@@ -19,6 +19,7 @@ export type SolutionLink = {
 export type SocialMediaLink = {
     href: string;
     icon: Icon;
+    label: string;
 };
 
 export type LanguageLink = {

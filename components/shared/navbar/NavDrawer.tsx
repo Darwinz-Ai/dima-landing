@@ -29,7 +29,9 @@ function NavDrawer() {
     return (
         <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
             <DrawerTrigger asChild>
-                <Menu />
+                <button aria-label="Open Menu">
+                    <Menu size={24} />
+                </button>
             </DrawerTrigger>
 
             <DrawerContent>

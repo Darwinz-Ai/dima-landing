@@ -41,7 +41,7 @@ function SolutionCard({ logo, href, translationKey }: SolutionLink) {
         {href === "/solutions/customer-experience" ? (
           <p className="text-primary">{t("comingSoon")}</p>
         ) : (
-          <Link href={href}>
+          <Link href={href} aria-label={`Go To ${t(`solutions.${translationKey}.title`)}`}>
             <Button variant="outline" className="px-3 py-2 h-[34px] font-normal">
               {t("explore")}
             </Button>

@@ -36,7 +36,8 @@ export default function LanguageSwitcher() {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <div
+        <button
+          aria-label="Open Language Switcher"
           aria-expanded={open}
           className="w-fit flex justify-between items-center cursor-pointer px-3 py-2 rounded-lg bg-muted transition-colors duration-200"
         >
@@ -50,7 +51,7 @@ export default function LanguageSwitcher() {
             />
           </figure>
           <ChevronDown className={`${isRTL ? "mr-2" : "ml-2"} h-4 w-4 shrink-0 opacity-50 text-muted-foreground`} />
-        </div>
+        </button>
       </PopoverTrigger>
 
       <PopoverContent className="w-[180px] p-0">

@@ -26,7 +26,7 @@ function PhoneNumberInput({ register, countryCode, setCountryCode, placeholder }
         <ButtonGroup className="w-full" dir="ltr">
             {/* Select */}
             <Select value={countryCode} onValueChange={setCountryCode}>
-                <SelectTrigger className={`font-mono`}>
+                <SelectTrigger className={`font-mono`} aria-label="Open country code selector">
                     {countryCode}
                 </SelectTrigger>
                 <SelectContent className="min-w-[120px]">

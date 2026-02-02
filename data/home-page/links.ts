@@ -72,26 +72,32 @@ export const socialMediaLinks: SocialMediaLink[] = [
   {
     href: "https://www.linkedin.com/company/thedar-ai/",
     icon: IconBrandLinkedin,
+    label: "Visit Our LinkedIn"
   },
   {
     href: "https://www.instagram.com/thedar.ai",
     icon: IconBrandInstagram,
+    label: "Visit Our Instagram"
   },
   {
     href: "https://web.facebook.com/people/TheDarAI/61585271307642/",
     icon: IconBrandFacebook,
+    label: "Visit Our Facebook"
   },
   {
     href: "https://www.tiktok.com/@thedar.ai",
     icon: IconBrandTiktok,
+    label: "Visit Our TikTok"
   },
   {
     href: "https://x.com/TheDarAI",
     icon: IconBrandX,
+    label: "Visit Our X"
   },
   {
     href: "https://www.youtube.com/@dima-social",
     icon: IconBrandYoutube,
+    label: "Visit Our Youtube"
   },
 ];
 
