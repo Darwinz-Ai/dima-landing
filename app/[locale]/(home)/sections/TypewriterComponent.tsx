@@ -30,10 +30,8 @@ const TypewriterComponent = () => {
                 ) : (
                     <Typewriter
                         options={{
-                            strings: slides,
                             autoStart: true,
                             loop: true,
-                            pauseFor: 3000,
                             delay: isRTL ? 160 : 35,
                             deleteSpeed: isRTL ? 150 : 25,
                             wrapperClassName: "text-primary",
@@ -44,6 +42,15 @@ const TypewriterComponent = () => {
                                 }
                                 return text.split("");
                             },
+                        }}
+                        onInit={(typewriter) => {
+                            slides.forEach((slide) => {
+                                typewriter
+                                    .typeString(slide)
+                                    .pauseFor(3000)
+                                    .deleteAll()
+                                    .start()
+                            })
                         }}
                         component={"span"}
                     />
