@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { createBreadcrumbs, getSingleBlogJsonLd } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
+import { notFound } from "next/navigation";
 
 type SingleViewBlogPageProps = {
     params: Promise<{ slug: string, locale: string }>
@@ -67,20 +68,26 @@ export async function generateMetadata(
 export default async function SingleViewBlogPage({ params }: SingleViewBlogPageProps) {
     const { slug } = await params;
 
-    const locale = await getLocale();
-    const blog = await fetchSingleBlog(locale, slug);
+    try {
+        const locale = await getLocale();
+        const blog = await fetchSingleBlog(locale, slug);
 
-    const blogJsonLd = await getSingleBlogJsonLd(blog);
-    const breadcrumbsJsonLd = createBreadcrumbs([
-        { name: "Home", path: `/${locale}` },
-        { name: "Blogs", path: `/${locale}/blogs` },
-        { name: blog.content.title, path: `/${locale}/solutions/${slug}` },
-    ]);
-    return (
-        <main>
-            <JsonLd data={[breadcrumbsJsonLd, blogJsonLd]} />
+        const blogJsonLd = await getSingleBlogJsonLd(blog);
+        const breadcrumbsJsonLd = createBreadcrumbs([
+            { name: "Home", path: `/${locale}` },
+            { name: "Blogs", path: `/${locale}/blogs` },
+            { name: blog.content.title, path: `/${locale}/solutions/${slug}` },
+        ]);
+        return (
+            <main>
+                <JsonLd data={[breadcrumbsJsonLd, blogJsonLd]} />
 
-            <BlogContent slug={slug} />
-        </main>
-    );
+                <BlogContent slug={slug} />
+            </main>
+        );
+    } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? `Error: ${error.message}` : "An Error has occurred";
+        console.log(errorMessage);
+        return notFound()
+    }
 }
