@@ -98,7 +98,7 @@ async function ToolsPage() {
 
     return (
         <main>
-            <JsonLd data={toolsJsonLd} />
+            <JsonLd data={[toolsJsonLd]} />
 
             {/* Header */}
             <SectionWrapper className="lg:py-0 px-0 justify-start">

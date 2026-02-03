@@ -59,7 +59,7 @@ async function BlogsPage() {
     const blogsJsonLd = await getBlogsPageJsonLd(blogs);
     return (
         <main>
-            <JsonLd data={blogsJsonLd} />
+            <JsonLd data={[blogsJsonLd]} />
             <SectionWrapper className="mt-20">
                 <HeroSection />
                 <AllArticlesSection />

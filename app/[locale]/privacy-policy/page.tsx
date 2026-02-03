@@ -55,7 +55,7 @@ async function PrivacyPolicyPage() {
     const isRTL = locale === "ar";
     return (
         <main>
-            <JsonLd data={privacyPolicyJsonLd} />
+            <JsonLd data={[privacyPolicyJsonLd]} />
 
             <SectionWrapper className="min-h-dvh mt-24">
                 <div className="container max-w-7xl mx-auto prose text-lg lg:text-xl">

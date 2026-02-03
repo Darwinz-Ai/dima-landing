@@ -57,8 +57,7 @@ async function ArabicMentionAnalyzerPage() {
     });
     return (
         <main>
-            <JsonLd data={breadcrumbsJsonLd} />
-            <JsonLd data={toolJsonLd} />
+            <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
 
             <SectionWrapper className="min-h-dvh mt-24">
                 <div className="max-w-7xl mx-auto space-y-12">

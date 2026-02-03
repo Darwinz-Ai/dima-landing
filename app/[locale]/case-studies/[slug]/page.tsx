@@ -78,8 +78,7 @@ async function SingleViewCaseStudiesPage({ params }: SingleViewCaseStudiesPagePr
     ]);
     return (
         <main>
-            <JsonLd data={breadcrumbsJsonLd} />
-            <JsonLd data={caseStudyJsonLd} />
+            <JsonLd data={[breadcrumbsJsonLd, caseStudyJsonLd]} />
 
             <CaseStudyContent slug={slug} />
         </main>

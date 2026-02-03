@@ -58,7 +58,7 @@ async function CaseStudiesPage() {
     const caseStudiesJsonLd = await getCaseStudiesPageJsonLd(caseStudies);
     return (
         <main>
-            <JsonLd data={caseStudiesJsonLd} />
+            <JsonLd data={[caseStudiesJsonLd]} />
 
             <HeroSection />
             <LogoCarousel />

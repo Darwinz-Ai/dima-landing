@@ -61,7 +61,7 @@ async function RequestDemoPage() {
             }}
             className="bg-white"
         >
-            <JsonLd data={requestDemoJsonLd} />
+            <JsonLd data={[requestDemoJsonLd]} />
 
             <SectionWrapper className="min-h-dvh mt-12">
                 <div className="container mx-auto flex flex-col-reverse lg:flex-row justify-center items-center lg:items-stretch gap-12 flex-1">

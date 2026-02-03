@@ -59,8 +59,7 @@ async function HomePage() {
 
   return (
     <main className="h-full">
-      <JsonLd data={orgJsonLd} />
-      <JsonLd data={productJsonLd} />
+      <JsonLd data={[orgJsonLd, productJsonLd]} />
 
       <HeroSection />
       <EmpoweringAgenciesSection />

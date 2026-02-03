@@ -133,8 +133,7 @@ async function SolutionPage({ params }: SolutionPageProps) {
 
     return (
         <main>
-            <JsonLd data={breadcrumbsJsonLd} />
-            <JsonLd data={serviceJsonLd} />
+            <JsonLd data={[breadcrumbsJsonLd, serviceJsonLd]} />
 
             <HeroSection slug={slug} />
             <ExpandingCardsSection slug={slug} />

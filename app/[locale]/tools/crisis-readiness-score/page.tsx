@@ -59,8 +59,7 @@ async function CrisisReadinessScorePage() {
     });
     return (
         <main>
-            <JsonLd data={breadcrumbsJsonLd} />
-            <JsonLd data={toolJsonLd} />
+            <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
 
             <SectionWrapper className="min-h-dvh mt-24 space-y-4">
                 {/* Header */}

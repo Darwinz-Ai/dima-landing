@@ -78,8 +78,7 @@ export default async function SingleViewBlogPage({ params }: SingleViewBlogPageP
     ]);
     return (
         <main>
-            <JsonLd data={breadcrumbsJsonLd} />
-            <JsonLd data={blogJsonLd} />
+            <JsonLd data={[breadcrumbsJsonLd, blogJsonLd]} />
 
             <BlogContent slug={slug} />
         </main>
