@@ -1,7 +1,7 @@
 "use client";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { QuestionAccordion } from "@/types";
@@ -11,12 +11,18 @@ type QuestionAccordionProps = {
 };
 
 export default function QuestionsAccordion({ pageSlug }: QuestionAccordionProps) {
-    const [openItem, setOpenItem] = useState<string>("item-1");
     const locale = useLocale();
     const isRTL = locale === "ar";
 
+    const [openItem, setOpenItem] = useState<string>("item-1");
+    const [mounted, setMounted] = useState<boolean>(false);
+
     const t = useTranslations(pageSlug ? `Solutions.${pageSlug}` : "Home.questionsAnswered");
     const faqs = t.raw("faqs") as QuestionAccordion[];
+
+    useEffect(() => {
+        setMounted(true);
+    }, [])
 
     return (
         <Accordion
@@ -43,7 +49,9 @@ export default function QuestionsAccordion({ pageSlug }: QuestionAccordionProps)
                         >
                             {question}
                         </AccordionTrigger>
-                        <AccordionContent className="text-sm/relaxed mt-4">
+                        <AccordionContent
+                            forceMount={!mounted ? true : undefined}
+                            className="text-sm/relaxed mt-4">
                             {/* Finding hyperlinks if exists */}
                             {answer.split(/<link>|<\/link>/).map((part, idx) =>
                                 idx % 2 === 1 ? (

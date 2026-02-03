@@ -21,7 +21,7 @@ type SolutionPageProps = {
 };
 
 // List of valid slugs and their metadata
-const SOLUTIONS_METADATA: Record<
+export const SOLUTIONS_METADATA: Record<
     string,
     {
         image: string,

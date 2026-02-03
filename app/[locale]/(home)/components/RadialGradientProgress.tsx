@@ -39,25 +39,32 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
     const radius = (size - strokeWidth) / 2;
     const circumference = 2 * Math.PI * radius;
 
-    const offset = useMotionValue(circumference);
-    const number = useMotionValue(0);
-    const [displayValue, setDisplayValue] = useState(0);
+    // Calculating final offset
+    const gap = gapValue * circumference;
+    const finalOffset = circumference - (progress / maxValue) * (circumference - gap);
+
+    // Initializing MotionValues with final values for ssr
+    const offset = useMotionValue(finalOffset);
+    const [displayValue, setDisplayValue] = useState(progress);
+    const [mounted, setMounted] = useState<boolean>(false);
+
 
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true, margin: "-50px" });
 
     useEffect(() => {
+        setMounted(true);
         if (!isInView) return;
 
-        const gap = gapValue * circumference;
-        const targetOffset = circumference - (progress / maxValue) * (circumference - gap);
+        offset.set(circumference);
+        setDisplayValue(0);
 
-        const offsetAnimation = animate(offset, targetOffset, {
+        const offsetAnimation = animate(offset, finalOffset, {
             duration,
             ease: "easeInOut",
         });
 
-        const numberAnimation = animate(number, progress, {
+        const numberAnimation = animate(0, progress, {
             duration,
             ease: "easeInOut",
             onUpdate: (latest) => setDisplayValue(latest),
@@ -67,7 +74,7 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
             offsetAnimation.stop();
             numberAnimation.stop();
         };
-    }, [isInView, progress, circumference, duration, offset, number, maxValue, gapValue]);
+    }, [isInView, progress, finalOffset, circumference, duration, offset, maxValue]);
 
     return (
         <div
@@ -109,7 +116,7 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                 className="absolute font-bold text-xl inline-flex items-center gap-1"
                 style={{ color: textColor }}
             >
-                {formatNumber(displayValue, suffix)}
+                {mounted ? formatNumber(displayValue, suffix) : formatNumber(progress, suffix)}
             </motion.span>
         </div>
     );

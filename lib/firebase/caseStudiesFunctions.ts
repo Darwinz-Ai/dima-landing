@@ -20,7 +20,7 @@ type CaseStudyFilters = {
     featured?: boolean;
 };
 
-export const fetchCaseStudies = async (locale: string, filters: CaseStudyFilters = {}, limitCount: number | null,) => {
+export const fetchCaseStudies = async (locale: string, filters: CaseStudyFilters = {}, limitCount: number | null = null) => {
     const constraints: QueryConstraint[] = [
         where("flags.active", "==", true),
         ...(filters.featured ? [where("flags.featured", "==", true)] : []),

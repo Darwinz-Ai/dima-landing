@@ -29,8 +29,9 @@ function OwnConversationContent({
 }: OwnConversationContentProps) {
   const isRTL = locale === "ar";
 
-  const [activeIndex, setActiveIndex] = useState<number>(4);
+  const [activeIndex, setActiveIndex] = useState<number>(3);
   const activeFeature = ownConversationInfo[activeIndex];
+  const [mounted, setMounted] = useState<boolean>(false);
 
   // Auto-cycle through buttons every 4 seconds
   useEffect(() => {
@@ -45,6 +46,7 @@ function OwnConversationContent({
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   useEffect(() => {
+    setMounted(true);
     const button = buttonRefs.current[activeIndex];
     const container = containerRef.current;
 
@@ -107,20 +109,15 @@ function OwnConversationContent({
         {/* Info + Button */}
         <div
           className={`flex flex-col justify-start text-center w-full xl:max-w-md z-30  lg:h-[500px] xl:h-[600px] xl:pl-22 pb-4 ${isRTL
-              ? "text-right items-end xl:pr-6"
-              : "items-start text-left"
+            ? "text-right items-end xl:pr-6"
+            : "items-start text-left"
             }`}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeFeature.translationKey}
-              variants={textVariants}
-              exit="exit"
-              initial="hidden"
-              animate="visible"
+          {!mounted ? (
+            <div
               className={`w-full xl:flex-1 flex flex-col justify-center ${isRTL
-                  ? "items-end text-right"
-                  : "items-start text-left"
+                ? "items-end text-right"
+                : "items-start text-left"
                 } h-[175px]`}
             >
               <h3 className="text-2xl font-semibold my-4 sm:mb-6">
@@ -131,8 +128,31 @@ function OwnConversationContent({
                 {featureTranslations[activeFeature.translationKey]
                   ?.description ?? ""}
               </p>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          ) : (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeFeature.translationKey}
+                variants={textVariants}
+                exit="exit"
+                initial="hidden"
+                animate="visible"
+                className={`w-full xl:flex-1 flex flex-col justify-center ${isRTL
+                  ? "items-end text-right"
+                  : "items-start text-left"
+                  } h-[175px]`}
+              >
+                <h3 className="text-2xl font-semibold my-4 sm:mb-6">
+                  {featureTranslations[activeFeature.translationKey]?.title ??
+                    activeFeature.translationKey}
+                </h3>
+                <p className="text-base md:text-lg leading-relaxed">
+                  {featureTranslations[activeFeature.translationKey]
+                    ?.description ?? ""}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          )}
 
           <div
             className={`xl:my-4 w-full xl:flex-1 flex ${isRTL ? "justify-end" : "justify-start"

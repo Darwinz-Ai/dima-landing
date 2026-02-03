@@ -2,7 +2,7 @@ import { collection, doc, getDoc, getDocs, limit, orderBy, query, QueryConstrain
 import { db } from "../firebase";
 import { Blog } from "@/types/blog";
 
-export const fetchBlogs = async (locale: string, tags: string[], limitCount: number | null = null) => {
+export const fetchBlogs = async (locale: string, tags: string[] = [], limitCount: number | null = null) => {
     const collectionRef = collection(db, "blogs");
     const constraints: QueryConstraint[] = [orderBy("dateCreated", "desc"), where("active", "==", true)];
 

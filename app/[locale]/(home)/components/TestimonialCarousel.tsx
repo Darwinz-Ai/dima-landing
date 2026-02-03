@@ -34,7 +34,7 @@ export default function TestimonialCarousel({
         return () => clearInterval(t);
     }, [cards.length, autoplay, interval]);
 
-    if (!mounted) return null;
+    // if (!mounted) return null;
 
     const getPosition = (index: number) => {
         const len = cards.length;
@@ -109,7 +109,6 @@ export default function TestimonialCarousel({
   .far-left { transform: translateX(-260px) scale(0.8); }
   .far-right { transform: translateX(260px) scale(0.8); }
 }
-
             `}
             </style>
         </div>
