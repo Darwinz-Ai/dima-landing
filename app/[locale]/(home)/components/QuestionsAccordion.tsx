@@ -2,23 +2,20 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useEffect, useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import Link from "next/link";
 import { QuestionAccordion } from "@/types";
 
 type QuestionAccordionProps = {
-    pageSlug?: string;
+    items: QuestionAccordion[];
 };
 
-export default function QuestionsAccordion({ pageSlug }: QuestionAccordionProps) {
+export default function QuestionsAccordion({ items }: QuestionAccordionProps) {
     const locale = useLocale();
     const isRTL = locale === "ar";
 
     const [openItem, setOpenItem] = useState<string>("item-1");
     const [mounted, setMounted] = useState<boolean>(false);
-
-    const t = useTranslations(pageSlug ? `Solutions.${pageSlug}` : "Home.questionsAnswered");
-    const faqs = t.raw("faqs") as QuestionAccordion[];
 
     useEffect(() => {
         setMounted(true);
@@ -33,7 +30,7 @@ export default function QuestionsAccordion({ pageSlug }: QuestionAccordionProps)
             onValueChange={(value) => setOpenItem(value)}
             className="w-full bg-muted rounded-xl p-2 space-y-2"
         >
-            {faqs.map(({ question, answer }, i) => {
+            {items.map(({ question, answer }, i) => {
                 const value = `item-${i + 1}`;
                 const isOpen = value === openItem;
 
@@ -51,7 +48,7 @@ export default function QuestionsAccordion({ pageSlug }: QuestionAccordionProps)
                         </AccordionTrigger>
                         <AccordionContent
                             forceMount={!mounted ? true : undefined}
-                            className="text-sm/relaxed mt-4">
+                            className="text-sm/relaxed mt-4 whitespace-pre-line">
                             {/* Finding hyperlinks if exists */}
                             {answer.split(/<link>|<\/link>/).map((part, idx) =>
                                 idx % 2 === 1 ? (

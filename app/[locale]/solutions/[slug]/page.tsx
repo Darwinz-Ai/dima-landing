@@ -10,6 +10,8 @@ import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata, SolutionsSeoKey } from "@/lib/seo";
 import { getSolutionSchema } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
+import { getTranslations } from "next-intl/server";
+import { QuestionAccordion } from "@/types";
 
 type SolutionPageParams = {
     slug: string;
@@ -129,7 +131,10 @@ async function SolutionPage({ params }: SolutionPageProps) {
         slug,
         locale,
         solutionMetadata.logoPath
-    )
+    );
+
+    const tSolutions = await getTranslations("Solutions");
+    const faqs = (tSolutions.raw(`${slug}.faqs`) as QuestionAccordion[]) ?? [];
 
     return (
         <main>
@@ -141,7 +146,7 @@ async function SolutionPage({ params }: SolutionPageProps) {
             <CardsGrid slug={slug} />
             <TestimonialSection slug={slug} />
             <RequestDemoSection />
-            <QuestionsAnsweredSection slug={slug} />
+            <QuestionsAnsweredSection faqs={faqs} />
         </main>
     );
 }

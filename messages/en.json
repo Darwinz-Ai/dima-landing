@@ -1575,6 +1575,54 @@
     "description": " Sorry, the page you're looking for doesn't exist, may have been removed, or the URL is incorrect.",
     "goHome": "Go Home"
   },
+  "FAQ": {
+    "title": "Your Questions, Answered",
+    "description": "Get quick answers to the most common questions about our platform and services.",
+    "categorySearch": {
+      "category": "Category",
+      "searchPlaceholder": "Search",
+      "noResults": "No results found.",
+      "listItems": [
+        "General",
+        "Social Listening & Analytics",
+        "PR & Comms",
+        "Market Insights",
+        "Own Page Intelligence",
+        "Consumer Insights",
+        "Influencer Marketing"
+      ]
+    },
+    "faqs": [
+      {
+        "question": "What is dima?",
+        "answer": "dima is an Arabic-First Media Monitoring and Social Listening Copilot built for Marketing, PR & Brand experts. The product caters to Marketing agencies, PR and Comms agencies, and Enterprises in GCC and MENA who all share a need of Arabic-First and Dialect-Specific Media Monitoring. \n\ndima tracks, analyzes, and reports on traditional and social media channels including but not limited to: X, TikTok, Snapchat, Facebook, Instagram, LinkedIn, YouTube, Google Reviews, Online News, TV, Radio Broadcast & Print Publications. \n\nPopular use cases include: Social Listening, Consumer Intelligence, Public Relations, Crisis Management, Market Insights, Influencer Marketing and Competitor Benchmarking."
+      },
+      {
+        "question": "How is dima different from other tools available in the market?",
+        "answer": "dima is different to other alternatives like meltwater, talkwalker & emplifi by focussing on features built specifically for large scale usage from agencies and enterprise brands.\n\n While alternatives may be catering for SMEs, dima specializes in large scale brands and entities. Moreover, being Arabic-First, dima is the optimal solution for businesses in the GCC & MENA region where most of the relevant mentions in traditional media and social media platforms are in Arabic. As dima is built and trained for regional entities, dima offers a higher accuracy in capturing and analyzing relevant media mentions across different dialects in the region. \n\nCurrently dima operates at leading agencies and enterprises in the GCC & MENA region like STC, Bank AlJazira, Oman Air, Juhayna and Wadi Degla."
+      },
+      {
+        "question": "When was dima launched?",
+        "answer": "TheDar.AI (the company behind dima) was launched in 2021. The HQ is currently in Riyadh as part of The Garage in KACST, with a second office in Cairo. The product, dima, was launched in 2024 as an Arabic-First Media Monitoring & Social Listening Copilot built specifically for regional enterprises and marketing agencies. "
+      },
+      {
+        "question": "Why is Arabic-first monitoring important for enterprises & agencies in MENA?",
+        "answer": "Over 90% of the media mentions, whether in traditional media channels (like print, online news and TV) or social media channels (like TikTok, Snapchat & X) happen in Arabic. With over 200MN Arabic speakers in the region, the relevant conversation to MENA & GCC based brands happens in Arabic with a wide variety of dialects based on country and region within each country. Arabic-First media monitoring & social listening allows brands using dima to accurately capture & analyze all relevant mentions across social media and traditional media channels. Providing accurate insights on KPIs like Sentiment, Emotion & Key Topics, helping experts using dima to truly understand what's being said about their brands and topics of interest."
+      },
+      {
+        "question": "What platforms does dima cover?",
+        "answer": "dima covers both traditional and social media platforms. Traditional includes: Online Publications, Print Publications, TV & Radio. Social Media includes: TikTok, X, Snapchat, Facebook, Instagram & LinkedIn. There are other sources covered by dima as well like Google Maps Reviews & others in the pipeline. If you don't see the platform you want in the list, contact us to see when it will be available, our team is probably working on it already!"
+      },
+      {
+        "question": "What is the accuracy in Arabic? Does it detect slang, franco and dialects?",
+        "answer": "97% and improving! dima is the first regionally built monitoring platform dedicated to leading agencies and enterprises in the region. As such, it is built to handle Arabic written posts, images and videos at its core"
+      },
+      {
+        "question": "How long does it take to set up an account?",
+        "answer": "Once you book a demo, if you like dima, you can be up & running in less than 48 hours, during the demo our team will give you a live tour of dima, answering any questions you may have and then providing you with access to dima where you control users, keywords, topics of interest and reporting 24/7. "
+      }
+    ]
+  },
   "SEO": {
     "App": {
       "title": "TheDar.AI",

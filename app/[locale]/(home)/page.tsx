@@ -11,6 +11,8 @@ import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import JsonLd from "@/components/shared/JsonLd";
 import { getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
+import { QuestionAccordion } from "@/types";
+import { getTranslations } from "next-intl/server";
 
 type HomePageProps = {
   params: Promise<{ locale: string }>
@@ -57,6 +59,9 @@ async function HomePage() {
   const orgJsonLd = await getOrganizationJsonLd();
   const productJsonLd = await getProductJsonLd();
 
+  const tHomeQuestions = await getTranslations("Home.questionsAnswered");
+  const faqs = (tHomeQuestions.raw("faqs") as QuestionAccordion[]) ?? [];
+
   return (
     <main className="h-full">
       <JsonLd data={[orgJsonLd, productJsonLd]} />
@@ -69,7 +74,7 @@ async function HomePage() {
       <CaseStudiesSection />
       <TestimonialSection />
       <RequestDemoSection />
-      <QuestionsAnsweredSection />
+      <QuestionsAnsweredSection faqs={faqs} />
     </main>
   );
 }
