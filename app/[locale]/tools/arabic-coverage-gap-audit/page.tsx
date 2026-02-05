@@ -40,7 +40,7 @@ export async function generateMetadata(
                 languages: {
                     en: "https://thedar.ai/en/tools/arabic-coverage-gap-audit",
                     ar: "https://thedar.ai/ar/tools/arabic-coverage-gap-audit",
-                    "x-default": "https://thedar.ai/tools/arabic-coverage-gap-audit"
+                    "x-default": "https://thedar.ai/en/tools/arabic-coverage-gap-audit"
                 }
             },
         },

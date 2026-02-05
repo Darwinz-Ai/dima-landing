@@ -42,7 +42,7 @@ export async function generateMetadata(
                 languages: {
                     en: "https://thedar.ai/en/privacy-policy",
                     ar: "https://thedar.ai/ar/privacy-policy",
-                    "x-default": "https://thedar.ai/privacy-policy"
+                    "x-default": "https://thedar.ai/en/privacy-policy"
                 }
             },
         },

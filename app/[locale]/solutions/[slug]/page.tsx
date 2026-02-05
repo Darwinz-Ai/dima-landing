@@ -110,7 +110,7 @@ export async function generateMetadata(
                 languages: {
                     en: `https://thedar.ai/en/solutions/${slug}`,
                     ar: `https://thedar.ai/ar/solutions/${slug}`,
-                    "x-default": `https://thedar.ai/solutions/${slug}`
+                    "x-default": `https://thedar.ai/en/solutions/${slug}`
                 }
             },
         },

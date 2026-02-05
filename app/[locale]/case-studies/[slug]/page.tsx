@@ -46,7 +46,7 @@ export async function generateMetadata(
                 languages: {
                     en: `https://thedar.ai/en/case-studies/${slug}`,
                     ar: `https://thedar.ai/ar/case-studies/${slug}`,
-                    "x-default": `https://thedar.ai/case-studies/${slug}`
+                    "x-default": `https://thedar.ai/en/case-studies/${slug}`
                 }
             }
         };

@@ -43,7 +43,7 @@ export async function generateMetadata(
                 languages: {
                     en: "https://thedar.ai/en/blogs",
                     ar: "https://thedar.ai/ar/blogs",
-                    "x-default": "https://thedar.ai/blogs"
+                    "x-default": "https://thedar.ai/en/blogs"
                 }
             },
         },

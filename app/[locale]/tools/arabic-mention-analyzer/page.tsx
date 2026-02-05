@@ -39,7 +39,7 @@ export async function generateMetadata(
                 languages: {
                     en: "https://thedar.ai/en/tools/arabic-mention-analyzer",
                     ar: "https://thedar.ai/ar/tools/arabic-mention-analyzer",
-                    "x-default": "https://thedar.ai/tools/arabic-mention-analyzer"
+                    "x-default": "https://thedar.ai/en/tools/arabic-mention-analyzer"
                 }
             },
         },

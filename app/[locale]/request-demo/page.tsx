@@ -41,7 +41,7 @@ export async function generateMetadata(
                 languages: {
                     en: "https://thedar.ai/en/request-demo",
                     ar: "https://thedar.ai/ar/request-demo",
-                    "x-default": "https://thedar.ai/request-demo"
+                    "x-default": "https://thedar.ai/en/request-demo"
                 }
             },
         },

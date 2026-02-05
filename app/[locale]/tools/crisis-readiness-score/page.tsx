@@ -39,7 +39,7 @@ export async function generateMetadata(
                 languages: {
                     en: "https://thedar.ai/en/tools/crisis-readiness-score",
                     ar: "https://thedar.ai/ar/tools/crisis-readiness-score",
-                    "x-default": "https://thedar.ai/tools/crisis-readiness-score"
+                    "x-default": "https://thedar.ai/en/tools/crisis-readiness-score"
                 }
             },
         },

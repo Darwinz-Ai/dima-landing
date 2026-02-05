@@ -39,7 +39,7 @@ export async function generateMetadata(
                 languages: {
                     en: "https://thedar.ai/en/tools/stack-consolidation-calculator",
                     ar: "https://thedar.ai/ar/tools/stack-consolidation-calculator",
-                    "x-default": "https://thedar.ai/tools/stack-consolidation-calculator"
+                    "x-default": "https://thedar.ai/en/tools/stack-consolidation-calculator"
                 }
             },
         },
