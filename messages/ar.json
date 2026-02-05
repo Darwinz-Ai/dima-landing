@@ -325,7 +325,9 @@
         },
         "phoneNumber": {
           "title": "رقم الهاتف",
-          "placeholder": "+966"
+          "placeholder": "+966",
+          "noCountryFound": "ما فيه دولة.",
+          "searchCountry": "ابحث عن دولة..."
         },
         "companyName": {
           "title": "اسم الشركة",

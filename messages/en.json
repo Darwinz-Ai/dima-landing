@@ -283,7 +283,9 @@
         },
         "phoneNumber": {
           "title": "Phone Number",
-          "placeholder": "+966"
+          "placeholder": "+966",
+          "noCountryFound": "No country found.",
+          "searchCountry": "Search country..."
         },
         "companyName": {
           "title": "Company Name",

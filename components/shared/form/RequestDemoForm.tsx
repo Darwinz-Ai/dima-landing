@@ -46,7 +46,6 @@ function RequestDemoForm({ className }: { className?: string }) {
             ...data,
             phoneNumber: fullPhoneNumber
         }
-
         try {
             const response = await requestDemo(passedData);
 
