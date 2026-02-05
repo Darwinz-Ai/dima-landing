@@ -1,6 +1,7 @@
 import { CaseStudy, QuestionAccordion } from "@/types";
 import { Blog } from "@/types/blog";
 import { getLocale, getTranslations } from "next-intl/server";
+import { dimaSolutions } from "@/data/home-page/links";
 import { Article, BlogPosting, BreadcrumbList, ContactPage, FAQPage, ItemList, Organization, WebApplication, WebPage, WithContext } from "schema-dts"
 
 export const getOrganizationJsonLd = async () => {
@@ -635,6 +636,69 @@ export const getFAQJsonLd = async (items: QuestionAccordion[]) => {
         })),
         keywords: t.raw("keywords")
     }
+
+    return jsonLd;
+}
+
+export const getSiteNavigationElementJsonLd = async () => {
+    const t = await getTranslations("Navbar");
+    const locale = await getLocale();
+    const baseUrl = `https://thedar.ai/${locale}`;
+
+    // Build navigation items with individual solution pages
+    const navigationItems: Array<{
+        "@type": "SiteNavigationElement";
+        name: string;
+        url: string;
+        hasPart?: Array<{
+            "@type": "SiteNavigationElement";
+            name: string;
+            url: string;
+        }>;
+    }> = [
+            {
+                "@type": "SiteNavigationElement",
+                name: t("home"),
+                url: `${baseUrl}/`,
+            },
+            ...dimaSolutions.map((solution) => ({
+                "@type": "SiteNavigationElement" as const,
+                name: t(`solutions.links.${solution.translationKey}.title`),
+                url: `${baseUrl}${solution.href}`,
+            })),
+            {
+                "@type": "SiteNavigationElement",
+                name: t("blogs"),
+                url: `${baseUrl}/blogs`,
+            },
+            {
+                "@type": "SiteNavigationElement",
+                name: t("caseStudies"),
+                url: `${baseUrl}/case-studies`,
+            },
+            {
+                "@type": "SiteNavigationElement",
+                name: t("tools"),
+                url: `${baseUrl}/tools`,
+            },
+            {
+                "@type": "SiteNavigationElement",
+                name: t("faq"),
+                url: `${baseUrl}/faq`,
+            },
+        ];
+
+    const jsonLd: WithContext<ItemList> = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Site Navigation",
+        description: "Main navigation menu for TheDar.AI website",
+        itemListElement: navigationItems.map((item, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: item,
+        })),
+    };
 
     return jsonLd;
 }

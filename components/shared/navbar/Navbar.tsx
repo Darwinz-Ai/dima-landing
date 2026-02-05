@@ -6,12 +6,14 @@ import NavigationDropdown from "./NavigationDropdown";
 import { ArrowRight } from "lucide-react";
 import SolutionsDropdown from "./dropdowns/SolutionsDropdown";
 import LanguageSwitcher from "../LanguageSwitcher";
-import { useLocale, useTranslations } from "next-intl";
 import dimaLogo from "@/public/dima-logo/dima-logo.png"
+import { getLocale, getTranslations } from "next-intl/server";
+import { getSiteNavigationElementJsonLd } from "@/lib/jsonLd";
+import JsonLd from "../JsonLd";
 
-function Navbar() {
-    const t = useTranslations("Navbar");
-    const locale = useLocale();
+async function Navbar() {
+    const t = await getTranslations("Navbar");
+    const locale = await getLocale();
 
     // Define the order of navbar items based on locale
     const navbarItems = [
@@ -26,67 +28,73 @@ function Navbar() {
     // Reverse the order for Arabic locale
     const orderedNavbarItems = locale === "ar" ? [...navbarItems].reverse() : navbarItems;
 
+    const linksJsonLd = await getSiteNavigationElementJsonLd();
+
     return (
-        <header className="fixed top-0 left-1/2 -translate-x-1/2 z-50 shadow-[0_0_15px_rgba(0,0,0,0.12)] bg-white md:mt-4 md:rounded-full container" dir="ltr">
-            <div className="max-h-20 flex justify-between items-center p-4 md:mx-8">
-                <Link href="/" className="order-1">
-                    <figure>
-                        <Image
-                            src={dimaLogo}
-                            alt="Dima logo"
-                            width={74}
-                            height={30}
-                            unoptimized={true}
-                        />
-                    </figure>
-                </Link>
+        <>
+            <JsonLd data={[linksJsonLd]} />
 
-                {/* Navbar for desktop screens */}
-                <nav className="hidden lg:inline-flex items-center order-2">
-                    {orderedNavbarItems.map((item, index) => (
-                        <div key={index} className="cursor-pointer mx-2 group relative">
-                            {item.href ? (
-                                <Link href={item.href}>
-                                    <span>{item.name}</span>
-                                </Link>
-                            ) : (
-                                <NavigationDropdown triggerName={item.name}>
-                                    {item.dropdown}
-                                </NavigationDropdown>
-                            )}
-                            {item.href && (
-                                <div className="h-0.5 w-0 bg-primary group-hover:w-4 transition-all duration-200 absolute -bottom-0.5 left-1/2 -translate-x-1/2"></div>
-                            )}
-                        </div>
-                    ))}
-                </nav>
+            <header className="fixed top-0 left-1/2 -translate-x-1/2 z-50 shadow-[0_0_15px_rgba(0,0,0,0.12)] bg-white md:mt-4 md:rounded-full container" dir="ltr">
+                <div className="max-h-20 flex justify-between items-center p-4 md:mx-8">
+                    <Link href="/" className="order-1">
+                        <figure>
+                            <Image
+                                src={dimaLogo}
+                                alt="Dima logo"
+                                width={74}
+                                height={30}
+                                unoptimized={true}
+                            />
+                        </figure>
+                    </Link>
 
-                <div className="inline-flex items-center gap-4 order-3">
-                    {/* Drawer for mobile screens */}
-                    <div className="flex items-center lg:hidden order-3">
-                        <NavDrawer />
-                    </div>
+                    {/* Navbar for desktop screens */}
+                    <nav className="hidden lg:inline-flex items-center order-2">
+                        {orderedNavbarItems.map((item, index) => (
+                            <div key={index} className="cursor-pointer mx-2 group relative">
+                                {item.href ? (
+                                    <Link href={item.href}>
+                                        <span>{item.name}</span>
+                                    </Link>
+                                ) : (
+                                    <NavigationDropdown triggerName={item.name}>
+                                        {item.dropdown}
+                                    </NavigationDropdown>
+                                )}
+                                {item.href && (
+                                    <div className="h-0.5 w-0 bg-primary group-hover:w-4 transition-all duration-200 absolute -bottom-0.5 left-1/2 -translate-x-1/2"></div>
+                                )}
+                            </div>
+                        ))}
+                    </nav>
 
-                    {/*  Language Switcher and Request a Demo */}
-                    <div className="inline-flex items-center gap-2 order-1 lg:order-3">
-                        <div dir={locale === "ar" ? "rtl" : "ltr"}>
-                            <LanguageSwitcher />
+                    <div className="inline-flex items-center gap-4 order-3">
+                        {/* Drawer for mobile screens */}
+                        <div className="flex items-center lg:hidden order-3">
+                            <NavDrawer />
                         </div>
 
-                        {/* CTA */}
-                        <Link href="/request-demo" className="text-[15px]" aria-label="Go To Request A Demo">
-                            <Button className="hidden lg:flex justify-between py-2 pl-4 pr-2.5">
-                                {t("requestDemo")}
-                                <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center">
-                                    <ArrowRight color="black" />
-                                </div>
-                            </Button>
-                        </Link>
+                        {/*  Language Switcher and Request a Demo */}
+                        <div className="inline-flex items-center gap-2 order-1 lg:order-3">
+                            <div dir={locale === "ar" ? "rtl" : "ltr"}>
+                                <LanguageSwitcher />
+                            </div>
 
+                            {/* CTA */}
+                            <Link href="/request-demo" className="text-[15px]" aria-label="Go To Request A Demo">
+                                <Button className="hidden lg:flex justify-between py-2 pl-4 pr-2.5">
+                                    {t("requestDemo")}
+                                    <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center">
+                                        <ArrowRight color="black" />
+                                    </div>
+                                </Button>
+                            </Link>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </>
     );
 }
 
