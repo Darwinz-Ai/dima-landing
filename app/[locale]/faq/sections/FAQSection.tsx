@@ -35,12 +35,12 @@ const FAQSection = () => {
     }, [selectedCategory, tSolutions])
 
     return (
-        <SectionWrapper className='px-12'>
-            <div className="grid grid-cols-3 gap-4 min-h-fit w-full">
+        <SectionWrapper className='lg:px-12'>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-fit w-full">
                 {/* Search & Category List */}
-                <div className="col-span-1 bg-linear-to-b from-primary to-[#8A38F5] p-1 rounded-3xl">
-                    <div className="bg-white rounded-[20px] px-6 py-4 space-y-3 w-full h-full">
-                        <h3 className="text-2xl font-semibold">{tFaq("categorySearch.category")}</h3>
+                <div className="col-span-1 lg:bg-linear-to-b from-primary to-[#8A38F5] p-1 rounded-3xl">
+                    <div className="bg-white rounded-[20px] lg:px-6 py-4 space-y-3 w-full h-full">
+                        <h3 className="text-2xl font-semibold text-center lg:text-start">{tFaq("categorySearch.category")}</h3>
 
                         <Command
                             className={cn(
@@ -55,33 +55,44 @@ const FAQSection = () => {
                         >
                             <CommandInput placeholder={tFaq("categorySearch.searchPlaceholder")} />
 
-                            <CommandList
-                                className={cn(
-                                    "mt-3 max-h-none",
-                                )}
-                            >
-                                <CommandEmpty>{tFaq("categorySearch.noResults")}</CommandEmpty>
+                            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] -mx-3 px-3">
+                                <CommandList
+                                    className={cn(
+                                        "mt-3 max-h-none min-w-fit",
+                                        "[&>div]:flex lg:[&>div]:flex-col lg:[&>div]:gap-0 ",
+                                    )}
+                                >
+                                    <CommandEmpty>{tFaq("categorySearch.noResults")}</CommandEmpty>
+                                    {listItems.map((item) => {
 
-                                {listItems.map((item) => (
-                                    <CommandItem
-                                        key={item}
-                                        className={cn(
-                                            "px-0 py-4 font-medium cursor-pointer hover:bg-transparent data-[selected=true]:bg-transparent data-[selected=true]:text-primary transition-all duration-200 text-lg",
-                                            "border-b border-gray-300 last:border-b-0 rounded-none",
+                                        console.log("selectedCategory:", selectedCategory)
+                                        console.log("item:", item)
+                                        console.log(selectedCategory === item)
 
-                                            selectedCategory === item ? "text-primary ms-2" : "text-black"
-                                        )}
-                                        onSelect={() => setSelectedCategory(item)}
-                                        value={item}
-                                    >
-                                        {item}
-                                    </CommandItem>
-                                ))}
-                            </CommandList>
+                                        return (
+                                            <CommandItem
+                                                key={item}
+                                                className={cn(
+                                                    "px-2 lg:px-0 py-4 font-medium cursor-pointer hover:bg-transparent transition-all duration-200 text-lg whitespace-nowrap data-[selected=true]:bg-transparent",
+                                                    "data-[selected=true]:text-black data-[selected=false]:text-muted-foreground/60", // ui for mobile items
+                                                    "lg:data-[selected=true]:text-primary lg:data-[selected=false]:text-black", // ui for desktop items
+                                                    "border-b border-gray-300 lg:last:border-b-0 rounded-none",
+                                                    selectedCategory === item ? "lg:text-primary! text-black! border-b-black lg:border-gray-300" : "lg:text-black"
+                                                )}
+                                                onSelect={() => setSelectedCategory(item)}
+                                                value={item}
+                                            >
+                                                {item}
+                                            </CommandItem>
+                                        )
+                                    })}
+                                </CommandList>
+                            </div>
                         </Command>
                     </div>
                 </div>
 
+                {/* FAQ Content */}
                 <div className="col-span-2">
                     <QuestionsAccordion items={dynamicFaqs} />
                 </div>
