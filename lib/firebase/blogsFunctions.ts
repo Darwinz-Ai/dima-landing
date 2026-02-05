@@ -67,6 +67,7 @@ export const fetchSingleBlog = async (locale: string, slug: string) => {
     return {
         id: docSnap.id,
         ...data,
+        tags: data.tags[locale] || data.tags["en"],
         content: data.content[locale] || data.content["en"]
     } as Blog
 }

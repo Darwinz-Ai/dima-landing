@@ -28,7 +28,7 @@ export async function generateMetadata(
                 description: caseStudy.content.description,
                 url: `https://thedar.ai/${locale}/case-studies/${slug}`,
                 locale,
-                siteName: "dima",
+                siteName: "TheDar.AI",
                 images: [
                     {
                         url: caseStudy.ogImage || "/og/caseStudy.png",

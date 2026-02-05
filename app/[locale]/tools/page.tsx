@@ -23,8 +23,8 @@ export async function generateMetadata(
     return buildLocalizedMetadata(locale, "Tools", {
         overrides: {
             openGraph: {
-                url: "https://thedar.ai/tools",
-                siteName: "dima",
+                url: `https://thedar.ai/${locale}/tools`,
+                siteName: "TheDar.AI",
                 type: "website",
                 images: [
                     {
@@ -40,10 +40,11 @@ export async function generateMetadata(
                 images: ["/og/tools.png"],
             },
             alternates: {
-                canonical: "https://thedar.ai/tools",
+                canonical: `https://thedar.ai/${locale}/tools`,
                 languages: {
-                    "en-US": "https://thedar.ai/en/tools",
-                    "ar-SA": "https://thedar.ai/ar/tools",
+                    en: "https://thedar.ai/en/tools",
+                    ar: "https://thedar.ai/ar/tools",
+                    "x-default": "https://thedar.ai/en/tools"
                 }
             },
         },

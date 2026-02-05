@@ -18,7 +18,7 @@ export async function generateMetadata(
         overrides: {
             openGraph: {
                 url: `https://thedar.ai/${locale}/tools/arabic-dialect`,
-                siteName: "dima",
+                siteName: "TheDar.AI",
                 locale,
                 type: "website",
                 images: [

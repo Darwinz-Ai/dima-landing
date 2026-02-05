@@ -27,7 +27,7 @@ export async function generateMetadata(
       metadataBase: new URL("https://thedar.ai"),
       openGraph: {
         url: `https://thedar.ai/${locale}`,
-        siteName: "dima",
+        siteName: "TheDar.AI",
         locale,
         type: "website",
         images: [

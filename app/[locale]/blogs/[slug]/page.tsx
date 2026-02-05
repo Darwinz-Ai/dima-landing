@@ -18,21 +18,16 @@ export async function generateMetadata(
     try {
         const { slug, locale } = await params;
         const blog = await fetchSingleBlog(locale, slug);
-
         return {
             title: `${blog.content.title} - dima`,
             description: blog.content.description,
             keywords: [
                 blog.content.title,
-                "dima blog",
-                "media monitoring",
-                "social listening",
-                "PR and communications",
-                "Arabic media analytics",
+                ...blog.tags
             ],
             openGraph: {
                 url: `https://thedar.ai/${locale}/${slug}`,
-                siteName: "dima",
+                siteName: "TheDar.AI",
                 locale,
                 title: `${blog.content.title} - dima`,
                 description: blog.content.description,
@@ -53,6 +48,8 @@ export async function generateMetadata(
             }
         };
     } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : "Error occurred"
+        console.log("Error:", errorMessage)
         return {
             title: "Blog Not Found - dima",
             description: "The requested blog does not exist.",
