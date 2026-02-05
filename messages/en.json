@@ -39,6 +39,7 @@
     "blogs": "Blogs",
     "caseStudies": "Case Studies",
     "tools": "Tools",
+    "faq": "FAQs",
     "requestDemo": "Request a Demo"
   },
   "Footer": {
@@ -87,6 +88,9 @@
         },
         "blogs": {
           "title": "Blogs"
+        },
+        "tools": {
+          "title": "Tools"
         },
         "faqs": {
           "title": "FAQs"

@@ -1,44 +1,42 @@
 "use client";
 import SectionWrapper from '@/components/shared/SectionWrapper'
-import { Command, CommandEmpty, CommandInput, CommandItem, CommandList, CommandSeparator } from '@/components/ui/command'
+import { Command, CommandEmpty, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
 import { cn } from '@/lib/utils'
 import { useMemo, useState } from 'react'
 import QuestionsAccordion from '../../(home)/components/QuestionsAccordion';
 import { useTranslations } from 'next-intl';
 import { QuestionAccordion } from '@/types';
 
-
-const getSlugFromCategory: Record<string, string> = {
-    "Social Listening & Analytics": "social-listening-analytics",
-    "PR & Comms": "pr-comms",
-    "Market Insights": "market-insights",
-    "Own Page Intelligence": "own-page-intelligence",
-    "Influencer Marketing": "influencer-marketing",
-    "Consumer Insights": "consumer-insights"
-}
-
 const FAQSection = () => {
     const tFaq = useTranslations("FAQ");
     const tSolutions = useTranslations("Solutions");
 
+    const categorySlugs = useMemo(() => [
+        "general",
+        "social-listening-analytics",
+        "pr-comms",
+        "market-insights",
+        "own-page-intelligence",
+        "consumer-insights",
+        "influencer-marketing"
+    ], [])
+
     const listItems = tFaq.raw("categorySearch.listItems") as string[];
-    const [selectedCategory, setSelectedCategory] = useState<string>(listItems[0]);
+    const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
     const dynamicFaqs = useMemo(() => {
-        const slug = getSlugFromCategory[selectedCategory];
-        if (!slug) {
-            setSelectedCategory(listItems[0])
-            return tFaq.raw("faqs") as QuestionAccordion[];
-        };
+        const slug = categorySlugs[selectedIndex];
+
+        if (slug === "general") return tFaq.raw("faqs") as QuestionAccordion[];
 
         return tSolutions.raw(`${slug}.faqs`) as QuestionAccordion[]
-    }, [selectedCategory, tSolutions])
+    }, [selectedIndex, tSolutions, tFaq, categorySlugs])
 
     return (
         <SectionWrapper className='lg:px-12'>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 min-h-fit w-full">
                 {/* Search & Category List */}
-                <div className="col-span-1 lg:bg-linear-to-b from-primary to-[#8A38F5] p-1 rounded-3xl">
+                <div className="lg:col-span-1 lg:bg-linear-to-b from-primary to-[#8A38F5] p-1 rounded-3xl">
                     <div className="bg-white rounded-[20px] lg:px-6 py-4 space-y-3 w-full h-full">
                         <h3 className="text-2xl font-semibold text-center lg:text-start">{tFaq("categorySearch.category")}</h3>
 
@@ -55,7 +53,7 @@ const FAQSection = () => {
                         >
                             <CommandInput placeholder={tFaq("categorySearch.searchPlaceholder")} />
 
-                            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] -mx-3 px-3">
+                            <div className="overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ">
                                 <CommandList
                                     className={cn(
                                         "mt-3 max-h-none min-w-fit",
@@ -63,29 +61,24 @@ const FAQSection = () => {
                                     )}
                                 >
                                     <CommandEmpty>{tFaq("categorySearch.noResults")}</CommandEmpty>
-                                    {listItems.map((item) => {
-
-                                        console.log("selectedCategory:", selectedCategory)
-                                        console.log("item:", item)
-                                        console.log(selectedCategory === item)
-
-                                        return (
-                                            <CommandItem
-                                                key={item}
-                                                className={cn(
-                                                    "px-2 lg:px-0 py-4 font-medium cursor-pointer hover:bg-transparent transition-all duration-200 text-lg whitespace-nowrap data-[selected=true]:bg-transparent",
-                                                    "data-[selected=true]:text-black data-[selected=false]:text-muted-foreground/60", // ui for mobile items
-                                                    "lg:data-[selected=true]:text-primary lg:data-[selected=false]:text-black", // ui for desktop items
-                                                    "border-b border-gray-300 lg:last:border-b-0 rounded-none",
-                                                    selectedCategory === item ? "lg:text-primary! text-black! border-b-black lg:border-gray-300" : "lg:text-black"
-                                                )}
-                                                onSelect={() => setSelectedCategory(item)}
-                                                value={item}
-                                            >
-                                                {item}
-                                            </CommandItem>
-                                        )
-                                    })}
+                                    {listItems.map((item, idx) =>
+                                    (
+                                        <CommandItem
+                                            key={item}
+                                            className={cn(
+                                                "px-2 lg:px-0 py-4 font-medium cursor-pointer hover:bg-transparent transition-all duration-200 text-lg whitespace-nowrap data-[selected=true]:bg-transparent",
+                                                "data-[selected=true]:text-black data-[selected=false]:text-muted-foreground/60", // ui for mobile items
+                                                "lg:data-[selected=true]:text-primary lg:data-[selected=false]:text-black", // ui for desktop items
+                                                "border-b border-gray-300 lg:last:border-b-0 rounded-none",
+                                                selectedIndex === idx ? "lg:text-primary! text-black! border-b-black lg:border-gray-300" : "lg:text-black"
+                                            )}
+                                            onSelect={() => setSelectedIndex(idx)}
+                                            value={item}
+                                        >
+                                            {item}
+                                        </CommandItem>
+                                    )
+                                    )}
                                 </CommandList>
                             </div>
                         </Command>
@@ -93,7 +86,7 @@ const FAQSection = () => {
                 </div>
 
                 {/* FAQ Content */}
-                <div className="col-span-2">
+                <div className="lg:col-span-2">
                     <QuestionsAccordion items={dynamicFaqs} />
                 </div>
             </div>

@@ -14,6 +14,16 @@ export const footerResourcesLinks: NavLink[] = [
     href: "/blogs",
     translationKey: "blogs",
   },
+  {
+    title: "Tools",
+    href: "/tools",
+    translationKey: "tools"
+  },
+  {
+    title: "FAQs",
+    href: "/faq",
+    translationKey: "faqs"
+  }
 ];
 
 export const dimaSolutions: SolutionLink[] = [

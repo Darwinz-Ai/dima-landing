@@ -20,6 +20,7 @@ function Navbar() {
         { name: t("blogs"), href: "/blogs" },
         { name: t("caseStudies"), href: "/case-studies" },
         { name: t("tools"), href: "/tools" },
+        { name: t("faq"), href: "/faq" },
     ];
 
     // Reverse the order for Arabic locale
