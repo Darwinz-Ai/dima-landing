@@ -5,6 +5,10 @@ import RequestDemoSection from '@/components/shared/form/RequestDemoSection'
 import TestimonialSection from '../(home)/sections/TestimonialSection'
 import { Metadata } from 'next'
 import { buildLocalizedMetadata } from '@/lib/seo'
+import { getTranslations } from 'next-intl/server'
+import { QuestionAccordion } from '@/types'
+import JsonLd from '@/components/shared/JsonLd'
+import { getFAQJsonLd } from '@/lib/jsonLd'
 
 interface FAQPageProps {
     params: Promise<{ locale: string }>
@@ -45,9 +49,14 @@ export async function generateMetadata(
     });
 }
 
-const FAQPage = () => {
+const FAQPage = async () => {
+    const t = await getTranslations("FAQ");
+    const faqs = t.raw("faqs") as QuestionAccordion[]
+    const FAQJsonLd = await getFAQJsonLd(faqs);
     return (
         <main>
+            <JsonLd data={[FAQJsonLd]} />
+
             <HeroSection />
             <FAQSection />
             <RequestDemoSection />

@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import JsonLd from "@/components/shared/JsonLd";
-import { getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
+import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
 import { QuestionAccordion } from "@/types";
 import { getTranslations } from "next-intl/server";
 
@@ -56,15 +56,16 @@ export async function generateMetadata(
 }
 
 async function HomePage() {
-  const orgJsonLd = await getOrganizationJsonLd();
-  const productJsonLd = await getProductJsonLd();
-
   const tHomeQuestions = await getTranslations("Home.questionsAnswered");
   const faqs = (tHomeQuestions.raw("faqs") as QuestionAccordion[]) ?? [];
 
+  const orgJsonLd = await getOrganizationJsonLd();
+  const productJsonLd = await getProductJsonLd();
+  const faqJsonLd = await getFAQJsonLd(faqs);
+
   return (
     <main className="h-full">
-      <JsonLd data={[orgJsonLd, productJsonLd]} />
+      <JsonLd data={[orgJsonLd, productJsonLd, faqJsonLd]} />
 
       <HeroSection />
       <EmpoweringAgenciesSection />

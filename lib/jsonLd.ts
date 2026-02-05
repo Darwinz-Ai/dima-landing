@@ -1,7 +1,7 @@
-import { CaseStudy } from "@/types";
+import { CaseStudy, QuestionAccordion } from "@/types";
 import { Blog } from "@/types/blog";
 import { getLocale, getTranslations } from "next-intl/server";
-import { Article, BlogPosting, BreadcrumbList, ContactPage, ItemList, Organization, WebApplication, WebPage, WithContext } from "schema-dts"
+import { Article, BlogPosting, BreadcrumbList, ContactPage, FAQPage, ItemList, Organization, WebApplication, WebPage, WithContext } from "schema-dts"
 
 export const getOrganizationJsonLd = async () => {
     const locale = await getLocale();
@@ -236,6 +236,7 @@ export const createBreadcrumbs = (parts: { name: string, path: string }[]): With
     return {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
+        name: "Navigation Links",
         itemListElement: parts.map((part, index) => ({
             "@type": "ListItem",
             position: index + 1,
@@ -459,6 +460,7 @@ export const getSingleBlogJsonLd = async (blog: Blog) => {
     const jsonLd: WithContext<BlogPosting> = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
+        name: blog.content.title,
         mainEntity: {
             "@type": "WebPage",
             "@id": `https://thedar.ai/${locale}/blogs/${blog.id}`
@@ -520,6 +522,7 @@ export const getSingleCaseStudyPageJsonLd = async (caseStudy: CaseStudy) => {
     const jsonLd: WithContext<Article> = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
+        name: caseStudy.content.title,
         mainEntity: {
             "@type": "WebPage",
             "@id": `https://thedar.ai/${locale}/case-studies/${caseStudy.id}`
@@ -606,6 +609,31 @@ export const getPrivacyPolicyJsonLd = async () => {
         },
         dateCreated: new Date().toISOString(),
         keywords: t.raw("keywords"),
+    }
+
+    return jsonLd;
+}
+
+export const getFAQJsonLd = async (items: QuestionAccordion[]) => {
+    const locale = await getLocale();
+    const t = await getTranslations("SEO.FAQ");
+
+    const jsonLd: WithContext<FAQPage> = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        name: t("title"),
+        description: t("description"),
+        url: `https://thedar.ai/${locale}/faq`,
+        inLanguage: locale,
+        mainEntity: items.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: item.answer
+            }
+        })),
+        keywords: t.raw("keywords")
     }
 
     return jsonLd;

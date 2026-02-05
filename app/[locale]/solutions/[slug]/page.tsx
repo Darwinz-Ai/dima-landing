@@ -8,7 +8,7 @@ import QuestionsAnsweredSection from "@/app/[locale]/(home)/sections/QuestionsAn
 import { notFound } from "next/navigation";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { buildLocalizedMetadata, SolutionsSeoKey } from "@/lib/seo";
-import { getSolutionSchema } from "@/lib/jsonLd";
+import { getFAQJsonLd, getSolutionSchema } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
 import { getTranslations } from "next-intl/server";
 import { QuestionAccordion } from "@/types";
@@ -135,10 +135,11 @@ async function SolutionPage({ params }: SolutionPageProps) {
 
     const tSolutions = await getTranslations("Solutions");
     const faqs = (tSolutions.raw(`${slug}.faqs`) as QuestionAccordion[]) ?? [];
+    const faqJsonLd = await getFAQJsonLd(faqs);
 
     return (
         <main>
-            <JsonLd data={[breadcrumbsJsonLd, serviceJsonLd]} />
+            <JsonLd data={[breadcrumbsJsonLd, serviceJsonLd, faqJsonLd]} />
 
             <HeroSection slug={slug} />
             <ExpandingCardsSection slug={slug} />
