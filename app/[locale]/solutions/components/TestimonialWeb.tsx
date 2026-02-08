@@ -1,12 +1,12 @@
 import { testimonialAssets } from "@/data/solutions";
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 
-function TestimonialWeb({ slug }: { slug: string }) {
-    const t = useTranslations(`Solutions.${slug}.testimonial`)
+async function TestimonialWeb({ slug }: { slug: string }) {
+    const t = await getTranslations(`Solutions.${slug}.testimonial`)
     const assets = testimonialAssets[slug];
-    const locale = useLocale();
+    const locale = await getLocale();
     const isRTL = locale === "ar";
     return (
         <div className="container mx-auto hidden md:flex flex-col lg:flex-row justify-center items-stretch gap-8 px-4 sm:px-6 lg:px-8 ">

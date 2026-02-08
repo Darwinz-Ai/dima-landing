@@ -13,7 +13,7 @@ function MobileScrollingCard({ title, description, slug, index }: CardType) {
                 key={index}
                 className="
             w-full sm:w-[340px]
-            h-[340px] sm:h-[240px]
+            h-[340px] sm:h-60
             shrink-0
             rounded-xl 
             bg-[linear-gradient(-125deg,#95DDEE_0%,#11A8CF_32%,#95DDEE_46%,#11A8CF_100%)] 

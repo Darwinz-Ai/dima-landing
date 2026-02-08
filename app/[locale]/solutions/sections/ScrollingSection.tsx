@@ -1,14 +1,14 @@
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
 import PinnedScrollSection from "../components/PinnedScrollSection";
-import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { IconArrowRight } from "@tabler/icons-react";
 import MobileScrollingCard from "../components/MobileScrollingCard";
 import { CardType } from "@/types";
+import { getTranslations } from "next-intl/server";
 
-function ScrollingSection({ slug }: { slug: string }) {
-    const t = useTranslations(`Solutions.${slug}.scrollingSection`);
+async function ScrollingSection({ slug }: { slug: string }) {
+    const t = await getTranslations(`Solutions.${slug}.scrollingSection`);
     const cards = t.raw("cards") as CardType[];
     return (
         <SectionWrapper className="mb-0">
@@ -41,7 +41,7 @@ function ScrollingSection({ slug }: { slug: string }) {
                     <Button className="lg:hidden flex justify-between py-2 pl-4 pr-2.5">
                         <Link href="/request-demo" className="text-[15px]">{t("requestDemo")}</Link>
                         <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center">
-                            <ArrowRight color="black" />
+                            <IconArrowRight color="black" />
                         </div>
                     </Button>
                 </div>

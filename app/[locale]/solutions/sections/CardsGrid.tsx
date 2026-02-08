@@ -1,10 +1,10 @@
 import { CardType } from "@/types";
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
 import EntrepriseCard from "../components/EnterpriseCard";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-function CardsGrid({ slug }: { slug: string }) {
-    const t = useTranslations(`Solutions.${slug}.cardsGrid`)
+async function CardsGrid({ slug }: { slug: string }) {
+    const t = await getTranslations(`Solutions.${slug}.cardsGrid`)
     const cards = t.raw("cards") as CardType[];
     return (
         <SectionWrapper>

@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { testimonialAssets } from "@/data/solutions";
 
-function TestimonialMobile({ slug }: { slug: string }) {
-    const t = useTranslations(`Solutions.${slug}.testimonial`)
+async function TestimonialMobile({ slug }: { slug: string }) {
+    const t = await getTranslations(`Solutions.${slug}.testimonial`)
     const assets = testimonialAssets[slug];
-    const locale = useLocale();
+    const locale = await getLocale();
     const isRTL = locale === "ar";
     return (
         <div className="container mx-auto flex flex-col gap-4 md:hidden">
