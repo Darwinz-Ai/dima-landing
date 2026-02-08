@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Progress } from "@/components/ui/progress";
-import { Download, CheckCircle2, XCircle, ExternalLink } from "lucide-react";
+import { IconDownload, IconCircleCheck, IconCircleX, IconExternalLink } from "@tabler/icons-react";
 import { jsPDF } from "jspdf";
 import { useTranslations } from "next-intl";
 
@@ -280,7 +280,7 @@ const CrisisReadinessScore = () => {
                                 .slice(0, 5)
                                 .map(q => (
                                     <div key={q.id} className="flex items-start gap-3 p-4 bg-muted rounded-lg">
-                                        <XCircle className="w-5 h-5 text-error mt-0.5 shrink-0" />
+                                        <IconCircleX className="w-5 h-5 text-error mt-0.5 shrink-0" />
                                         <div>
                                             <p className="font-medium">{t(`questions.${q.category}.category`)}</p>
                                             <p className="text-sm text-muted-foreground">{t(`questions.${q.category}.${q.id}`)}</p>
@@ -293,7 +293,7 @@ const CrisisReadinessScore = () => {
                     {/* Download / Retake buttons */}
                     <div className="flex flex-col md:flex-row gap-4 justify-center">
                         <Button onClick={downloadActionPlan} size="lg" className="gap-2">
-                            <Download className="w-5 h-5" />
+                            <IconDownload className="w-5 h-5" />
                             {t('buttons.download')}
                         </Button>
                         <Button onClick={() => setShowResults(false)} variant="outline" size="lg">
@@ -310,7 +310,7 @@ const CrisisReadinessScore = () => {
                                 <Button asChild size="lg" className="gap-2">
                                     <a href="https://thedar.ai/" target="_blank" rel="noopener noreferrer">
                                         {t('buttons.learnMore')}
-                                        <ExternalLink className="w-4 h-4" />
+                                        <IconExternalLink className="w-4 h-4" />
                                     </a>
                                 </Button>
                             </div>
@@ -342,7 +342,7 @@ const CrisisReadinessScore = () => {
                                                             onClick={() => handleBooleanAnswer(question.id, true)}
                                                             className={`flex-1 gap-2 ${answers[question.id] === 100}`}
                                                         >
-                                                            <CheckCircle2 className="w-4 h-4" />
+                                                            <IconCircleCheck className="w-4 h-4" />
                                                             {t('buttons.yes')}
                                                         </Button>
                                                         <Button
@@ -351,7 +351,7 @@ const CrisisReadinessScore = () => {
                                                             onClick={() => handleBooleanAnswer(question.id, false)}
                                                             className={`flex-1 gap-2 ${answers[question.id] === 100}`}
                                                         >
-                                                            <XCircle className="w-4 h-4" />
+                                                            <IconCircleX className="w-4 h-4" />
                                                             {t('buttons.no')}
                                                         </Button>
                                                     </div>
