@@ -6,7 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ArrowRight, ArrowLeft, Check, FileText, Globe, Sparkles } from "lucide-react";
+// import { ArrowRight, ArrowLeft, Check, FileText, Globe, Sparkles } from "lucide-react";
+import { IconArrowRight, IconArrowLeft, IconCheck, IconFileText, IconGlobe, IconSparkles, IconFile } from "@tabler/icons-react";
 // import jsPDF from "jspdf";
 import { useLocale, useTranslations } from "next-intl";
 import { toast } from "sonner";
@@ -267,7 +268,7 @@ export const ArabicCoverageWizard = () => {
                 : "bg-muted text-muted-foreground"
                 }`}
             >
-              {step > s ? <Check className="w-5 h-5" /> : s}
+              {step > s ? <IconCheck className="w-5 h-5" /> : s}
             </div>
             {s < 3 && (
               <div
@@ -285,7 +286,7 @@ export const ArabicCoverageWizard = () => {
           <div className="space-y-6">
             <div className="text-center space-y-3">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-2">
-                <FileText className="w-8 h-8 text-primary" />
+                <IconFile className="w-8 h-8 text-primary" />
               </div>
               <h2 className="text-3xl font-bold text-foreground">{t("steps.1.title")}</h2>
               <p className="text-muted-foreground text-lg">
@@ -307,7 +308,7 @@ export const ArabicCoverageWizard = () => {
                 className="gap-2"
               >
                 {t("steps.1.continue")}
-                <ArrowRight className="w-5 h-5" />
+                <IconArrowRight className="w-5 h-5" />
               </Button>
             </div>
           </div>
@@ -317,7 +318,7 @@ export const ArabicCoverageWizard = () => {
           <div className="space-y-6">
             <div className="text-center space-y-3">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-2">
-                <Globe className="w-8 h-8 text-primary" />
+                <IconGlobe className="w-8 h-8 text-primary" />
               </div>
               <h2 className="text-3xl font-bold text-foreground">{t("steps.2.title")}</h2>
               <p className="text-muted-foreground text-lg">
@@ -343,7 +344,7 @@ export const ArabicCoverageWizard = () => {
             </div>
             <div className="flex flex-col sm:flex-row justify-between gap-4">
               <Button onClick={() => setStep(1)} variant="outline" size="lg" className="gap-2 order-2 sm:order-1">
-                <ArrowLeft className="w-5 h-5" />
+                <IconArrowLeft className="w-5 h-5" />
                 {t("steps.2.back")}
               </Button>
               <Button
@@ -357,7 +358,7 @@ export const ArabicCoverageWizard = () => {
                 ) : (
                   <>
                     {t("steps.2.generate")}
-                    <Sparkles className="w-5 h-5" />
+                    <IconSparkles className="w-5 h-5" />
                   </>
                 )}
               </Button>
@@ -369,7 +370,7 @@ export const ArabicCoverageWizard = () => {
           <div className="space-y-6">
             <div className="text-center space-y-3">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-2">
-                <Check className="w-8 h-8 text-primary" />
+                <IconCheck className="w-8 h-8 text-primary" />
               </div>
               <h2 className="text-3xl font-bold text-foreground">{t("steps.3.title")}</h2>
               <p className="text-muted-foreground text-lg">
@@ -462,7 +463,7 @@ export const ArabicCoverageWizard = () => {
 
             <div className="bg-primary/5 rounded-lg p-6 border border-primary/20">
               <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                <Check className="w-5 h-5 text-primary" />
+                <IconCheck className="w-5 h-5 text-primary" />
                 {t("steps.3.checklistTitle")}
               </h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
