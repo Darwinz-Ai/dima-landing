@@ -1,6 +1,6 @@
 import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination";
 import { cn } from "@/lib/utils";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { useLocale } from "next-intl";
 import { MouseEvent } from "react";
 
@@ -61,7 +61,7 @@ function PaginationWrapper({
               !canGoPrevious && "pointer-events-none opacity-50"
             )}
           >
-            <ChevronLeftIcon className={`size-4 ${isRTL ? "rotate-180" : ""}`} />
+            <IconChevronLeft className={`size-4 ${isRTL ? "rotate-180" : ""}`} />
           </PaginationLink>
         </PaginationItem>
 
@@ -90,7 +90,7 @@ function PaginationWrapper({
               !canGoNext && "pointer-events-none opacity-50"
             )}
           >
-            {<ChevronRightIcon className={`size-4 ${isRTL ? "rotate-180" : ""}`} />}
+            {<IconChevronRight className={`size-4 ${isRTL ? "rotate-180" : ""}`} />}
           </PaginationLink>
         </PaginationItem>
       </PaginationContent>
