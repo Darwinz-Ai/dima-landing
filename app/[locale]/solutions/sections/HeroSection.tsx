@@ -2,11 +2,11 @@ import Image from "next/image";
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
 import LogoCarousel from "../../(home)/components/LogoCarousel";
 import CounterPercentage from "../components/CounterPercentage";
-import { useTranslations } from "next-intl";
 import { solutionImages } from "@/data/solutions";
+import { getTranslations } from "next-intl/server";
 
-function HeroSection({ slug }: { slug: string }) {
-    const t = useTranslations(`Solutions.${slug}.hero`);
+async function HeroSection({ slug }: { slug: string }) {
+    const t = await getTranslations(`Solutions.${slug}.hero`);
     const metrics = t.raw("metrics") as { number: number, title: string }[];
     return (
         <SectionWrapper className="min-h-dvh mt-20">
