@@ -1,7 +1,6 @@
 "use client"
 
 import { Dispatch, SetStateAction, useMemo, useState } from "react"
-
 import { UseFormRegister } from "react-hook-form"
 import { FormInputs } from "@/components/shared/form/RequestDemoForm"
 import { ButtonGroup } from "@/components/ui/button-group"
@@ -21,9 +20,8 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { getCountries, getCountryCallingCode, CountryCode } from "libphonenumber-js"
-import { ChevronsUpDown } from "lucide-react"
-import { Check } from "lucide-react"
+import { getCountries, getCountryCallingCode, CountryCode } from "libphonenumber-js/min"
+import { IconCheck, IconChevronDown } from "@tabler/icons-react"
 import { cn } from "@/lib/utils"
 
 type PhoneNumberInputProps = {
@@ -143,7 +141,7 @@ function PhoneNumberInput({ register, countryCode, setCountryCode, placeholder }
                             )}
                             <span>{selectedCountry?.callingCode ?? countryCode}</span>
                         </span>
-                        <ChevronsUpDown className="ml-2 h-4 w-4 opacity-50" />
+                        <IconChevronDown className="ml-2 h-4 w-4 opacity-50" />
                     </button>
                 </PopoverTrigger>
                 <PopoverContent className="w-[280px] p-0" align="start">
@@ -161,7 +159,7 @@ function PhoneNumberInput({ register, countryCode, setCountryCode, placeholder }
                                             setOpen(false)
                                         }}
                                     >
-                                        <Check
+                                        <IconCheck
                                             className={cn(
                                                 "mr-2 h-4 w-4",
                                                 country.callingCode === countryCode ? "opacity-100" : "opacity-0",

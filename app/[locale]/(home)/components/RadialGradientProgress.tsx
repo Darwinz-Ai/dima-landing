@@ -1,6 +1,6 @@
 "use client";
 import { m, useMotionValue, animate, useInView } from "motion/react";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 
 type RadialGradientProgressProps = {
     size?: number;

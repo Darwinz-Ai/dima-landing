@@ -1,11 +1,11 @@
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
 import Image from "next/image";
-import { useTranslations, useLocale } from "next-intl";
 import RequestDemoButton from "../../../../components/shared/form/RequestDemoButton";
+import { getLocale, getTranslations } from "next-intl/server";
 
-function DimaAiSection() {
-  const t = useTranslations("Home.dimaAi");
-  const locale = useLocale();
+async function DimaAiSection() {
+  const t = await getTranslations("Home.dimaAi");
+  const locale = await getLocale();
   const isRTL = locale === "ar";
   return (
     <SectionWrapper>

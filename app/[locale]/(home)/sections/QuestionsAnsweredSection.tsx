@@ -1,18 +1,18 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import QuestionsAccordion from "@/app/[locale]/(home)/components/QuestionsAccordion";
 import { QuestionAccordion } from "@/types";
+import { getTranslations } from "next-intl/server";
 
 type QuestionsAnsweredSectionProps = {
     faqs: QuestionAccordion[];
 };
 
-function QuestionsAnsweredSection({ faqs }: QuestionsAnsweredSectionProps) {
-    const homeTranslations = useTranslations("Home.questionsAnswered");
+async function QuestionsAnsweredSection({ faqs }: QuestionsAnsweredSectionProps) {
+    const homeTranslations = await getTranslations("Home.questionsAnswered");
 
     return (
         <SectionWrapper>
