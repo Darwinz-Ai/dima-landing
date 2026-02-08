@@ -1,6 +1,5 @@
 import SectionWrapper from '@/components/shared/SectionWrapper'
 import { getTranslations } from 'next-intl/server'
-import React from 'react'
 
 const HeroSection = async () => {
     const t = await getTranslations("FAQ")
