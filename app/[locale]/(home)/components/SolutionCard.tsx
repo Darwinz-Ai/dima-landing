@@ -1,13 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { SolutionLink } from "@/types";
-import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-function SolutionCard({ logo, href, translationKey }: SolutionLink) {
-  const locale = useLocale();
-  const t = useTranslations("Home.dimaSuite");
+async function SolutionCard({ logo, href, translationKey }: SolutionLink) {
+  const t = await getTranslations("Home.dimaSuite");
+  const locale = await getLocale();
   const isRTL = locale === "ar";
 
   return (

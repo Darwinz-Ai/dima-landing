@@ -1,11 +1,11 @@
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
 import SolutionCard from "../components/SolutionCard";
 import RequestDemoButton from "../../../../components/shared/form/RequestDemoButton";
-import { useTranslations } from "next-intl";
 import { dimaSolutions } from "@/data/home-page";
+import { getTranslations } from "next-intl/server";
 
-function DimaSuiteSection() {
-    const t = useTranslations("Home.dimaSuite");
+async function DimaSuiteSection() {
+    const t = await getTranslations("Home.dimaSuite");
     return (
         <SectionWrapper>
             <div className="container mx-auto flex flex-col justify-center items-center">

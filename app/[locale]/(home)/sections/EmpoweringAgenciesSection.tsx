@@ -1,10 +1,10 @@
 import { empoweringAgenciesInfo } from "@/data/home-page";
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
 import EmpoweringAgenciesCard from "../components/EmpoweringAgenciesCard";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-function EmpoweringAgenciesSection() {
-    const t = useTranslations("Home.empoweringAgencies");
+async function EmpoweringAgenciesSection() {
+    const t = await getTranslations("Home.empoweringAgencies");
     return (
         <SectionWrapper className="flex flex-col justify-center items-center px-4 sm:px-8 md:px-16">
             <div className="container mx-auto space-y-6 md:space-y-14 bg-no-repeat bg-contain" >

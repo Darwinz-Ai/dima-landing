@@ -33,35 +33,35 @@ export const ownConversationInfo: ConversationInfo[] = [
         title: "Listen, analyze & act",
         subTitle: "Cut through the noise of millions of unfiltered conversations to uncover the insights that matter most powered by AI.",
         icon: IconDeviceLaptop,
-        animationPath: "/animations/listen-lottie.json",
+        animationPath: "/animations/elevate-lottie.lottie",
         translationKey: "listen"
     },
     {
         title: "Daily monitoring & reports",
         subTitle: "Stay in control of your brand narrative with proactive monitoring and reporting.",
         icon: IconStack2Filled,
-        animationPath: "/animations/daily-lottie.json",
+        animationPath: "/animations/daily-lottie.lottie",
         translationKey: "daily"
     },
     {
         title: "Elevate your social presence",
         subTitle: "Turn your owned channels into proof of impact with AI content performance tracking.",
         icon: IconStack2Filled,
-        animationPath: "/animations/elevate-lottie.json",
+        animationPath: "/animations/elevate-lottie.lottie",
         translationKey: "elevate"
     },
     {
         title: "Benchmark performance",
         subTitle: "Outpace your competitors with insights that accelerate decisions and increases your share of voice",
         icon: IconUsersGroup,
-        animationPath: "/animations/benchmark-lottie.json",
+        animationPath: "/animations/benchmark-lottie.lottie",
         translationKey: "benchmark"
     },
     {
         title: "Understand your audience",
         subTitle: "Go beyond demographics, uncover what truly drives your audience and turn those insights into measurable impact.",
         icon: IconStack2Filled,
-        animationPath: "/animations/understand-lottie.json",
+        animationPath: "/animations/understand-lottie.lottie",
         translationKey: "understand"
     }
 ]

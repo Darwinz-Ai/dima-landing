@@ -1,17 +1,17 @@
 import { EmpoweringAgenciesInfo } from "@/types";
 import RadialGradientProgress from "./RadialGradientProgress";
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 
-export default function EmpoweringAgenciesCard({
+export default async function EmpoweringAgenciesCard({
     value,
     suffix,
     maxValue,
     translationKey,
     gapValue
 }: EmpoweringAgenciesInfo) {
-    const locale = useLocale();
+    const t = await getTranslations("Home.empoweringAgencies.cards")
+    const locale = await getLocale();
     const isRTL = locale === "ar";
-    const t = useTranslations("Home.empoweringAgencies.cards")
     return (
         <article className="w-full max-w-sm mx-auto h-full rounded-3xl shadow-md shadow-primary flex flex-col items-center gap-4 p-4 sm:p-6 bg-muted transition-transform duration-300 hover:scale-[1.02]">
             {/* Top section */}

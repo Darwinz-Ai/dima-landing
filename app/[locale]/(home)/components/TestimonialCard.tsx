@@ -1,11 +1,12 @@
+"use client";
 import { TestimonialType } from "@/types";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
 function TestimonialCard({ companyLogo, translationKey }: TestimonialType) {
+    const t = useTranslations("Home.testimonials.items")
     const locale = useLocale();
     const isRTL = locale === 'ar';
-    const t = useTranslations("Home.testimonials.items")
     return (
         <article className="w-[340px] h-[460px] relative flex flex-col p-6 bg-white rounded-xl shadow-md mx-1 my-8">
             <div className={`flex gap-4 items-start ${isRTL ? 'flex-row-reverse text-right' : ''}`}>

@@ -2,7 +2,7 @@
 import RequestDemoButton from '@/components/shared/form/RequestDemoButton';
 import { heroSlides } from '@/data/home-page';
 import { useLocale, useTranslations } from 'next-intl';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Typewriter from "typewriter-effect";
 
 const TypewriterComponent = () => {

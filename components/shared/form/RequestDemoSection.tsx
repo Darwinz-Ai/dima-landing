@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
 import RequestDemoForm from "@/components/shared/form/RequestDemoForm";
 import SectionWrapper from "../SectionWrapper";
+import { getLocale, getTranslations } from "next-intl/server";
 
-function RequestDemoSection() {
-  const t = useTranslations("Home.requestDemo");
-  const locale = useLocale();
+async function RequestDemoSection() {
+  const t = await getTranslations("Home.requestDemo");
+  const locale = await getLocale();
   const isRTL = locale === "ar";
 
   return (
