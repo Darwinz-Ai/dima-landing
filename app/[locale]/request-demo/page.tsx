@@ -94,7 +94,7 @@ async function RequestDemoPage() {
                                 className="object-contain"
                                 priority={true}
                                 fetchPriority="high"
-                                quality={90}
+
                             />
                         </figure>
                     </div>

@@ -17,7 +17,7 @@ function TestimonialMobile({ slug }: { slug: string }) {
                         width={40}
                         height={30}
                         className="sm:w-[89px] sm:h-[73px]"
-                        quality={90}
+
                     />
                 </figure>
                 <h2 className="text-[22px] lg:text-[40px] font-medium capitalize leading-snug">
@@ -41,7 +41,7 @@ function TestimonialMobile({ slug }: { slug: string }) {
                                 fill
                                 sizes="(max-width: 640px) 64px, 80px"
                                 className="object-contain"
-                                quality={90}
+
                             />
                         </figure>
 
@@ -63,7 +63,7 @@ function TestimonialMobile({ slug }: { slug: string }) {
                             fill
                             sizes="80px"
                             className="object-contain p-4"
-                            quality={90}
+
                         />
                     </figure>
                 </div>

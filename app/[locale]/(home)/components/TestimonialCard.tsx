@@ -16,7 +16,7 @@ function TestimonialCard({ companyLogo, translationKey }: TestimonialType) {
                         fill
                         sizes="24px"
                         className={`object-contain ${isRTL ? 'rotate-180' : ''}`}
-                        quality={90}
+
                     />
                 </figure>
                 <p className="text-sm leading-relaxed"><bdi>{t(`${translationKey}.quote`)}</bdi></p>
@@ -34,7 +34,7 @@ function TestimonialCard({ companyLogo, translationKey }: TestimonialType) {
                         width={120}
                         height={60}
                         className="object-contain"
-                        quality={90}
+
                     />
                 </figure>
 

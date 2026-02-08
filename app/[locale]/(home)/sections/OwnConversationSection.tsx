@@ -1,5 +1,5 @@
+import { getLocale, getTranslations } from "next-intl/server";
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
-import { getTranslations, getLocale } from "next-intl/server";
 import OwnConversationContent from "../components/OwnConversationContent";
 
 const OWN_CONVERSATION_KEYS = [

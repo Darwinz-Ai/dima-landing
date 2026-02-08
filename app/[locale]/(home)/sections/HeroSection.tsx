@@ -3,7 +3,7 @@ import LogoCarousel from "../components/LogoCarousel";
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
-import TypewriterComponent from "./TypewriterComponent";
+import TypewriterComponent from "../components/TypewriterComponent";
 
 
 export default function HeroSection() {
@@ -29,7 +29,7 @@ export default function HeroSection() {
             priority={true}
             fetchPriority="high"
             className="object-contain hidden sm:block"
-            quality={90}
+
           />
           <Image
             src={`/hero-bg-${locale}-mobile.png`}
@@ -39,7 +39,7 @@ export default function HeroSection() {
             priority={true}
             fetchPriority="high"
             className="object-contain block sm:hidden"
-            quality={90}
+
           />
         </figure>
       </div>

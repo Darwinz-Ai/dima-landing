@@ -20,7 +20,7 @@ function TestimonialWeb({ slug }: { slug: string }) {
                         width={70}
                         height={60}
                         className="sm:w-[89px] sm:h-[73px]"
-                        quality={90}
+
                     />
                 </figure>
 
@@ -42,7 +42,7 @@ function TestimonialWeb({ slug }: { slug: string }) {
                                 fill
                                 sizes="(max-width: 640px) 64px, 80px"
                                 className="object-contain"
-                                quality={90}
+
                             />
                         </figure>
 
@@ -67,7 +67,7 @@ function TestimonialWeb({ slug }: { slug: string }) {
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-contain"
                     alt="testimonial image"
-                    quality={90}
+
                 />
             </figure>
         </div>

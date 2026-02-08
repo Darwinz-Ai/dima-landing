@@ -13,7 +13,6 @@ export default function NotFound() {
             <div className="min-h-dvh h-full flex flex-col justify-between">
                 <Navbar />
                 <div className="min-h-[80dvh] flex flex-col justify-center items-center">
-                    {/* <PageLoader /> */}
                     <h1 className="text-7xl font-extrabold mb-4 text-primary">404</h1>
                     <h2 className="text-3xl font-semibold mb-4">{t("pageNotFound")}</h2>
                     <p className="text-center mb-6 max-w-md">

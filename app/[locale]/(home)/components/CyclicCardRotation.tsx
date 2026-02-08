@@ -69,7 +69,7 @@ export default function CyclicCardRotation({
                             className="object-contain drop-shadow-xl"
                             priority={true}
                             fetchPriority="high"
-                            quality={90}
+
                         />
                     </div>
                 </div>

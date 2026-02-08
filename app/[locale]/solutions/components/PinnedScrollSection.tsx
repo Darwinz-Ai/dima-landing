@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { CardType } from "@/types";
 import { solutionImages } from "@/data/solutions";
 
@@ -39,7 +39,7 @@ export default function PinnedScrollSection({ cards, slug }: { cards: CardType[]
                 >
                     <AnimatePresence mode="wait">
                         {images && (
-                            <motion.div
+                            <m.div
                                 key={images[currentStepIndex]}
                                 initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -55,9 +55,9 @@ export default function PinnedScrollSection({ cards, slug }: { cards: CardType[]
                                     className="object-contain p-4"
                                     priority={true}
                                     fetchPriority="high"
-                                    quality={90}
+
                                 />
-                            </motion.div>
+                            </m.div>
                         )}
                     </AnimatePresence>
                 </figure>

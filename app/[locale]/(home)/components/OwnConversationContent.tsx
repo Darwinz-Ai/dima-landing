@@ -1,11 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, easeOut, easeIn } from "motion/react";
+import { m, AnimatePresence, easeOut, easeIn } from "motion/react";
 import RequestDemoButton from "../../../../components/shared/form/RequestDemoButton";
-import Lottie from "lottie-react";
 import { ownConversationInfo } from "@/data/home-page";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const textVariants = {
   hidden: { opacity: 0, x: 20 },
@@ -32,6 +34,20 @@ function OwnConversationContent({
   const [activeIndex, setActiveIndex] = useState<number>(3);
   const activeFeature = ownConversationInfo[activeIndex];
   const [mounted, setMounted] = useState<boolean>(false);
+  const [animationData, setAnimationData] = useState<object | null>(null);
+  const [animationLoading, setAnimationLoading] = useState(true);
+
+  // Load Lottie JSON on demand when active feature changes
+  useEffect(() => {
+    setAnimationLoading(true);
+    fetch(activeFeature.animationPath)
+      .then((res) => res.json())
+      .then((data) => {
+        setAnimationData(data);
+        setAnimationLoading(false);
+      })
+      .catch(() => setAnimationLoading(false));
+  }, [activeFeature.animationPath]);
 
   // Auto-cycle through buttons every 4 seconds
   useEffect(() => {
@@ -98,12 +114,19 @@ function OwnConversationContent({
       >
         {/* Image Section */}
         <figure className="relative w-full max-w-[900px] h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[600px] overflow-hidden bg-linear-to-b xl:bg-none from-primary via-[#5FC9E7] to-[#AEEBFF] rounded-2xl">
-          <Lottie
-            animationData={activeFeature.animation}
-            autoplay
-            loop={false}
-            className="absolute inset-0 w-full h-full object-contain z-10 p-6"
-          />
+          {animationLoading || !animationData ? (
+            <div className="absolute inset-0 flex items-center justify-center z-10" aria-hidden>
+              <div className="w-16 h-16 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
+            </div>
+          ) : (
+            <Lottie
+              animationData={animationData}
+              autoplay
+              loop={false}
+              className="absolute inset-0 w-full h-full object-contain z-10 p-6"
+
+            />
+          )}
         </figure>
 
         {/* Info + Button */}
@@ -131,7 +154,7 @@ function OwnConversationContent({
             </div>
           ) : (
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={activeFeature.translationKey}
                 variants={textVariants}
                 exit="exit"
@@ -150,7 +173,7 @@ function OwnConversationContent({
                   {featureTranslations[activeFeature.translationKey]
                     ?.description ?? ""}
                 </p>
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           )}
 

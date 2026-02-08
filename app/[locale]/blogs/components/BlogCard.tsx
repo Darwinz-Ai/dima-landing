@@ -35,7 +35,7 @@ function BlogCard({ orientation = "vertical", includeImage = true, blog }: BlogC
                             fill
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 40vw, 25vw"
                             className="object-cover"
-                            quality={90}
+
                         />
                     </figure>
 

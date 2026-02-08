@@ -31,7 +31,7 @@ function SolutionsDropdown() {
                             width={200}
                             height={200}
                             priority
-                            quality={90}
+
                         />
                     </figure>
                     <div>

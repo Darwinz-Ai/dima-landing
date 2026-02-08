@@ -35,6 +35,7 @@ function DimaAiSection() {
               fill
               className="object-contain "
               loading="lazy"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </figure>
         </div>

@@ -12,7 +12,7 @@ function BrandCard({ image, companyName, description }: BrandCardInfo) {
                     className="object-contain"
                     alt={companyName}
                     priority
-                    quality={90}
+
                 />
             </figure>
 

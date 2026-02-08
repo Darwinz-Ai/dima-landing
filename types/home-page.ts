@@ -20,7 +20,7 @@ export type ConversationInfo = {
     title: string;
     subTitle: string;
     icon: Icon;
-    animation: object;
+    animationPath: string;
     translationKey: string;
 };
 

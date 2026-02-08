@@ -1,6 +1,6 @@
 "use client";
 import { ChevronUp } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import useDropdownHoverDelay from "./hooks/useDropdownHoverDelay";
 
 type CustomDropdownProps = {
@@ -23,11 +23,11 @@ function NavigationDropdown({ triggerName, children }: CustomDropdownProps) {
                     <span className="text-base">{triggerName}</span>
                     <AnimatePresence>
                         {isOpen && (
-                            <motion.div
+                            <m.div
                                 initial={{ width: 0 }}
                                 animate={{ width: 20, transition: { duration: 0.2, ease: "easeOut" } }}
                                 exit={{ width: 0 }}
-                                className="h-0.5 bg-primary absolute -bottom-0.5 left-1/2 -translate-x-1/2"></motion.div>
+                                className="h-0.5 bg-primary absolute -bottom-0.5 left-1/2 -translate-x-1/2"></m.div>
                         )}
                     </AnimatePresence>
                 </div>
@@ -36,7 +36,7 @@ function NavigationDropdown({ triggerName, children }: CustomDropdownProps) {
                 {/* Menu Content */}
                 <AnimatePresence>
                     {isOpen && (
-                        <motion.div
+                        <m.div
                             className="bg-white fixed top-[85px] left-0 p-8 w-full border-t shadow-xl rounded-2xl"
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={handleMouseLeave}
@@ -53,7 +53,7 @@ function NavigationDropdown({ triggerName, children }: CustomDropdownProps) {
                             <div onClick={closeDropdown}>
                                 {children}
                             </div>
-                        </motion.div>
+                        </m.div>
                     )}
                 </AnimatePresence>
             </div>

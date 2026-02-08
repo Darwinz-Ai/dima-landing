@@ -20,7 +20,12 @@ function Footer() {
           <div className="flex flex-col gap-4 mb-8">
             {/* Dima logo */}
             <figure>
-              <Image src={dimaLogoWhite} alt="dima logo white" width={120} height={50} unoptimized={true} />
+              <Image src={dimaLogoWhite}
+                alt="dima logo white"
+                width={120}
+                height={50}
+                unoptimized={true}
+              />
             </figure>
             <h2 className="capitalize md:text-2xl">{t("dima.description")}</h2>
 
@@ -35,7 +40,7 @@ function Footer() {
                     fill
                     sizes="30px"
                     className="object-contain transition-opacity duration-300 group-hover:opacity-0"
-                    quality={90}
+
                   />
                   {/* White icon (shown on hover) */}
                   <Image
@@ -44,7 +49,7 @@ function Footer() {
                     fill
                     sizes="30px"
                     className="object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100 absolute top-0 left-0"
-                    quality={90}
+
                   />
                 </div>
 
