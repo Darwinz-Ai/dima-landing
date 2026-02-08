@@ -1,8 +1,8 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-function HeroSection() {
-    const t = useTranslations("CaseStudies");
+async function HeroSection() {
+    const t = await getTranslations("CaseStudies");
     return (
         <SectionWrapper className="mt-24">
             <div className="container mx-auto flex flex-col justify-center items-center gap-8 ">

@@ -1,12 +1,13 @@
 
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import blackComputerIcon from "@/public/computer-black.svg";
 import whiteComputerIocn from "@/public/computer.svg";
-function DimaSection() {
-    const t = useTranslations("CaseStudies.boostBusiness")
+import { getTranslations } from "next-intl/server";
+
+async function DimaSection() {
+    const t = await getTranslations("CaseStudies.boostBusiness")
     return (
         <div className="bg-[#053A60]">
             <div className="container mx-auto flex flex-col justify-center items-center gap-8 text-white py-24 px-4">
