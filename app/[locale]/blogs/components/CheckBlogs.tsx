@@ -1,4 +1,3 @@
-import React from 'react'
 import GroupedBlogs from './GroupedBlogs'
 import BlogCard from './BlogCard';
 import { fetchBlogs } from '@/lib/firebase/blogsFunctions';

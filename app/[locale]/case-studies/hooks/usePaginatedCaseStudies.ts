@@ -1,80 +1,23 @@
 "use client";
 
-import { db } from "@/lib/firebase";
-import { CaseStudy } from "@/types";
+import { getCaseStudiesCount, fetchCaseStudiesPage } from "@/lib/firebase/caseStudiesFunctions";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import {
-    collection,
-    DocumentData,
-    getCountFromServer,
-    getDocs,
-    limit,
-    orderBy,
-    query,
-    QueryConstraint,
-    QueryDocumentSnapshot,
-    startAfter,
-    where
-} from "firebase/firestore";
+import { DocumentData, QueryDocumentSnapshot } from "firebase/firestore";
 import { useLocale } from "next-intl";
-
-type CaseStudiesPage = {
-    caseStudies: CaseStudy[];
-    lastVisible: QueryDocumentSnapshot<DocumentData> | null;
-    hasMore: boolean;
-};
 
 export const usePaginatedCaseStudies = (limitCount: number = 6) => {
     const locale = useLocale();
-    const collectionRef = collection(db, "case-studies");
-    const baseConstraints: QueryConstraint[] = [where("flags.active", "==", true)];
 
-    // Get total number of case studies
     const countQuery = useQuery({
         queryKey: ["case-studies-count", locale, "active"],
-        queryFn: async () => {
-            const countSnapshot = await getCountFromServer(query(collectionRef, ...baseConstraints));
-            return countSnapshot.data().count;
-        },
+        queryFn: getCaseStudiesCount,
         staleTime: 1000 * 60
     });
 
-    // Get case studies
     const infiniteQuery = useInfiniteQuery({
         queryKey: ["case-studies", locale, limitCount, "active"],
         initialPageParam: null as QueryDocumentSnapshot<DocumentData> | null,
-        queryFn: async ({ pageParam }) => {
-            const constraints: QueryConstraint[] = [
-                ...baseConstraints,
-                orderBy("dateCreated", "desc"),
-                limit(limitCount)
-            ];
-
-            // If page isn't 1, start after offset
-            if (pageParam) {
-                constraints.push(startAfter(pageParam));
-            }
-
-            const snapshot = await getDocs(query(collectionRef, ...constraints));
-            const caseStudies = snapshot.docs.map((doc) => {
-                const data = doc.data();
-
-                return {
-                    id: doc.id,
-                    ...data,
-                    content: data.content[locale] || data.content["en"]
-                } as CaseStudy;
-            });
-
-            // Get last document in page
-            const lastVisible = snapshot.docs[snapshot.docs.length - 1] ?? null;
-
-            return {
-                caseStudies,
-                lastVisible,
-                hasMore: snapshot.size === limitCount
-            } as CaseStudiesPage;
-        },
+        queryFn: async ({ pageParam }) => fetchCaseStudiesPage(locale, limitCount, pageParam),
         getNextPageParam: (lastPage) => (lastPage.hasMore ? lastPage.lastVisible : undefined),
         staleTime: 1000 * 60
     });

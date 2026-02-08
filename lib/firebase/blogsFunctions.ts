@@ -1,6 +1,26 @@
-import { collection, doc, getDoc, getDocs, limit, orderBy, query, QueryConstraint, where } from "firebase/firestore";
+import {
+    collection,
+    doc,
+    DocumentData,
+    getCountFromServer,
+    getDoc,
+    getDocs,
+    limit,
+    orderBy,
+    query,
+    QueryConstraint,
+    QueryDocumentSnapshot,
+    startAfter,
+    where
+} from "firebase/firestore";
 import { db } from "../firebase";
 import { Blog } from "@/types/blog";
+
+export type BlogsPage = {
+    blogs: Blog[];
+    lastVisible: QueryDocumentSnapshot<DocumentData> | null;
+    hasMore: boolean;
+};
 
 export const fetchBlogs = async (locale: string, tags: string[] = [], limitCount: number | null = null) => {
     const collectionRef = collection(db, "blogs");
@@ -90,3 +110,49 @@ export const fetchSingleBlog = async (locale: string, slug: string) => {
 //         console.error("Migration failed:", error);
 //     }
 // };
+
+export const getBlogsCount = async (): Promise<number> => {
+    const collectionRef = collection(db, "blogs");
+    const q = query(collectionRef, where("active", "==", true));
+    const countSnapshot = await getCountFromServer(q);
+    return countSnapshot.data().count;
+};
+
+export const fetchBlogsPage = async (
+    locale: string,
+    limitCount: number,
+    pageParam: QueryDocumentSnapshot<DocumentData> | null
+): Promise<BlogsPage> => {
+    const collectionRef = collection(db, "blogs");
+    const baseConstraints: QueryConstraint[] = [where("active", "==", true)];
+    const constraints: QueryConstraint[] = [
+        ...baseConstraints,
+        orderBy("dateCreated", "desc"),
+        limit(limitCount)
+    ];
+
+    // If page isn't 1, start after offset
+    if (pageParam) {
+        constraints.push(startAfter(pageParam));
+    }
+
+    const snapshot = await getDocs(query(collectionRef, ...constraints));
+    const blogs = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+            id: doc.id,
+            ...data,
+            content: data.content[locale] || data.content["en"],
+            tags: data.tags[locale] || data.tags["en"]
+        } as Blog;
+    });
+
+    // Get last doc in page
+    const lastVisible = snapshot.docs[snapshot.docs.length - 1] ?? null;
+
+    return {
+        blogs,
+        lastVisible,
+        hasMore: snapshot.size === limitCount
+    };
+};
