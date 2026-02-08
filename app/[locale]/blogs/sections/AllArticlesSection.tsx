@@ -1,7 +1,6 @@
 "use client";
 import { useTranslations } from "next-intl";
 import GroupedBlogs from "../components/GroupedBlogs";
-// import VideosSection from "./VideosSection";
 import BlogCardSkeleton from "../components/BlogCardSkeleton";
 import BlogCard from "../components/BlogCard";
 import { useRef, useState } from "react";
@@ -103,7 +102,6 @@ function AllArticlesSection() {
                         }
                     </ul>
 
-                    {/* <VideosSection title={t("videosSection.title")} /> */}
                 </GroupedBlogs>
 
                 {/* Pagination Component */}
