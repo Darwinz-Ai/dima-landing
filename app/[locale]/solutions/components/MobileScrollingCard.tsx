@@ -28,7 +28,7 @@ function MobileScrollingCard({ title, description, slug, index }: CardType) {
                     // priority={true}
                     // fetchPriority="high"
                     loading={"lazy"}
-                    quality={90}
+
                 />
             </figure>
 

@@ -27,7 +27,7 @@ function HeroSection({ slug }: { slug: string }) {
                             className="object-contain"
                             priority={true}
                             fetchPriority="high"
-                            quality={90}
+
                         />
                     </figure>
 
@@ -41,7 +41,7 @@ function HeroSection({ slug }: { slug: string }) {
                             className="object-contain"
                             priority={true}
                             fetchPriority="high"
-                            quality={90}
+
                         />
                     </figure>
                 </div>

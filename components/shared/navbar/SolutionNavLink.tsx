@@ -17,7 +17,7 @@ function SolutionNavLink({ logo, href, translationKey, isRTL }: SolutionLink & {
                     width={80}
                     height={65}
                     className={`object-contain h-full w-full ${isRTL ? "object-right" : "object-left"}`}
-                    quality={90}
+
                 />
             </figure>
 

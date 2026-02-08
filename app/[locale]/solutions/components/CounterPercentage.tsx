@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useTransform, animate, easeOut, useInView } from "motion/react";
+import { m, useMotionValue, useTransform, animate, easeOut, useInView } from "motion/react";
 
 type CounterPercentageProps = {
     number: number;
@@ -26,7 +26,7 @@ function CounterPercentage({ number, text, className }: CounterPercentageProps) 
     return (
         <div ref={ref} className={`flex flex-col justify-center items-center gap-4 px-6 py-8 rounded-2xl bg-muted lg:bg-white ${className}`}>
             <span className="text-[26px] md:text-[30px] lg:text-[44px] font-extrabold text-primary">
-                <motion.span className="text-black">{!mounted ? number : rounded}</motion.span>%
+                <m.span className="text-black">{!mounted ? number : rounded}</m.span>%
             </span>
             <p className="text-lg md:text-[20px] lg:text-[22px] font-medium text-center">{text}</p>
         </div>

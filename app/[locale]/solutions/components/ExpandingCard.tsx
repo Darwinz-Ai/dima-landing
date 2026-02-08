@@ -1,6 +1,6 @@
 "use client";
 import { CardType } from "@/types";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 
@@ -47,35 +47,35 @@ function ExpandingCard({ title, description, highlighted, isExpanded, onClick }:
         >
             <div className="bg-white transition-colors duration-300 px-6 py-3 rounded-[20px] h-full w-full flex flex-col justify-center min-h-52 lg:min-h-0">
                 {/* For desktop */}
-                <motion.h3
+                <m.h3
                     layout
                     animate={{ textAlign: activeExpanded ? isRTL ? "right" : "left" : "center" }}
                     className={`hidden lg:block text-2xl font-semibold mb-2 ${activeExpanded && "text-primary"
                         } transition-colors duration-300`}
                 >
                     {title}
-                </motion.h3>
+                </m.h3>
 
                 {/* For mobile */}
-                <motion.h3
+                <m.h3
                     layout="size"
                     animate={{ textAlign: activeExpanded ? isRTL ? "right" : "left" : "" }}
                     className={`lg:hidden text-2xl font-semibold mb-2 ${activeExpanded && "text-primary"
                         } transition-colors duration-300`}
                 >
                     {title}
-                </motion.h3>
+                </m.h3>
 
                 <AnimatePresence mode="popLayout">
                     {activeExpanded && (
-                        <motion.p
+                        <m.p
                             variants={variants}
                             initial={mounted ? "hidden" : "visible"}
                             animate="visible"
                             className="mt-2"
                         >
                             {renderHighlightedText(description, highlighted)}
-                        </motion.p>
+                        </m.p>
                     )}
                 </AnimatePresence>
             </div>

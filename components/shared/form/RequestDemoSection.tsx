@@ -33,7 +33,7 @@ function RequestDemoSection() {
               alt="dima phone"
               width={400}
               height={500}
-              quality={90}
+
             />
           </figure>
         </div>

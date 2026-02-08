@@ -1,5 +1,5 @@
 "use client";
-import { motion, useMotionValue, animate, useInView } from "motion/react";
+import { m, useMotionValue, animate, useInView } from "motion/react";
 import React, { useEffect, useState, useRef } from "react";
 
 type RadialGradientProgressProps = {
@@ -99,7 +99,7 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                     fill="none"
                 />
 
-                <motion.circle
+                <m.circle
                     cx={size / 2}
                     cy={size / 2}
                     r={radius}
@@ -112,12 +112,12 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                 />
             </svg>
 
-            <motion.span
+            <m.span
                 className="absolute font-bold text-xl inline-flex items-center gap-1"
                 style={{ color: textColor }}
             >
                 {mounted ? formatNumber(displayValue, suffix) : formatNumber(progress, suffix)}
-            </motion.span>
+            </m.span>
         </div>
     );
 };

@@ -55,7 +55,7 @@ function ResourcesDropdown() {
                                     alt={"icon"}
                                     width={20}
                                     height={20}
-                                    quality={90}
+
                                 />
                                 {/* <Link href={link.href}>{t(`moreResources.${link.translationKey}.title`)}</Link> */}
                                 <span>{t(`moreResources.${link.translationKey}.title`)}</span>

@@ -11,13 +11,14 @@ import { Toaster } from "sonner";
 import Script from "next/script";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { GoogleTagManager } from '@next/third-parties/google';
+import { domAnimation, LazyMotion } from "motion/react";
 
 const geistSans = Geist({
   subsets: ["latin"],
 });
 
 const cairo = Cairo({
-  subsets: ["arabic"],
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"]
 })
 
@@ -78,18 +79,19 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider>
           <ReactQueryProvider>
-            <div className="min-h-dvh h-full flex flex-col justify-between">
-              <Navbar />
-              <div className="flex-1">
-                {/* <PageLoader /> */}
-                {children}
-                <Toaster richColors />
+            <LazyMotion features={domAnimation}>
+              <div className="min-h-dvh h-full flex flex-col justify-between">
+                <Navbar />
+                <div className="flex-1">
+                  {children}
+                  <Toaster richColors />
+                </div>
+                <Footer />
               </div>
-              <Footer />
-            </div>
+            </LazyMotion>
           </ReactQueryProvider>
         </NextIntlClientProvider>
-        <Script src="https://static.claydar.com/init.v1.js?id=cxOAeXXAB5"></Script>
+        <Script src="https://static.claydar.com/init.v1.js?id=cxOAeXXAB5" strategy="lazyOnload" />
       </body>
     </html>
   );

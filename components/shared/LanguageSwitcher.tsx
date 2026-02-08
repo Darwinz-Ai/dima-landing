@@ -93,7 +93,7 @@ export default function LanguageSwitcher() {
                     alt="language flag"
                     width={29}
                     height={29}
-                    quality={90}
+
                     unoptimized={true}
                   />
                   {lang.label}
