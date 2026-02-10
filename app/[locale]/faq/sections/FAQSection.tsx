@@ -50,6 +50,10 @@ const FAQSection = () => {
                                 "**:data-[slot=command-input]:text-sm",
                                 "**:data-[slot=command-input]:font-light",
                             )}
+                            filter={(value, search) => {
+                                if (value.toLowerCase().includes(search.toLowerCase())) return 1;
+                                return 0;
+                            }}
                         >
                             <CommandInput placeholder={tFaq("categorySearch.searchPlaceholder")} />
 
@@ -66,11 +70,15 @@ const FAQSection = () => {
                                         <CommandItem
                                             key={item}
                                             className={cn(
-                                                "px-2 lg:px-0 py-4 font-medium cursor-pointer hover:bg-transparent transition-all duration-200 text-lg whitespace-nowrap data-[selected=true]:bg-transparent",
-                                                "data-[selected=true]:text-black data-[selected=false]:text-muted-foreground/60", // ui for mobile items
-                                                "lg:data-[selected=true]:text-primary lg:data-[selected=false]:text-black", // ui for desktop items
+                                                // base styles
+                                                "px-2 lg:px-0 py-4 font-medium cursor-pointer hover:bg-transparent transition-all duration-200 text-lg whitespace-nowrap",
                                                 "border-b border-gray-300 lg:last:border-b-0 rounded-none",
-                                                selectedIndex === idx ? "lg:text-primary! text-black! border-b-black lg:border-gray-300" : "lg:text-black"
+
+                                                "data-[selected=true]:bg-transparent data-[selected=true]:text-inherit",
+
+                                                selectedIndex === idx
+                                                    ? "text-black lg:text-primary! border-b-black lg:border-gray-300"
+                                                    : "text-muted-foreground/60 lg:text-black hover:text-black/60!"
                                             )}
                                             onSelect={() => setSelectedIndex(idx)}
                                             value={item}
