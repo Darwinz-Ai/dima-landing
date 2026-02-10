@@ -3,7 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  // output: "standalone",
+  output: "standalone",
   images: {
     remotePatterns: [{
       protocol: "https",
