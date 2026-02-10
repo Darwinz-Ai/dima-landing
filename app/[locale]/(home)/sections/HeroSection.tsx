@@ -22,16 +22,16 @@ export default async function HeroSection() {
         {/* Right Side: Image */}
         <figure className="relative w-full lg:flex-1 aspect-1920/1793 h-auto min-h-[300px] sm:min-h-[400px] md:min-h-[500px]">
           <Image
-            src={`/hero-bg-${locale}.png`}
+            src={`/hero-bg-${locale}.webp`}
             alt="Hero image"
             fill
-            sizes="100vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 50vw"
             priority={true}
             fetchPriority="high"
-            className="object-contain hidden sm:block"
+            className="object-contain"
 
           />
-          <Image
+          {/* <Image
             src={`/hero-bg-${locale}-mobile.png`}
             alt="Hero image"
             fill
@@ -40,7 +40,7 @@ export default async function HeroSection() {
             fetchPriority="high"
             className="object-contain block sm:hidden"
 
-          />
+          /> */}
         </figure>
       </div>
       <div className="container mx-auto">

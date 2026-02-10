@@ -6,12 +6,12 @@ import Navbar from "@/components/shared/navbar/Navbar";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import Footer from "@/components/shared/footer/Footer";
-import ReactQueryProvider from "../ReactQueryProvider";
+import ReactQueryProvider from "../providers/ReactQueryProvider";
 import { Toaster } from "sonner";
 import Script from "next/script";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { GoogleTagManager } from '@next/third-parties/google';
-import { domAnimation, LazyMotion } from "motion/react";
+import { MotionProvider } from "../providers/MotionProvider";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -22,7 +22,9 @@ const cairo = Cairo({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
+  preload: false,
 })
+
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string }> }
@@ -81,7 +83,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider>
           <ReactQueryProvider>
-            <LazyMotion features={domAnimation}>
+            <MotionProvider >
               <div className="min-h-dvh h-full flex flex-col justify-between">
                 <Navbar />
                 <div className="flex-1">
@@ -90,7 +92,7 @@ export default async function RootLayout({
                 </div>
                 <Footer />
               </div>
-            </LazyMotion>
+            </MotionProvider>
           </ReactQueryProvider>
         </NextIntlClientProvider>
         <Script src="https://static.claydar.com/init.v1.js?id=cxOAeXXAB5" strategy="lazyOnload" />

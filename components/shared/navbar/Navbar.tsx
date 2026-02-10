@@ -2,7 +2,6 @@ import { Button } from "../../ui/button";
 import { Link } from "@/i18n/navigation";
 import NavDrawer from "./NavDrawer";
 import Image from "next/image";
-import NavigationDropdown from "./NavigationDropdown";
 import { ArrowRight } from "lucide-react";
 import SolutionsDropdown from "./dropdowns/SolutionsDropdown";
 import LanguageSwitcher from "../LanguageSwitcher";
@@ -10,6 +9,9 @@ import dimaLogo from "@/public/dima-logo/dima-logo.svg"
 import { getLocale, getTranslations } from "next-intl/server";
 import { getSiteNavigationElementJsonLd } from "@/lib/jsonLd";
 import JsonLd from "../JsonLd";
+import dynamic from "next/dynamic";
+
+const NavigationDropdown = dynamic(() => import("./NavigationDropdown"))
 
 async function Navbar() {
     const t = await getTranslations("Navbar");

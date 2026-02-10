@@ -15,7 +15,11 @@ const TypewriterComponent = () => {
     const [mounted, setMounted] = useState<boolean>(false);
 
     useEffect(() => {
-        setMounted(true);
+        const timer = setTimeout(() => {
+            setMounted(true);
+        }, 1000)
+
+        return () => clearTimeout(timer);
     }, [])
     return (
         <div className="flex-1 space-y-6 w-full">
