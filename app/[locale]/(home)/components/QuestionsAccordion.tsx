@@ -3,8 +3,8 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
-import Link from "next/link";
 import { QuestionAccordion } from "@/types";
+import { Link } from "@/i18n/navigation";
 
 type QuestionAccordionProps = {
     items: QuestionAccordion[];

@@ -1,6 +1,6 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import { toolLinks } from "@/data/tools";

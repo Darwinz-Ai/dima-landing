@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm"
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { fetchSingleBlog } from "@/lib/firebase/blogsFunctions";
 import CheckBlogs from "./CheckBlogs";
 import { getLocale, getTranslations } from "next-intl/server";
