@@ -6,7 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { dimaSolutions, footerResourcesLinks } from "@/data/home-page";
-import dimaLogoWhite from "@/public/dima-logo/dima-logo-white.png"
+import dimaLogoWhite from "@/public/dima-logo/dima-logo-white.svg"
 
 function Footer() {
   const t = useTranslations("Footer");

@@ -15,11 +15,13 @@ import { domAnimation, LazyMotion } from "motion/react";
 
 const geistSans = Geist({
   subsets: ["latin"],
+  display: "swap",
 });
 
 const cairo = Cairo({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"]
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 })
 
 export async function generateMetadata(

@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { CaseStudy } from "@/types";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 function CaseStudyCard(caseStudy: CaseStudy) {
     const t = useTranslations("CaseStudies");

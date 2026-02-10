@@ -1,7 +1,7 @@
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
 import PinnedScrollSection from "../components/PinnedScrollSection";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { IconArrowRight } from "@tabler/icons-react";
 import MobileScrollingCard from "../components/MobileScrollingCard";
 import { CardType } from "@/types";

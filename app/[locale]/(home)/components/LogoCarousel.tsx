@@ -37,7 +37,7 @@ export default function LogoCarousel() {
                                 width={220}
                                 height={110}
                                 className="object-contain w-auto h-full bg-white"
-                                priority={index < 7}
+                                priority={index < 4}
                             />
                         </div>
                     </CarouselItem>

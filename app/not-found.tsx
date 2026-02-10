@@ -1,10 +1,10 @@
 
 import { Button } from "@/components/ui/button";
 import { NextIntlClientProvider, useTranslations } from "next-intl";
-import Link from "next/link";
 import "@/app/[locale]/globals.css"
 import Navbar from "@/components/shared/navbar/Navbar";
 import Footer from "@/components/shared/footer/Footer";
+import { Link } from "@/i18n/navigation";
 
 export default function NotFound() {
     const t = useTranslations("NotFound")

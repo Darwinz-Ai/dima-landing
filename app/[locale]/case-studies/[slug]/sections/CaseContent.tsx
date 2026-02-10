@@ -2,7 +2,7 @@ import ReactMarkdown from "react-markdown";
 import SideInfo from "../components/SideInfo";
 import Image from "next/image";
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import remarkGfm from "remark-gfm";
 import { useLocale } from "next-intl";
 import { CaseStudy } from "@/types";

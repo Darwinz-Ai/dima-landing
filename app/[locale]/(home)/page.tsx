@@ -1,10 +1,7 @@
 import HeroSection from "./sections/HeroSection";
-import EmpoweringAgenciesSection from "./sections/EmpoweringAgenciesSection";
-import OwnConversationSection from "./sections/OwnConversationSection";
 import DimaAiSection from "./sections/DimaAiSection";
 import DimaSuiteSection from "./sections/DimaSuiteSection";
 import CaseStudiesSection from "./sections/CaseStudiesSection";
-import TestimonialSection from "./sections/TestimonialSection";
 import QuestionsAnsweredSection from "@/app/[locale]/(home)/sections/QuestionsAnsweredSection";
 import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
@@ -13,6 +10,8 @@ import JsonLd from "@/components/shared/JsonLd";
 import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
 import { QuestionAccordion } from "@/types";
 import { getTranslations } from "next-intl/server";
+import dynamic from "next/dynamic";
+
 
 type HomePageProps = {
   params: Promise<{ locale: string }>
@@ -55,6 +54,18 @@ export async function generateMetadata(
   });
 }
 
+const EmpoweringAgenciesSection = dynamic(() => import("./sections/EmpoweringAgenciesSection"), {
+  ssr: true,
+});
+
+const OwnConversationSection = dynamic(() => import("./sections/OwnConversationSection"), {
+  ssr: true,
+});
+
+const TestimonialSection = dynamic(() => import("./sections/TestimonialSection"), {
+  ssr: true,
+});
+
 async function HomePage() {
   const tHomeQuestions = await getTranslations("Home.questionsAnswered");
   const faqs = (tHomeQuestions.raw("faqs") as QuestionAccordion[]) ?? [];
@@ -62,6 +73,8 @@ async function HomePage() {
   const orgJsonLd = await getOrganizationJsonLd();
   const productJsonLd = await getProductJsonLd();
   const faqJsonLd = await getFAQJsonLd(faqs);
+
+
 
   return (
     <main className="h-full">

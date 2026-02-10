@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import blackComputerIcon from "@/public/computer-black.svg";
 import whiteComputerIocn from "@/public/computer.svg";
 import { getTranslations } from "next-intl/server";

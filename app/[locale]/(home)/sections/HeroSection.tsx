@@ -1,14 +1,14 @@
 
-import LogoCarousel from "../components/LogoCarousel";
 import SectionWrapper from "../../../../components/shared/SectionWrapper";
-import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import TypewriterComponent from "../components/TypewriterComponent";
+import { getLocale, getTranslations } from "next-intl/server";
+import LogoCarousel from "../components/LogoCarousel";
 
 
-export default function HeroSection() {
-  const t = useTranslations("Home.hero");
-  const locale = useLocale();
+export default async function HeroSection() {
+  const t = await getTranslations("Home.hero");
+  const locale = await getLocale();
 
   return (
     <SectionWrapper className="flex-col justify-between min-h-dvh mt-12">
@@ -25,7 +25,7 @@ export default function HeroSection() {
             src={`/hero-bg-${locale}.png`}
             alt="Hero image"
             fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            sizes="100vw"
             priority={true}
             fetchPriority="high"
             className="object-contain hidden sm:block"
@@ -35,7 +35,7 @@ export default function HeroSection() {
             src={`/hero-bg-${locale}-mobile.png`}
             alt="Hero image"
             fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            sizes="100vw"
             priority={true}
             fetchPriority="high"
             className="object-contain block sm:hidden"
