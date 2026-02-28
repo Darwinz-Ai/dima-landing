@@ -48,8 +48,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ...caseRoutes
     ]
 
-    console.log();
-
     return locales.flatMap((currentLocale) => {
         return allPaths.map((path) => {
             const cleanPath = path === "/" ? "" : path;
