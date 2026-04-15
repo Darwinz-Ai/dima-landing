@@ -8,12 +8,12 @@ const TeamCard = () => {
                 alt="Person cover"
                 className="relative z-20 aspect-video w-full object-cover grayscale rounded-xl h-[420px]"
             />
-            <CardDescription className="bg-muted p-4 rounded-xl">
+            {/* <CardDescription className="bg-muted p-4 rounded-xl">
                 <div className="flex justify-between items-center text-black">
                     <p>Name</p>
                     <p>Title</p>
                 </div>
-            </CardDescription>
+            </CardDescription> */}
         </Card>
     )
 }

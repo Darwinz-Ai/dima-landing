@@ -1,4 +1,5 @@
 import ConnectSection from "./sections/ConnectSection"
+import ForTheRegionSection from "./sections/ForTheRegionSection"
 import HeroSection from "./sections/HeroSection"
 import MapSection from "./sections/MapSection"
 import ServingCustomersSection from "./sections/ServingCustomersSection"
@@ -11,7 +12,8 @@ const AboutUsPage = () => {
             {/* json ld here */}
 
             <HeroSection />
-            <SolutionsSection />
+            {/* <SolutionsSection /> */}
+            <ForTheRegionSection />
             <ServingCustomersSection />
             <MapSection />
             <TeamSection />

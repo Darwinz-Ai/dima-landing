@@ -7,7 +7,7 @@ import AutoScroll from "embla-carousel-auto-scroll"
 const TeamCarousel = () => {
     return (
         <Carousel
-            className="my-4"
+            className="py-12 lg:py-10"
             opts={{
                 loop: true,
                 dragFree: true,
