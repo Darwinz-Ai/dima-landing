@@ -7,6 +7,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
+import { cn } from "@/lib/utils";
+
 type Props = {
     items: number[];
 
@@ -26,7 +28,7 @@ export default function ConnectCarousel({
         setActive((p) => (p + 1) % cards.length);
     }
     const handleGoToPrev = () => {
-        setActive((p) => (p - 1) % cards.length);
+        setActive((p) => (p - 1 + cards.length) % cards.length);
     }
 
     const getPosition = (index: number) => {
@@ -51,7 +53,7 @@ export default function ConnectCarousel({
             {/* Cards */}
             <div className="relative w-full h-[730px] flex items-center justify-center overflow-hidden select-none z-0">
 
-                {/* Updated Overlay Gradient */}
+                {/* Overlay Gradient */}
                 <div className="absolute inset-0 pointer-events-none z-30 bg-[linear-gradient(to_right,var(--color-muted)_0%,transparent_10%,transparent_90%,var(--color-muted)_100%)] ">
                 </div>
                 {cards.map((card, index) => (
@@ -112,10 +114,14 @@ export default function ConnectCarousel({
 
             {/* Next/Prev Buttons */}
             <div className="flex justify-center items-center gap-4">
-                <Button size={"icon-sm"} onClick={handleGoToPrev} className="flex items-center justify-center cursor-pointer">
+                <Button size={"icon-sm"} onClick={handleGoToPrev} className={cn("flex items-center justify-center cursor-pointer",
+                    isRTL && "rotate-180"
+                )}>
                     <IconChevronLeft className="size-6" />
                 </Button>
-                <Button size={"icon-sm"} onClick={handleGoToNext} className="flex items-center justify-center cursor-pointer">
+                <Button size={"icon-sm"} onClick={handleGoToNext} className={cn("flex items-center justify-center cursor-pointer",
+                    isRTL && "rotate-180"
+                )}>
                     <IconChevronRight className="size-6" />
                 </Button>
             </div>

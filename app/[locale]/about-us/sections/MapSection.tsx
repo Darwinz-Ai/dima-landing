@@ -1,49 +1,24 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "next-intl";
+
 
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { ComposableMap, createCoordinates, Geographies, Geography, getGeographyCentroid, Marker } from '@vnedyalk0v/react19-simple-maps';
 import NumericCircleFlag from "../components/NumericCircleFlag";
+import { cn } from "@/lib/utils";
+
+import countries from 'i18n-iso-countries';
 
 const geoUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-110m.json';
 
-const MAP_COUNTRIES = [
-    // North America & Europe
-    "United States of America",
-    "United Kingdom",
-
-    // GCC
-    "Saudi Arabia",
-    "United Arab Emirates",
-    "Qatar",
-    "Kuwait",
-    "Oman",
-    "Bahrain",
-
-    // MENA (Middle East & North Africa)
-    "Egypt",
-    "Jordan",
-    "Iraq",
-    "Syria",
-    "Lebanon",
-    "Palestine",
-    "Yemen",
-    "Iran",
-    "Turkey",
-    "Morocco",
-    "W. Sahara",
-    "Algeria",
-    "Tunisia",
-    "Libya",
-    "Sudan",
-    "Mauritania",
-    "Mali",
-    "Niger",
-    "Chad",
-    "Djibouti",
-    "Eritrea",
-    "Ethiopia",
+const HIGHLIGHTED_IDS = [
+    "840", "826", // North America & Europe
+    "682", "784", "634", "414", "512", "048", // GCC
+    "818", "400", "368", "760", "422", "275", "887", "364", "792", // MENA
+    "504", "732", "012", "788", "434", "729", "478", "466", "562",
+    "148", "262", "232", "231" // Africa
 ];
 
 type GeographyType = {
@@ -54,8 +29,16 @@ type GeographyType = {
 }
 
 const MapSection = () => {
+    const locale = useLocale();
+    const isRTL = locale === "ar";
+
     const [selectedCountry, setSelectedCountry] = useState<GeographyType | null>(null)
     const [hoveredCountry, setHoveredCountry] = useState<GeographyType | null>(null);
+
+    const getCountryName = (geo: GeographyType) => {
+        if (geo.id === "760") return locale === "ar" ? "سوريا" : "Syria";
+        return countries.getName(geo.id, locale, { select: "alias" }) || geo.properties.name;
+    };
 
     console.log("-----------------------------------------")
     console.log("Selected Country ID:", selectedCountry)
@@ -79,7 +62,7 @@ const MapSection = () => {
                         {({ geographies }) =>
                             geographies
                                 .map((geo) => {
-                                    const isHighlighted = MAP_COUNTRIES.includes(geo.properties.name);
+                                    const isHighlighted = HIGHLIGHTED_IDS.includes(geo.id);
                                     return (
                                         <Geography
                                             key={geo.properties.name}
@@ -110,6 +93,8 @@ const MapSection = () => {
                                                 },
                                                 focused: {
                                                     fill: isHighlighted ? "#11A8CF" : "#E5E7EB",
+                                                    stroke: '#C9C9C9',
+                                                    strokeWidth: 0.5,
                                                     outline: 'none'
                                                 }
                                             }}
@@ -120,7 +105,7 @@ const MapSection = () => {
                     </Geographies>
 
                     {/* Map marker */}
-                    {hoveredCountry && MAP_COUNTRIES.includes(hoveredCountry.properties.name) && (
+                    {hoveredCountry && HIGHLIGHTED_IDS.includes(hoveredCountry.id) && (
                         <Marker coordinates={getGeographyCentroid(hoveredCountry)!} className="pointer-events-none">
                             <line
                                 x1="0"
@@ -139,8 +124,10 @@ const MapSection = () => {
                                 height="30"
                                 className="pointer-events-none"
                             >
-                                <div className="flex justify-end items-center gap-1 text-[10px] font-medium">
-                                    {hoveredCountry.id === "840" ? "USA" : hoveredCountry.id === "826" ? "UK" : hoveredCountry.id === "784" ? "UAE" : hoveredCountry.properties.name}
+                                <div className={cn("flex items-center gap-1 text-[10px] font-medium justify-end",
+                                    isRTL && "flex-row-reverse"
+                                )}>
+                                    <span>{getCountryName(hoveredCountry)}</span>
                                     <NumericCircleFlag numericCode={hoveredCountry.id} />
                                 </div>
                             </foreignObject>

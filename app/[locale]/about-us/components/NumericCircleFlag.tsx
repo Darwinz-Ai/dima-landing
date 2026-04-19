@@ -3,6 +3,7 @@ import { CircleFlag } from 'react-circle-flags';
 import countries from 'i18n-iso-countries';
 
 countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
+countries.registerLocale(require("i18n-iso-countries/langs/ar.json"));
 
 const NumericCircleFlag = ({ numericCode }: { numericCode: string; }) => {
     const alpha2 = countries.numericToAlpha2(numericCode);

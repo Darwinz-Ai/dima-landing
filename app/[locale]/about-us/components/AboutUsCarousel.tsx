@@ -1,17 +1,22 @@
 "use client";
 
+import { useLocale } from "next-intl";
+
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import AutoScroll from "embla-carousel-auto-scroll"
 import Image from "next/image"; 3
 
-const TeamCarousel = () => {
+const AboutUsCarousel = () => {
+    const locale = useLocale();
+    const isRTL = locale === "ar";
     return (
         <Carousel
             className="py-12 lg:py-10"
             opts={{
                 loop: true,
                 dragFree: true,
-                align: "start"
+                align: "start",
+                direction: isRTL ? "rtl" : "ltr"
             }}
             plugins={
                 [AutoScroll({ stopOnInteraction: false })]
@@ -35,4 +40,4 @@ const TeamCarousel = () => {
     )
 }
 
-export default TeamCarousel
+export default AboutUsCarousel

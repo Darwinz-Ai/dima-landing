@@ -1629,6 +1629,56 @@
       }
     ]
   },
+  "AboutUs": {
+    "title": "About Us",
+    "description": "Founded in 2021, TheDar.AI is a regional company operating across the GCC and MENA, with offices in Riyadh (KSA), Cairo (Egypt), and Abu Dhabi (UAE). TheDar.AI is building dima, an Arabic-first media monitoring & social listening copilot built for marketing, PR, and brand leaders across the region.",
+    "builtForRegion": {
+      "title": "Built in The Region, For The Region",
+      "description": "We empower leading agencies and enterprises with dialect-specific, culturally intelligent monitoring across both traditional and social media channels",
+      "solutions": [
+        "Social Listening & Traditional Media Monitoring",
+        "Market & Consumer Insights",
+        "Public Relations & Reputation Management",
+        "Crisis Monitoring & Rapid Response",
+        "Influencer & Campaign Tracking",
+        "Competitor Benchmarking"
+      ]
+    },
+    "servingCustomers": {
+      "prefix": "Serving Customers Across",
+      "suffix": "Countries in The Middle East and North Africa",
+      "audiences": [
+        "Marketing Teams",
+        "Communication Specialists",
+        "PR Professionals",
+        "Agencies",
+        "Enterprises"
+      ]
+    },
+    "team": {
+      "title": "The Team Behind TheDar.AI",
+      "mohy": "8+ years in AI and digital technology. Former electrical engineer at Mott MacDonald (UK). First class honours graduate, Imperial College London.",
+      "emad": "30+ years in AI and software development. Former head of AI & big data at Vodafone Egypt. Founder of Intouch (1992), Egypt's first internet service provider.",
+      "Rawan Youness": "Business Analyst",
+      "Aya Hegab": "Jr. Backend Developer",
+      "Nouf Alomran": "Marketing Specialist",
+      "Mohamed AbdElAal": "Sr. Media Monitoring Consultant",
+      "Annasimon Nessim Anwar": "Jr. Marketing & Client Relations",
+      "Sarah Botros": "Jr. Tech Ops Engineer",
+      "Salah Eldin Elnabrawy": "AI & ML Engineer",
+      "Kanzy Aboualam": "Jr. Business Developer",
+      "Nariman Farag": "Jr. QA Tester",
+      "Youssef Kamal": "Client Relations & Business Dev. Lead",
+      "Nada Al Wasemy": "Sr. PR & Media Analyst",
+      "Mahmoud Reda": "Flutter Developer",
+      "Zain Abo Almagd": "Backend & Tech Ops Engineer",
+      "Omar Elmeligy": "Jr. Full Stack Developer",
+      "Hussein Rizkana": "Technical Program Manager",
+      "Maran Malak": "Jr. Backend Developer",
+      "Karim Chehab": "Jr. Frontend Engineer"
+    },
+    "connect": "connect with us"
+  },
   "SEO": {
     "App": {
       "title": "TheDar.AI",
