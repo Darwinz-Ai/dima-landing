@@ -1,9 +1,11 @@
 "use client";
-import SectionWrapper from "@/components/shared/SectionWrapper";
-import { ComposableMap, createCoordinates, Geographies, Geography, getGeographyCentroid, Marker } from '@vnedyalk0v/react19-simple-maps';
+
 import { useState } from "react";
 
-import Flag from "react-world-flags"
+import SectionWrapper from "@/components/shared/SectionWrapper";
+import { ComposableMap, createCoordinates, Geographies, Geography, getGeographyCentroid, Marker } from '@vnedyalk0v/react19-simple-maps';
+import NumericCircleFlag from "../components/NumericCircleFlag";
+
 const geoUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-110m.json';
 
 const MAP_COUNTRIES = [
@@ -42,7 +44,6 @@ const MAP_COUNTRIES = [
     "Djibouti",
     "Eritrea",
     "Ethiopia",
-    "Somalia"
 ];
 
 type GeographyType = {
@@ -52,16 +53,15 @@ type GeographyType = {
     }
 }
 
-// TODO: Continue working on map component
-
 const MapSection = () => {
     const [selectedCountry, setSelectedCountry] = useState<GeographyType | null>(null)
     const [hoveredCountry, setHoveredCountry] = useState<GeographyType | null>(null);
 
     console.log("-----------------------------------------")
-    console.log("Selected Country ID:", selectedCountry?.id)
+    console.log("Selected Country ID:", selectedCountry)
     console.log("Selected Country Name:", selectedCountry?.properties.name)
     console.log("coordinates:", getGeographyCentroid(selectedCountry))
+
     return (
         <SectionWrapper>
             <div className="container relative bg-muted rounded-[35px] mb-32">
@@ -79,10 +79,10 @@ const MapSection = () => {
                         {({ geographies }) =>
                             geographies
                                 .map((geo) => {
-                                    const isHighlighted = MAP_COUNTRIES.includes(geo.properties.name)
+                                    const isHighlighted = MAP_COUNTRIES.includes(geo.properties.name);
                                     return (
                                         <Geography
-                                            key={geo.rsmKey}
+                                            key={geo.properties.name}
                                             geography={geo}
                                             onClick={() => {
                                                 setSelectedCountry(geo)
@@ -119,40 +119,41 @@ const MapSection = () => {
                         }
                     </Geographies>
 
+                    {/* Map marker */}
                     {hoveredCountry && MAP_COUNTRIES.includes(hoveredCountry.properties.name) && (
                         <Marker coordinates={getGeographyCentroid(hoveredCountry)!} className="pointer-events-none">
                             <line
                                 x1="0"
                                 y1="0"
                                 x2="0"
-                                y2="-30"
+                                y2="-40"
                                 stroke="#F59E0B"
-                                strokeWidth="1"
+                                strokeWidth="0.5"
                                 strokeLinecap="round"
                             />
 
                             <foreignObject
-                                x="-70"
+                                x="-92"
                                 y="-55"
-                                width="140"
+                                width="100"
                                 height="30"
                                 className="pointer-events-none"
                             >
-                                <div className="flex justify-center items-center gap-1 text-[10px] font-medium">
+                                <div className="flex justify-end items-center gap-1 text-[10px] font-medium">
                                     {hoveredCountry.id === "840" ? "USA" : hoveredCountry.id === "826" ? "UK" : hoveredCountry.id === "784" ? "UAE" : hoveredCountry.properties.name}
-
-                                    <Flag code={hoveredCountry.id} className="w-4 h-4 rounded-full object-cover" />
+                                    <NumericCircleFlag numericCode={hoveredCountry.id} />
                                 </div>
                             </foreignObject>
                         </Marker>
                     )}
                 </ComposableMap>
 
+                {/* LogosRenderer */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[linear-gradient(to_bottom,#B5E5F4_0%,#6FCFEA_32%,#B1DBEA_46%,#4EC6E8_100%)] h-48 max-w-3xl w-full rounded-4xl grid grid-cols-4">
 
                     {Array.from({ length: 8 }).map((_, i) => (
-                        <div className="flex items-center justify-center border-x border-white/20">
-                            {i}
+                        <div key={i} className="flex items-center justify-center border-x border-white/20">
+                            {i + 1}
                         </div>
                     ))}
                 </div>

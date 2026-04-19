@@ -1,5 +1,7 @@
 import SectionWrapper from "@/components/shared/SectionWrapper"
-import AudienceBadge from "../components/AudienceBadge"
+import { Button } from "@/components/ui/button"
+
+const audience = ["marketing teams", "communication specialists", "PR professionals", "agencies", "enterprises"]
 
 const ServingCustomersSection = () => {
     return (
@@ -12,9 +14,9 @@ const ServingCustomersSection = () => {
                 </h2>
             </header>
 
-            <div className="flex flex-wrap justify-center items-center gap-4 max-w-3xl">
-                {[0, 1, 2, 3, 4].map((_, i) => (
-                    <AudienceBadge key={i} />
+            <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+                {audience.map((a) => (
+                    <Button key={a} size="lg" variant="secondary" className="capitalize font-normal w-[calc(33.33%-1rem)] pointer-events-none">{a}</Button>
                 ))}
             </div>
         </SectionWrapper>

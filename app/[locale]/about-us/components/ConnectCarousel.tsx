@@ -1,9 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocale } from "next-intl";
+
 import { Button } from "@/components/ui/button";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 type Props = {
     items: number[];
@@ -45,12 +47,13 @@ export default function ConnectCarousel({
     };
 
     return (
-        <div className="container bg-muted rounded-3xl p-4 relative">
-            {/* Faded edges */}
-            <div className="absolute inset-0 pointer-events-none z-20 bg-[linear-gradient(to_right,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_10%,rgba(255,255,255,0)_90%,rgba(255,255,255,1)_100%)]"></div>
-
+        <div className="container max-w-[1200px] bg-linear-to-r from-muted from-5% via-white via-50% to-muted to-95% rounded-[30px] p-4 relative">
             {/* Cards */}
             <div className="relative w-full h-[730px] flex items-center justify-center overflow-hidden select-none z-0">
+
+                {/* Updated Overlay Gradient */}
+                <div className="absolute inset-0 pointer-events-none z-30 bg-[linear-gradient(to_right,var(--color-muted)_0%,transparent_10%,transparent_90%,var(--color-muted)_100%)] ">
+                </div>
                 {cards.map((card, index) => (
                     <div
                         key={index}
@@ -60,8 +63,8 @@ export default function ConnectCarousel({
                         <article className="w-[430px] h-[650px] bg-muted-foreground rounded-2xl flex justify-center items-center text-white">
                             <div className="absolute top-0 left-0 w-full bg-linear-to-b from-black/60 to-transparent h-[200px] rounded-2xl">
                                 <div className="flex items-center gap-2 p-8">
-                                    <Avatar size="lg">
-                                        <AvatarImage src="https://github.com/shadcn.png" />
+                                    <Avatar size="lg" className="bg-white p-1">
+                                        <AvatarImage src="/dima-logo/dima-logo.svg" />
                                         <AvatarFallback>D</AvatarFallback>
                                     </Avatar>
 
@@ -84,11 +87,11 @@ export default function ConnectCarousel({
   z-index: 30;
 }
 .left {
-  transform: translateX(-500px) scale(0.9);
+  transform: translateX(-450px) scale(0.85);
   z-index: 20;
 }
 .right {
-  transform: translateX(500px) scale(0.9);
+  transform: translateX(450px) scale(0.85);
   z-index: 20;
 }
 .far-left, .far-right {
