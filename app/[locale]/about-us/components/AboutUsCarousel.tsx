@@ -24,7 +24,7 @@ const AboutUsCarousel = () => {
         >
             <CarouselContent >
                 {Array.from({ length: 5 }).map((_, i) => (
-                    <CarouselItem className="basis-1/4" key={i}>
+                    <CarouselItem className="basis-1/2 lg:basis-1/4" key={i}>
                         <Image
                             key={`about-us-image-${i + 1}`}
                             src={`/about-us/${i + 1}.png`}

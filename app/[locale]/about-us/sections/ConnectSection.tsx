@@ -18,7 +18,7 @@ const ConnectSection = async () => {
 
             <SocialMediaLinksList />
 
-            <ConnectCarousel items={[1, 2, 3]} />
+            <ConnectCarousel />
         </SectionWrapper>
     )
 }

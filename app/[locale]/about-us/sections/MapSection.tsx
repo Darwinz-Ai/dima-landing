@@ -21,6 +21,8 @@ const HIGHLIGHTED_IDS = [
     "148", "262", "232", "231" // Africa
 ];
 
+const brands = [3, 5, 7, 9, 12, 14, 15, 16];
+
 type GeographyType = {
     id: string;
     properties: {
@@ -138,11 +140,18 @@ const MapSection = () => {
                 {/* LogosRenderer */}
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[linear-gradient(to_bottom,#B5E5F4_0%,#6FCFEA_32%,#B1DBEA_46%,#4EC6E8_100%)] h-48 max-w-3xl w-full rounded-4xl grid grid-cols-4">
 
-                    {Array.from({ length: 8 }).map((_, i) => (
-                        <div key={i} className="flex items-center justify-center border-x border-white/20">
-                            {i + 1}
+                    {brands.map((brand) => (
+                        <div key={brand} className="flex items-center justify-center border-x border-white/20">
+                            <div className="w-24 h-16 flex items-center justify-center grayscale">
+                                <img
+                                    src={`/logo-slider/${brand}.webp`}
+                                    alt={`Logo ${brand + 1}`}
+                                    className="max-h-full max-w-full object-contain"
+                                />
+                            </div>
                         </div>
                     ))}
+
                 </div>
 
             </div>
