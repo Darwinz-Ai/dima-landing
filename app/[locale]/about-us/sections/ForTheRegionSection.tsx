@@ -13,7 +13,7 @@ const ForTheRegionSection = async () => {
     const t = await getTranslations("AboutUs.builtForRegion");
     const solutions = t.raw("solutions") as string[];
     return (
-        <SectionWrapper className='container mx-auto px-0'>
+        <SectionWrapper className='container mx-auto'>
             <header className='flex flex-col justify-center items-center gap-6'>
                 <h2 className="text-[24px] md:text-[44px] font-normal text-center leading-tight max-w-4xl capitalize">
                     {t("title")}
@@ -23,7 +23,7 @@ const ForTheRegionSection = async () => {
                 <RequestDemoButton size="xl" />
             </header>
 
-            <div className='w-full flex gap-8 mt-10'>
+            <div className='w-full flex flex-col-reverse lg:flex-row gap-8 mt-10'>
                 <ul className='flex justify-between flex-col gap-4 basis-1/3'>
                     {solutions.map((sl) => (
                         <li key={sl} className={cn('border border-black p-4 text-[17px]',
@@ -34,7 +34,7 @@ const ForTheRegionSection = async () => {
                     ))}
                 </ul>
 
-                <figure className='basis-2/3'>
+                <figure className='basis-2/3 pr-4 flex items-center'>
                     <Image
                         src="/about-us/built.png"
                         alt='Built for the region image placeholder'

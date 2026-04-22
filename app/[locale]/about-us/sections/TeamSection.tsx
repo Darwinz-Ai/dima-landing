@@ -36,7 +36,7 @@ const TeamSection = async () => {
                     </h2>
                 </header>
 
-                <div className="flex items-center gap-16">
+                <div className="flex flex-col md:flex-row items-center gap-16">
                     {foundersInfo.map((founder) => (
                         <CoFounderCard key={founder.name} founder={founder} />
                     ))}

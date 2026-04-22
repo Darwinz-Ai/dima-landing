@@ -45,7 +45,7 @@ const MembersCarousel = () => {
         >
             <CarouselContent >
                 {teamMembers.map((name) => (
-                    <CarouselItem className="basis-2/6" key={name}>
+                    <CarouselItem className="basis-full sm:basis-2/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4" key={name}>
                         <div className="bg-muted p-4 rounded-xl">
                             <div className="flex justify-between items-center text-black">
                                 <p>{name}</p>

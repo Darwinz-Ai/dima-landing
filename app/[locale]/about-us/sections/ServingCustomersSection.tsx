@@ -17,9 +17,9 @@ const ServingCustomersSection = async () => {
                 </h2>
             </header>
 
-            <div className="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 max-w-3xl mx-auto">
                 {audiences.map((a) => (
-                    <Button key={a} size="lg" variant="secondary" className="capitalize font-normal w-[calc(33.33%-1rem)] pointer-events-none">{a}</Button>
+                    <Button key={a} size="lg" variant="secondary" className="capitalize font-normal md:w-[calc(33.33%-1rem)] pointer-events-none">{a}</Button>
                 ))}
             </div>
         </SectionWrapper>

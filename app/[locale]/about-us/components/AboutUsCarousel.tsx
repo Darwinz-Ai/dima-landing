@@ -22,19 +22,19 @@ const AboutUsCarousel = () => {
                 [AutoScroll({ stopOnInteraction: false })]
             }
         >
-            <CarouselContent >
+            <CarouselContent className="xl:px-2">
                 {Array.from({ length: 5 }).map((_, i) => (
-                    <CarouselItem className="basis-1/2 lg:basis-1/4" key={i}>
+                    <CarouselItem className="basis-2/3 sm:basis-1/3 lg:basis-1/4 2xl:basis-1/5" key={i}>
                         <Image
                             key={`about-us-image-${i + 1}`}
                             src={`/about-us/${i + 1}.png`}
                             alt="About Us image"
                             width={383}
                             height={420}
+                            className="px-2 sm:px-0"
                         />
                     </CarouselItem>
                 ))}
-
             </CarouselContent>
         </Carousel>
     )

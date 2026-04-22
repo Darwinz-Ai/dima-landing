@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
 
-
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import { ComposableMap, createCoordinates, Geographies, Geography, getGeographyCentroid, Marker } from '@vnedyalk0v/react19-simple-maps';
+import { ComposableMap, createCoordinates, createLatitude, createLongitude, createTranslateExtent, Geographies, Geography, getGeographyCentroid, Latitude, Longitude, Marker, ZoomableGroup } from '@vnedyalk0v/react19-simple-maps';
 import NumericCircleFlag from "../components/NumericCircleFlag";
+
 import { cn } from "@/lib/utils";
 
 import countries from 'i18n-iso-countries';
@@ -33,127 +33,146 @@ type GeographyType = {
 const MapSection = () => {
     const locale = useLocale();
     const isRTL = locale === "ar";
+    const [isMobile, setIsMobile] = useState<boolean>(false);
 
-    const [selectedCountry, setSelectedCountry] = useState<GeographyType | null>(null)
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        handleResize();
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
+
     const [hoveredCountry, setHoveredCountry] = useState<GeographyType | null>(null);
+    const desktopCenter = createCoordinates(-40, 25);
+    const mobileCenter = createCoordinates(20, 20);
 
     const getCountryName = (geo: GeographyType) => {
         if (geo.id === "760") return locale === "ar" ? "سوريا" : "Syria";
         return countries.getName(geo.id, locale, { select: "alias" }) || geo.properties.name;
     };
 
-    console.log("-----------------------------------------")
-    console.log("Selected Country ID:", selectedCountry)
-    console.log("Selected Country Name:", selectedCountry?.properties.name)
-    console.log("coordinates:", getGeographyCentroid(selectedCountry))
-
     return (
-        <SectionWrapper>
-            <div className="container relative bg-muted rounded-[35px] mb-32">
+        <SectionWrapper className="relative sm:mb-14 md:mb-28">
+            <div className="container relative bg-muted rounded-[35px] overflow-hidden aspect-square md:aspect-16/7 w-full">
                 <ComposableMap
                     projection="geoEqualEarth"
                     projectionConfig={{
-                        scale: 250,
-                        center: createCoordinates(-40, 30),
+                        scale: 240,
+                        center: desktopCenter
                     }}
                     width={800}
                     height={350}
-                    className="overflow-hidden"
+                    preserveAspectRatio="xMidYmid slice"
+                    className="w-full h-full"
                 >
-                    <Geographies geography={geoUrl}>
-                        {({ geographies }) =>
-                            geographies
-                                .map((geo) => {
-                                    const isHighlighted = HIGHLIGHTED_IDS.includes(geo.id);
-                                    return (
-                                        <Geography
-                                            key={geo.properties.name}
-                                            geography={geo}
-                                            onClick={() => {
-                                                setSelectedCountry(geo)
-                                            }}
-                                            onMouseEnter={() => setHoveredCountry(geo)}
-                                            onMouseLeave={() => setHoveredCountry(null)}
-                                            style={{
-                                                default: {
-                                                    fill: isHighlighted ? "#11A8CF" : "#E5E7EB",
-                                                    stroke: '#C9C9C9',
-                                                    strokeWidth: 0.5,
-                                                    outline: 'none'
-                                                },
-                                                hover: {
-                                                    fill: isHighlighted ? "#1097B9" : "#E5E7EB",
-                                                    stroke: isHighlighted ? '#0E89A9' : '#C9C9C9',
-                                                    strokeWidth: 0.5,
-                                                    outline: 'none'
-                                                },
-                                                pressed: {
-                                                    fill: isHighlighted ? "#1097B9" : "#E5E7EB",
-                                                    stroke: isHighlighted ? '#0E89A9' : '#C9C9C9',
-                                                    strokeWidth: 0.5,
-                                                    outline: 'none'
-                                                },
-                                                focused: {
-                                                    fill: isHighlighted ? "#11A8CF" : "#E5E7EB",
-                                                    stroke: '#C9C9C9',
-                                                    strokeWidth: 0.5,
-                                                    outline: 'none'
-                                                }
-                                            }}
-                                        />
-                                    )
-                                })
-                        }
-                    </Geographies>
+                    <ZoomableGroup
+                        zoom={isMobile ? 2.5 : 1}
+                        minZoom={1}
+                        maxZoom={6}
+                        center={isMobile ? mobileCenter : desktopCenter}
+                        translateExtent={createTranslateExtent(
+                            [createLongitude(0), createLatitude(0)],
+                            [createLongitude(800), createLatitude(350)]
+                        )}
+                        className="overflow-hidden"
+                    >
+                        <Geographies geography={geoUrl}>
+                            {({ geographies }) =>
+                                geographies
+                                    .map((geo) => {
+                                        const isHighlighted = HIGHLIGHTED_IDS.includes(geo.id);
+                                        return (
+                                            <Geography
+                                                key={geo.properties.name}
+                                                geography={geo}
+                                                onClick={() => {
+                                                    setHoveredCountry(geo);
+                                                }}
+                                                onMouseEnter={() => setHoveredCountry(geo)}
+                                                onMouseLeave={() => setHoveredCountry(null)}
+                                                style={{
+                                                    default: {
+                                                        fill: isHighlighted ? "#11A8CF" : "#E5E7EB",
+                                                        stroke: '#C9C9C9',
+                                                        strokeWidth: 0.5,
+                                                        outline: 'none'
+                                                    },
+                                                    hover: {
+                                                        fill: isHighlighted ? "#1097B9" : "#E5E7EB",
+                                                        stroke: isHighlighted ? '#0E89A9' : '#C9C9C9',
+                                                        strokeWidth: 0.5,
+                                                        outline: 'none'
+                                                    },
+                                                    pressed: {
+                                                        fill: isHighlighted ? "#1097B9" : "#E5E7EB",
+                                                        stroke: isHighlighted ? '#0E89A9' : '#C9C9C9',
+                                                        strokeWidth: 0.5,
+                                                        outline: 'none'
+                                                    },
+                                                    focused: {
+                                                        fill: isHighlighted ? "#11A8CF" : "#E5E7EB",
+                                                        stroke: '#C9C9C9',
+                                                        strokeWidth: 0.5,
+                                                        outline: 'none'
+                                                    }
+                                                }}
+                                            />
+                                        )
+                                    })
+                            }
+                        </Geographies>
 
-                    {/* Map marker */}
-                    {hoveredCountry && HIGHLIGHTED_IDS.includes(hoveredCountry.id) && (
-                        <Marker coordinates={getGeographyCentroid(hoveredCountry)!} className="pointer-events-none">
-                            <line
-                                x1="0"
-                                y1="0"
-                                x2="0"
-                                y2="-40"
-                                stroke="#F59E0B"
-                                strokeWidth="0.5"
-                                strokeLinecap="round"
-                            />
-
-                            <foreignObject
-                                x="-92"
-                                y="-55"
-                                width="100"
-                                height="30"
-                                className="pointer-events-none"
-                            >
-                                <div className={cn("flex items-center gap-1 text-[10px] font-medium justify-end",
-                                    isRTL && "flex-row-reverse"
-                                )}>
-                                    <span>{getCountryName(hoveredCountry)}</span>
-                                    <NumericCircleFlag numericCode={hoveredCountry.id} />
-                                </div>
-                            </foreignObject>
-                        </Marker>
-                    )}
-                </ComposableMap>
-
-                {/* LogosRenderer */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-[linear-gradient(to_bottom,#B5E5F4_0%,#6FCFEA_32%,#B1DBEA_46%,#4EC6E8_100%)] h-48 max-w-3xl w-full rounded-4xl grid grid-cols-4">
-
-                    {brands.map((brand) => (
-                        <div key={brand} className="flex items-center justify-center border-x border-white/20">
-                            <div className="w-24 h-16 flex items-center justify-center grayscale">
-                                <img
-                                    src={`/logo-slider/${brand}.webp`}
-                                    alt={`Logo ${brand + 1}`}
-                                    className="max-h-full max-w-full object-contain"
+                        {/* Map marker */}
+                        {hoveredCountry && HIGHLIGHTED_IDS.includes(hoveredCountry.id) && (
+                            <Marker coordinates={getGeographyCentroid(hoveredCountry)!} className="pointer-events-none">
+                                <line
+                                    x1="0"
+                                    y1="0"
+                                    x2="0"
+                                    y2="-40"
+                                    stroke="#F59E0B"
+                                    strokeWidth="0.5"
+                                    strokeLinecap="round"
                                 />
-                            </div>
+
+                                <foreignObject
+                                    x="-92"
+                                    y="-55"
+                                    width="100"
+                                    height="30"
+                                    className="pointer-events-none"
+                                >
+                                    <div className={cn("flex items-center gap-1 text-[10px] font-medium justify-end",
+                                        isRTL && "flex-row-reverse"
+                                    )}>
+                                        <span>{getCountryName(hoveredCountry)}</span>
+                                        <NumericCircleFlag numericCode={hoveredCountry.id} />
+                                    </div>
+                                </foreignObject>
+                            </Marker>
+                        )}
+                    </ZoomableGroup>
+                </ComposableMap>
+            </div>
+
+            {/* Logos Renderer */}
+            <div className={cn(
+                "sm:absolute sm:bottom-10 sm:left-1/2 sm:-translate-x-1/2 sm:translate-y-1/2",
+                "mt-4 grid grid-cols-2 sm:grid-cols-4 w-full lg:h-48  sm:max-w-lg md:max-w-xl lg:max-w-3xl",
+                "bg-[linear-gradient(to_bottom,#B5E5F4_0%,#6FCFEA_32%,#B1DBEA_46%,#4EC6E8_100%)] rounded-4xl"
+            )}>
+                {brands.map((brand) => (
+                    <div key={brand} className="flex items-center justify-center border-x border-white/20">
+                        <div className="w-24 h-16 flex items-center justify-center grayscale">
+                            <img
+                                src={`/logo-slider/${brand}.webp`}
+                                alt={`Logo ${brand + 1}`}
+                                className="max-h-full max-w-full object-contain"
+                            />
                         </div>
-                    ))}
-
-                </div>
-
+                    </div>
+                ))}
             </div>
         </SectionWrapper>
     );

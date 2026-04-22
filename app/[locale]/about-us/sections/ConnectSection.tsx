@@ -9,17 +9,19 @@ const ConnectSection = async () => {
     const t = await getTranslations("AboutUs");
 
     return (
-        <SectionWrapper className="space-y-8">
-            <header>
-                <h2 className="text-[24px] md:text-[44px] font-normal text-center leading-tight max-w-4xl capitalize">
-                    {t("connect")}
-                </h2>
-            </header>
+        <>
+            <SectionWrapper className="space-y-8">
+                <header>
+                    <h2 className="text-[24px] md:text-[44px] font-normal text-center leading-tight max-w-4xl capitalize">
+                        {t("connect")}
+                    </h2>
+                </header>
 
-            <SocialMediaLinksList />
+                <SocialMediaLinksList />
 
-            <ConnectCarousel />
-        </SectionWrapper>
+                <ConnectCarousel />
+            </SectionWrapper>
+        </>
     )
 }
 
