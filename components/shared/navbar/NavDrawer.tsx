@@ -98,6 +98,13 @@ function NavDrawer() {
                         >
                             {t("faq")}
                         </Link>
+                        <Link
+                            href="/about-us"
+                            onClick={() => setIsOpen(false)}
+                            className="block text-base font-medium hover:text-primary transition"
+                        >
+                            {t("aboutUs")}
+                        </Link>
 
                         {/* CTA */}
                         <Button className="lg:hidden flex justify-between py-2 pl-4 pr-2.5">

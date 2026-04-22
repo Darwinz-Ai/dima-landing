@@ -702,6 +702,11 @@ export const getSiteNavigationElementJsonLd = async () => {
                 name: t("faq"),
                 url: `${baseUrl}/faq`,
             },
+            {
+                "@type": "SiteNavigationElement",
+                name: t("aboutUs"),
+                url: `${baseUrl}/about-us`,
+            },
         ];
 
     const jsonLd: WithContext<ItemList> = {
