@@ -12,7 +12,7 @@ const ServingCustomersSection = async () => {
             <header>
                 <h2 className="text-[24px] md:text-[44px] font-normal text-center leading-tight max-w-4xl">
                     {t("prefix")}
-                    <span className="text-primary"> 31 </span>
+                    <span className="text-primary"> 30 </span>
                     {t("suffix")}
                 </h2>
             </header>

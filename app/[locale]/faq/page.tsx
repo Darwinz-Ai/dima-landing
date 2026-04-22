@@ -2,11 +2,13 @@ import HeroSection from './sections/HeroSection'
 import FAQSection from './sections/FAQSection'
 import RequestDemoSection from '@/components/shared/form/RequestDemoSection'
 import TestimonialSection from '../(home)/sections/TestimonialSection'
+import JsonLd from '@/components/shared/JsonLd'
+
 import { Metadata } from 'next'
+import { QuestionAccordion } from '@/types'
+
 import { buildLocalizedMetadata } from '@/lib/seo'
 import { getTranslations } from 'next-intl/server'
-import { QuestionAccordion } from '@/types'
-import JsonLd from '@/components/shared/JsonLd'
 import { getFAQJsonLd } from '@/lib/jsonLd'
 
 interface FAQPageProps {
@@ -28,13 +30,13 @@ export async function generateMetadata(
                         url: "/og/faq.png",
                         width: 1200,
                         height: 630,
-                        alt: "dima Tools & Calculators OG Image",
+                        alt: "dima FAQ OG Image",
                     },
                 ],
             },
             twitter: {
                 card: "summary_large_image",
-                images: ["/og/tools.png"],
+                images: ["/og/faq.png"],
             },
             alternates: {
                 canonical: `https://thedar.ai/${locale}/faq`,
