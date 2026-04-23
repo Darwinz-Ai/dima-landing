@@ -23,6 +23,11 @@ export const footerResourcesLinks: NavLink[] = [
     title: "FAQs",
     href: "/faq",
     translationKey: "faqs"
+  },
+  {
+    title: "About Us",
+    href: "/about-us",
+    translationKey: "aboutUs"
   }
 ];
 

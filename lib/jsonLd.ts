@@ -111,19 +111,35 @@ export const getOrganizationJsonLd = async () => {
         ],
         email: "info@thedar.ai",
         areaServed: [
+            { "@type": "Country", name: "United States", identifier: "US" },
+            { "@type": "Country", name: "United Kingdom", identifier: "GB" },
             { "@type": "Country", name: "Saudi Arabia", identifier: "SA" },
             { "@type": "Country", name: "United Arab Emirates", identifier: "AE" },
-            { "@type": "Country", name: "Bahrain", identifier: "BH" },
-            { "@type": "Country", name: "Oman", identifier: "OM" },
             { "@type": "Country", name: "Qatar", identifier: "QA" },
             { "@type": "Country", name: "Kuwait", identifier: "KW" },
+            { "@type": "Country", name: "Oman", identifier: "OM" },
+            { "@type": "Country", name: "Bahrain", identifier: "BH" },
             { "@type": "Country", name: "Egypt", identifier: "EG" },
+            { "@type": "Country", name: "Jordan", identifier: "JO" },
+            { "@type": "Country", name: "Iraq", identifier: "IQ" },
+            { "@type": "Country", name: "Syria", identifier: "SY" },
+            { "@type": "Country", name: "Lebanon", identifier: "LB" },
+            { "@type": "Country", name: "Palestine", identifier: "PS" },
+            { "@type": "Country", name: "Yemen", identifier: "YE" },
+            { "@type": "Country", name: "Iran", identifier: "IR" },
+            { "@type": "Country", name: "Turkey", identifier: "TR" },
             { "@type": "Country", name: "Morocco", identifier: "MA" },
+            { "@type": "Country", name: "Sudan", identifier: "SD" },
             { "@type": "Country", name: "Algeria", identifier: "DZ" },
             { "@type": "Country", name: "Tunisia", identifier: "TN" },
             { "@type": "Country", name: "Libya", identifier: "LY" },
-            { "@type": "Country", name: "Mauritania", identifier: "MR" }
-        ],
+            { "@type": "Country", name: "Mauritania", identifier: "MR" },
+            { "@type": "Country", name: "Mali", identifier: "ML" },
+            { "@type": "Country", name: "Niger", identifier: "NE" },
+            { "@type": "Country", name: "Chad", identifier: "TD" },
+            { "@type": "Country", name: "Djibouti", identifier: "DJ" },
+            { "@type": "Country", name: "Eritrea", identifier: "ER" },
+        ]
     }
 
     return jsonLd;
@@ -685,6 +701,11 @@ export const getSiteNavigationElementJsonLd = async () => {
                 "@type": "SiteNavigationElement",
                 name: t("faq"),
                 url: `${baseUrl}/faq`,
+            },
+            {
+                "@type": "SiteNavigationElement",
+                name: t("aboutUs"),
+                url: `${baseUrl}/about-us`,
             },
         ];
 

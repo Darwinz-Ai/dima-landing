@@ -25,6 +25,7 @@ async function Navbar() {
         { name: t("caseStudies"), href: "/case-studies" },
         { name: t("tools"), href: "/tools" },
         { name: t("faq"), href: "/faq" },
+        { name: t("aboutUs"), href: "/about-us" },
     ];
 
     // Reverse the order for Arabic locale

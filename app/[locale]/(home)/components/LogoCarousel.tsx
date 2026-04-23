@@ -19,7 +19,7 @@ export default function LogoCarousel() {
             dir="ltr"
         >
             <CarouselContent className="flex items-center gap-10 sm:gap-16 md:gap-20">
-                {Array.from({ length: 14 }).map((_, index) => (
+                {Array.from({ length: 16 }).map((_, index) => (
                     <CarouselItem
                         key={index}
                         className="

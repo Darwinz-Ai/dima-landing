@@ -18,8 +18,7 @@ export default function TestimonialCarousel({
     const locale = useLocale();
     const isRTL = locale === "ar";
 
-    // Duplicate list for smooth infinite looping
-    const cards = useMemo(() => [...items], [items]);
+    const cards = items
 
     const [active, setActive] = useState(0);
 
@@ -32,7 +31,6 @@ export default function TestimonialCarousel({
         return () => clearInterval(t);
     }, [cards.length, autoplay, interval]);
 
-    // if (!mounted) return null;
 
     const getPosition = (index: number) => {
         const len = cards.length;

@@ -9,7 +9,8 @@ type BaseSeoKey =
   | "RequestDemo"
   | "Tools"
   | "PrivacyPolicy"
-  | "FAQ";
+  | "FAQ"
+  | "AboutUs";
 
 export type ToolsSeoKey =
   | "Tools-stack-consolidation-calculator"
