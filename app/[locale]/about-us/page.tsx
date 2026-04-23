@@ -1,9 +1,8 @@
-import ConnectSection from "./sections/ConnectSection"
-import ForTheRegionSection from "./sections/ForTheRegionSection"
+import dynamic from "next/dynamic"
+
 import HeroSection from "./sections/HeroSection"
-import MapSection from "./sections/MapSection"
 import ServingCustomersSection from "./sections/ServingCustomersSection"
-import TeamSection from "./sections/TeamSection"
+// import TeamSection from "./sections/TeamSection"
 import JsonLd from "@/components/shared/JsonLd"
 
 import { Metadata } from "next"
@@ -51,6 +50,16 @@ export async function generateMetadata(
     })
 }
 
+const ForTheRegionSection = dynamic(() => import("./sections/ForTheRegionSection"), {
+    ssr: true
+})
+const MapSection = dynamic(() => import("./sections/MapSection"), {
+    ssr: true
+})
+const ConnectSection = dynamic(() => import("./sections/ConnectSection"), {
+    ssr: true
+})
+
 const AboutUsPage = async () => {
     const AboutUsJsonLd = await getOrganizationJsonLd();
     return (
@@ -61,7 +70,7 @@ const AboutUsPage = async () => {
             <ForTheRegionSection />
             <ServingCustomersSection />
             <MapSection />
-            <TeamSection />
+            {/* <TeamSection /> */}
             <ConnectSection />
         </main>
     )

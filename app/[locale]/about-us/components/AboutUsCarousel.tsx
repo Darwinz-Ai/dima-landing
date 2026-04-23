@@ -32,6 +32,9 @@ const AboutUsCarousel = () => {
                             width={383}
                             height={420}
                             className="px-2 sm:px-0"
+                            priority={i < 2}
+                            fetchPriority={i < 2 ? "high" : "low"}
+                            sizes="(max-width: 640px) 66vw, (max-width: 1024px) 33vw, 25vw"
                         />
                     </CarouselItem>
                 ))}

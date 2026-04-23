@@ -40,6 +40,9 @@ const ForTheRegionSection = async () => {
                         alt='Built for the region image placeholder'
                         width={856}
                         height={524}
+                        loading='lazy'
+                        fetchPriority='low'
+                        sizes="(max-width: 768px) 90vw, 350px"
                     />
                 </figure>
             </div>

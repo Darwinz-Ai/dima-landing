@@ -40,6 +40,7 @@ export default function ConnectCarousel() {
                     frameBorder="0"
                     allowFullScreen
                     title="LinkedIn Landscape 1"
+                    loading="lazy"
                 ></iframe>
             ),
         },
@@ -55,6 +56,7 @@ export default function ConnectCarousel() {
                     frameBorder="0"
                     allowFullScreen
                     title="LinkedIn Landscape 2"
+                    loading="lazy"
                 ></iframe>
             ),
         },

@@ -10,17 +10,9 @@ import NumericCircleFlag from "../components/NumericCircleFlag";
 import { cn } from "@/lib/utils";
 
 import countries from 'i18n-iso-countries';
+import { SERVING_COUNTRIES } from "@/data/about-us";
 
 const geoUrl = 'https://unpkg.com/world-atlas@2.0.2/countries-110m.json';
-
-const HIGHLIGHTED_IDS = [
-    "840", "826", // North America & Europe
-    "682", "784", "634", "414", "512", "048", // GCC
-    "818", "400", "368", "760", "422", "275", "887", "364", "792", // MENA
-    "504", "732", "012", "788", "434", "729", "478", "466", "562",
-    "148", "262", "232", "231" // Africa
-];
-
 const brands = [3, 5, 7, 9, 12, 14, 15, 16];
 
 type GeographyType = {
@@ -81,7 +73,7 @@ const MapSection = () => {
                             {({ geographies }) =>
                                 geographies
                                     .map((geo) => {
-                                        const isHighlighted = HIGHLIGHTED_IDS.includes(geo.id);
+                                        const isHighlighted = SERVING_COUNTRIES.includes(geo.id);
                                         return (
                                             <Geography
                                                 key={geo.properties.name}
@@ -124,7 +116,7 @@ const MapSection = () => {
                         </Geographies>
 
                         {/* Map marker */}
-                        {hoveredCountry && HIGHLIGHTED_IDS.includes(hoveredCountry.id) && (
+                        {hoveredCountry && SERVING_COUNTRIES.includes(hoveredCountry.id) && (
                             <Marker coordinates={getGeographyCentroid(hoveredCountry)!} className="pointer-events-none">
                                 <line
                                     x1="0"

@@ -3,6 +3,8 @@ import { getTranslations } from "next-intl/server"
 import SectionWrapper from "@/components/shared/SectionWrapper"
 import { Button } from "@/components/ui/button"
 
+import { SERVING_COUNTRIES } from "@/data/about-us"
+
 
 const ServingCustomersSection = async () => {
     const t = await getTranslations("AboutUs.servingCustomers")
@@ -12,7 +14,7 @@ const ServingCustomersSection = async () => {
             <header>
                 <h2 className="text-[24px] md:text-[44px] font-normal text-center leading-tight max-w-4xl">
                     {t("prefix")}
-                    <span className="text-primary"> 30 </span>
+                    <span className="text-primary"> {SERVING_COUNTRIES.length} </span>
                     {t("suffix")}
                 </h2>
             </header>
