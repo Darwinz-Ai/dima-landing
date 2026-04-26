@@ -130,10 +130,10 @@ export default function ConnectCarousel() {
 
             {/* Controls */}
             <div className="flex justify-center items-center gap-4 py-4 relative z-50">
-                <Button size="icon-sm" variant="outline" onClick={handleGoToPrev} className={cn("rounded-full bg-white/80", isRTL && "rotate-180")} name="Previous Video">
+                <Button size="icon-sm" variant="outline" onClick={handleGoToPrev} className={cn("rounded-full bg-white/80", isRTL && "rotate-180")} title="Previous Video">
                     <IconChevronLeft className="size-6" />
                 </Button>
-                <Button size="icon-sm" variant="outline" onClick={handleGoToNext} className={cn("rounded-full bg-white/80", isRTL && "rotate-180")} name="Next Video">
+                <Button size="icon-sm" variant="outline" onClick={handleGoToNext} className={cn("rounded-full bg-white/80", isRTL && "rotate-180")} title="Next Video">
                     <IconChevronRight className="size-6" />
                 </Button>
             </div>
