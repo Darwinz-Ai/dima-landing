@@ -109,7 +109,7 @@ export default function ConnectCarousel() {
                                 <div className="absolute top-0 left-0 w-full bg-linear-to-b from-black/80 to-transparent h-20 md:h-[100px] z-20 pointer-events-none">
                                     <div className="flex items-center gap-2 p-4 md:p-6">
                                         <Avatar className="bg-white p-1 h-8 w-8 md:h-10 md:w-10">
-                                            <AvatarImage src="/dima-logo/dima-logo.svg" />
+                                            <AvatarImage src="/dima-logo/dima-logo.svg" alt="dima logo" />
                                             <AvatarFallback className="text-black text-xs">D</AvatarFallback>
                                         </Avatar>
                                         <div className="text-left">
@@ -130,10 +130,10 @@ export default function ConnectCarousel() {
 
             {/* Controls */}
             <div className="flex justify-center items-center gap-4 py-4 relative z-50">
-                <Button size="icon-sm" variant="outline" onClick={handleGoToPrev} className={cn("rounded-full bg-white/80", isRTL && "rotate-180")}>
+                <Button size="icon-sm" variant="outline" onClick={handleGoToPrev} className={cn("rounded-full bg-white/80", isRTL && "rotate-180")} name="Previous Video">
                     <IconChevronLeft className="size-6" />
                 </Button>
-                <Button size="icon-sm" variant="outline" onClick={handleGoToNext} className={cn("rounded-full bg-white/80", isRTL && "rotate-180")}>
+                <Button size="icon-sm" variant="outline" onClick={handleGoToNext} className={cn("rounded-full bg-white/80", isRTL && "rotate-180")} name="Next Video">
                     <IconChevronRight className="size-6" />
                 </Button>
             </div>

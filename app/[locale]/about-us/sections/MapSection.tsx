@@ -55,7 +55,6 @@ const MapSection = () => {
                     }}
                     width={800}
                     height={350}
-                    preserveAspectRatio="xMidYmid slice"
                     className="w-full h-full"
                 >
                     <ZoomableGroup
@@ -67,6 +66,13 @@ const MapSection = () => {
                             [createLongitude(0), createLatitude(0)],
                             [createLongitude(800), createLatitude(350)]
                         )}
+                        filterZoomEvent={(event: any) => {
+                            console.log("event:", event)
+                            if (event.type === "wheel") {
+                                return event.ctrlKey;
+                            }
+                            return true;
+                        }}
                         className="overflow-hidden"
                     >
                         <Geographies geography={geoUrl}>
