@@ -26,7 +26,7 @@ const ForTheRegionSection = async () => {
             <div className='w-full flex flex-col-reverse lg:flex-row gap-8 mt-10'>
                 <ul className='flex justify-between flex-col gap-4 basis-1/3'>
                     {solutions.map((sl) => (
-                        <li key={sl} className={cn('border border-black p-4 text-[17px]',
+                        <li key={sl} className={cn('border border-black p-4 text-[14px] lg:text-[17px]',
                             isRTL ? "border-r-4 border-r-[#11A8CF] rounded-l-2xl" : "border-l-4 border-l-[#11A8CF] rounded-r-2xl"
                         )}>
                             {sl}
@@ -36,13 +36,13 @@ const ForTheRegionSection = async () => {
 
                 <figure className='basis-2/3 pr-4 flex items-center'>
                     <Image
-                        src="/about-us/built.png"
+                        src={`/about-us/built-${locale}.png`}
                         alt='Built for the region image placeholder'
                         width={856}
                         height={524}
                         loading='lazy'
                         fetchPriority='low'
-                        sizes="(max-width: 768px) 90vw, 350px"
+                        sizes="(max-width: 768px) 90vw, 856px"
                     />
                 </figure>
             </div>

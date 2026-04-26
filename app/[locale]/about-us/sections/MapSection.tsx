@@ -156,9 +156,9 @@ const MapSection = () => {
 
             {/* Logos Renderer */}
             <div className={cn(
-                "sm:absolute sm:bottom-10 sm:left-1/2 sm:-translate-x-1/2 sm:translate-y-1/2",
-                "mt-4 grid grid-cols-2 sm:grid-cols-4 w-full lg:h-48  sm:max-w-lg md:max-w-xl lg:max-w-3xl",
-                "bg-[linear-gradient(to_bottom,#B5E5F4_0%,#6FCFEA_32%,#B1DBEA_46%,#4EC6E8_100%)] rounded-4xl"
+                "absolute bottom-10 left-1/2 -translate-x-1/2 translate-y-1/2",
+                "mt-4 grid grid-cols-4 w-full lg:h-48 max-w-[320px] sm:max-w-lg md:max-w-xl lg:max-w-3xl",
+                "bg-[linear-gradient(to_bottom,#B5E5F4_0%,#6FCFEA_32%,#B1DBEA_46%,#4EC6E8_100%)] rounded-3xl lg:rounded-4xl"
             )}>
                 {brands.map((brand) => (
                     <div key={brand} className="flex items-center justify-center border-x border-white/20">
