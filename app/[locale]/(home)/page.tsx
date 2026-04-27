@@ -1,16 +1,19 @@
-import HeroSection from "./sections/HeroSection";
-import DimaAiSection from "./sections/DimaAiSection";
-import DimaSuiteSection from "./sections/DimaSuiteSection";
-import CaseStudiesSection from "./sections/CaseStudiesSection";
-import QuestionsAnsweredSection from "@/app/[locale]/(home)/sections/QuestionsAnsweredSection";
-import type { Metadata } from "next";
-import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
-import { buildLocalizedMetadata } from "@/lib/seo";
-import JsonLd from "@/components/shared/JsonLd";
-import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
-import { QuestionAccordion } from "@/types";
-import { getTranslations } from "next-intl/server";
 import dynamic from "next/dynamic";
+
+import HeroSection from "@/features/home/sections/HeroSection";
+import DimaAiSection from "@/features/home/sections/DimaAiSection";
+import DimaSuiteSection from "@/features/home/sections/DimaSuiteSection";
+import CaseStudiesSection from "@/features/home/sections/CaseStudiesSection";
+import QuestionsAnsweredSection from "@/features/home/sections/QuestionsAnsweredSection";
+import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
+import JsonLd from "@/components/shared/JsonLd";
+
+import type { Metadata } from "next";
+import { QuestionAccordion } from "@/types";
+
+import { getTranslations } from "next-intl/server";
+import { buildLocalizedMetadata } from "@/lib/seo";
+import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
 
 
 type HomePageProps = {
@@ -54,15 +57,15 @@ export async function generateMetadata(
   });
 }
 
-const EmpoweringAgenciesSection = dynamic(() => import("./sections/EmpoweringAgenciesSection"), {
+const EmpoweringAgenciesSection = dynamic(() => import("@/features/home/sections/EmpoweringAgenciesSection"), {
   ssr: true,
 });
 
-const OwnConversationSection = dynamic(() => import("./sections/OwnConversationSection"), {
+const OwnConversationSection = dynamic(() => import("@/features/home/sections/OwnConversationSection"), {
   ssr: true,
 });
 
-const TestimonialSection = dynamic(() => import("./sections/TestimonialSection"), {
+const TestimonialSection = dynamic(() => import("@/features/home/sections/TestimonialSection"), {
   ssr: true,
 });
 

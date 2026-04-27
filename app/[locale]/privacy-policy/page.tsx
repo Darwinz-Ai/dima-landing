@@ -2,13 +2,15 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 import { Link } from "@/i18n/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import ArabicPolicy from "./components/ArabicPolicy";
-import EnglishPolicy from "./components/EnglishPolicy";
+import ArabicPolicy from "@/features/privacy-policy/ArabicPolicy";
+import EnglishPolicy from "@/features/privacy-policy/EnglishPolicy";
+import JsonLd from "@/components/shared/JsonLd";
+
 import type { Metadata } from "next";
+
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getPrivacyPolicyJsonLd } from "@/lib/jsonLd";
 import { getLocale } from "next-intl/server";
-import JsonLd from "@/components/shared/JsonLd";
 
 type PrivacyPolicyPageProps = {
     params: Promise<{ locale: string }>;

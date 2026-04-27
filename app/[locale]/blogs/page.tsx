@@ -1,13 +1,16 @@
+
 import SectionWrapper from "@/components/shared/SectionWrapper";
-import HeroSection from "./sections/HeroSection";
-import type { Metadata } from "next";
+import HeroSection from "@/features/blogs/sections/HeroSection";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
-import AllArticlesSection from "./sections/AllArticlesSection";
-import { buildLocalizedMetadata } from "@/lib/seo";
-import { fetchBlogs } from "@/lib/firebase/blogsFunctions";
-import { getLocale } from "next-intl/server";
-import { getBlogsPageJsonLd } from "@/lib/jsonLd";
+import AllArticlesSection from "@/features/blogs/sections/AllArticlesSection";
 import JsonLd from "@/components/shared/JsonLd";
+
+import type { Metadata } from "next";
+
+import { getLocale } from "next-intl/server";
+import { buildLocalizedMetadata } from "@/lib/seo";
+import { getBlogsPageJsonLd } from "@/lib/jsonLd";
+import { fetchBlogs } from "@/lib/firebase/blogsFunctions";
 
 type BlogsPageProps = {
     params: Promise<{ locale: string }>;

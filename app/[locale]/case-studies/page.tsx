@@ -1,14 +1,17 @@
-import LogoCarousel from "../(home)/components/LogoCarousel";
-import HeroSection from "./sections/HeroSection";
-import FilterSection from "./sections/FilterSection";
-import DimaSection from "./sections/DimaSection";
-import type { Metadata } from "next";
+
+import LogoCarousel from "@/features/home/components/carousels/LogoCarousel";
+import HeroSection from "@/features/case-studies/sections/HeroSection";
+import FilterSection from "@/features/case-studies/sections/FilterSection";
+import DimaSection from "@/features/case-studies/sections/DimaSection";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
+import JsonLd from "@/components/shared/JsonLd";
+
+import type { Metadata } from "next";
+
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getLocale } from "next-intl/server";
 import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
 import { getCaseStudiesPageJsonLd } from "@/lib/jsonLd";
-import JsonLd from "@/components/shared/JsonLd";
 
 type CaseStudiesPageProps = {
     params: Promise<{ locale: string }>;

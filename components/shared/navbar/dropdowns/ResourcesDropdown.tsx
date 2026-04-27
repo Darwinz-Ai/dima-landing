@@ -1,11 +1,13 @@
 "use client";
+import useBlogs from "@/features/blogs/hooks/useBlogs";
+import { useTranslations, useLocale } from "next-intl";
+
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { useTranslations, useLocale } from "next-intl";
-import useBlogs from "@/app/[locale]/blogs/hooks/useBlogs";
-import BlogCard from "@/app/[locale]/blogs/components/BlogCard";
-import BlogCardSkeleton from "@/app/[locale]/blogs/components/BlogCardSkeleton";
+import BlogCard from "@/features/blogs/components/cards/BlogCard";
+import BlogCardSkeleton from "@/features/blogs/components/cards/BlogCardSkeleton";
+
 import { footerResourcesLinks } from "@/data/home-page";
 
 function ResourcesDropdown() {

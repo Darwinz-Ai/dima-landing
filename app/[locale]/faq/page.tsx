@@ -1,7 +1,7 @@
-import HeroSection from './sections/HeroSection'
-import FAQSection from './sections/FAQSection'
+import HeroSection from '@/features/faq/sections/HeroSection'
+import FAQSection from '@/features/faq/sections/FAQSection'
 import RequestDemoSection from '@/components/shared/form/RequestDemoSection'
-import TestimonialSection from '../(home)/sections/TestimonialSection'
+import TestimonialSection from '@/features/home/sections/TestimonialSection'
 import JsonLd from '@/components/shared/JsonLd'
 
 import { Metadata } from 'next'

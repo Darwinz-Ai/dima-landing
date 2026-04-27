@@ -1,17 +1,20 @@
-import type { Metadata } from "next";
-import ExpandingCardsSection from "../sections/ExpandingCardsSection";
-import CardsGrid from "../sections/CardsGrid";
-import HeroSection from "../sections/HeroSection";
-import ScrollingSection from "../sections/ScrollingSection";
-import TestimonialSection from "../sections/TestimonialSection";
-import QuestionsAnsweredSection from "@/app/[locale]/(home)/sections/QuestionsAnsweredSection";
 import { notFound } from "next/navigation";
+
+import ExpandingCardsSection from "@/features/solutions/sections/ExpandingCardsSection";
+import CardsGrid from "@/features/solutions/sections/CardsGrid";
+import HeroSection from "@/features/solutions/sections/HeroSection";
+import ScrollingSection from "@/features/solutions/sections/ScrollingSection";
+import TestimonialSection from "@/features/solutions/sections/TestimonialSection";
+import QuestionsAnsweredSection from "@/features/home/sections/QuestionsAnsweredSection";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
+import JsonLd from "@/components/shared/JsonLd";
+
+import type { Metadata } from "next";
+import { QuestionAccordion } from "@/types";
+
 import { buildLocalizedMetadata, SolutionsSeoKey } from "@/lib/seo";
 import { getFAQJsonLd, getSolutionSchema } from "@/lib/jsonLd";
-import JsonLd from "@/components/shared/JsonLd";
 import { getTranslations } from "next-intl/server";
-import { QuestionAccordion } from "@/types";
 
 type SolutionPageParams = {
     slug: string;

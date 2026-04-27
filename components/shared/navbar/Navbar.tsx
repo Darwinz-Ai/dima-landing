@@ -11,7 +11,7 @@ import { getSiteNavigationElementJsonLd } from "@/lib/jsonLd";
 import JsonLd from "../JsonLd";
 import dynamic from "next/dynamic";
 
-const NavigationDropdown = dynamic(() => import("./NavigationDropdown"))
+const NavigationDropdown = dynamic(() => import("./dropdowns/NavigationDropdown"))
 
 async function Navbar() {
     const t = await getTranslations("Navbar");

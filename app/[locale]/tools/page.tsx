@@ -1,16 +1,19 @@
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "@/i18n/navigation";
-import type { Metadata } from "next";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
-import { toolLinks } from "@/data/tools";
 import RequestDemoButton from "@/components/shared/form/RequestDemoButton";
-import LogoCarousel from "../(home)/components/LogoCarousel";
-import EmpoweringAgenciesSection from "../(home)/sections/EmpoweringAgenciesSection";
+import LogoCarousel from "@/features/home/components/carousels/LogoCarousel";
+import JsonLd from "@/components/shared/JsonLd";
+import EmpoweringAgenciesSection from "@/features/home/sections/EmpoweringAgenciesSection";
+
+import type { Metadata } from "next";
+
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getToolsPageJsonLd, ToolJsonLdParams } from "@/lib/jsonLd";
-import JsonLd from "@/components/shared/JsonLd";
 import { getLocale, getTranslations } from "next-intl/server";
+
+import { toolLinks } from "@/data/tools";
 
 type ToolsPageProps = {
     params: Promise<{ locale: string }>;

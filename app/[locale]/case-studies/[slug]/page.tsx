@@ -1,10 +1,13 @@
-import { Metadata } from "next";
-import CaseStudyContent from "./components/CaseStudyContent";
-import { fetchSingleCaseStudy } from "@/lib/firebase/caseStudiesFunctions";
-import { getLocale } from "next-intl/server";
-import { createBreadcrumbs, getSingleCaseStudyPageJsonLd } from "@/lib/jsonLd";
-import JsonLd from "@/components/shared/JsonLd";
 import { notFound } from "next/navigation";
+
+import CaseStudyContent from "@/features/case-studies/components/CaseStudyContent";
+import JsonLd from "@/components/shared/JsonLd";
+
+import { Metadata } from "next";
+
+import { getLocale } from "next-intl/server";
+import { fetchSingleCaseStudy } from "@/lib/firebase/caseStudiesFunctions";
+import { createBreadcrumbs, getSingleCaseStudyPageJsonLd } from "@/lib/jsonLd";
 
 type SingleViewCaseStudiesPageProps = {
     params: Promise<{ slug: string, locale: string }>

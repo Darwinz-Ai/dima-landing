@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 
-import HeroSection from "./sections/HeroSection"
-import ServingCustomersSection from "./sections/ServingCustomersSection"
+import HeroSection from "@/features/about-us/sections/HeroSection"
+import ServingCustomersSection from "@/features/about-us/sections/ServingCustomersSection"
 // import TeamSection from "./sections/TeamSection"
 import JsonLd from "@/components/shared/JsonLd"
 
@@ -50,13 +50,13 @@ export async function generateMetadata(
     })
 }
 
-const ForTheRegionSection = dynamic(() => import("./sections/ForTheRegionSection"), {
+const ForTheRegionSection = dynamic(() => import("@/features/about-us/sections/ForTheRegionSection"), {
     ssr: true
 })
-const MapSection = dynamic(() => import("./sections/MapSection"), {
+const MapSection = dynamic(() => import("@/features/about-us/sections/MapSection"), {
     ssr: true
 })
-const ConnectSection = dynamic(() => import("./sections/ConnectSection"), {
+const ConnectSection = dynamic(() => import("@/features/about-us/sections/ConnectSection"), {
     ssr: true
 })
 

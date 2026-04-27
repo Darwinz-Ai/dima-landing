@@ -1,10 +1,13 @@
-import { fetchSingleBlog } from "@/lib/firebase/blogsFunctions";
-import BlogContent from "../components/BlogContent";
-import { Metadata } from "next";
-import { getLocale } from "next-intl/server";
-import { createBreadcrumbs, getSingleBlogJsonLd } from "@/lib/jsonLd";
-import JsonLd from "@/components/shared/JsonLd";
 import { notFound } from "next/navigation";
+
+import BlogContent from "@/features/blogs/components/BlogContent";
+import JsonLd from "@/components/shared/JsonLd";
+
+import { Metadata } from "next";
+
+import { createBreadcrumbs, getSingleBlogJsonLd } from "@/lib/jsonLd";
+import { getLocale } from "next-intl/server";
+import { fetchSingleBlog } from "@/lib/firebase/blogsFunctions";
 
 type SingleViewBlogPageProps = {
     params: Promise<{ slug: string, locale: string }>
