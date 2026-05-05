@@ -4,12 +4,11 @@ import Image from "next/image";
 import TypewriterComponent from "@/features/home/components/TypewriterComponent";
 import LogoCarousel from "@/features/home/components/carousels/LogoCarousel";
 
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 
 
 export default async function HeroSection() {
   const t = await getTranslations("Home.hero");
-  const locale = await getLocale();
 
   return (
     <SectionWrapper className="flex-col justify-between min-h-dvh mt-12">
@@ -21,7 +20,7 @@ export default async function HeroSection() {
         <TypewriterComponent />
 
         {/* Right Side: Image */}
-        <figure className="relative w-full lg:flex-1  h-auto min-h-[300px] sm:min-h-[400px] md:min-h-[500px]">
+        <figure className="relative w-full lg:flex-1 h-auto min-h-[300px] sm:min-h-[400px] md:min-h-[550px]">
           <Image
             src={`/hero-bg.png`}
             alt="Hero image"
