@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server"
 import SectionWrapper from "@/components/shared/SectionWrapper"
 import { Button } from "@/components/ui/button"
 
+import { cn } from "@/lib/utils"
 import { SERVING_COUNTRIES } from "@/data/about-us"
 
 
@@ -19,9 +20,18 @@ const ServingCustomersSection = async () => {
                 </h2>
             </header>
 
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 max-w-3xl mx-auto">
-                {audiences.map((a) => (
-                    <Button key={a} size="lg" variant="secondary" className="capitalize font-normal md:w-[calc(33.33%-1rem)] pointer-events-none">{a}</Button>
+            <div className="grid grid-cols-6 gap-4 max-w-3xl mx-auto">
+                {audiences.map((a, index) => (
+                    <Button
+                        key={a}
+                        variant="secondary"
+                        className={cn("capitalize font-normal pointer-events-none col-span-2",
+                            "text-[8px] sm:text-sm md:text-base px-4",
+                            index === 3 && "col-start-2"
+                        )}
+                    >
+                        {a}
+                    </Button>
                 ))}
             </div>
         </SectionWrapper>
