@@ -25,7 +25,7 @@ const TypewriterComponent = () => {
     }, [])
     return (
         <div className="flex-1 space-y-6 w-full">
-            <h1 className="text-[24px] md:text-[44px] mb-8 min-h-32 md:min-h-[198px] lg:min-h-[264px] xl:min-h-[198px] 2xl:min-h-[132px]">
+            <h1 className="text-[24px] md:text-[44px] mb-8 min-h-32 md:min-h-[198px] lg:min-h-[264px] xl:min-h-[264px] 2xl:min-h-[198px]">
                 <span>{t("titlePrefix")}</span>{" "}
 
                 {!mounted ? (

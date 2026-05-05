@@ -21,9 +21,9 @@ export default async function HeroSection() {
         <TypewriterComponent />
 
         {/* Right Side: Image */}
-        <figure className="relative w-full lg:flex-1 aspect-1920/1793 h-auto min-h-[300px] sm:min-h-[400px] md:min-h-[500px]">
+        <figure className="relative w-full lg:flex-1  h-auto min-h-[300px] sm:min-h-[400px] md:min-h-[500px]">
           <Image
-            src={`/hero-bg-${locale}.webp`}
+            src={`/hero-bg.png`}
             alt="Hero image"
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 50vw"
@@ -32,16 +32,6 @@ export default async function HeroSection() {
             className="object-contain"
 
           />
-          {/* <Image
-            src={`/hero-bg-${locale}-mobile.png`}
-            alt="Hero image"
-            fill
-            sizes="100vw"
-            priority={true}
-            fetchPriority="high"
-            className="object-contain block sm:hidden"
-
-          /> */}
         </figure>
       </div>
       <div className="container mx-auto">
