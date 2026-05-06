@@ -17,7 +17,7 @@ export default async function EmpoweringAgenciesCard({
     return (
         <article className="w-full max-w-sm mx-auto h-full rounded-3xl shadow-md shadow-primary flex flex-col items-center gap-4 p-4 sm:p-6 bg-muted transition-transform duration-300 hover:scale-[1.02]">
             {/* Top section */}
-            <div className={`flex flex-col sm:flex-row items-center gap-4 bg-muted-foreground/10 rounded-xl px-4 sm:px-5 py-4 w-full`}>
+            <div className={`flex flex-col sm:flex-row items-center gap-4 bg-[#AEAEAE]/13 rounded-xl px-4 sm:px-5 py-4 w-full`}>
                 <div className={`flex justify-center ${isRTL ? 'sm:justify-end' : 'sm:justify-start'}`}>
                     <RadialGradientProgress
                         progress={value}
@@ -28,7 +28,7 @@ export default async function EmpoweringAgenciesCard({
                         gapValue={gapValue}
                     />
                 </div>
-                <h3 className={`text-lg lg:text-2xl capitalize tracking-wide text-center ${isRTL ? 'sm:text-right' : 'sm:text-left'}`}>
+                <h3 className={`text-lg lg:text-[23px] capitalize tracking-wide text-center ${isRTL ? 'sm:text-right' : 'sm:text-left'}`}>
                     {t(`${translationKey}.title`)}
                 </h3>
             </div>

@@ -16,7 +16,7 @@ export const empoweringAgenciesInfo: EmpoweringAgenciesInfo[] = [
         value: 97,
         suffix: "%",
         translationKey: "accurateArabicAnalysis",
-        gapValue: 0.05
+        gapValue: 0.07
     },
     {
         title: "Mentions Captured",

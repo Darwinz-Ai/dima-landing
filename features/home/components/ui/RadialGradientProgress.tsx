@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-
-import { m, useMotionValue, animate, useInView } from "motion/react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type RadialGradientProgressProps = {
     size?: number;
@@ -21,7 +22,7 @@ const formatNumber = (num: number, suffix?: string | React.ReactNode) => {
     if (suffix === "M") return `${(num / 1_000_000).toFixed(0)}M+`;
     if (num >= 1_000_000) return `${(num / 1_000_000).toFixed(1)}M+`;
     if (num >= 1_000) return `${(num / 1_000).toFixed(1)}K+`;
-    return Math.round(num).toString() + "%";
+    return Math.round(num).toString() + (typeof suffix === 'string' ? suffix : "%");
 };
 
 const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
@@ -44,53 +45,71 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
     const gap = gapValue * circumference;
     const finalOffset = circumference - (progress / maxValue) * (circumference - gap);
 
-    // Initializing MotionValues with final values for ssr
-    const offset = useMotionValue(finalOffset);
-    const [displayValue, setDisplayValue] = useState(progress);
+    const [displayValue, setDisplayValue] = useState(0);
     const [mounted, setMounted] = useState<boolean>(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const circleRef = useRef<SVGCircleElement>(null);
 
+    useGSAP(() => {
+        gsap.registerPlugin(ScrollTrigger);
 
-    const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, { once: true, margin: "-50px" });
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top bottom-=100px",
+                toggleActions: "play none none none",
+            }
+        });
+
+        // strokeDashoffset Animation
+        tl.fromTo(circleRef.current,
+            { strokeDashoffset: circumference },
+            {
+                strokeDashoffset: finalOffset,
+                duration: duration,
+                ease: "power2.out"
+            },
+            0
+        );
+
+        // Number count animation
+        const counter = { val: 0 };
+        tl.to(counter, {
+            val: progress,
+            duration: duration,
+            ease: "power2.out",
+            onUpdate: () => {
+                setDisplayValue(counter.val);
+            }
+        }, 0);
+
+    }, { scope: containerRef, dependencies: [progress, finalOffset] });
 
     useEffect(() => {
         setMounted(true);
-        if (!isInView) return;
-
-        offset.set(circumference);
-        setDisplayValue(0);
-
-        const offsetAnimation = animate(offset, finalOffset, {
-            duration,
-            ease: "easeInOut",
-        });
-
-        const numberAnimation = animate(0, progress, {
-            duration,
-            ease: "easeInOut",
-            onUpdate: (latest) => setDisplayValue(latest),
-        });
-
-        return () => {
-            offsetAnimation.stop();
-            numberAnimation.stop();
-        };
-    }, [isInView, progress, finalOffset, circumference, duration, offset, maxValue]);
+    }, [])
 
     return (
         <div
-            ref={ref}
+            ref={containerRef}
             className="relative flex items-center justify-center"
-            style={{ width: size, height: size }}
+            style={{ width: size, height: size, filter: "drop-shadow(0px 4px 10px rgba(0,0,0,0.05))" }}
         >
-            <svg width={size} height={size} className="-rotate-90">
+            <svg width={size} height={size} className="rotate-30">
                 <defs>
-                    <radialGradient id="radialGradient" cx="50%" cy="50%" r="50%">
-                        <stop offset="85%" stopColor={innerColor} />
+                    <radialGradient
+                        id="radialGradient"
+                        cx={size / 2}
+                        cy={size / 2}
+                        r={size / 2}
+                        gradientUnits="userSpaceOnUse"
+                    >
+                        <stop offset="75%" stopColor={innerColor} />
                         <stop offset="100%" stopColor={outerColor} />
                     </radialGradient>
                 </defs>
 
+                {/* Track Circle */}
                 <circle
                     cx={size / 2}
                     cy={size / 2}
@@ -100,7 +119,9 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                     fill="none"
                 />
 
-                <m.circle
+                {/* Progress Circle */}
+                <circle
+                    ref={circleRef}
                     cx={size / 2}
                     cy={size / 2}
                     r={radius}
@@ -108,17 +129,18 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                     strokeWidth={strokeWidth}
                     fill="none"
                     strokeDasharray={circumference}
-                    strokeDashoffset={offset}
+                    strokeDashoffset={circumference}
                     strokeLinecap="round"
                 />
             </svg>
 
-            <m.span
+            {/* Value */}
+            <span
                 className="absolute font-bold text-xl inline-flex items-center gap-1"
                 style={{ color: textColor }}
             >
-                {mounted ? formatNumber(displayValue, suffix) : formatNumber(progress, suffix)}
-            </m.span>
+                {formatNumber(mounted ? displayValue : progress, suffix)}
+            </span>
         </div>
     );
 };

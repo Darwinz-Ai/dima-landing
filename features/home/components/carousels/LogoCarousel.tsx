@@ -34,8 +34,8 @@ export default function LogoCarousel() {
                             <Image
                                 src={`/logo-slider/${index + 1}.webp`}
                                 alt={`Logo ${index}`}
-                                width={220}
-                                height={110}
+                                width={200}
+                                height={80}
                                 className="object-contain w-auto h-full bg-white"
                                 priority={index < 4}
                             />
