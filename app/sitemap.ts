@@ -47,7 +47,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ...blogRoutes,
         ...caseRoutes
     ]
-    // console.log("");
+    console.log("");
 
     return locales.flatMap((currentLocale) => {
         return allPaths.map((path) => {
