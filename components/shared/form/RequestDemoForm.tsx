@@ -11,7 +11,6 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import PhoneNumberInput from "./PhoneNumberInput";
 import { requestDemo } from "@/app/actions/demo.actions";
-import posthog from "posthog-js";
 
 // Form Type
 export type FormInputs = {
@@ -52,29 +51,12 @@ function RequestDemoForm({ className }: { className?: string }) {
 
             if (!response.success) {
                 toast.error(t("form.somethingWentWrong"))
-                posthog.capture("demo_request_failed", {
-                    email: data.email,
-                    company_name: data.companyName,
-                });
                 return null;
             }
 
-            posthog.identify(data.email, {
-                email: data.email,
-                first_name: data.firstName,
-                last_name: data.lastName,
-                company_name: data.companyName,
-            });
-            posthog.capture("demo_requested", {
-                email: data.email,
-                first_name: data.firstName,
-                last_name: data.lastName,
-                company_name: data.companyName,
-            });
             toast.success(t("form.success"));
             reset();
         } catch (error) {
-            posthog.captureException(error);
             toast.error(t("form.errorOccurred"))
             return null;
         }

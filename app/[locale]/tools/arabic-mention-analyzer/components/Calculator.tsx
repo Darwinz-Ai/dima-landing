@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import posthog from "posthog-js";
 
 const CONSTANTS = {
   TOOL_ACCURACY: {
@@ -104,15 +103,6 @@ const Calculator = () => {
       missedMentions,
       sentimentSkew,
       riskAdjustedCost,
-    });
-    posthog.capture("arabic_mention_calculator_submitted", {
-      platform,
-      current_tool: currentTool,
-      sector,
-      arabic_content_percent: arabicPercent,
-      missed_mentions: missedMentions,
-      sentiment_skew_percent: sentimentSkew,
-      risk_adjusted_cost: riskAdjustedCost,
     });
   };
 
