@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { useLocale } from "next-intl";
 import { useTranslations } from "use-intl";
 import { analyzeDialect } from "../../actions";
+import posthog from "posthog-js";
 
 
 
@@ -46,7 +47,16 @@ export const DialectAnalyzer = () => {
     try {
       const data = await analyzeDialect(inputText, selectedDialect, locale);
       setResult(data);
+      posthog.capture("arabic_dialect_analyzed", {
+        dialect: selectedDialect,
+        locale,
+        text_length: inputText.length,
+        sentiment: data.sentiment.label,
+        sentiment_confidence: data.sentiment.confidence,
+        entity_count: data.entities.length,
+      });
     } catch (error) {
+      posthog.captureException(error);
       setResult({
         sentiment: {
           label: 'neutral',

@@ -7,6 +7,7 @@ import { Progress } from "@/components/ui/progress";
 import { IconDownload, IconCircleCheck, IconCircleX, IconExternalLink } from "@tabler/icons-react";
 import { jsPDF } from "jspdf";
 import { useTranslations } from "next-intl";
+import posthog from "posthog-js";
 
 
 interface Question {
@@ -94,6 +95,16 @@ const CrisisReadinessScore = () => {
     };
 
     const handleSubmit = () => {
+        const score = calculateScore();
+        const categoryKeys = ["crisisDetection", "escalationSpeed", "channelCoverage", "arabicSentiment"];
+        const categoryScores = Object.fromEntries(
+            categoryKeys.map((key) => [key, calculateCategoryScore(key)])
+        );
+        posthog.capture("crisis_readiness_score_calculated", {
+            total_score: score,
+            score_label: getScoreLabel(score),
+            ...categoryScores,
+        });
         setShowResults(true);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -227,6 +238,10 @@ const CrisisReadinessScore = () => {
         pdf.text('thedar.ai', pageWidth / 2, yPosition + 15, { align: 'center' });
 
         pdf.save('crisis-readiness-action-plan.pdf');
+        posthog.capture("crisis_readiness_action_plan_downloaded", {
+            total_score: score,
+            score_label: getScoreLabel(score),
+        });
     };
 
     const totalScore = calculateScore();

@@ -12,6 +12,7 @@ import { IconArrowRight, IconArrowLeft, IconCheck, IconFileText, IconGlobe, Icon
 import { useLocale, useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { analyzeKeywords } from "../../actions";
+import posthog from "posthog-js";
 
 type Step = 1 | 2 | 3;
 
@@ -112,7 +113,14 @@ export const ArabicCoverageWizard = () => {
 
         setResults(transformedResults);
         setStep(3);
-
+        posthog.capture("arabic_coverage_audit_completed", {
+          keyword_count: keywordList.length,
+          country_count: selectedCountries.length,
+          countries: selectedCountries,
+          total_variations: transformedResults.reduce((acc, r) => acc + r.variations.length, 0),
+          total_dialect_terms: transformedResults.reduce((acc, r) => acc + r.dialects.length, 0),
+          total_misspellings: transformedResults.reduce((acc, r) => acc + r.misspellings.length, 0),
+        });
 
         toast.success(t("toast.success.title"), {
           description: t("toast.success.description", { count: transformedResults.length })
@@ -121,6 +129,7 @@ export const ArabicCoverageWizard = () => {
         throw new Error("Invalid response format");
       }
     } catch (error) {
+      posthog.captureException(error);
       toast.error(t("toast.error-analyzing.title"), {
         description: t("toast.error-analyzing.description")
       })
@@ -302,7 +311,13 @@ export const ArabicCoverageWizard = () => {
             />
             <div className="flex justify-end">
               <Button
-                onClick={() => setStep(2)}
+                onClick={() => {
+                  const keywordCount = keywords.split("\n").filter((k) => k.trim()).length;
+                  posthog.capture("arabic_coverage_audit_started", {
+                    keyword_count: keywordCount,
+                  });
+                  setStep(2);
+                }}
                 disabled={!keywords.trim()}
                 size="lg"
                 className="gap-2"

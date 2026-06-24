@@ -14,6 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
+import posthog from "posthog-js";
 
 type PublicationType = "Traditional Media" | "Social Media" | "وسائل التواصل الاجتماعي" | "الإعلام التقليدي";
 
@@ -85,6 +86,13 @@ export const PRCalculator = () => {
     };
 
     setSelectedPublication(customPub);
+    posthog.capture("pr_calculator_custom_publication_added", {
+      publication_name: data.name,
+      publication_type: data.type,
+      impressions,
+      reach,
+      ave,
+    });
     reset();
     setShowAddForm(false);
   };
@@ -185,7 +193,16 @@ export const PRCalculator = () => {
                       <CommandItem
                         key={pub.id}
                         value={pub.name}
-                        onSelect={() => setSelectedPublication(pub)}
+                        onSelect={() => {
+                          setSelectedPublication(pub);
+                          posthog.capture("pr_calculator_publication_selected", {
+                            publication_name: pub.name,
+                            publication_type: pub.type,
+                            impressions: pub.impressions,
+                            reach: pub.reach,
+                            ave: pub.ave,
+                          });
+                        }}
                         className="py-2 px-3 text-sm cursor-pointer rounded-md m-1"
                       >
                         <div className="flex flex-col leading-tight">

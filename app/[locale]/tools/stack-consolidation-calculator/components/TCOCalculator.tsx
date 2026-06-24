@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
+import posthog from "posthog-js";
 
 interface CalculatorInputs {
   currentVendors: number;
@@ -66,6 +67,17 @@ export const TCOCalculator = () => {
       annualSavings,
       breakEvenMonths,
       savingsPercentage,
+    });
+    posthog.capture("tco_calculator_submitted", {
+      current_vendors: inputs.currentVendors,
+      license_cost: inputs.licenseCost,
+      user_count: inputs.userCount,
+      reporting_hours: inputs.reportingHours,
+      hourly_rate: inputs.hourlyRate,
+      total_current_cost: totalCurrentCost,
+      annual_savings: annualSavings,
+      savings_percentage: Math.round(savingsPercentage),
+      break_even_months: Math.round(breakEvenMonths),
     });
   };
 
