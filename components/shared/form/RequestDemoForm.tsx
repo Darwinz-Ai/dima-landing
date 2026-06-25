@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "use-intl";
 import { useForm, SubmitHandler } from "react-hook-form";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import PhoneNumberInput from "./PhoneNumberInput";
@@ -37,8 +37,15 @@ function RequestDemoForm({ className }: { className?: string }) {
     const isRTL = locale === "ar";
 
     const [countryCode, setCountryCode] = useState("+966")
+    const formStartTimeRef = useRef<number | null>(null);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>({ resolver: zodResolver(FormSchema) });
+
+    const handleOnTouch = () => {
+        if (formStartTimeRef.current === null) {
+            formStartTimeRef.current = Date.now();
+        }
+    };
 
     const onSubmit: SubmitHandler<FormInputs> = async (data) => {
         const fullPhoneNumber = `${countryCode}${data.phoneNumber}`;
@@ -48,6 +55,12 @@ function RequestDemoForm({ className }: { className?: string }) {
             phoneNumber: fullPhoneNumber
         }
         try {
+            // Calculate form completion time if user started
+            let formCompletionTime = undefined;
+            if (formStartTimeRef.current !== null) {
+                formCompletionTime = (Date.now() - formStartTimeRef.current) / 1000;
+            }
+
             const response = await requestDemo(passedData);
 
             if (!response.success) {
@@ -55,7 +68,8 @@ function RequestDemoForm({ className }: { className?: string }) {
                 posthog.capture("demo_request_failed", {
                     email: data.email,
                     company_name: data.companyName,
-                    source: "website_form"
+                    source: "website_form",
+                    ...(formCompletionTime !== undefined ? { form_completion_time: formCompletionTime } : {})
                 });
                 return null;
             }
@@ -72,19 +86,25 @@ function RequestDemoForm({ className }: { className?: string }) {
                 first_name: data.firstName,
                 last_name: data.lastName,
                 company_name: data.companyName,
-                source: "website_form"
+                source: "website_form",
+                ...(formCompletionTime !== undefined ? { form_completion_time: formCompletionTime } : {})
             })
 
             toast.success(t("form.success"));
             reset();
+            formStartTimeRef.current = null;
         } catch (error) {
             posthog.captureException(error);
             toast.error(t("form.errorOccurred"))
             return null;
         }
     }
+
     return (
-        <form className={cn("space-y-6 rounded-[22px] lg:rounded-2xl p-8 bg-white h-full flex flex-col justify-between", className)} onSubmit={handleSubmit(onSubmit)}>
+        <form
+            className={cn("space-y-6 rounded-[22px] lg:rounded-2xl p-8 bg-white h-full flex flex-col justify-between", className)}
+            onSubmit={handleSubmit(onSubmit)}
+        >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* First Name */}
                 <div className="flex flex-col w-full gap-3">
@@ -100,6 +120,7 @@ function RequestDemoForm({ className }: { className?: string }) {
                         placeholder={t("form.firstName.placeholder")}
                         className={`text-sm ${isRTL ? "text-right" : ""}`}
                         {...register("firstName")}
+                        onFocus={handleOnTouch}
                     />
                     {errors.firstName && <p className="text-destructive text-sm">{t(`form.${errors.firstName.message}`)}</p>}
                 </div>
@@ -118,6 +139,7 @@ function RequestDemoForm({ className }: { className?: string }) {
                         placeholder={t("form.lastName.placeholder")}
                         className={`text-sm ${isRTL ? "text-right" : ""}`}
                         {...register("lastName")}
+                        onFocus={handleOnTouch}
                     />
                     {errors.lastName && <p className="text-destructive text-sm">{t(`form.${errors.lastName.message}`)}</p>}
                 </div>
@@ -137,9 +159,9 @@ function RequestDemoForm({ className }: { className?: string }) {
                     placeholder={t("form.email.placeholder")}
                     className={`text-sm ${isRTL ? "text-right" : ""}`}
                     {...register("email")}
+                    onFocus={handleOnTouch}
                 />
                 {errors.email && <p className="text-destructive text-sm">{t(`form.${errors.email.message}`)}</p>}
-
             </div>
 
             {/* Phone Number */}
@@ -150,7 +172,13 @@ function RequestDemoForm({ className }: { className?: string }) {
                 >
                     {t("form.phoneNumber.title")}
                 </Label>
-                <PhoneNumberInput register={register} countryCode={countryCode} setCountryCode={setCountryCode} placeholder={t("form.phoneNumber.title")} />
+                <PhoneNumberInput
+                    register={register}
+                    countryCode={countryCode}
+                    setCountryCode={setCountryCode}
+                    placeholder={t("form.phoneNumber.title")}
+                    onFocus={handleOnTouch}
+                />
                 {errors.phoneNumber && <p className="text-destructive text-sm">{t(`form.${errors.phoneNumber.message}`)}</p>}
             </div>
 
@@ -168,6 +196,7 @@ function RequestDemoForm({ className }: { className?: string }) {
                     placeholder={t("form.companyName.placeholder")}
                     className={`text-sm ${isRTL ? "text-right" : ""}`}
                     {...register("companyName")}
+                    onFocus={handleOnTouch}
                 />
                 {errors.companyName && <p className="text-destructive text-sm">{t(`form.${errors.companyName.message}`)}</p>}
             </div>

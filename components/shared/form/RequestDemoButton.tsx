@@ -8,15 +8,17 @@ type RequestDemoButtonProps = {
   className?: string;
   computerVariant?: "black" | "white";
   size?: "sm" | "lg" | "xl" | "default" | "2xl" | "icon" | "icon-sm" | "icon-lg" | "icon-xl" | null | undefined;
+  location: string;
 };
 
 function RequestDemoButton({
   className,
   computerVariant = "white",
-  size = "default"
+  size = "default",
+  location
 }: RequestDemoButtonProps) {
   const t = useTranslations("Home.hero");
-
+  // continue posthog setup for cta source property attachment
   return (
     <Link href="/request-demo">
       <Button
