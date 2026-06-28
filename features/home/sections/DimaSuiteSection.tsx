@@ -14,7 +14,7 @@ async function DimaSuiteSection() {
                 <h2 className="text-[24px] lg:text-[44px] font-normal text-center mb-4">
                     {t("title")}
                 </h2>
-                <RequestDemoButton size="xl" />
+                <RequestDemoButton size="xl" location="Home_dima-suite" />
 
                 <ul className="flex flex-wrap justify-center gap-12 mt-12">
                     {dimaSolutions.map((solution) => (

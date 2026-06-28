@@ -111,7 +111,7 @@ async function ToolsPage() {
                         <h2 className="bg-black text-white uppercase py-1 rounded-sm italic tracking-wide font-semibold px-4 text-sm mb-4">{t("badge")}</h2>
                         <h1 className="text-2xl md:text-[44px] lg:text-[60px] text-[#142828] font-semibold">{t("title")}</h1>
                         <p className="text-lg md:text-2xl lg:text-[35px] max-w-7xl">{t("description")}</p>
-                        <RequestDemoButton className="px-4 mt-4" size={"xl"} />
+                        <RequestDemoButton className="px-4 mt-4" size={"xl"} location="Tools_hero" />
                     </div>
                 </div>
                 <div className="container mx-auto pt-10 px-6">

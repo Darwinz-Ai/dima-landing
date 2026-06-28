@@ -62,7 +62,7 @@ const TypewriterComponent = () => {
                     />
                 )}
             </h1>
-            <RequestDemoButton size={"xl"} />
+            <RequestDemoButton size={"xl"} location='Home_hero' />
         </div>
     )
 }

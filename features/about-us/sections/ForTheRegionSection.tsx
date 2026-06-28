@@ -20,7 +20,7 @@ const ForTheRegionSection = async () => {
                 </h2>
                 <p className='text-lg md:text-2xl text-center max-w-5xl leading-tight'>{t("description")}</p>
 
-                <RequestDemoButton size="xl" />
+                <RequestDemoButton size="xl" location='AboutUs_region' />
             </header>
 
             <div className='w-full flex flex-col-reverse lg:flex-row gap-8 mt-10'>

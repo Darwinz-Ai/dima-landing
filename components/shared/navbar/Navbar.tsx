@@ -1,17 +1,19 @@
-import { Button } from "../../ui/button";
+import dynamic from "next/dynamic";
+
+import { getLocale, getTranslations } from "next-intl/server";
+import { getSiteNavigationElementJsonLd } from "@/lib/jsonLd";
+
 import { Link } from "@/i18n/navigation";
 import NavDrawer from "./NavDrawer";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import SolutionsDropdown from "./dropdowns/SolutionsDropdown";
+import SolutionsDropdown from "./components/dropdowns/SolutionsDropdown";
 import LanguageSwitcher from "../LanguageSwitcher";
 import dimaLogo from "@/public/dima-logo/dima-logo.svg"
-import { getLocale, getTranslations } from "next-intl/server";
-import { getSiteNavigationElementJsonLd } from "@/lib/jsonLd";
 import JsonLd from "../JsonLd";
-import dynamic from "next/dynamic";
+import NavbarCTA from "./components/buttons/RequestDemoButtonArrow";
 
-const NavigationDropdown = dynamic(() => import("./dropdowns/NavigationDropdown"))
+
+const NavigationDropdown = dynamic(() => import("./components/dropdowns/NavigationDropdown"))
 
 async function Navbar() {
     const t = await getTranslations("Navbar");
@@ -84,14 +86,7 @@ async function Navbar() {
                             </div>
 
                             {/* CTA */}
-                            <Link href="/request-demo" className="text-[15px]" aria-label="Go To Request A Demo">
-                                <Button className="hidden lg:flex justify-between py-2 pl-4 pr-2.5">
-                                    {t("requestDemo")}
-                                    <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center">
-                                        <ArrowRight color="black" />
-                                    </div>
-                                </Button>
-                            </Link>
+                            <NavbarCTA location="Navbar" />
 
                         </div>
                     </div>

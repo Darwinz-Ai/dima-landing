@@ -1,7 +1,11 @@
+"use client";
+import { useTranslations } from "next-intl";
+
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import posthog from "posthog-js";
+
 import { cn } from "@/lib/utils";
 
 type RequestDemoButtonProps = {
@@ -18,9 +22,14 @@ function RequestDemoButton({
   location
 }: RequestDemoButtonProps) {
   const t = useTranslations("Home.hero");
-  // continue posthog setup for cta source property attachment
+
+  const handleClick = () => {
+    posthog.capture("clicked_request_demo", {
+      location
+    })
+  }
   return (
-    <Link href="/request-demo">
+    <Link href="/request-demo" onClick={handleClick}>
       <Button
         className={cn(className)}
         size={size}
@@ -34,7 +43,10 @@ function RequestDemoButton({
           alt="monitor icon"
           width={28}
           height={28}
+          className={cn(
+            computerVariant === "black" ? "group-hover:invert transition duration-300" : ""
 
+          )}
         />
         <span className="tracking-wide">{t("cta")}</span>
       </Button>

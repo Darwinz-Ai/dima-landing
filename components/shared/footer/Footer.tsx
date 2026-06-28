@@ -1,12 +1,14 @@
+import { useLocale, useTranslations } from "next-intl";
+
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import FooterLinks from "./FooterLinks";
 import SocialMediaLinks from "./SocialMediaLinks";
 import LanguageSwitcher from "../LanguageSwitcher";
-import { Link } from "@/i18n/navigation";
-import { useLocale, useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
-import { dimaSolutions, footerResourcesLinks } from "@/data/home-page";
 import dimaLogoWhite from "@/public/dima-logo/dima-logo-white.svg"
+import RequestDemoButton from "../form/RequestDemoButton";
+
+import { dimaSolutions, footerResourcesLinks } from "@/data/home-page";
 
 function Footer() {
   const t = useTranslations("Footer");
@@ -30,32 +32,12 @@ function Footer() {
             <h2 className="capitalize md:text-2xl">{t("dima.description")}</h2>
 
             {/* CTA Button */}
-            <Link href="/request-demo" className="w-fit">
-              <Button className="group bg-white! text-black! hover:text-white! hover:bg-black! transition-colors duration-300 w-fit h-12" size="xl">
-                <div className="relative w-[30px] h-[30px]">
-                  {/* Black icon (default) */}
-                  <Image
-                    src="/computer-black.svg"
-                    alt="black computer icon"
-                    fill
-                    sizes="30px"
-                    className="object-contain transition-opacity duration-300 group-hover:opacity-0"
-
-                  />
-                  {/* White icon (shown on hover) */}
-                  <Image
-                    src="/computer.svg"
-                    alt="white computer icon"
-                    fill
-                    sizes="30px"
-                    className="object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100 absolute top-0 left-0"
-
-                  />
-                </div>
-
-                <span className="tracking-wide">{t("dima.requestDemo")}</span>
-              </Button>
-            </Link>
+            <RequestDemoButton
+              computerVariant="black"
+              size="xl"
+              className="group bg-white! text-black! hover:text-white! hover:bg-black! transition-colors duration-300 w-fit h-12"
+              location="Footer_cta"
+            />
 
           </div>
 

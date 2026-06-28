@@ -162,7 +162,7 @@ function OwnConversationContent({
             className={`xl:my-4 w-full xl:flex-1 flex ${isRTL ? "justify-end" : "justify-start"
               }`}
           >
-            <RequestDemoButton size={"xl"} className="mt-4" />
+            <RequestDemoButton size={"xl"} className="mt-4" location="Home_own-conversation" />
           </div>
         </div>
       </div>

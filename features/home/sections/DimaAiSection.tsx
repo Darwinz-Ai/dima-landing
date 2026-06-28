@@ -23,7 +23,7 @@ async function DimaAiSection() {
             <p className="text-base sm:text-lg font-medium max-w-2xl leading-relaxed mx-auto lg:mx-0">
               {t("description")}
             </p>
-            <RequestDemoButton size={"xl"} className="bg-[#115687]! hover:bg-[#115687]/80! transition-colors duration-200" />
+            <RequestDemoButton size={"xl"} className="bg-[#115687]! hover:bg-[#115687]/80! transition-colors duration-200" location="Home_dima-ai" />
           </div>
 
           {/* Image Section */}

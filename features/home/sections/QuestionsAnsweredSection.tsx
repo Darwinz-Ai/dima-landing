@@ -1,14 +1,11 @@
 
-import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
+
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import QuestionsAccordion from "@/features/home/components/ui/QuestionsAccordion";
-
-import { ArrowRight } from "lucide-react";
+import RequestDemoButtonArrow from "@/components/shared/navbar/components/buttons/RequestDemoButtonArrow";
 
 import { QuestionAccordion } from "@/types";
-
-import { getTranslations } from "next-intl/server";
 
 type QuestionsAnsweredSectionProps = {
     faqs: QuestionAccordion[];
@@ -26,16 +23,7 @@ async function QuestionsAnsweredSection({ faqs }: QuestionsAnsweredSectionProps)
                     <p className="text-muted-foreground text-lg">{homeTranslations("description")}</p>
 
                     {/* CTA */}
-                    <div className="w-fit" dir="ltr">
-                        <Link href="/request-demo" className="text-[15px]">
-                            <Button className="flex justify-between py-2 pl-4 pr-2.5">
-                                {homeTranslations("requestDemo")}
-                                <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center">
-                                    <ArrowRight color="black" />
-                                </div>
-                            </Button>
-                        </Link>
-                    </div>
+                    <RequestDemoButtonArrow location="Home_questions-answered" />
                 </div>
 
                 {/* FAQs */}

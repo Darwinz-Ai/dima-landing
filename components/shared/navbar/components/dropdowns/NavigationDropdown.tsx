@@ -1,5 +1,5 @@
 "use client";
-import useDropdownHoverDelay from "../hooks/useDropdownHoverDelay";
+import useDropdownHoverDelay from "../../hooks/useDropdownHoverDelay";
 
 import { AnimatePresence, m } from "motion/react";
 
