@@ -10,7 +10,7 @@ import ReactQueryProvider from "../providers/ReactQueryProvider";
 import { Toaster } from "sonner";
 import Script from "next/script";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { MotionProvider } from "../providers/MotionProvider";
 
 const geistSans = Geist({
@@ -77,7 +77,7 @@ export default async function RootLayout({
   }
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
-      <GoogleTagManager gtmId="GTM-TGZB44QG" />
+      <GoogleAnalytics gaId="G-JJGJEDJL2Q" />
       <body
         className={`${locale === "ar" ? cairo.className : geistSans.className} antialiased`}
       >
