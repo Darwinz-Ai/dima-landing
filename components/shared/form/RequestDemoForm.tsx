@@ -41,6 +41,8 @@ function RequestDemoForm({ className }: { className?: string }) {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>({ resolver: zodResolver(FormSchema) });
 
+    const posthog_session_id = posthog.get_session_id();
+
     const handleOnTouch = () => {
         if (formStartTimeRef.current === null) {
             formStartTimeRef.current = Date.now();
@@ -62,7 +64,7 @@ function RequestDemoForm({ className }: { className?: string }) {
                 formCompletionTime = (Date.now() - formStartTimeRef.current) / 1000;
             }
 
-            const response = await requestDemo(passedData);
+            const response = await requestDemo(passedData, posthog_session_id);
 
             if (!response.success) {
                 toast.error(t("form.somethingWentWrong"))

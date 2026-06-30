@@ -3,13 +3,17 @@
 import { FormInputs } from "@/components/shared/form/RequestDemoForm";
 import { getPostHogClient } from "@/lib/posthog-server";
 
-export const requestDemo = async (data: FormInputs) => {
+export const requestDemo = async (data: FormInputs, posthog_session_id: string) => {
   const dbURL = process.env.DATABASE_URL;
 
   try {
+
     const response = await fetch(dbURL!, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        'X-POSTHOG-SESSION-ID': posthog_session_id
+      },
       body: JSON.stringify(data),
     });
 
@@ -18,8 +22,8 @@ export const requestDemo = async (data: FormInputs) => {
         success: false,
       };
     }
-
     const posthog = getPostHogClient();
+
     posthog.capture({
       distinctId: data.email,
       event: "demo_request_submitted",
