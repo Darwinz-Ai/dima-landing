@@ -44,7 +44,7 @@ function RequestDemoForm({ className }: { className?: string }) {
     const handleOnTouch = () => {
         if (formStartTimeRef.current === null) {
             formStartTimeRef.current = Date.now();
-            posthog.capture("form_started")
+            posthog.capture("form_started", {}, { send_instantly: true })
         }
     };
 
@@ -93,7 +93,7 @@ function RequestDemoForm({ className }: { className?: string }) {
                 company_name: data.companyName,
                 source: "website_form",
                 ...(formCompletionTime !== undefined ? { form_completion_time: formCompletionTime } : {})
-            })
+            }, { send_instantly: true })
 
             toast.success(t("form.success"));
             reset();
