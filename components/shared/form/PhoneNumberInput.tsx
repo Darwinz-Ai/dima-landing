@@ -48,7 +48,7 @@ const getFlagEmoji = (iso: CountryCode): string => {
         .join("")
 }
 
-function PhoneNumberInput({ register, countryCode, setCountryCode, placeholder, onFocus }: PhoneNumberInputProps) {
+function PhoneNumberInput({ register, countryCode, setCountryCode, placeholder }: PhoneNumberInputProps) {
     const tCountry = useTranslations("Home.requestDemo.form.countryLabel");
     const tPhoneNum = useTranslations("Home.requestDemo.form.phoneNumber");
 
@@ -184,7 +184,6 @@ function PhoneNumberInput({ register, countryCode, setCountryCode, placeholder, 
                 {...register("phoneNumber")}
                 placeholder={placeholder}
                 dir={isRTL ? "rtl" : "ltr"}
-                onFocus={onFocus}
             />
         </ButtonGroup>
     )

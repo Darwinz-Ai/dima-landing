@@ -44,6 +44,7 @@ function RequestDemoForm({ className }: { className?: string }) {
     const handleOnTouch = () => {
         if (formStartTimeRef.current === null) {
             formStartTimeRef.current = Date.now();
+            posthog.capture("form_started")
         }
     };
 
@@ -104,6 +105,7 @@ function RequestDemoForm({ className }: { className?: string }) {
         <form
             className={cn("space-y-6 rounded-[22px] lg:rounded-2xl p-8 bg-white h-full flex flex-col justify-between", className)}
             onSubmit={handleSubmit(onSubmit)}
+            onFocusCapture={handleOnTouch}
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* First Name */}
@@ -120,7 +122,6 @@ function RequestDemoForm({ className }: { className?: string }) {
                         placeholder={t("form.firstName.placeholder")}
                         className={`text-sm ${isRTL ? "text-right" : ""}`}
                         {...register("firstName")}
-                        onFocus={handleOnTouch}
                     />
                     {errors.firstName && <p className="text-destructive text-sm">{t(`form.${errors.firstName.message}`)}</p>}
                 </div>
@@ -139,7 +140,6 @@ function RequestDemoForm({ className }: { className?: string }) {
                         placeholder={t("form.lastName.placeholder")}
                         className={`text-sm ${isRTL ? "text-right" : ""}`}
                         {...register("lastName")}
-                        onFocus={handleOnTouch}
                     />
                     {errors.lastName && <p className="text-destructive text-sm">{t(`form.${errors.lastName.message}`)}</p>}
                 </div>
@@ -159,7 +159,6 @@ function RequestDemoForm({ className }: { className?: string }) {
                     placeholder={t("form.email.placeholder")}
                     className={`text-sm ${isRTL ? "text-right" : ""}`}
                     {...register("email")}
-                    onFocus={handleOnTouch}
                 />
                 {errors.email && <p className="text-destructive text-sm">{t(`form.${errors.email.message}`)}</p>}
             </div>
@@ -177,7 +176,6 @@ function RequestDemoForm({ className }: { className?: string }) {
                     countryCode={countryCode}
                     setCountryCode={setCountryCode}
                     placeholder={t("form.phoneNumber.title")}
-                    onFocus={handleOnTouch}
                 />
                 {errors.phoneNumber && <p className="text-destructive text-sm">{t(`form.${errors.phoneNumber.message}`)}</p>}
             </div>
@@ -196,7 +194,6 @@ function RequestDemoForm({ className }: { className?: string }) {
                     placeholder={t("form.companyName.placeholder")}
                     className={`text-sm ${isRTL ? "text-right" : ""}`}
                     {...register("companyName")}
-                    onFocus={handleOnTouch}
                 />
                 {errors.companyName && <p className="text-destructive text-sm">{t(`form.${errors.companyName.message}`)}</p>}
             </div>
