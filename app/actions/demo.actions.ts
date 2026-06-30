@@ -32,7 +32,8 @@ export const requestDemo = async (data: FormInputs, posthog_session_id: string) 
         first_name: data.firstName,
         last_name: data.lastName,
         company_name: data.companyName,
-        source: "server_action"
+        source: "server_action",
+        $session_id: posthog_session_id,
       }
     });
 
@@ -45,6 +46,8 @@ export const requestDemo = async (data: FormInputs, posthog_session_id: string) 
         company_name: data.companyName
       }
     })
+
+    await posthog.shutdown();
 
     return { success: true };
   } catch (error) {

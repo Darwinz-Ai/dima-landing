@@ -41,8 +41,6 @@ function RequestDemoForm({ className }: { className?: string }) {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>({ resolver: zodResolver(FormSchema) });
 
-    const posthog_session_id = posthog.get_session_id();
-
     const handleOnTouch = () => {
         if (formStartTimeRef.current === null) {
             formStartTimeRef.current = Date.now();
@@ -58,6 +56,10 @@ function RequestDemoForm({ className }: { className?: string }) {
             phoneNumber: fullPhoneNumber
         }
         try {
+            let posthog_session_id = "";
+            if (typeof window !== undefined) posthog_session_id = posthog.get_session_id() || "";
+
+
             // Calculate form completion time if user started
             let formCompletionTime = undefined;
             if (formStartTimeRef.current !== null) {
