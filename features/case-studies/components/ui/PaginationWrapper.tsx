@@ -1,11 +1,13 @@
 import { useLocale } from "next-intl";
-
-import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination";
-
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationEllipsis
+} from "@/components/ui/pagination";
 import { MouseEvent } from "react";
-
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
-
 import { cn } from "@/lib/utils";
 
 type PaginationWrapperProps = {
@@ -17,6 +19,25 @@ type PaginationWrapperProps = {
   onNext: () => void | Promise<void>;
   onSelectPage?: (pageNumber: number) => void | Promise<void>;
   isLoadingNext?: boolean;
+};
+
+// Helper function to calculate which page numbers to show
+const getVisiblePages = (current: number, total: number) => {
+  if (total <= 5) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+  // If at beginning of pagination, render first few pages
+  if (current <= 3) {
+    return [1, 2, 3, 4, "...", total];
+  }
+
+  // If at end of pagination, render last few pages
+  if (current >= total - 2) {
+    return [1, "...", total - 3, total - 2, total - 1, total];
+  }
+
+  // If middle of pagination, render around current then add ellipses
+  return [1, "...", current - 1, current, current + 1, "...", total];
 };
 
 function PaginationWrapper({
@@ -49,11 +70,12 @@ function PaginationWrapper({
     await onSelectPage(pageNumber);
   };
 
-  const pages = totalPages > 0 ? Array.from({ length: totalPages }, (_, index) => index + 1) : [1];
+  const safeTotalPages = totalPages > 0 ? totalPages : 1;
+  const visiblePages = getVisiblePages(currentPage, safeTotalPages);
 
   return (
     <Pagination className="mb-4">
-      <PaginationContent className="space-x-2">
+      <PaginationContent className="space-x-1 sm:space-x-2">
         <PaginationItem>
           <PaginationLink
             href="#"
@@ -61,7 +83,7 @@ function PaginationWrapper({
             onClick={handlePreviousClick}
             aria-disabled={!canGoPrevious}
             className={cn(
-              "size-10 rounded-full flex items-center justify-center",
+              "size-8 sm:size-10 rounded-full flex items-center justify-center",
               !canGoPrevious && "pointer-events-none opacity-50"
             )}
           >
@@ -69,19 +91,29 @@ function PaginationWrapper({
           </PaginationLink>
         </PaginationItem>
 
-        {pages.map((pageNumber) => (
-          <PaginationItem key={pageNumber}>
-            <PaginationLink
-              href="#"
-              isActive={pageNumber === currentPage}
-              className="tabular-nums"
-              size="default"
-              onClick={(event) => handlePageClick(event, pageNumber)}
-            >
-              {pageNumber}
-            </PaginationLink>
-          </PaginationItem>
-        ))}
+        {visiblePages.map((page, index) => {
+          if (page === "...") {
+            return (
+              <PaginationItem key={`ellipsis-${index}`}>
+                <PaginationEllipsis className="w-5 sm:w-9 flex justify-center" />
+              </PaginationItem>
+            );
+          }
+
+          const pageNumber = page as number;
+          return (
+            <PaginationItem key={pageNumber}>
+              <PaginationLink
+                href="#"
+                isActive={pageNumber === currentPage}
+                className="tabular-nums h-8 w-8 sm:h-10 sm:w-10 p-0 flex items-center justify-center text-xs sm:text-sm"
+                onClick={(event) => handlePageClick(event, pageNumber)}
+              >
+                {pageNumber}
+              </PaginationLink>
+            </PaginationItem>
+          );
+        })}
 
         <PaginationItem>
           <PaginationLink
@@ -90,11 +122,11 @@ function PaginationWrapper({
             onClick={handleNextClick}
             aria-disabled={!canGoNext}
             className={cn(
-              "size-10 rounded-full flex items-center justify-center",
+              "size-8 sm:size-10 rounded-full flex items-center justify-center",
               !canGoNext && "pointer-events-none opacity-50"
             )}
           >
-            {<IconChevronRight className={`size-4 ${isRTL ? "rotate-180" : ""}`} />}
+            <IconChevronRight className={`size-4 ${isRTL ? "rotate-180" : ""}`} />
           </PaginationLink>
         </PaginationItem>
       </PaginationContent>
