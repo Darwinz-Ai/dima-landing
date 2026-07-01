@@ -316,7 +316,7 @@
           "invalidPhone": "Invalid phone number",
           "companyNameTooShort": "Company name must be at least 2 characters"
         },
-        "success": "Mail sent successfully!",
+        "success": "Thanks for reaching out! A member of our team will contact you shortly to schedule your demo.",
         "somethingWentWrong": "Something went wrong",
         "errorOccurred": "An error occurred",
         "submit": "Submit"

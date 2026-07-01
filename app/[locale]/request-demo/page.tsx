@@ -73,9 +73,6 @@ async function RequestDemoPage() {
                             <p className="font-semibold tracking-wide">
                                 {t("subTitle")}
                             </p>
-                            <p>
-                                {t("description")}
-                            </p>
                         </div>
 
                         {/* Form */}

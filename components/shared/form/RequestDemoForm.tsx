@@ -1,17 +1,22 @@
 "use client";
+import { requestDemo } from "@/app/actions/demo.actions";
+import posthog from "posthog-js";
+
+import { useLocale, useTranslations } from "use-intl";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState, useRef } from "react";
+import z from "zod";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { useLocale, useTranslations } from "use-intl";
-import { useForm, SubmitHandler } from "react-hook-form";
-import z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useRef } from "react";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
 import PhoneNumberInput from "./PhoneNumberInput";
-import { requestDemo } from "@/app/actions/demo.actions";
-import posthog from "posthog-js";
+
+import { IconLoader2 } from "@tabler/icons-react";
+
+import { cn } from "@/lib/utils";
 
 // Form Type
 export type FormInputs = {
@@ -39,7 +44,7 @@ function RequestDemoForm({ className }: { className?: string }) {
     const [countryCode, setCountryCode] = useState("+966")
     const formStartTimeRef = useRef<number | null>(null);
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>({ resolver: zodResolver(FormSchema) });
+    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FormInputs>({ resolver: zodResolver(FormSchema) });
 
     const handleOnTouch = () => {
         if (formStartTimeRef.current === null) {
@@ -57,7 +62,7 @@ function RequestDemoForm({ className }: { className?: string }) {
         }
         try {
             let posthog_session_id = "";
-            if (typeof window !== undefined) posthog_session_id = posthog.get_session_id() || "";
+            if (typeof window !== "undefined") posthog_session_id = posthog.get_session_id() || "";
 
 
             // Calculate form completion time if user started
@@ -95,7 +100,10 @@ function RequestDemoForm({ className }: { className?: string }) {
                 ...(formCompletionTime !== undefined ? { form_completion_time: formCompletionTime } : {})
             }, { send_instantly: true })
 
-            toast.success(t("form.success"));
+            toast.success(t("form.success"), {
+                duration: 7000,
+                closeButton: true,
+            });
             reset();
             formStartTimeRef.current = null;
         } catch (error) {
@@ -203,8 +211,10 @@ function RequestDemoForm({ className }: { className?: string }) {
             </div>
 
             <div className="flex justify-center items-center">
-                <Button className="bg-linear-to-r from-black to-[#6D6D6D] hover:scale-102 w-full max-w-[200px] p-2 font-normal" >
-                    {t("form.submit")}
+                <Button
+                    disabled={isSubmitting}
+                    className="bg-linear-to-r from-black to-[#6D6D6D] hover:scale-102 w-full max-w-[200px] p-2 font-normal" >
+                    {isSubmitting && <IconLoader2 className="animate-spin size-4" />}  {t("form.submit")}
                 </Button>
             </div>
         </form>
