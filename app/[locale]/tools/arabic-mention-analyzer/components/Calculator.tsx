@@ -1,11 +1,15 @@
 "use client";
+import posthog from "posthog-js";
+
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+
 
 const CONSTANTS = {
   TOOL_ACCURACY: {
@@ -103,6 +107,19 @@ const Calculator = () => {
       missedMentions,
       sentimentSkew,
       riskAdjustedCost,
+    });
+
+    posthog.capture("arabic_mention_analyzer_used", {
+      platform_selected: platform,
+      current_tool: currentTool,
+      sector: sector,
+      arabic_content_percentage: arabicPercent,
+
+      missed_mentions_calculated: missedMentions,
+      sentiment_skew_calculated: sentimentSkew,
+      risk_adjusted_cost_calculated: riskAdjustedCost,
+
+      success: true
     });
   };
 

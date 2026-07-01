@@ -1,12 +1,16 @@
 "use client";
+import { jsPDF } from "jspdf";
+import posthog from "posthog-js";
+
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
+
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Progress } from "@/components/ui/progress";
+
 import { IconDownload, IconCircleCheck, IconCircleX, IconExternalLink } from "@tabler/icons-react";
-import { jsPDF } from "jspdf";
-import { useTranslations } from "next-intl";
 
 
 interface Question {
@@ -94,6 +98,26 @@ const CrisisReadinessScore = () => {
     };
 
     const handleSubmit = () => {
+        const currentTotalScore = calculateScore();
+        const crisisDetectionScore = calculateCategoryScore("crisisDetection");
+        const escalationSpeedScore = calculateCategoryScore("escalationSpeed");
+        const channelCoverageScore = calculateCategoryScore("channelCoverage");
+        const arabicSentimentScore = calculateCategoryScore("arabicSentiment");
+
+        posthog.capture("crisis_readiness_score_used", {
+            overall_score: currentTotalScore,
+            score_label: getScoreLabel(currentTotalScore),
+
+            crisis_detection_score: crisisDetectionScore,
+            escalation_speed_score: escalationSpeedScore,
+            channel_coverage_score: channelCoverageScore,
+            arabic_sentiment_score: arabicSentimentScore,
+
+            raw_answers: answers,
+
+            success: true
+        });
+
         setShowResults(true);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };

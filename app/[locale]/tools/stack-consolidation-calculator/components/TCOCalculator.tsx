@@ -1,10 +1,14 @@
 "use client";
+import posthog from "posthog-js";
+
 import { useState } from "react";
+import { useTranslations } from "next-intl";
+
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
+
 
 interface CalculatorInputs {
   currentVendors: number;
@@ -57,6 +61,22 @@ export const TCOCalculator = () => {
     const annualSavings = totalCurrentCost - consolidatedCost;
     const savingsPercentage = (annualSavings / totalCurrentCost) * 100;
     const breakEvenMonths = consolidatedCost / (annualSavings / 12);
+
+    posthog.capture("stack_consolidation_calculator_used", {
+      current_vendors: inputs.currentVendors,
+      license_cost_per_vendor: inputs.licenseCost,
+      user_count: inputs.userCount,
+      weekly_reporting_hours: inputs.reportingHours,
+      hourly_rate: inputs.hourlyRate,
+
+      current_annual_cost_calculated: currentAnnualCost,
+      manual_hours_cost_calculated: manualHoursCost,
+      total_current_cost_calculated: totalCurrentCost,
+      annual_savings_calculated: annualSavings,
+      savings_percentage_calculated: savingsPercentage,
+
+      success: true
+    });
 
     setResults({
       currentAnnualCost,

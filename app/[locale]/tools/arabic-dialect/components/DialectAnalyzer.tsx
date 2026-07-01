@@ -1,13 +1,16 @@
 "use client";
+import { analyzeDialect } from "../../actions";
+import posthog from "posthog-js";
+
 import { useState } from "react";
+import { useLocale } from "next-intl";
+import { useTranslations } from "use-intl";
+
 import { Card } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { useLocale } from "next-intl";
-import { useTranslations } from "use-intl";
-import { analyzeDialect } from "../../actions";
 
 
 
@@ -46,7 +49,29 @@ export const DialectAnalyzer = () => {
     try {
       const data = await analyzeDialect(inputText, selectedDialect, locale);
       setResult(data);
+
+      posthog.capture("arabic_dialect_analyzer_used", {
+        locale: locale,
+        selected_dialect: selectedDialect,
+
+        input_text: inputText,
+        input_character_count: inputText.length,
+
+        sentiment_label: data.sentiment.label,
+        sentiment_confidence: data.sentiment.confidence,
+        entities_extracted_count: data.entities.length,
+        misreads_identified_count: data.commonMisreads.length,
+
+        success: true
+      });
+
     } catch (error) {
+      posthog.capture("arabic_dialect_analyzer_error", {
+        locale: locale,
+        selected_dialect: selectedDialect,
+        error_message: error instanceof Error ? error.message : 'Failed to analyze text'
+      });
+
       setResult({
         sentiment: {
           label: 'neutral',

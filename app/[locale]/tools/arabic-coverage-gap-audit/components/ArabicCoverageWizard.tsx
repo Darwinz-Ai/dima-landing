@@ -1,17 +1,20 @@
 "use client";
 
+import { analyzeKeywords } from "../../actions";
+import posthog from "posthog-js";
+
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
+import { toast } from "sonner";
 // import { ArrowRight, ArrowLeft, Check, FileText, Globe, Sparkles } from "lucide-react";
 import { IconArrowRight, IconArrowLeft, IconCheck, IconFileText, IconGlobe, IconSparkles, IconFile } from "@tabler/icons-react";
 // import jsPDF from "jspdf";
-import { useLocale, useTranslations } from "next-intl";
-import { toast } from "sonner";
-import { analyzeKeywords } from "../../actions";
 
 type Step = 1 | 2 | 3;
 
@@ -113,6 +116,18 @@ export const ArabicCoverageWizard = () => {
         setResults(transformedResults);
         setStep(3);
 
+        posthog.capture("arabic_coverage_gap_used", {
+          locale: locale,
+          keyword_input_count: keywordList.length,
+          keyword_list: keywordList,
+          selected_countries: selectedCountries,
+          selected_countries_count: selectedCountries.length,
+          results_generated: transformedResults.length,
+          total_variations_generated: transformedResults.reduce((acc, r) => acc + r.variations.length, 0),
+          total_dialects_generated: transformedResults.reduce((acc, r) => acc + r.dialects.length, 0),
+          total_misspellings_generated: transformedResults.reduce((acc, r) => acc + r.misspellings.length, 0),
+          success: true
+        });
 
         toast.success(t("toast.success.title"), {
           description: t("toast.success.description", { count: transformedResults.length })
@@ -124,6 +139,12 @@ export const ArabicCoverageWizard = () => {
       toast.error(t("toast.error-analyzing.title"), {
         description: t("toast.error-analyzing.description")
       })
+
+      posthog.capture("arabic_coverage_gap_failed", {
+        locale: locale,
+        error: error instanceof Error ? error.message : String(error)
+      });
+
     } finally {
       setIsProcessing(false);
     }
