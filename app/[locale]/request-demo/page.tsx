@@ -64,7 +64,7 @@ async function RequestDemoPage() {
             <JsonLd data={[requestDemoJsonLd]} />
 
             <SectionWrapper className="min-h-dvh mt-12">
-                <div className="container mx-auto flex flex-col-reverse lg:flex-row justify-center items-center lg:items-stretch gap-12 flex-1">
+                <div className="container mx-auto flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-12 flex-1">
                     {/* Text & Form Section */}
                     <div className="flex-1 flex flex-col justify-center gap-4">
                         <p className="text-primary font-medium mb-4">{t("titlePrefix")}</p>
