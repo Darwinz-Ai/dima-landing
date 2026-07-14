@@ -295,20 +295,7 @@
           "title": "Company Name",
           "placeholder": "Your company name"
         },
-        "countryLabel": {
-          "saudi": "Saudi Arabia",
-          "uae": "United Arab Emirates",
-          "bahrain": "Bahrain",
-          "oman": "Oman",
-          "qatar": "Qatar",
-          "kuwait": "Kuwait",
-          "egypt": "Egypt",
-          "morocco": "Morocco",
-          "algeria": "Algeria",
-          "tunisia": "Tunisia",
-          "libya": "Libya",
-          "mauritania": "Mauritania"
-        },
+
         "errors": {
           "firstNameTooShort": "First name must be at least 2 characters",
           "lastNameTooShort": "Last name must be at least 2 characters",

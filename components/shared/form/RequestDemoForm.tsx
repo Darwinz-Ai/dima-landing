@@ -105,6 +105,7 @@ function RequestDemoForm({ className }: { className?: string }) {
                 closeButton: true,
             });
             reset();
+            setCountryCode("+966")
             formStartTimeRef.current = null;
         } catch (error) {
             posthog.captureException(error);
