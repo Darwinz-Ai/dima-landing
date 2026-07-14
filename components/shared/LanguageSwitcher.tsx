@@ -49,6 +49,7 @@ export default function LanguageSwitcher() {
               height={20}
               unoptimized={true}
             />
+            <span className="text-sm text-black">{currentLanguage?.label}</span>
           </figure>
           <ChevronDown className={`${isRTL ? "mr-2" : "ml-2"} h-4 w-4 shrink-0 opacity-50 text-muted-foreground`} />
         </button>
