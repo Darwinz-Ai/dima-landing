@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 
 import { getLocale, getTranslations } from "next-intl/server";
 import { fetchSingleBlog } from "@/lib/firebase/blogsFunctions";
+import BlogCTA from "../sections/BlogCTASection";
 
 
 async function BlogContent({ slug }: { slug: string }) {
@@ -49,6 +50,8 @@ async function BlogContent({ slug }: { slug: string }) {
                         >{blog?.content.body}</ReactMarkdown>
                     </div>
                 </SectionWrapper>
+
+                <BlogCTA />
 
                 {/* Check more blogs  */}
                 <SectionWrapper>

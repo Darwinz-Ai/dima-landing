@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import blackComputerIcon from "@/public/computer-black.svg";
@@ -7,17 +6,25 @@ import { Button } from "@/components/ui/button";
 
 import { getTranslations } from "next-intl/server";
 
-async function DimaSection() {
-    const t = await getTranslations("CaseStudies.boostBusiness")
+export default async function BlogCTA() {
+    const t = await getTranslations("Blogs.cta");
+
     return (
         <div className="bg-[#053A60]">
-            <div className="container mx-auto flex flex-col justify-center items-center gap-8 text-white py-24 px-4">
-                <h2 className="text-4xl lg:text-[66px] font-bold text-center">{t("title")}</h2>
-                <p className="text-lg lg:text-2xl font-medium max-w-2xl text-center">{t("description")}</p>
+            <div className="container mx-auto flex flex-col justify-center items-center gap-6 text-white py-12 px-4">
+
+                <h2 className="text-3xl lg:text-[44px] font-bold text-center leading-tight">
+                    {t("title")}
+                </h2>
+
+
+                <p className="text-base lg:text-lg font-normal max-w-lg text-center opacity-90">
+                    {t("description")}
+                </p>
 
                 <Link href="/request-demo">
-                    <Button className="group bg-white! text-black! hover:text-white! hover:bg-black! transition-colors duration-300 w-fit" size="xl">
-                        <div className="relative w-[30px] h-[30px]">
+                    <Button className="group bg-white! text-black! hover:text-white! hover:bg-black! transition-colors duration-300 w-fit mt-2" size="xl">
+                        <div className="relative w-[30px] h-[30px] mr-2">
                             {/* Black icon (default) */}
                             <Image
                                 src={blackComputerIcon}
@@ -38,12 +45,10 @@ async function DimaSection() {
                             />
                         </div>
 
-                        <span className="tracking-wide">{t("requestDemo")}</span>
+                        <span className="tracking-wide">{t("buttonText")}</span>
                     </Button>
                 </Link>
             </div>
         </div>
     );
 }
-
-export default DimaSection;

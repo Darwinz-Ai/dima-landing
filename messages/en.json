@@ -1123,7 +1123,12 @@
     "guides": "guides",
     "dataReports": "data reports",
     "allMarketingInsights": "all marketing insights",
-    "viewAll": "View all"
+    "viewAll": "View all",
+    "cta": {
+      "title": "Boost your business with dima",
+      "description": "Ready to see how dima can transform your media monitoring? Get your personalized demo today.",
+      "buttonText": "Request a Demo"
+    }
   },
   "Blog": {
     "dimaBlogs": "DIMA BLOGS",
