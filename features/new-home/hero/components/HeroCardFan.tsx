@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { HERO_CARDS } from "./constants/cards"
+import { HERO_CARDS } from "../constants/cards"
 
 
 const FAN_CARDS = HERO_CARDS.map((card, index) => {

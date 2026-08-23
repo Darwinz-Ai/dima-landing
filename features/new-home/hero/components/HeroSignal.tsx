@@ -8,8 +8,8 @@ import productOverviewTwo from "@/public/product/product-overview-2.png"
 
 
 import { cn } from "@/lib/utils"
-import { HeroReadoutType } from "./types"
-import { HERO_READOUT } from "./constants"
+import { HeroReadoutType } from "../types"
+import { HERO_READOUT } from "../constants"
 import { useRotation } from "@/lib/useRotation"
 import { BrowserTab } from "@/components/shared/BrowserTab"
 

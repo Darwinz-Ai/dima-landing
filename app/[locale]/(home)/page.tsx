@@ -14,7 +14,8 @@ import { QuestionAccordion } from "@/types";
 import { getTranslations } from "next-intl/server";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
-import { HeroSection } from "@/features/new-home/components/HeroSection";
+import { HeroSection } from "@/features/new-home/hero/components/HeroSection";
+import { ArabicIntelligence } from "@/features/new-home/arabicIntelligence/component/ArabicIntelligence";
 
 
 type HomePageProps = {
@@ -85,8 +86,10 @@ async function HomePage() {
       <JsonLd data={[orgJsonLd, productJsonLd, faqJsonLd]} />
 
       {/* <HeroSection /> */}
+      {/* <EmpoweringAgenciesSection /> */}
       <HeroSection />
-      <EmpoweringAgenciesSection />
+      <ArabicIntelligence />
+
       <OwnConversationSection />
       <DimaAiSection />
       <DimaSuiteSection />
