@@ -17,6 +17,8 @@ import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jso
 import { HeroSection } from "@/features/new-home/hero/components/HeroSection";
 import { ArabicIntelligence } from "@/features/new-home/arabicIntelligence/component/ArabicIntelligence";
 import { ProductWalkthrough } from "@/features/new-home/product-walkthrough/components/ProductWalkthrough";
+import { CopilotSection } from "@/features/new-home/copilot/components/CopilotSection";
+import { PlatformSection } from "@/features/new-home/mobile-application/components/PlatformSection";
 
 
 type HomePageProps = {
@@ -89,12 +91,14 @@ async function HomePage() {
       {/* <HeroSection /> */}
       {/* <EmpoweringAgenciesSection /> */}
       {/* <OwnConversationSection /> */}
+      {/* <DimaAiSection /> */}
+      {/* <DimaSuiteSection /> */}
       <HeroSection />
       <ArabicIntelligence />
       <ProductWalkthrough />
+      <CopilotSection />
+      <PlatformSection />
 
-      <DimaAiSection />
-      <DimaSuiteSection />
       <CaseStudiesSection />
       <TestimonialSection />
       <RequestDemoSection />

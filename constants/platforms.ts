@@ -10,6 +10,21 @@ import printPng from "@/public/socials/print.png"
 import tvPng from "@/public/socials/tv.png"
 // import radioPng from "@/public/socials/radio.png"
 
+
+import {
+  FacebookIcon,
+  InstagramIcon,
+  Linkedin01Icon,
+  TiktokIcon,
+  NewTwitterIcon,
+  SnapchatIcon,
+  News01Icon,
+  PrinterIcon,
+  Tv01Icon,
+  Radio01Icon,
+  YoutubeIcon,
+} from "@hugeicons/core-free-icons"
+
 import {
   LINKEDIN_URL,
   INSTAGRAM_URL,
@@ -19,7 +34,7 @@ import {
   YOUTUBE_URL,
 } from "./links"
 
-export const PLATFORMS = [
+export const PLATFORMS_IMAGES = [
   { label: "LinkedIn", href: LINKEDIN_URL, image: linkedinPng },
   { label: "Instagram", href: INSTAGRAM_URL, image: instagramPng },
   { label: "Facebook", href: FACEBOOK_URL, image: facebookPng },
@@ -31,4 +46,21 @@ export const PLATFORMS = [
   { label: "Print", href: null, image: printPng },
   { label: "TV", href: null, image: tvPng },
   // { label: "Radio", href: null, image: radioPng },
+]
+
+
+
+
+export const PLATFORMS = [
+  { label: "LinkedIn", href: LINKEDIN_URL, icon: Linkedin01Icon },
+  { label: "Instagram", href: INSTAGRAM_URL, icon: InstagramIcon },
+  { label: "Facebook", href: FACEBOOK_URL, icon: FacebookIcon },
+  { label: "X", href: X_URL, icon: NewTwitterIcon },
+  { label: "TikTok", href: TIKTOK_URL, icon: TiktokIcon },
+  { label: "YouTube", href: YOUTUBE_URL, icon: YoutubeIcon },
+  { label: "Snapchat", href: null, icon: SnapchatIcon },
+  { label: "Online news", href: null, icon: News01Icon },
+  { label: "Print", href: null, icon: PrinterIcon },
+  { label: "TV", href: null, icon: Tv01Icon },
+  { label: "Radio", href: null, icon: Radio01Icon },
 ]

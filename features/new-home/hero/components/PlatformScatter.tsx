@@ -2,6 +2,7 @@
 import { cn } from "@/lib/utils"
 import { PLATFORMS } from "@/constants"
 import Image from "next/image"
+import { PLATFORMS_IMAGES } from "@/constants/platforms"
 
 const SCATTER = [
   {
@@ -107,7 +108,7 @@ const SCATTER = [
 
 type DriftStyle = React.CSSProperties & { [key: `--${string}`]: string }
 
-const SCATTERED_PLATFORMS = PLATFORMS.map((platform, index) => {
+const SCATTERED_PLATFORMS = PLATFORMS_IMAGES.map((platform, index) => {
   const slot = SCATTER[index % SCATTER.length]
 
   const style: DriftStyle = {
