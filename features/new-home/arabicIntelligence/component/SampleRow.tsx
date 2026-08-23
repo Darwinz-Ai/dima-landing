@@ -17,7 +17,7 @@ export const SampleRow = ({ sample }: { sample: SampleType }) => {
   const isArabic = sample.script === "arabic"
 
   return (
-    <article className="grid grid-cols-[1fr_auto] items-start gap-8 border border-line bg-white p-5.5 rounded-lg max-sm:grid-cols-1 max-sm:gap-4 max-sm:p-4.5">
+    <article className="grid grid-cols-[1fr_auto] items-start gap-8 border border-line bg-white p-5.5 rounded-3xl max-sm:grid-cols-1 max-sm:gap-4 max-sm:p-4.5">
       <div className="min-w-0">
         <span className="font-mono text-2.5 tracking-[.11em] text-ui-muted uppercase">
           {sample.dialect}
@@ -32,7 +32,7 @@ export const SampleRow = ({ sample }: { sample: SampleType }) => {
         >
           {sample.post}
         </p>
-        <p className="mt-2 text-2.875 leading-normal text-copy italic">
+        <p className="mt-2 text-3.25 leading-normal text-copy italic">
           {sample.gloss}
         </p>
       </div>

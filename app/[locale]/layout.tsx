@@ -12,6 +12,7 @@ import Script from "next/script";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { MotionProvider } from "../providers/MotionProvider";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -30,7 +31,7 @@ const displayFont = Space_Grotesk({
   weight: ["500", "700"],
   variable: "--font-display-face",
   display: "swap",
-})
+});
 
 export async function generateMetadata(
   { params }: { params: Promise<{ locale: string }> }
@@ -88,21 +89,27 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={isAr ? "rtl" : "ltr"}
-      className="antialiased"
+      className={`h-full overflow-hidden antialiased ${displayFont.variable}`}
       suppressHydrationWarning
     >
       <GoogleAnalytics gaId="G-JJGJEDJL2Q" />
       <body
-        className={`${isAr ? cairo.className : displayFont.variable
-          } min-h-dvh flex flex-col`}
+        className={`h-full overflow-hidden bg-surface font-sans text-ink ${isAr ? cairo.className : geistSans.className
+          }`}
       >
         <NextIntlClientProvider>
           <ReactQueryProvider>
             <MotionProvider>
-              <Navbar />
-              <main className="flex-1">{children}</main>
-              <Toaster richColors />
-              <Footer />
+              <ScrollArea
+                className="h-dvh w-full"
+                viewportClassName="scroll-smooth motion-reduce:scroll-auto"
+                id="app-scroll-area"
+              >
+                <Navbar />
+                <main className="flex-1">{children}</main>
+                <Toaster richColors />
+                <Footer />
+              </ScrollArea>
             </MotionProvider>
           </ReactQueryProvider>
         </NextIntlClientProvider>

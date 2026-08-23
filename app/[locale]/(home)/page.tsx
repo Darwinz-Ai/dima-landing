@@ -16,6 +16,7 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
 import { HeroSection } from "@/features/new-home/hero/components/HeroSection";
 import { ArabicIntelligence } from "@/features/new-home/arabicIntelligence/component/ArabicIntelligence";
+import { ProductWalkthrough } from "@/features/new-home/product-walkthrough/components/ProductWalkthrough";
 
 
 type HomePageProps = {
@@ -87,10 +88,11 @@ async function HomePage() {
 
       {/* <HeroSection /> */}
       {/* <EmpoweringAgenciesSection /> */}
+      {/* <OwnConversationSection /> */}
       <HeroSection />
       <ArabicIntelligence />
+      <ProductWalkthrough />
 
-      <OwnConversationSection />
       <DimaAiSection />
       <DimaSuiteSection />
       <CaseStudiesSection />

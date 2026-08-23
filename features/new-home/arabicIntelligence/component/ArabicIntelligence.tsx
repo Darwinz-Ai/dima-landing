@@ -19,9 +19,9 @@ export const ArabicIntelligence = () => (
   >
     <div className="page-container grid grid-cols-[.85fr_1.15fr] items-center gap-x-17.5 gap-y-11 max-md:grid-cols-1 max-md:gap-y-9 md:max-lg:gap-x-10">
       <div className="min-w-0">
-        <span className="section-kicker">The part most platforms bolt on</span>
+        <span className="section-kicker text-3">The part most platforms bolt on</span>
         <h2
-          className="mt-4.25 text-[clamp(2.4rem,3.9vw,3.7rem)] leading-none font-medium tracking-[-.06em] max-sm:text-[2.5rem] desktop-fit:text-[clamp(2.4rem,3.2vw,3.2rem)]"
+          className="mt-4.25 text-[clamp(2.55rem,4vw,3.9rem)] leading-none font-medium tracking-[-.06em] max-sm:text-[2.625rem] desktop-fit:text-[clamp(2.6rem,3.35vw,3.35rem)]"
           id="arabic-title"
         >
           Everyone has AI now.
@@ -32,15 +32,15 @@ export const ArabicIntelligence = () => (
         <ul className="mt-8 grid gap-2.5 max-sm:mt-6 desktop-fit:mt-6">
           {DIFFERENTIATORS.map((point) => (
             <li
-              className="flex items-start gap-2.5 text-3.375 leading-normal text-copy-strong"
+              className="flex items-start gap-2.5 text-3.75 leading-normal text-copy-strong"
               key={point}
             >
               <Icon
                 className="mt-px shrink-0 text-brand-dark"
                 icon={CheckmarkCircle02Icon}
-                size={16}
+                size={18}
               />
-              {point}
+              <span className="text-3.875">{point}</span>
             </li>
           ))}
         </ul>
@@ -54,33 +54,38 @@ export const ArabicIntelligence = () => (
       </div>
 
       {/* Cleaned grid border structure */}
-      <ul className="col-span-full grid grid-cols-3 gap-px border border-line bg-line rounded-lg overflow-hidden max-md:mt-2 max-sm:grid-cols-1">
+      <ul className="col-span-full grid grid-cols-3 gap-px border border-line bg-line rounded-3xl overflow-hidden max-md:mt-2 max-sm:grid-cols-1">
         {METRICS.map((metric) => (
           <li
             className={cn(
-              "px-6.5 py-5.5 max-sm:px-5.5",
-              metric.featured ? "bg-brand" : "bg-white"
+              "px-6.5 py-5.5 max-sm:px-5.5 transition-shadow duration-150",
+              metric.featured
+                ? "bg-brand text-white shadow-xl border-0 relative z-10 scale-[1.045] ring-4 ring-brand/15 ring-inset"
+                : "bg-white"
             )}
             key={metric.title}
           >
-            <strong className="text-[clamp(2.1rem,2.9vw,2.9rem)] leading-[.9] font-[530] tracking-[-.07em]">
+            <strong className={cn(
+              "text-[clamp(2.25rem,3vw,3.1rem)] leading-[.9] font-[530] tracking-[-.07em]",
+              metric.featured ? "text-white drop-shadow-md" : "text-brand"
+            )}>
               {metric.value}
-              <span className={metric.featured ? "text-white" : "text-brand"}>
+              <span className={metric.featured ? "text-white opacity-80" : "text-brand"}>
                 {metric.suffix}
               </span>
             </strong>
             <h3
               className={cn(
-                "mt-4 text-3.5 font-medium",
-                metric.featured && "text-white"
+                "mt-4 text-4 font-medium",
+                metric.featured && "text-white drop-shadow-sm"
               )}
             >
               {metric.title}
             </h3>
             <p
               className={cn(
-                "mt-2 text-2.875 leading-[1.55]",
-                metric.featured ? "text-ink/75" : "text-copy"
+                "mt-2 text-3.25 leading-[1.65]",
+                metric.featured ? "text-white/90" : "text-copy"
               )}
             >
               {metric.description}
@@ -88,6 +93,7 @@ export const ArabicIntelligence = () => (
           </li>
         ))}
       </ul>
+
     </div>
   </section>
 )

@@ -1,11 +1,13 @@
-import { Icon } from "@/components/shared/Icon"
 import { HeroCardFan } from "./HeroCardFan"
 import { HeroProof } from "./HeroProof"
 import { PlatformScatter } from "./PlatformScatter"
 
+import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
+
+import { DEMO_URL } from "@/constants"
 
 import { cn } from "@/lib/utils"
-import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
+import { Icon } from "@/components/shared/Icon"
 
 const gridBackdrop = cn(
   "bg-surface",
@@ -13,19 +15,18 @@ const gridBackdrop = cn(
   "[background-size:auto,3rem_3rem,3rem_3rem]"
 )
 
-
 export const HeroSection = () => (
   <section
     className={cn(
-      "relative flex h-svh min-h-[600px] flex-col overflow-clip max-md:h-auto",
+      "relative flex h-[calc(100svh-var(--spacing-chrome))] flex-col overflow-clip max-md:h-auto",
       gridBackdrop
     )}
     id="top"
   >
     <PlatformScatter className="max-md:hidden" />
 
-    <div className="relative z-1 page-container flex h-full flex-col items-center pt-20 max-sm:pt-32 desktop-fit:pt-36 text-center">
-      <p className="mb-4 shrink-0 font-display text-3 leading-[1.75] tracking-[.14em] uppercase max-sm:mb-3 max-sm:text-2.75">
+    <div className="relative z-1 page-container flex h-full flex-col items-center pt-10 text-center max-sm:pt-9 desktop-fit:pt-11">
+      <p className="mb-5 shrink-0 font-display text-2.75 leading-[1.75] tracking-[.14em] uppercase max-sm:mb-4 max-sm:text-2.5">
         <span className="block font-bold text-ink">
           Arabic-first media intelligence
         </span>
@@ -34,7 +35,7 @@ export const HeroSection = () => (
         </span>
       </p>
 
-      <h1 className="max-w-[15ch] shrink-0 text-[clamp(2.7rem,4.4vw,4.1rem)] leading-[.95] font-bold tracking-[-.075em] text-balance max-sm:text-[clamp(2.3rem,9vw,3rem)]">
+      <h1 className="max-w-[15ch] shrink-0 text-[clamp(2.6rem,4.2vw,3.95rem)] leading-[.95] font-[520] tracking-[-.075em] text-balance max-sm:text-[clamp(2.35rem,10vw,2.9rem)]">
         Know what your market is saying.
         <span className="block max-sm:mt-1">
           <mark className="bg-transparent bg-[linear-gradient(transparent_52%,rgba(30,185,212,0.5)_52%)] bg-no-repeat bg-size-[0%_100%] animate-highlight box-decoration-clone px-[0.04em] font-[450] text-ink">
@@ -43,21 +44,21 @@ export const HeroSection = () => (
         </span>
       </h1>
 
-      <p className="mt-4 max-w-130 shrink-0 text-3.875 leading-[1.5] text-copy-strong max-sm:text-3.5">
+      <p className="mt-5 max-w-130 shrink-0 text-3.75 leading-[1.6] text-copy-strong">
         dima watches social, news, TV and radio in every Arabic dialect,
         then tells you what changed, why it happened, and what to do about it.
       </p>
 
       <form
-        className="mt-5 flex h-14 w-[min(100%,520px)] shrink-0 border border-ink bg-white transition-shadow duration-160 ease-[ease] focus-within:shadow-[0_0_0_2px_var(--brand)] max-sm:h-13"
-        action={"/request-demo"}
+        className="mt-6 flex h-13.5 w-[min(100%,500px)] shrink-0 border border-ink bg-white transition-shadow duration-160 ease-[ease] focus-within:shadow-[0_0_0_2px_var(--brand)] max-sm:h-13"
+        action={DEMO_URL}
         method="get"
       >
         <label className="sr-only" htmlFor="demo-email">
           Work email
         </label>
         <input
-          className="min-w-0 flex-1 bg-transparent px-4 text-3.5 outline-none placeholder:text-placeholder"
+          className="min-w-0 flex-1 bg-transparent px-4.5 text-3.25 outline-none placeholder:text-placeholder"
           id="demo-email"
           name="email"
           type="email"
@@ -67,21 +68,21 @@ export const HeroSection = () => (
         />
 
         <button
-          className="group flex min-w-52 cursor-pointer items-center justify-center gap-3 border-l border-ink bg-ink px-4 text-3.25 font-[520] text-white max-sm:min-w-44 max-sm:gap-2.5 max-sm:px-3 max-sm:text-3"
+          className="group flex min-w-50 cursor-pointer items-center justify-center gap-3 border-l border-ink bg-ink px-4.5 text-3 font-[520] text-white max-sm:min-w-43 max-sm:gap-2 max-sm:px-3.25 max-sm:text-2.875"
           type="submit"
         >
           Book a demo
           <Icon
             className="shrink-0 transition-transform group-hover:translate-x-1"
             icon={ArrowRight01Icon}
-            size={17}
+            size={16}
           />
         </button>
       </form>
 
-      <HeroProof className="mt-4 shrink-0 max-sm:mt-4" />
+      <HeroProof className="mt-6 shrink-0 max-sm:mt-5" />
 
-      <div className="mt-auto flex w-full min-w-0 shrink-0 justify-center overflow-x-clip deck-fade pt-5 pb-12 max-sm:pt-5 max-sm:pb-10">
+      <div className="mt-auto flex w-full min-w-0 shrink-0 justify-center overflow-x-clip deck-fade pt-8 pb-16 max-sm:pt-7 max-sm:pb-12">
         <HeroCardFan />
       </div>
     </div>
