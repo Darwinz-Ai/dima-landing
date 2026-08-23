@@ -1,0 +1,15 @@
+export const DEMO_URL = "/request-demo"
+export const CASE_STUDIES_URL = "https://thedar.ai/en/case-studies"
+export const ABOUT_URL = "https://thedar.ai/en/about-us"
+export const INSIGHTS_URL = "https://thedar.ai/en/blogs"
+export const PRIVACY_URL = "https://thedar.ai/en/privacy-policy"
+export const ARABIC_SITE_URL = "https://thedar.ai/ar"
+
+export const CONTACT_EMAIL = "info@thedar.ai"
+export const LINKEDIN_URL = "https://www.linkedin.com/company/thedar-ai/"
+export const INSTAGRAM_URL = "https://www.instagram.com/thedar.ai/"
+export const FACEBOOK_URL =
+  "https://www.facebook.com/people/TheDarAI/61585271307642/?_rdc=1&_rdr#"
+export const TIKTOK_URL = "https://www.tiktok.com/@thedar.ai"
+export const X_URL = "https://x.com/TheDarAI"
+export const YOUTUBE_URL = "https://www.youtube.com/@dima-social"

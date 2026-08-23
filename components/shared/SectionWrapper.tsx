@@ -12,7 +12,7 @@ if (typeof window !== "undefined") {
 function SectionWrapper({
   children,
   className,
-  disableAnimation = false,
+  disableAnimation = true,
 }: {
   children: React.ReactNode;
   className?: string;

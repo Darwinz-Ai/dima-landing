@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-import HeroSection from "@/features/home/sections/HeroSection";
+// import HeroSection from "@/features/home/sections/HeroSection";
 import DimaAiSection from "@/features/home/sections/DimaAiSection";
 import DimaSuiteSection from "@/features/home/sections/DimaSuiteSection";
 import CaseStudiesSection from "@/features/home/sections/CaseStudiesSection";
@@ -14,6 +14,7 @@ import { QuestionAccordion } from "@/types";
 import { getTranslations } from "next-intl/server";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
+import { HeroSection } from "@/features/new-home/components/HeroSection";
 
 
 type HomePageProps = {
@@ -83,6 +84,7 @@ async function HomePage() {
     <main className="h-full">
       <JsonLd data={[orgJsonLd, productJsonLd, faqJsonLd]} />
 
+      {/* <HeroSection /> */}
       <HeroSection />
       <EmpoweringAgenciesSection />
       <OwnConversationSection />
