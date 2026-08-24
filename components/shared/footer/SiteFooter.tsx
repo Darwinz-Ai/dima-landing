@@ -69,7 +69,7 @@ export const SiteFooter = () => (
           <div className="mt-6 flex gap-2">
             {PLATFORMS.filter((p) => p.href !== null).map((social) => (
               <a
-                className="grid size-9 place-items-center border border-night-line text-footer-copy transition-colors hover:border-brand hover:text-brand"
+                className="grid size-9 place-items-center border border-night-line text-footer-copy transition-colors hover:border-brand hover:text-brand rounded-sm"
                 href={social.href}
                 aria-label={social.label}
                 key={social.label}

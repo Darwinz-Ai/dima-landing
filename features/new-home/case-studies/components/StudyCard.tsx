@@ -7,6 +7,7 @@ const captions = {
 } as const
 
 export const StudyCard = ({ story }: { story: CaseStudyBriefType }) => (
+  // Kept unchanged: The parent grid now perfectly handles the outer corner rounding.
   <div className="flex min-h-20 flex-col justify-between gap-6 overflow-hidden bg-night-panel p-6 text-white">
     <div>
       <span className="font-mono text-2.5 tracking-[.11em] text-white/40 uppercase">

@@ -5,7 +5,7 @@ import { DEMO_URL } from "@/constants"
 
 export const FinalCta = () => (
   <section className="bg-surface">
-    <div className="relative page-container flex min-h-[min(560px,calc(100svh-var(--spacing-nav)))] flex-col items-center justify-center overflow-hidden bg-brand px-5 text-center max-sm:min-h-135">
+    <div className="relative page-container flex min-h-[min(560px,calc(100svh-var(--spacing-nav)))] flex-col items-center justify-center overflow-hidden rounded-t-3xl bg-brand px-5 text-center max-sm:min-h-135">
       <CtaPattern />
 
       <span className="relative z-2 section-kicker text-ink/65">
@@ -18,7 +18,7 @@ export const FinalCta = () => (
         you hear it first.
       </h2>
       <p className="relative z-2 my-7.5 max-w-140 text-3.75 leading-[1.7] text-ink/75">
-        See what dima&copy; finds in your own brand, your own competitors and
+        See what dima finds in your own brand, your own competitors and
         your own dialects, before you commit to anything.
       </p>
       <div className="relative z-2">

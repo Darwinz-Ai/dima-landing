@@ -1,10 +1,7 @@
 import { StudyCard } from "./StudyCard"
-
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
-
 import { FEATURED_CASE_STUDIES } from "../constants"
 import { CASE_STUDIES_URL } from "@/constants"
-
 import { cn } from "@/lib/utils"
 import { SectionHeading } from "@/components/shared/SectionHeading"
 import { TextArrowLink } from "@/components/shared/TextArrowLink"
@@ -26,16 +23,16 @@ export const CaseStudiesSection = () => (
         }
       />
 
-      <div className="grid grid-cols-[1.35fr_1fr_1fr] border border-line max-sm:grid-cols-1 sm:max-lg:grid-cols-2">
+      {/* ADDED: gap-px, bg-line, overflow-hidden, and rounded-2xl to create perfect inner and outer borders */}
+      <div className="grid grid-cols-[1.35fr_1fr_1fr] gap-px overflow-hidden rounded-2xl border border-line bg-line max-sm:grid-cols-1 sm:max-lg:grid-cols-2">
         {FEATURED_CASE_STUDIES.map((story, index) => {
           const isLead = index === 0
 
           return (
             <article
               className={cn(
-                "overflow-hidden bg-white",
-                index < FEATURED_CASE_STUDIES.length - 1 &&
-                "border-r border-line",
+                // REMOVED: border-r border-line since the parent gap handles it now
+                "flex flex-col bg-white",
                 isLead && "sm:max-lg:col-span-full"
               )}
               key={story.title}

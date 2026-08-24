@@ -28,7 +28,7 @@ export const MilestoneCard = ({
   return (
     <div
       className={cn(
-        "flex flex-col justify-center border bg-white duration-300",
+        "flex flex-col justify-center border bg-white duration-300 rounded-lg",
         isHorizontal
           ? "min-h-23 px-4.5 py-4 transition-[border-color,box-shadow]"
           : "min-h-20 px-4 py-3 transition-[opacity,border-color] motion-reduce:transition-none",

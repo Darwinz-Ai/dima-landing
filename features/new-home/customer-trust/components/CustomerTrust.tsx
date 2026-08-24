@@ -33,7 +33,7 @@ export const CustomerTrust = () => (
         <BrandFlow brands={rightRowBrands} side="right" />
       </div>
       <p className="mt-10 flex items-center justify-center gap-2.5 text-3.25 font-[450] text-ui-text max-md:mt-8 max-md:text-3">
-        250+ leading agencies & enterprises trust dima&copy;
+        250+ leading agencies & enterprises trust dima
       </p>
     </div>
   </section>
