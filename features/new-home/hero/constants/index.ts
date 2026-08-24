@@ -34,7 +34,8 @@ export const AI_ASSISTANTS = [
     icon: ClaudeIcon,
     href: (prompt: string) =>
       `https://claude.ai/new?q=${encodeURIComponent(prompt)}`,
-    color: "text-[#ffb300] bg-[#fff7e6] hover:bg-[#ffe5b3] border border-[#ffb300]",
+    color:
+      "text-[#fc9502] bg-gradient-to-br from-[#fff5e1] via-[#ffedb5] to-[#fff8ed] border border-[#ffdfa1] shadow-sm",
     label: "Ask about dima on Claude",
   },
   {
@@ -42,17 +43,17 @@ export const AI_ASSISTANTS = [
     icon: GoogleGeminiIcon,
     href: (prompt: string) =>
       `https://www.google.com/search?q=${encodeURIComponent(prompt)}&udm=50`,
-    color: "text-[#7856ff] bg-[#f6f1ff] hover:bg-[#e3dbff] border border-[#7856ff]",
+    color:
+      "text-[#755cff] bg-gradient-to-br from-[#f2f0ff] via-[#ebeaff] to-[#ede7fb] border border-[#d2cfff] shadow-sm",
     label: "Ask about dima on Gemini",
   },
   {
     name: "ChatGPT",
     icon: ChatGptIcon,
     href: (prompt: string) =>
-      `https://chat.openai.com/?prompt=${encodeURIComponent(
-        prompt
-      )}`,
-    color: "text-[#10a37f] bg-[#e6faf5] hover:bg-[#c3f1e5] border border-[#10a37f]",
+      `https://chat.openai.com/?prompt=${encodeURIComponent(prompt)}`,
+    color:
+      "text-[#10a37f] bg-gradient-to-br from-[#dcfff4] via-[#e6f9fa] to-[#e8fcf5] border border-[#bde9dd] shadow-sm",
     label: "Ask about dima on ChatGPT",
   },
   {
@@ -60,7 +61,8 @@ export const AI_ASSISTANTS = [
     icon: PerplexityAiIcon,
     href: (prompt: string) =>
       `https://www.perplexity.ai/search?q=${encodeURIComponent(prompt)}`,
-    color: "text-[#266ae2] bg-[#e7f1fb] hover:bg-[#d3e3f8] border border-[#266ae2]",
+    color:
+      "text-[#266ae2] bg-gradient-to-br from-[#e7f1ff] via-[#d5e7fc] to-[#eaf4ff] border border-[#b1d2fa] shadow-sm",
     label: "Ask about dima on Perplexity",
   },
 ]

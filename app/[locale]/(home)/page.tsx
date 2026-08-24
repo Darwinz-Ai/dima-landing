@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 // import HeroSection from "@/features/home/sections/HeroSection";
 import DimaAiSection from "@/features/home/sections/DimaAiSection";
 import DimaSuiteSection from "@/features/home/sections/DimaSuiteSection";
-import CaseStudiesSection from "@/features/home/sections/CaseStudiesSection";
+// import CaseStudiesSection from "@/features/home/sections/CaseStudiesSection";
 import QuestionsAnsweredSection from "@/features/home/sections/QuestionsAnsweredSection";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import JsonLd from "@/components/shared/JsonLd";
@@ -19,6 +19,8 @@ import { ArabicIntelligence } from "@/features/new-home/arabicIntelligence/compo
 import { ProductWalkthrough } from "@/features/new-home/product-walkthrough/components/ProductWalkthrough";
 import { CopilotSection } from "@/features/new-home/copilot/components/CopilotSection";
 import { PlatformSection } from "@/features/new-home/mobile-application/components/PlatformSection";
+import { CaseStudiesSection } from "@/features/new-home/case-studies/components/CaseStudiesSection";
+import { TestimonialsSection } from "@/features/new-home/testimonials/components/TestimonialsSection";
 
 
 type HomePageProps = {
@@ -70,9 +72,9 @@ const OwnConversationSection = dynamic(() => import("@/features/home/sections/Ow
   ssr: true,
 });
 
-const TestimonialSection = dynamic(() => import("@/features/home/sections/TestimonialSection"), {
-  ssr: true,
-});
+// const TestimonialSection = dynamic(() => import("@/features/home/sections/TestimonialSection"), {
+//   ssr: true,
+// });
 
 async function HomePage() {
   const tHomeQuestions = await getTranslations("Home.questionsAnswered");
@@ -93,16 +95,18 @@ async function HomePage() {
       {/* <OwnConversationSection /> */}
       {/* <DimaAiSection /> */}
       {/* <DimaSuiteSection /> */}
+      {/* <CaseStudiesSection /> */}
+      {/* <TestimonialSection /> */}
+      {/* <RequestDemoSection /> */}
+      {/* <QuestionsAnsweredSection faqs={faqs} /> */}
+
       <HeroSection />
       <ArabicIntelligence />
       <ProductWalkthrough />
       <CopilotSection />
       <PlatformSection />
-
       <CaseStudiesSection />
-      <TestimonialSection />
-      <RequestDemoSection />
-      <QuestionsAnsweredSection faqs={faqs} />
+      <TestimonialsSection />
     </main>
   );
 }

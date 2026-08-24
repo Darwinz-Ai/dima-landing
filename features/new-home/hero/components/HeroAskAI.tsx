@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 const HeroAskAI = () => {
     return (
-        <div className="mt-4 flex shrink-0 items-center justify-center gap-3 opacity-90 transition-opacity hover:opacity-100 max-sm:mt-3">
+        <div className="mt-4 flex shrink-0 items-center justify-center gap-3 max-sm:mt-3">
             <span className="text-[0.95rem] font-medium text-label">Want a third-party opinion? Ask AI:</span>
             <div className="flex gap-2">
                 {AI_ASSISTANTS.map((assistant) => (
@@ -14,7 +14,7 @@ const HeroAskAI = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={cn(
-                            "flex items-center justify-center rounded-full p-1.5 transition-colors duration-150",
+                            "flex items-center justify-center rounded-sm p-1.5 transition-opacity duration-150 opacity-90 hover:opacity-100",
                             assistant.color
                         )}
                         aria-label={assistant.label}
