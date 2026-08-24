@@ -6,6 +6,10 @@ import { cn } from "@/lib/utils"
 
 export const HeroProof = ({ className }: { className?: string }) => (
   <div className={cn("w-[min(100%,520px)]", className)}>
+    <p className="mb-3.5 text-3.25 leading-[1.45] font-[450] text-copy-strong max-sm:mb-3 max-sm:text-3">
+      <span className="font-[560] text-ink">250+</span> leading agencies &
+      enterprises trust dima
+    </p>
     <ul
       className="grid grid-cols-6 border-t border-l border-line bg-white"
       aria-label="A few of the brands using dima"
@@ -26,9 +30,5 @@ export const HeroProof = ({ className }: { className?: string }) => (
         </li>
       ))}
     </ul>
-    <p className="mt-3.5 text-3.25 leading-[1.45] font-[450] text-copy-strong max-sm:mt-3 max-sm:text-3">
-      <span className="font-[560] text-ink">250+</span> leading agencies &
-      enterprises trust dima
-    </p>
   </div>
 )
