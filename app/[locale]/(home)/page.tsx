@@ -21,6 +21,10 @@ import { CopilotSection } from "@/features/new-home/copilot/components/CopilotSe
 import { PlatformSection } from "@/features/new-home/mobile-application/components/PlatformSection";
 import { CaseStudiesSection } from "@/features/new-home/case-studies/components/CaseStudiesSection";
 import { TestimonialsSection } from "@/features/new-home/testimonials/components/TestimonialsSection";
+import { CustomerTrust } from "@/features/new-home/customer-trust/components/CustomerTrust";
+import { ImplementationTimeline } from "@/features/new-home/implementation/components/ImplementationTimeline";
+import { FaqSection } from "@/features/new-home/faq/components/FaqSection";
+import { FinalCta } from "@/features/new-home/final-cta/components/FinalCta";
 
 
 type HomePageProps = {
@@ -107,6 +111,11 @@ async function HomePage() {
       <PlatformSection />
       <CaseStudiesSection />
       <TestimonialsSection />
+      <CustomerTrust />
+      <ImplementationTimeline />
+      <FaqSection />
+      <FinalCta />
+
     </main>
   );
 }

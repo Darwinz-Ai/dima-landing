@@ -13,6 +13,7 @@ import { buildLocalizedMetadata } from "@/lib/seo";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { MotionProvider } from "../providers/MotionProvider";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { SiteFooter } from "@/components/shared/footer/SiteFooter";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -108,7 +109,8 @@ export default async function RootLayout({
                 <Navbar />
                 <main className="flex-1">{children}</main>
                 <Toaster richColors />
-                <Footer />
+                {/* <Footer /> */}
+                <SiteFooter />
               </ScrollArea>
             </MotionProvider>
           </ReactQueryProvider>
