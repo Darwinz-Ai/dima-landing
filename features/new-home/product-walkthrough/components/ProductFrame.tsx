@@ -20,14 +20,14 @@ export function ProductFrame({
       data-product-frame=""
     >
       <div>
-        <span className="font-mono text-2.5 tracking-widest text-ui-muted uppercase">
+        <span className="font-mono text-3.5 tracking-widest text-ui-muted uppercase">
           {screen.number} / {String(total).padStart(2, "0")} · {screen.title} ·{" "}
           {screen.eyebrow}
         </span>
-        <h3 className="mt-2 max-w-180 text-[clamp(2.1rem,3.25vw,3.25rem)] leading-[.98] font-normal tracking-[-.06em]">
+        <h3 className="mt-2 max-w-180 text-[clamp(2.3rem,3.75vw,3.55rem)] leading-[.98] font-normal tracking-[-.06em]">
           {screen.outcome}
         </h3>
-        <p className="mt-2.5 max-w-155 text-3 leading-[1.55] text-copy">
+        <p className="mt-2.5 max-w-155 text-base leading-[1.55] text-copy">
           {screen.description}
         </p>
       </div>

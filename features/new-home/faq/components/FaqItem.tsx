@@ -13,11 +13,11 @@ export const FaqItem = ({
   defaultOpen?: boolean
 }) => (
   <details className="group border-b border-line-strong" open={defaultOpen}>
-    <summary className="flex min-h-21.5 cursor-pointer list-none items-center justify-between gap-6.25 px-1.25 py-5 text-4.25 font-medium tracking-[-.015em] desktop-fit:min-h-18 [&::-webkit-details-marker]:hidden">
+    <summary className="flex min-h-21.5 cursor-pointer list-none items-center justify-between gap-6.25 px-1.25 py-5 text-4.5 font-medium tracking-[-.015em] desktop-fit:min-h-18 [&::-webkit-details-marker]:hidden">
       {faq.question}
       <span className={toggleMarkClass} />
     </summary>
-    <p className="max-w-175 pt-0 pr-13.75 pb-7 pl-1.25 text-3.25 leading-[1.75] text-label">
+    <p className="max-w-175 pt-0 pr-13.75 pb-7 pl-1.25 text-4 leading-[1.75] text-label">
       {faq.answer}
     </p>
   </details>

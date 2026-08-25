@@ -11,8 +11,10 @@ export const PlatformBenefits = () => (
         <span className="row-span-2 grid size-8.5 place-items-center rounded-lg bg-brand/12 text-brand">
           <Icon icon={benefit.icon} />
         </span>
-        <h3 className="text-3.25 font-medium">{benefit.title}</h3>
-        <p className="text-2.5 leading-[1.55] text-ui-label">
+        {/* Increased from text-3.25 to text-3.75 */}
+        <h3 className="text-4 font-medium">{benefit.title}</h3>
+        {/* Increased from text-2.5 to text-3 */}
+        <p className="text-3.5 leading-[1.55] text-ui-label">
           {benefit.description}
         </p>
       </div>

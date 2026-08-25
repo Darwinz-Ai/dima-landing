@@ -19,9 +19,11 @@ export const ArabicIntelligence = () => (
   >
     <div className="page-container grid grid-cols-[.85fr_1.15fr] items-center gap-x-17.5 gap-y-11 max-md:grid-cols-1 max-md:gap-y-9 md:max-lg:gap-x-10">
       <div className="min-w-0">
-        <span className="section-kicker text-3">The part most platforms bolt on</span>
+        {/* Increased from text-3 to text-3.5 */}
+        <span className="section-kicker text-3.5">The part most platforms bolt on</span>
         <h2
-          className="mt-4.25 text-[clamp(2.55rem,4vw,3.9rem)] leading-none font-medium tracking-[-.06em] max-sm:text-[2.625rem] desktop-fit:text-[clamp(2.6rem,3.35vw,3.35rem)]"
+          // Increased clamp bounds and max-sm sizes proportionally
+          className="mt-4.25 text-[clamp(2.75rem,4.5vw,4.2rem)] leading-none font-medium tracking-[-.06em] max-sm:text-[2.875rem] desktop-fit:text-[clamp(2.8rem,3.75vw,3.7rem)]"
           id="arabic-title"
         >
           Everyone has AI now.
@@ -32,7 +34,8 @@ export const ArabicIntelligence = () => (
         <ul className="mt-8 grid gap-2.5 max-sm:mt-6 desktop-fit:mt-6">
           {DIFFERENTIATORS.map((point) => (
             <li
-              className="flex items-start gap-2.5 text-3.75 leading-normal text-copy-strong"
+              // Increased from text-3.75 to text-4
+              className="flex items-start gap-2.5 text-4 leading-normal text-copy-strong"
               key={point}
             >
               <Icon
@@ -40,7 +43,8 @@ export const ArabicIntelligence = () => (
                 icon={CheckmarkCircle02Icon}
                 size={18}
               />
-              <span className="text-3.875">{point}</span>
+              {/* Increased from text-3.875 to text-4.25 */}
+              <span className="text-4.25">{point}</span>
             </li>
           ))}
         </ul>
@@ -66,7 +70,8 @@ export const ArabicIntelligence = () => (
             key={metric.title}
           >
             <strong className={cn(
-              "text-[clamp(2.25rem,3vw,3.1rem)] leading-[.9] font-[530] tracking-[-.07em]",
+              // Increased clamp bounds slightly
+              "text-[clamp(2.5rem,3.5vw,3.4rem)] leading-[.9] font-[530] tracking-[-.07em]",
               metric.featured ? "text-white drop-shadow-md" : "text-brand"
             )}>
               {metric.value}
@@ -76,7 +81,8 @@ export const ArabicIntelligence = () => (
             </strong>
             <h3
               className={cn(
-                "mt-4 text-4 font-medium",
+                // Increased from text-4 to text-4.5
+                "mt-4 text-4.5 font-medium",
                 metric.featured && "text-white drop-shadow-sm"
               )}
             >
@@ -84,7 +90,8 @@ export const ArabicIntelligence = () => (
             </h3>
             <p
               className={cn(
-                "mt-2 text-3.25 leading-[1.65]",
+                // Increased from text-3.25 to text-3.75
+                "mt-2 text-3.75 leading-[1.65]",
                 metric.featured ? "text-white/90" : "text-copy"
               )}
             >

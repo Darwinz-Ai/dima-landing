@@ -11,7 +11,7 @@ export const SectionHeading = ({
 }) => (
   <div className="mb-13 flex items-end justify-between gap-12.5 max-md:block desktop-fit:mb-7">
     <div>
-      <span className="section-kicker">{eyebrow}</span>
+      <span className="section-kicker text-3.5">{eyebrow}</span>
       <h2 className="section-title">{title}</h2>
     </div>
 

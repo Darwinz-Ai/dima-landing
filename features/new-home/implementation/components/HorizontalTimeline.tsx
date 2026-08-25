@@ -41,7 +41,7 @@ export const HorizontalTimeline = ({ progress }: { progress: number }) => (
       return (
         <div
           className={cn(
-            "absolute bottom-8.5 w-57.5 -translate-x-1/2 transition-[opacity,transform] duration-300 motion-reduce:transition-none",
+            "absolute bottom-8.5 w-72 -translate-x-1/2 transition-[opacity,transform] duration-300 motion-reduce:transition-none",
             reached ? "opacity-100" : "opacity-20"
           )}
           style={{ left: `${milestone.at * 100}%` }}

@@ -125,7 +125,7 @@ const SCATTERED_PLATFORMS = PLATFORMS_IMAGES.map((platform, index) => {
 
 export const PlatformScatter = ({ className }: { className?: string }) => (
   <div
-    className={cn("pointer-events-none absolute inset-0", className)}
+    className={cn("absolute inset-0", className)}
     aria-hidden
   >
     {SCATTERED_PLATFORMS.map((platform) => (
@@ -137,8 +137,10 @@ export const PlatformScatter = ({ className }: { className?: string }) => (
         style={platform.style}
         key={platform.label}
       >
-        <span
+        <a
           className="grid size-9 place-items-center rounded-full border border-line bg-white/80 text-ink/45 md:size-11"
+          href={platform.href ?? undefined}
+          target="_blank"
           style={{ scale: platform.scale }}
         >
           <Image
@@ -150,7 +152,7 @@ export const PlatformScatter = ({ className }: { className?: string }) => (
             draggable={false}
             priority={false}
           />
-        </span>
+        </a>
       </span>
     ))}
   </div>

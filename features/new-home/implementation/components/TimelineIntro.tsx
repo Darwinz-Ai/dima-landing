@@ -11,11 +11,11 @@ import { DEMO_URL } from "@/constants"
 export const TimelineIntro = ({ titleId }: { titleId: string }) => (
   <div className="flex items-end justify-between gap-12.5 max-md:block">
     <div className="max-w-155">
-      <span className="section-kicker">No procurement marathon</span>
+      <span className="section-kicker text-3.5">No procurement marathon</span>
       <h2 className="section-title max-sm:text-[2.6rem]" id={titleId}>
         Live in 48-72 hours.
       </h2>
-      <p className="mt-4 max-w-142.5 text-3.5 leading-[1.7] text-copy">
+      <p className="mt-4 max-w-142.5 text-4 leading-[1.7] text-copy">
         Your data is flowing within 24 hours and your dashboards, alerts and
         reports are configured around your team by day three.
       </p>

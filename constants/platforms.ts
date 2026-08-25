@@ -8,7 +8,7 @@ import snapchatPng from "@/public/socials/snapchat.png"
 import newsPng from "@/public/socials/news.png"
 import printPng from "@/public/socials/print.png"
 import tvPng from "@/public/socials/tv.png"
-// import radioPng from "@/public/socials/radio.png"
+import radioPng from "@/public/socials/radio.png"
 
 
 import {
@@ -45,7 +45,7 @@ export const PLATFORMS_IMAGES = [
   { label: "Online news", href: null, image: newsPng },
   { label: "Print", href: null, image: printPng },
   { label: "TV", href: null, image: tvPng },
-  // { label: "Radio", href: null, image: radioPng },
+  { label: "Radio", href: null, image: radioPng },
 ]
 
 

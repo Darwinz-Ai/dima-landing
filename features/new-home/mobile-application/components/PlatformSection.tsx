@@ -13,7 +13,8 @@ export const PlatformSection = () => (
   >
     <div className="page-container grid min-h-[calc(100svh-150px)] grid-cols-2 items-center gap-17.5 pt-10 max-lg:gap-7.5 max-md:min-h-0 max-md:grid-cols-1 desktop-fit:max-h-180 desktop-fit:pt-5">
       <div className="relative flex items-center justify-center self-stretch overflow-hidden max-md:items-end max-md:pt-16">
-        <span className="absolute top-[4%] left-0 z-2 font-mono text-2.5 tracking-[.14em] text-ui-label uppercase">
+        {/* Increased from text-2.5 to text-3 */}
+        <span className="absolute top-[4%] left-0 z-2 font-mono text-3.5 tracking-[.14em] text-ui-label uppercase">
           3:00 AM. Riyadh.
         </span>
         <div className="shadow-brand-rings absolute top-1/2 left-1/2 size-125 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand/22 max-md:top-[23%] max-md:translate-y-0" />
@@ -26,13 +27,13 @@ export const PlatformSection = () => (
       </div>
 
       <div className="relative z-3 py-22.5 max-md:py-18.75 desktop-fit:py-8.75">
-        <span className="section-kicker gap-1 text-brand">
+        <span className="section-kicker text-4 gap-1 text-brand">
           While your team sleeps · <span className="lowercase">dima</span>
         </span>
-        <h2 className="mt-5 max-w-165 text-[clamp(2.7rem,4.4vw,4.5rem)] leading-[.96] font-medium tracking-[-.07em] max-sm:text-[2.8rem] desktop-fit:text-[clamp(2.7rem,4vw,4rem)]">
+        <h2 className="mt-5 max-w-165 text-[clamp(2.9rem,4.6vw,4.7rem)] leading-[.96] font-medium tracking-[-.07em] max-sm:text-[3rem] desktop-fit:text-[clamp(2.9rem,4.2vw,4.2rem)]">
           Know about the crisis before your client calls you.
         </h2>
-        <p className="mt-7 max-w-117.5 text-3.75 leading-[1.75] text-footer-copy/90 desktop-fit:mt-5">
+        <p className="mt-7 max-w-117.5 text-4.25 leading-[1.75] text-footer-copy/90 desktop-fit:mt-5">
           If it turns at 3am, the alert is waiting when you wake up.
         </p>
 

@@ -57,11 +57,12 @@ export const ImplementationTimeline = () => {
            * sticky viewport, where `overflow-hidden` clips it.
            */}
           <div
-            className="relative mt-15.5 mb-10 ml-1 max-h-77.5 min-h-45 flex-1 max-sm:mt-14 md:hidden"
+            className="relative mt-15.5 mb-10 ml-1 max-h-77.5 min-h-45 flex-1 max-sm:mt-18 md:hidden"
             {...progressLabel}
           >
             <VerticalTimeline progress={progress} />
           </div>
+
         </div>
       </div>
     </section>

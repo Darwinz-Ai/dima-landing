@@ -40,7 +40,8 @@ export const MilestoneCard = ({
       <strong
         className={cn(
           "block leading-tight font-medium",
-          isHorizontal ? "text-4 tracking-tight" : "text-3.75"
+          // Increased from text-4 to text-4.5 and text-3.75 to text-4.25
+          isHorizontal ? "text-4.5 tracking-tight" : "text-4.25"
         )}
       >
         {milestone.title}
@@ -48,9 +49,10 @@ export const MilestoneCard = ({
       <span
         className={cn(
           "block text-timeline-text",
+          // Increased from text-2.5 to text-3 for both orientations
           isHorizontal
-            ? "mt-2 text-2.5 leading-normal"
-            : "mt-1.5 text-2.5 leading-[1.45]"
+            ? "mt-2 text-3.75 leading-normal"
+            : "mt-1.5 text-3.75 leading-[1.45]"
         )}
       >
         {milestone.detail}

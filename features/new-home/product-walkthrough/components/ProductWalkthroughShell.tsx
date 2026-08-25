@@ -21,25 +21,17 @@ export const ProductWalkthroughShell = ({
   const { activeIndex, progress, scrollToFeature } =
     useProductTimeline(sectionRef)
 
-  console.log("activeIndex:", activeIndex)
-  console.log("progress:", progress)
-  console.log("scrollToFeature:", scrollToFeature)
-
   return (
     <section
       className="relative overflow-clip border-t border-line bg-surface"
       ref={sectionRef}
     >
       <div className="page-container grid grid-cols-[300px_minmax(0,1fr)] items-start gap-10.5 pb-12 max-md:block max-md:py-16.25 max-sm:py-13.75 md:max-lg:grid-cols-[260px_minmax(0,1fr)] md:max-lg:gap-7 md:max-lg:pb-10">
-        {/*
-         * Desktop-only step rail. On mobile it is pure duplication — each frame
-         * already carries its own number, eyebrow and title — and the scroll
-         * progress it visualises has no room to read, so it is dropped entirely.
-         */}
-        <div className="sticky top-nav flex min-h-[calc(100svh-var(--spacing-nav))] min-w-0 flex-col pt-10.5 pb-8 max-md:hidden">
-          <span className="section-kicker gap-1 border-b border-line pb-4.5 max-lg:pb-3.5">
+        <div className="sticky top-nav flex min-h-svh min-w-0 flex-col pt-10.5 pb-8 max-md:hidden">
+          <span className="section-kicker text-3.5 gap-1 border-b border-line pb-4.5 max-lg:pb-3.5">
             How <span className="lowercase">dima</span> works
           </span>
+
 
           {steps.map((step, index) => (
             <a
@@ -52,14 +44,14 @@ export const ProductWalkthroughShell = ({
               }}
               key={step.title}
             >
-              <span className="font-mono text-2.25 tracking-[.09em] text-ui-muted uppercase">
+              <span className="font-mono text-3 tracking-[.09em] text-ui-muted uppercase">
                 {step.number} / {step.total} · {step.eyebrow}
               </span>
-              <h2 className="mt-1.5 text-[clamp(1.35rem,2vw,2rem)] leading-none font-medium tracking-tighter max-sm:text-[1.75rem]">
+              <h2 className="mt-1.5 text-[clamp(1.55rem,2.3vw,2.25rem)] leading-none font-medium tracking-tighter max-sm:text-8">
                 {step.title}
               </h2>
               {/* The stage names the step; this line is what the step is worth. */}
-              <p className="mt-2 text-3 leading-[1.45] font-[460] text-copy">
+              <p className="mt-2 text-base leading-[1.45] font-[460] text-copy">
                 {step.outcome}
               </p>
               <div

@@ -107,12 +107,12 @@ async function HomePage() {
       <HeroSection />
       <ArabicIntelligence />
       <ProductWalkthrough />
+      <CustomerTrust />
       <CopilotSection />
       <PlatformSection />
-      <CaseStudiesSection />
-      <TestimonialsSection />
-      <CustomerTrust />
       <ImplementationTimeline />
+      <TestimonialsSection />
+      <CaseStudiesSection />
       <FaqSection />
       <FinalCta />
 

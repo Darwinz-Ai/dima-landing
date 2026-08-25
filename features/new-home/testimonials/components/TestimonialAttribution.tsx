@@ -1,4 +1,3 @@
-
 import { PersonAvatar } from "@/components/shared/PersonAvatar"
 import { type TestimonialSlotType, type TestimonialType } from "../types"
 
@@ -31,7 +30,8 @@ export const TestimonialAttribution = ({
         <strong
           className={cn(
             "block font-[520]",
-            isLead ? "text-3.75" : "truncate text-3.125"
+            // Increased from text-3.75 to text-4.25 and text-3.125 to text-3.625
+            isLead ? "text-4.25" : "truncate text-3.625"
           )}
         >
           {testimonial.name}
@@ -40,8 +40,10 @@ export const TestimonialAttribution = ({
           className={cn(
             "block leading-normal text-copy",
             isLead
-              ? "mt-0.75 max-w-60 text-2.875"
-              : "mt-0.5 truncate text-2.625"
+              // Increased from text-2.875 to text-3.375
+              ? "mt-0.75 max-w-60 text-3.375"
+              // Increased from text-2.625 to text-3.125
+              : "mt-0.5 truncate text-3.125"
           )}
         >
           {testimonial.role}

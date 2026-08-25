@@ -49,7 +49,7 @@ const FooterColumn = ({
       className
     )}
   >
-    <h3 className="mb-1.75 text-2.5 font-medium tracking-[.15em] text-footer-label uppercase">
+    <h3 className="mb-1.75 text-3 font-medium tracking-[.15em] text-footer-label uppercase">
       {title}
     </h3>
     {children}
@@ -62,7 +62,7 @@ export const SiteFooter = () => (
       <div className="grid grid-cols-[2fr_1fr_1fr_1.1fr] gap-17.5 pt-20.5 pb-18.75 max-sm:grid-cols-2 max-sm:gap-x-7.5 max-sm:gap-y-12.5 sm:max-md:grid-cols-[1.5fr_1fr_1fr]">
         <div className="max-md:col-span-full">
           <BrandLogo light />
-          <p className="mt-6.25 max-w-72.5 text-3 leading-[1.7] text-footer-copy/80">
+          <p className="mt-6.25 max-w-72.5 text-4 leading-[1.7] text-footer-copy/80">
             Your Arabic-first media monitoring and social listening copilot.
           </p>
 
@@ -96,7 +96,7 @@ export const SiteFooter = () => (
         </FooterColumn>
       </div>
 
-      <div className="flex gap-7 border-t border-night-line pt-6 pb-7 text-2.5 text-footer-label max-sm:flex-wrap">
+      <div className="flex gap-7 border-t border-night-line pt-6 pb-7 text-3.5 text-footer-label max-sm:flex-wrap">
         <span>
           © {new Date().getFullYear()} TheDar.AI. All rights reserved.
         </span>
