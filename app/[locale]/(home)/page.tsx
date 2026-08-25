@@ -113,7 +113,7 @@ async function HomePage() {
       <ImplementationTimeline />
       <TestimonialsSection />
       <CaseStudiesSection />
-      <FaqSection />
+      <FaqSection faqs={faqs} />
       <FinalCta />
 
     </main>

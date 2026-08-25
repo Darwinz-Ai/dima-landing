@@ -1,4 +1,4 @@
-import { TESTIMONIALS } from "../constants"
+import { TESTIMONIAL_ASSETS } from "../constants"
 
 /**
  * Doubles as the progress readout and the accessible control set — a blockquote
@@ -15,14 +15,14 @@ export const TestimonialProgress = ({
   onSelect: (index: number) => void
 }) => (
   <div className="col-span-full grid auto-cols-fr grid-flow-col gap-3 max-sm:gap-2">
-    {TESTIMONIALS.map((testimonial, position) => (
+    {TESTIMONIAL_ASSETS.map((testimonial, position) => (
       <button
         className="group cursor-pointer py-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
         onClick={() => onSelect(position)}
-        aria-label={`Show testimonial from ${testimonial.name}, ${testimonial.role}`}
+        aria-label={`Show testimonial from ${testimonial.translationKey}`}
         aria-current={position === activeIndex ? "true" : undefined}
         type="button"
-        key={testimonial.name}
+        key={testimonial.translationKey}
       >
         <span className="block h-0.5 bg-progress-track transition-colors group-hover:bg-line-control">
           <span

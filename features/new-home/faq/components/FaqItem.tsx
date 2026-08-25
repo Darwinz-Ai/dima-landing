@@ -1,15 +1,15 @@
-import { type FaqType } from "../types"
+import { Link } from "@/i18n/navigation" // Don't forget to import your localized link!
+import { QuestionAccordion } from "@/types"
 
 /** Plus/minus toggle drawn from the marker's two pseudo-elements; the vertical stroke rotates flat when open. */
 const toggleMarkClass =
   "relative size-6.5 shrink-0 border border-line-control before:absolute before:top-1/2 before:left-1/2 before:h-px before:w-2.25 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-ink after:absolute after:top-1/2 after:left-1/2 after:h-px after:w-2.25 after:-translate-x-1/2 after:-translate-y-1/2 after:rotate-90 after:bg-ink after:transition-transform group-open:after:rotate-0 rounded-sm"
 
-/** Native `<details>` disclosure, so the FAQ needs no client JavaScript. */
 export const FaqItem = ({
   faq,
   defaultOpen = false,
 }: {
-  faq: FaqType
+  faq: QuestionAccordion // Updated to use your global type
   defaultOpen?: boolean
 }) => (
   <details className="group border-b border-line-strong" open={defaultOpen}>
@@ -17,8 +17,25 @@ export const FaqItem = ({
       {faq.question}
       <span className={toggleMarkClass} />
     </summary>
-    <p className="max-w-175 pt-0 pr-13.75 pb-7 pl-1.25 text-4 leading-[1.75] text-label">
-      {faq.answer}
+
+    {/* 
+      1. Added whitespace-pre-line to respect newlines like the old design 
+      2. Changed pr/pl to pe/ps (padding-inline-end / padding-inline-start) for automatic RTL support 
+    */}
+    <p className="max-w-175 pt-0 pe-13.75 pb-7 ps-1.25 text-4 leading-[1.75] text-label whitespace-pre-line">
+      {faq.answer.split(/<link>|<\/link>/).map((part, idx) =>
+        idx % 2 === 1 ? (
+          <Link
+            key={idx}
+            href="/solutions/market-insights"
+            className="text-primary underline"
+          >
+            {part}
+          </Link>
+        ) : (
+          <span key={idx}>{part}</span>
+        )
+      )}
     </p>
   </details>
 )

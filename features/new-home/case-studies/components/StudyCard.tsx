@@ -1,9 +1,9 @@
 import { type CaseStudyBriefType } from "../types"
 
 const captions = {
-  crisis: "Response time",
-  coverage: "Coverage, last 14 days",
-  insights: "Where the volume comes from",
+  crisis: "crisis detection",
+  coverage: "Where the volume comes from",
+  insights: "Response time",
 } as const
 
 export const StudyCard = ({ story }: { story: CaseStudyBriefType }) => (

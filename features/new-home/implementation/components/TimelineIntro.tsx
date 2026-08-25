@@ -9,7 +9,7 @@ export const TimelineIntro = ({ titleId }: { titleId: string }) => (
     <div className="max-w-155">
       <span className="section-kicker text-3.5">Up and running, fast</span>
       <h2 className="section-title max-sm:text-[2.6rem]" id={titleId}>
-        From setup to full access in hours.
+        It couldn’t be simpler.
       </h2>
       <p className="mt-4 max-w-142.5 text-4 leading-[1.7] text-copy">
         Skip the long implementations. Your data starts flowing on day one, and by day three, your dashboards, alerts, and reports are fully tailored to your team and ready to use.
