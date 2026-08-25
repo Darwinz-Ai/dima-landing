@@ -31,10 +31,10 @@ export const PlatformSection = () => (
           While your team sleeps · <span className="lowercase">dima</span>
         </span>
         <h2 className="mt-5 max-w-165 text-[clamp(2.9rem,4.6vw,4.7rem)] leading-[.96] font-medium tracking-[-.07em] max-sm:text-[3rem] desktop-fit:text-[clamp(2.9rem,4.2vw,4.2rem)]">
-          Know about the crisis before your client calls you.
+          Be the first to know, wherever you are.
         </h2>
         <p className="mt-7 max-w-117.5 text-4.25 leading-[1.75] text-footer-copy/90 desktop-fit:mt-5">
-          If it turns at 3am, the alert is waiting when you wake up.
+          Even at 3am, dima’s mobile app delivers alerts to your pocket, so you’re always one step ahead of your client.
         </p>
 
         <PlatformBenefits />

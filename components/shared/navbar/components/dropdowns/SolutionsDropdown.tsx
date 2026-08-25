@@ -21,7 +21,7 @@ function SolutionsDropdown() {
                 ></div>
             </div>
 
-            <div className={`flex justify-center items-center ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+            <div className={`flex flex-wrap items-center justify-center gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                 {/* Customer Insights */}
                 <Link href="/solutions/consumer-insights" className={`flex justify-center items-center gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
                     <figure className="flex justify-center items-center">

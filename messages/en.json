@@ -36,6 +36,19 @@
         }
       }
     },
+    "resources": {
+      "title": "Resources",
+      "links": {
+        "blogs": {
+          "title": "Blogs",
+          "description": "Stories, insights, and updates from the dima team"
+        },
+        "faqs": {
+          "title": "FAQs",
+          "description": "Quick answers to the questions we hear most"
+        }
+      }
+    },
     "blogs": "Blogs",
     "caseStudies": "Case Studies",
     "tools": "Tools",

@@ -684,23 +684,23 @@ export const getSiteNavigationElementJsonLd = async () => {
             })),
             {
                 "@type": "SiteNavigationElement",
-                name: t("blogs"),
-                url: `${baseUrl}/blogs`,
-            },
-            {
-                "@type": "SiteNavigationElement",
                 name: t("caseStudies"),
                 url: `${baseUrl}/case-studies`,
             },
             {
                 "@type": "SiteNavigationElement",
-                name: t("tools"),
-                url: `${baseUrl}/tools`,
+                name: t("blogs"),
+                url: `${baseUrl}/blogs`,
             },
             {
                 "@type": "SiteNavigationElement",
                 name: t("faq"),
                 url: `${baseUrl}/faq`,
+            },
+            {
+                "@type": "SiteNavigationElement",
+                name: t("tools"),
+                url: `${baseUrl}/tools`,
             },
             {
                 "@type": "SiteNavigationElement",

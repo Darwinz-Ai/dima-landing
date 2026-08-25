@@ -64,17 +64,6 @@ function NavDrawer() {
                             </AccordionItem>
                         </Accordion>
 
-                        {/* Blogs */}
-                        <Link
-                            href="/blogs"
-                            onClick={() => setIsOpen(false)}
-                            className="block text-base font-medium hover:text-primary transition"
-                        >
-                            {t("blogs")}
-                            {/*  */}
-                        </Link>
-
-                        {/* Case Studies */}
                         <Link
                             href="/case-studies"
                             onClick={() => setIsOpen(false)}
@@ -83,20 +72,40 @@ function NavDrawer() {
                             {t("caseStudies")}
                         </Link>
 
-                        {/* Tools */}
+                        <Accordion type="single" collapsible>
+                            <AccordionItem value="resources">
+                                <AccordionTrigger className="text-base">{t("resources.title")}</AccordionTrigger>
+                                <AccordionContent>
+                                    <ul className="space-y-3 pl-3">
+                                        <li>
+                                            <Link
+                                                href="/blogs"
+                                                onClick={() => setIsOpen(false)}
+                                                className="block text-base font-medium hover:text-primary transition"
+                                            >
+                                                {t("blogs")}
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                href="/faq"
+                                                onClick={() => setIsOpen(false)}
+                                                className="block text-base font-medium hover:text-primary transition"
+                                            >
+                                                {t("faq")}
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </AccordionContent>
+                            </AccordionItem>
+                        </Accordion>
+
                         <Link
                             href="/tools"
                             onClick={() => setIsOpen(false)}
                             className="block text-base font-medium hover:text-primary transition"
                         >
                             {t("tools")}
-                        </Link>
-                        <Link
-                            href="/faq"
-                            onClick={() => setIsOpen(false)}
-                            className="block text-base font-medium hover:text-primary transition"
-                        >
-                            {t("faq")}
                         </Link>
                         <Link
                             href="/about-us"

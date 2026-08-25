@@ -7,11 +7,13 @@ import { Link } from "@/i18n/navigation";
 import NavDrawer from "./NavDrawer";
 import Image from "next/image";
 import SolutionsDropdown from "./components/dropdowns/SolutionsDropdown";
+import ResourcesDropdown from "./components/dropdowns/ResourcesDropdown";
 import LanguageSwitcher from "../LanguageSwitcher";
 import dimaLogo from "@/public/dima-logo/dima-logo.svg";
 import JsonLd from "../JsonLd";
 import NavbarCTA from "./components/buttons/RequestDemoButtonArrow";
 import { AdvertisementBar } from "./components/AdvertisementBar";
+import NavbarSurface from "./NavbarSurface";
 
 const NavigationDropdown = dynamic(
     () => import("./components/dropdowns/NavigationDropdown")
@@ -24,10 +26,9 @@ async function Navbar() {
     const navbarItems = [
         { name: t("home"), href: "/" },
         { name: t("solutions.title"), dropdown: <SolutionsDropdown /> },
-        { name: t("blogs"), href: "/blogs" },
         { name: t("caseStudies"), href: "/case-studies" },
+        { name: t("resources.title"), dropdown: <ResourcesDropdown /> },
         { name: t("tools"), href: "/tools" },
-        { name: t("faq"), href: "/faq" },
         { name: t("aboutUs"), href: "/about-us" },
     ];
 
@@ -42,10 +43,7 @@ async function Navbar() {
             <AdvertisementBar />
 
             <div className="sticky top-0 z-50 flex w-full justify-center">
-                <header
-                    className="container bg-white shadow-[0_0_15px_rgba(0,0,0,0.12)] md:mt-4 md:rounded-full"
-                    dir="ltr"
-                >
+                <NavbarSurface>
                     <div className="flex max-h-20 items-center justify-between p-4 md:mx-8">
                         <Link href="/" className="order-1">
                             <figure>
@@ -64,7 +62,7 @@ async function Navbar() {
                             {orderedNavbarItems.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="group relative mx-2 cursor-pointer"
+                                    className={`mx-2 ${item.href ? "group relative cursor-pointer" : ""}`}
                                 >
                                     {item.href ? (
                                         <Link href={item.href}>
@@ -99,7 +97,7 @@ async function Navbar() {
                             </div>
                         </div>
                     </div>
-                </header>
+                </NavbarSurface>
             </div>
         </>
     );
