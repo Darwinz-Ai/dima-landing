@@ -7,23 +7,22 @@ import { dimaSolutions } from "@/data/home-page";
 function SolutionsDropdown() {
     const t = useTranslations("Navbar");
     const locale = useLocale();
-    const isRTL = locale === "ar";
 
     return (
         <div className="flex flex-col ">
             {/* Header */}
             <div>
-                <h2 className={`text-3xl font-semibold ${isRTL ? 'text-right' : ''}`}>
+                <h2 className="text-3xl font-semibold">
                     {t("solutions.title")}
                 </h2>
                 <div
-                    className={`w-8 h-0.5 bg-primary mb-4 ${isRTL ? 'ml-auto' : 'mr-auto'}`}
+                    className="w-8 h-0.5 bg-primary mb-4 me-auto"
                 ></div>
             </div>
 
-            <div className={`flex flex-wrap items-center justify-center gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+            <div className="flex flex-wrap items-center justify-center gap-4">
                 {/* Customer Insights */}
-                <Link href="/solutions/consumer-insights" className={`flex justify-center items-center gap-4 ${isRTL ? 'flex-row-reverse text-right' : ''}`}>
+                <Link href="/solutions/consumer-insights" className="flex justify-center items-center gap-4">
                     <figure className="flex justify-center items-center">
                         <Image
                             src="/nav-links/ci-desktop.svg"
@@ -35,8 +34,8 @@ function SolutionsDropdown() {
                         />
                     </figure>
                     <div>
-                        <p className={`font-semibold hover:underline text-sm ${isRTL ? 'text-right' : ''}`}>{t("solutions.links.consumerInsights.title")}</p>
-                        <p className={`text-muted-foreground text-[10px] ${isRTL ? 'text-right' : ''}`}>{t("solutions.links.consumerInsights.description")}</p>
+                        <p className="font-semibold hover:underline  hover:text-primary text-base">{t("solutions.links.consumerInsights.title")}</p>
+                        <p className="text-muted-foreground text-xs">{t("solutions.links.consumerInsights.description")}</p>
                     </div>
                 </Link>
 
@@ -45,8 +44,8 @@ function SolutionsDropdown() {
                     {dimaSolutions
                         .filter((s) => s.translationKey !== "consumerInsights")
                         .map((link) => (
-                            <li key={link.href} className={`w-full flex items-stretch ${isRTL ? 'justify-end' : 'justify-start'}`}>
-                                <SolutionNavLink {...link} isRTL={isRTL} />
+                            <li key={link.href} className="w-full flex items-stretch justify-start">
+                                <SolutionNavLink {...link} />
                             </li>
                         ))}
                 </ul>

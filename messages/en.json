@@ -38,6 +38,7 @@
     },
     "resources": {
       "title": "Resources",
+      "latest": "Latest Blogs",
       "links": {
         "blogs": {
           "title": "Blogs",

@@ -38,6 +38,8 @@
     },
     "resources": {
       "title": "الموارد",
+      "latest": "أحدث المدونات",
+
       "links": {
         "blogs": {
           "title": "المدونات",

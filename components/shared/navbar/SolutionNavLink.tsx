@@ -17,15 +17,14 @@ function SolutionNavLink({ logo, href, translationKey, isRTL }: SolutionLink & {
                     width={80}
                     height={65}
                     className={`object-contain h-full w-full ${isRTL ? "object-right" : "object-left"}`}
-
                 />
             </figure>
 
-            <div className="space-y-1">
-                <p className={`font-semibold ${!isDisabled && "hover:underline hover:text-primary"} text-sm`}>{t(`${translationKey}.title`)}</p>
-                <p className="text-muted-foreground text-[10px]">{t(`${translationKey}.description`)}</p>
+            <div className="space-y-1.5">
+                <p className={`font-semibold ${!isDisabled && "hover:underline hover:text-primary"} text-base`}>{t(`${translationKey}.title`)}</p>
+                <p className="text-muted-foreground text-xs">{t(`${translationKey}.description`)}</p>
                 {isDisabled && (
-                    <p className="text-primary text-xs">
+                    <p className="text-primary text-sm">
                         {t(`${translationKey}.comingSoon`)}
                     </p>
                 )}
