@@ -1,6 +1,23 @@
 import { cn } from "@/lib/utils"
 import { type SampleType } from "../types"
 
+const getToneKey = (tone: string) => {
+  // Normalize to handle common cases across locales, converts to lower-case and English keywords
+  // Accepts both English and Arabic values, returns one of: 'negative', 'positive', 'mixed'
+  const toneMap: Record<string, "negative" | "positive" | "mixed"> = {
+    negative: "negative",
+    "سلبي": "negative",
+    positive: "positive",
+    "إيجابي": "positive",
+    mixed: "mixed",
+    "مختلط": "mixed",
+    "neutral": "mixed",
+    "محايد": "mixed",
+  }
+  // Accept fallback: if tone is unknown, default to mixed
+  return toneMap[tone?.toLowerCase?.() || ""] || "mixed"
+}
+
 const toneStyles = {
   negative: "text-coral",
   positive: "text-brand-dark",
@@ -14,6 +31,7 @@ const toneDots = {
 
 export const SampleRow = ({ sample }: { sample: SampleType }) => {
   const isArabic = sample.script === "arabic"
+  const toneKey = getToneKey(sample.tone)
 
   return (
     <article className="grid grid-cols-[1fr_auto] items-start gap-8 border border-line bg-white p-5.5 rounded-3xl max-sm:grid-cols-1 max-sm:gap-4 max-sm:p-4.5">
@@ -39,18 +57,18 @@ export const SampleRow = ({ sample }: { sample: SampleType }) => {
         </p>
       </div>
 
-      <div className="w-37.5 shrink-0 border-l border-line pl-5 max-sm:w-full max-sm:border-t max-sm:border-l-0 max-sm:pt-3.5 max-sm:pl-0">
+      <div className="w-37.5 shrink-0 border-s border-line ps-5 max-sm:w-full max-sm:border-t max-sm:border-s-0 max-sm:pt-3.5 max-sm:ps-0">
         <p
           className={cn(
             // Increased from text-3.25 to text-3.75
             "flex items-center gap-2 text-3.75 font-[520] tracking-[-.015em]",
-            toneStyles[sample.tone]
+            toneStyles[toneKey]
           )}
         >
           <i
             className={cn(
               "size-1.75 shrink-0 rounded-full",
-              toneDots[sample.tone]
+              toneDots[toneKey]
             )}
             aria-hidden
           />

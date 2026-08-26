@@ -361,6 +361,65 @@
       "askAI": {
         "prompt": "Want a third-party opinion? Ask AI:"
       }
+    },
+    "arabic-intelligence": {
+      "title": "The part most platforms bolt on",
+      "mainHeading": "Everyone has AI now.\nNot everyone has Arabic.",
+      "differentiators": [
+        "Dialect, not Modern Standard Arabic",
+        "Slang, sarcasm and Franco-Arabic scored, not dropped",
+        "Trained in the region, not translated into it"
+      ],
+      "samples": [
+        {
+          "post": "طبعاً الخدمة ممتازة 👏 تلات ساعات وأنا مستني",
+          "script": "arabic",
+          "gloss": "“Of course the service is excellent 👏 three hours and I'm still waiting.”",
+          "dialect": "Egyptian · sarcasm",
+          "verdict": "Negative",
+          "tone": "negative",
+          "tags": "Frustration · Wait time"
+        },
+        {
+          "post": "el delivery dayman met2akhar bas el akl gamed",
+          "script": "latin",
+          "gloss": "“Delivery is always late, but the food is great.”",
+          "dialect": "Franco-Arabic",
+          "verdict": "Positive",
+          "tone": "positive",
+          "tags": "Frustration · Wait time"
+        },
+        {
+          "post": "الصراحة التطبيق الجديد وايد أفضل من الأول",
+          "script": "arabic",
+          "gloss": "“Honestly, the new app is much better than the old one.”",
+          "dialect": "Gulf",
+          "verdict": "Positive",
+          "tone": "positive",
+          "tags": "Relief · App release"
+        }
+      ],
+      "metrics": [
+        {
+          "value": "100",
+          "suffix": "%",
+          "title": "Full coverage",
+          "description": "Tagged, untagged and even misspelled mentions across social, communities and media."
+        },
+        {
+          "value": "97",
+          "suffix": "%",
+          "title": "Arabic accuracy",
+          "description": "Dialects, slang and Franco-Arabic, analyzed with regional context built in.",
+          "featured": true
+        },
+        {
+          "value": "50M",
+          "suffix": "+",
+          "title": "Mentions captured",
+          "description": "Enterprise-scale monitoring without limits on users, keywords or reports."
+        }
+      ]
     }
   },
   "Solutions": {
