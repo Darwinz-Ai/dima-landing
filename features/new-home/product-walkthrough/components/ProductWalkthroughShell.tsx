@@ -1,25 +1,21 @@
+// ProductWalkthroughShell.tsx
 "use client"
 
 import { useRef } from "react"
 import { useProductTimeline } from "../hooks"
-
 import { type ProductStepType } from "../types"
 
-/**
- * Owns the scroll tracking for the walkthrough. The frames themselves arrive as
- * `children` already rendered on the server, so only the step rail — the one
- * genuinely interactive part — ships to the browser.
- */
 export const ProductWalkthroughShell = ({
   steps,
+  sectionKicker,
   children,
 }: {
   steps: ProductStepType[]
+  sectionKicker: React.ReactNode // <--- Added prop
   children: React.ReactNode
 }) => {
   const sectionRef = useRef<HTMLElement>(null)
-  const { activeIndex, progress, scrollToFeature } =
-    useProductTimeline(sectionRef)
+  const { activeIndex, progress, scrollToFeature } = useProductTimeline(sectionRef)
 
   return (
     <section
@@ -28,10 +24,10 @@ export const ProductWalkthroughShell = ({
     >
       <div className="page-container grid grid-cols-[300px_minmax(0,1fr)] items-start gap-10.5 pb-12 max-md:block max-md:py-16.25 max-sm:py-13.75 md:max-lg:grid-cols-[260px_minmax(0,1fr)] md:max-lg:gap-7 md:max-lg:pb-10">
         <div className="sticky top-nav flex min-h-svh min-w-0 flex-col pt-10.5 pb-8 max-md:hidden">
-          <span className="section-kicker text-3.5 gap-1 border-b border-line pb-4.5 max-lg:pb-3.5">
-            How <span className="lowercase">dima</span> works
-          </span>
 
+          <span className="section-kicker text-3.5 gap-1 border-b border-line pb-4.5 max-lg:pb-3.5">
+            {sectionKicker}
+          </span>
 
           {steps.map((step, index) => (
             <a
@@ -50,7 +46,6 @@ export const ProductWalkthroughShell = ({
               <h2 className="mt-1.5 text-[clamp(1.55rem,2.3vw,2.25rem)] leading-none font-medium tracking-tighter max-sm:text-8">
                 {step.title}
               </h2>
-              {/* The stage names the step; this line is what the step is worth. */}
               <p className="mt-2 text-base leading-[1.45] font-[460] text-copy">
                 {step.outcome}
               </p>
@@ -58,8 +53,9 @@ export const ProductWalkthroughShell = ({
                 className="mt-2.5 h-0.5 bg-progress-track"
                 aria-hidden="true"
               >
+                {/* Fixed origin for RTL (Arabic) support */}
                 <span
-                  className="block h-full origin-left bg-brand"
+                  className="block h-full origin-left rtl:origin-right bg-brand"
                   style={{
                     transform: `scaleX(${activeIndex === index ? progress : 0})`,
                   }}

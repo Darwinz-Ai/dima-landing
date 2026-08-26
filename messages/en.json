@@ -420,6 +420,32 @@
           "description": "Enterprise-scale monitoring without limits on users, keywords or reports."
         }
       ]
+    },
+    "product-walkthrough": {
+      "sectionKicker": "How <brand>dima</brand> Works",
+      "steps": [
+        {
+          "eyebrow": "All platforms included",
+          "title": "Listen",
+          "outcome": "Never miss the conversation.",
+          "description": "Tagged, untagged and misspelled mentions across social, news, print, TV and radio in one live view, including the ones that never name you.",
+          "alt": "dima media monitoring feed showing tracked brand conversations"
+        },
+        {
+          "eyebrow": "Answers, not just charts",
+          "title": "Understand",
+          "outcome": "Know what’s actually driving it.",
+          "description": "dima ties a spike to the topic, dialect, accounts and audience behind it, then explains the pattern back to you in plain language.",
+          "alt": "dima analytics dashboard and AI copilot explaining trends"
+        },
+        {
+          "eyebrow": "8× faster response",
+          "title": "Act",
+          "outcome": "Move before the conversation moves on.",
+          "description": "Alert the right people, brief the client, weigh a creator by reach and brand risk, or answer the thread, all from the screen that found it.",
+          "alt": "dima influencer intelligence and performance analysis workspace"
+        }
+      ]
     }
   },
   "Solutions": {
