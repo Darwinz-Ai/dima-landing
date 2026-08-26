@@ -10,7 +10,7 @@ export default async function HeroSection() {
   const t = await getTranslations("Home.hero");
 
   return (
-    <SectionWrapper className="flex-col justify-between min-h-dvh mt-12" disableAnimation>
+    <SectionWrapper className="flex-col justify-between min-h-dvh mt-12" >
       <div
         className={`container mx-auto flex flex-col lg:flex-row items-center justify-between overflow-hidden grow pb-8 gap-4`}
         id="hero-section"
