@@ -8,7 +8,8 @@ import JsonLd from "@/components/shared/JsonLd";
 import { getTranslations } from "next-intl/server";
 
 type RequestDemoPageProps = {
-    params: Promise<{ locale: string }>;
+    params: { locale: string; };
+    searchParams: Promise<{ [key: string]: string | undefined }>
 };
 
 export async function generateMetadata(
@@ -48,9 +49,12 @@ export async function generateMetadata(
     });
 }
 
-async function RequestDemoPage() {
+async function RequestDemoPage({ searchParams }: RequestDemoPageProps) {
     const t = await getTranslations("RequestDemo");
     const requestDemoJsonLd = await getRequestDemonJsonLd();
+    const { email } = await searchParams;
+
+    console.log("email:", email)
     return (
         <main
             style={{
@@ -77,7 +81,7 @@ async function RequestDemoPage() {
 
                         {/* Form */}
                         <div>
-                            <RequestDemoForm className="p-0" />
+                            <RequestDemoForm className="p-0" initialEmail={email} />
                         </div>
                     </div>
 

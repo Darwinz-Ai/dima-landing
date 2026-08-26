@@ -55,7 +55,8 @@
     "tools": "Tools",
     "faq": "FAQs",
     "aboutUs": "About Us",
-    "requestDemo": "Request a Demo"
+    "requestDemo": "Request a Demo",
+    "advertisement": "Built from the region, for the region"
   },
   "Footer": {
     "dima": {
@@ -120,7 +121,9 @@
       "mail": "info@thedar.ai"
     },
     "copyright": "© TheDar.AI. All Rights Reserved.",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "backToTop": "Back to top ↑",
+    "locations": "Riyadh · Cairo · Abu Dhabi"
   },
   "Home": {
     "hero": {
@@ -362,7 +365,14 @@
         "trustedBy": "250+ leading agencies & enterprises trust dima"
       },
       "askAI": {
-        "prompt": "Want a third-party opinion? Ask AI:"
+        "prompt_cta": "Want a third-party opinion? Ask AI:",
+        "prompt_ai": "We are a company looking for social listening. How can dima help ?",
+        "assistants": {
+          "claude": "Ask about dima on Claude",
+          "gemini": "Ask about dima on Gemini",
+          "chatgpt": "Ask about dima on ChatGPT",
+          "perplexity": "Ask about dima on Perplexity"
+        }
       }
     },
     "arabic-intelligence": {

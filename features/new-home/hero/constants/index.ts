@@ -36,7 +36,7 @@ export const AI_ASSISTANTS = [
       `https://claude.ai/new?q=${encodeURIComponent(prompt)}`,
     color:
       "text-[#fc9502] bg-gradient-to-br from-[#fff5e1] via-[#ffedb5] to-[#fff8ed] border border-[#ffdfa1] shadow-sm",
-    label: "Ask about dima on Claude",
+    label: "claude",
   },
   {
     name: "Gemini",
@@ -45,7 +45,7 @@ export const AI_ASSISTANTS = [
       `https://www.google.com/search?q=${encodeURIComponent(prompt)}&udm=50`,
     color:
       "text-[#755cff] bg-gradient-to-br from-[#f2f0ff] via-[#ebeaff] to-[#ede7fb] border border-[#d2cfff] shadow-sm",
-    label: "Ask about dima on Gemini",
+    label: "gemini",
   },
   {
     name: "ChatGPT",
@@ -54,7 +54,7 @@ export const AI_ASSISTANTS = [
       `https://chat.openai.com/?prompt=${encodeURIComponent(prompt)}`,
     color:
       "text-[#10a37f] bg-gradient-to-br from-[#dcfff4] via-[#e6f9fa] to-[#e8fcf5] border border-[#bde9dd] shadow-sm",
-    label: "Ask about dima on ChatGPT",
+    label: "chatgpt",
   },
   {
     name: "Perplexity",
@@ -63,8 +63,7 @@ export const AI_ASSISTANTS = [
       `https://www.perplexity.ai/search?q=${encodeURIComponent(prompt)}`,
     color:
       "text-[#266ae2] bg-gradient-to-br from-[#e7f1ff] via-[#d5e7fc] to-[#eaf4ff] border border-[#b1d2fa] shadow-sm",
-    label: "Ask about dima on Perplexity",
+    label: "perplexity",
   },
 ]
 
-export const DEMO_AIPROMPT = "We are a company looking for social listening. How can dima help ?"

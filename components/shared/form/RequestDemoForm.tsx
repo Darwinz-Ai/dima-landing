@@ -36,7 +36,7 @@ const FormSchema = z.object({
     companyName: z.string().min(2, "errors.companyNameTooShort"),
 })
 
-function RequestDemoForm({ className }: { className?: string }) {
+function RequestDemoForm({ className, initialEmail }: { className?: string; initialEmail?: string | undefined }) {
     const t = useTranslations("Home.requestDemo");
     const locale = useLocale();
     const isRTL = locale === "ar";
@@ -44,7 +44,11 @@ function RequestDemoForm({ className }: { className?: string }) {
     const [countryCode, setCountryCode] = useState("+966")
     const formStartTimeRef = useRef<number | null>(null);
 
-    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FormInputs>({ resolver: zodResolver(FormSchema) });
+    const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<FormInputs>({
+        resolver: zodResolver(FormSchema), defaultValues: {
+            email: initialEmail ?? ""
+        }
+    });
 
     const handleOnTouch = () => {
         if (formStartTimeRef.current === null) {

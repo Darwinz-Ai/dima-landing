@@ -42,7 +42,7 @@ export const BRANDS: {
     {
       name: "Sela",
       src: "/brands/sela-logo.png",
-      fit: "scale-[2]",
+      fit: "scale-[1.5]",
       main: true,
     },
     { name: "SIC", src: "/brands/sic-logo.jpeg" },

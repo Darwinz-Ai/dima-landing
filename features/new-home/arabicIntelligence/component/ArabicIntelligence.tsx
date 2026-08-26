@@ -97,7 +97,7 @@ export const ArabicIntelligence = () => {
               <h3
                 className={cn(
                   "mt-4 text-4.5 font-medium",
-                  metric.featured && "text-white drop-shadow-sm"
+                  metric.featured ? "text-white drop-shadow-sm text-4.5" : ""
                 )}
               >
                 {metric.title}
