@@ -469,8 +469,8 @@
           "prompt": "حلّل مشاعر الإطلاق حسب اللهجة والمنصة."
         },
         {
-          "label": "اسأل بالعربي",
-          "prompt": "لخّص لي شكاوى العملاء هذا الأسبوع، ووش أكثر موضوع تكرر؟"
+          "label": "اسأل بالإنجليزي",
+          "prompt": "Summarize for me the customer complaints this week, and what was the most recurring topic?"
         }
       ]
     },
@@ -479,7 +479,7 @@
     },
     "mobile-application": {
       "timePlace": "3:00 صباحًا. الرياض.",
-      "sectionKicker": "وأنت نائم · <brand>dima</brand>",
+      "sectionKicker": "وأنت نائم · <brand>ديما</brand>",
       "title": "كن أول من يعرف، وين ما كنت.",
       "description": "حتى الساعة 3 الفجر، تطبيق ديما يوصّل التنبيهات لجيبك، عشان تبقى دائمًا خطوة قبل عميلك.",
       "benefits": [
@@ -527,7 +527,7 @@
     "case-studies": {
       "eyebrow": "الدليل، مو العرض",
       "title": "مصممة للحظات اللي تهم.",
-      "viewAll": "كل قصص النجاح",
+      "viewAll": "كل دراسات الحالة",
       "readStory": "اقرأ القصة",
       "captions": {
         "crisis": "رصد الأزمات",

@@ -5,11 +5,14 @@ import { SourceMarquee } from "./SourceMarquee"
 import { DEMO_URL } from "@/constants"
 import dimaPhone from "@/public/dima-phone.png"
 import { ArrowLink } from "@/components/shared/ArrowLink"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
+import { cn } from "@/lib/utils"
 
 export const PlatformSection = () => {
   const t = useTranslations("Home_New.mobile-application")
   const tCommon = useTranslations("Home_New.common")
+  const locale = useLocale();
+  const isRTL = locale === "ar";
 
   return (
     <section
@@ -18,9 +21,15 @@ export const PlatformSection = () => {
     >
       <div className="page-container grid min-h-[calc(100svh-150px)] grid-cols-2 items-center gap-17.5 pt-10 max-lg:gap-7.5 max-md:min-h-0 max-md:grid-cols-1 desktop-fit:max-h-180 desktop-fit:pt-5">
         <div className="relative flex items-center justify-center self-stretch overflow-hidden max-md:items-end max-md:pt-16">
-          <span className="absolute top-[4%] left-0 z-2 font-mono text-3.5 tracking-[.14em] text-ui-label uppercase">
+          <span
+            className={cn(
+              "absolute top-[4%] z-2 font-mono text-3.5 tracking-[.14em] text-ui-label uppercase",
+              isRTL ? "right-0" : "left-0"
+            )}
+          >
             {t("timePlace")}
           </span>
+
           <div className="shadow-brand-rings absolute top-1/2 left-1/2 size-125 -translate-x-1/2 -translate-y-1/2 rounded-full border border-brand/22 max-md:top-[23%] max-md:translate-y-0" />
           <Image
             src={dimaPhone}

@@ -7,7 +7,7 @@ import { DEMO_URL } from "@/constants"
 
 import { cn } from "@/lib/utils"
 import { Icon } from "@/components/shared/Icon"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 const copilotBackdrop = cn(
   "bg-surface",
@@ -18,6 +18,8 @@ const copilotBackdrop = cn(
 export const CopilotSection = () => {
   const t = useTranslations("Home_New.copilot")
   const tCommon = useTranslations("Home_New.common")
+  const locale = useLocale();
+  const isRTL = locale === "ar";
 
   return (
     <section
@@ -48,15 +50,23 @@ export const CopilotSection = () => {
 
         <div className="mt-10 flex justify-center max-sm:mt-8">
           <a
-            className="group inline-flex h-16 items-center gap-4 rounded-full bg-ink pr-3 pl-9 text-3.875 font-medium tracking-[-.01em] text-white transition-colors duration-200 hover:bg-ink-hover max-sm:h-14 max-sm:pl-7 max-sm:text-3.75"
+            className="group inline-flex h-16 items-center gap-4 rounded-full bg-ink pe-3 ps-9 text-3.875 font-medium tracking-[-.01em] text-white transition-colors duration-200 hover:bg-ink-hover max-sm:h-14 max-sm:pl-7 max-sm:text-3.75"
             href={DEMO_URL}
           >
             {tCommon("seeDimaCta")}
-            <span className="grid size-11 place-items-center rounded-full bg-white/12 transition-transform duration-200 group-hover:translate-x-0.5 max-sm:size-9">
+            <span
+              className={cn(
+                "grid size-11 place-items-center rounded-full bg-white/12 transition-transform duration-200 max-sm:size-9",
+                isRTL
+                  ? "group-hover:-translate-x-0.5 rotate-180"
+                  : "group-hover:translate-x-0.5"
+              )}
+            >
               <Icon icon={ArrowRight01Icon} size={22} />
             </span>
           </a>
         </div>
+
       </div>
     </section>
   )

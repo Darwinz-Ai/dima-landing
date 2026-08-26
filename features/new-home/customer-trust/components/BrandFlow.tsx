@@ -1,7 +1,7 @@
 import Image from "next/image"
+import { useLocale } from "next-intl"
 
 import { BRANDS } from "@/constants"
-
 import { cn } from "@/lib/utils"
 
 const sideStyles = {
@@ -26,45 +26,55 @@ export const BrandFlow = ({
 }: {
   brands: typeof BRANDS
   side: "left" | "right"
-}) => (
-  <div
-    className={cn(
-      "relative min-w-0 overflow-hidden py-2.75 max-md:py-1.75",
-      flowMask,
-      edgeFade,
-      sideStyles[side]
-    )}
-  >
+}) => {
+  const locale = useLocale();
+  // Flip the side if locale is 'ar'
+  const isArabic = locale === "ar"
+  const effectiveSide = isArabic
+    ? side === "left" ? "right" : "left"
+    : side
+
+  return (
     <div
       className={cn(
-        "flex w-max will-change-transform group-hover/trust:[animation-play-state:paused] motion-reduce:animate-none",
-        sideAnimation[side]
+        "relative min-w-0 overflow-hidden py-2.75 max-md:py-1.75",
+        flowMask,
+        edgeFade,
+        sideStyles[effectiveSide]
       )}
+      dir="ltr"
     >
-      {/* Two identical tracks: the animation translates by -50% for a seamless loop. */}
-      {[0, 1].map((copy) => (
-        <div
-          className="flex shrink-0 gap-6.5 pr-6.5 max-md:gap-3.5 max-md:pr-3.5 md:max-lg:gap-5 md:max-lg:pr-5"
-          aria-hidden={copy === 1}
-          key={copy}
-        >
-          {brands.map((brand) => (
-            <span
-              className="flex size-22 shrink-0 items-center justify-center overflow-hidden rounded-2 border border-ui-line-soft bg-white p-3.5 max-md:size-17.5 max-md:p-2.5"
-              key={`${copy}-${brand.name}`}
-            >
-              <Image
-                src={brand.src}
-                alt={copy === 0 ? `${brand.name} logo` : ""}
-                width={160}
-                height={72}
-                className={cn("h-full w-full object-contain", brand.fit)}
-                sizes="(max-width: 600px) 70px, 88px"
-              />
-            </span>
-          ))}
-        </div>
-      ))}
+      <div
+        className={cn(
+          "flex w-max will-change-transform group-hover/trust:[animation-play-state:paused] motion-reduce:animate-none",
+          sideAnimation[effectiveSide]
+        )}
+      >
+        {/* Two identical tracks: the animation translates by -50% for a seamless loop. */}
+        {[0, 1].map((copy) => (
+          <div
+            className="flex shrink-0 gap-6.5 pr-6.5 max-md:gap-3.5 max-md:pr-3.5 md:max-lg:gap-5 md:max-lg:pr-5"
+            aria-hidden={copy === 1}
+            key={copy}
+          >
+            {brands.map((brand) => (
+              <span
+                className="flex size-22 shrink-0 items-center justify-center overflow-hidden rounded-2 border border-ui-line-soft bg-white p-3.5 max-md:size-17.5 max-md:p-2.5"
+                key={`${copy}-${brand.name}`}
+              >
+                <Image
+                  src={brand.src}
+                  alt={copy === 0 ? `${brand.name} logo` : ""}
+                  width={160}
+                  height={72}
+                  className={cn("h-full w-full object-contain", brand.fit)}
+                  sizes="(max-width: 600px) 70px, 88px"
+                />
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-)
+  )
+}

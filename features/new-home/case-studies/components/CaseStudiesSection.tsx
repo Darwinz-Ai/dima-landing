@@ -13,6 +13,7 @@ import { CaseStudy } from "@/types"
 export const CaseStudiesSection = async () => {
   const locale = await getLocale()
   const t = await getTranslations("Home_New.case-studies")
+  const isRTL = locale === "ar";
   let caseStudies: CaseStudy[] = []
 
   try {
@@ -85,12 +86,17 @@ export const CaseStudiesSection = async () => {
                   </h3>
 
                   <Link
-                    className="mt-auto inline-flex items-center gap-2 pt-6.25 text-3.5 font-medium"
+                    className="mt-auto inline-flex items-center gap-2 pt-6.25 text-3.5 font-medium hover:text-brand hover:underline w-fit"
                     href={story.url}
                   >
                     {t("readStory")}{" "}
-                    <Icon icon={ArrowRight01Icon} size={16} />
+                    <Icon
+                      icon={ArrowRight01Icon}
+                      size={16}
+                      className={isRTL ? "rotate-180" : ""}
+                    />
                   </Link>
+
                 </div>
               </article>
             )

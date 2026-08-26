@@ -19,4 +19,4 @@ export const MCP_CLIENTS = [
   },
 ]
 
-export const PROMPT_META = [{}, {}, {}, { arabic: true }] as const
+export const PROMPT_META = [{ arabic: false }, { arabic: false }, { arabic: false }, { arabic: true }] as const

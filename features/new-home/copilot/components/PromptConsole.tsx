@@ -74,7 +74,7 @@ export const PromptConsole = () => {
             lang={current.arabic ? "ar" : undefined}
             aria-live="polite"
           >
-            {current.prompt}
+            <bdi>{current.prompt}</bdi>
             <span
               className="ms-0.5 inline-block h-[1.05em] w-px translate-y-[.16em] bg-brand-dark motion-safe:animate-pulse"
               aria-hidden="true"

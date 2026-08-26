@@ -3,7 +3,7 @@ import { Icon } from "@/components/shared/Icon"
 import { PLATFORMS } from "@/constants"
 
 export const SourceMarquee = () => (
-  <div className="overflow-hidden border-t border-night-line">
+  <div className="overflow-hidden border-t border-night-line" dir="ltr">
     <div className="flex w-max animate-marquee motion-reduce:animate-none">
       {[0, 1].map((copy) => (
         <ul
