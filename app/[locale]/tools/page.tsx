@@ -106,7 +106,7 @@ async function ToolsPage() {
 
             {/* Header */}
             <SectionWrapper className="lg:py-0 px-0 justify-start">
-                <div className="w-full lg:pt-12 bg-muted rounded-b-[80px]">
+                <div className="w-full rounded-b-[80px]">
                     <div className="flex flex-col justify-center items-center text-center gap-4 py-24">
                         <h2 className="bg-black text-white uppercase py-1 rounded-sm italic tracking-wide font-semibold px-4 text-sm mb-4">{t("badge")}</h2>
                         <h1 className="text-2xl md:text-[44px] lg:text-[60px] text-[#142828] font-semibold">{t("title")}</h1>

@@ -59,7 +59,7 @@ async function ArabicMentionAnalyzerPage() {
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
 
-            <SectionWrapper className="min-h-dvh mt-24">
+            <SectionWrapper className="min-h-dvh">
                 <div className="max-w-7xl mx-auto space-y-12">
                     <Calculator />
                 </div>

@@ -12,7 +12,7 @@ async function HeroSection({ slug }: { slug: string }) {
     const t = await getTranslations(`Solutions.${slug}.hero`);
     const metrics = t.raw("metrics") as { number: number, title: string }[];
     return (
-        <SectionWrapper className="min-h-dvh mt-20">
+        <SectionWrapper className="min-h-dvh">
             <div className="container mx-auto flex flex-col justify-center items-center gap-4">
                 {/* Heading */}
                 <h2 className="bg-black text-white uppercase w-fit p-1 rounded-sm italic tracking-wide">{t("title")}</h2>

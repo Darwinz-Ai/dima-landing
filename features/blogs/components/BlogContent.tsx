@@ -19,7 +19,7 @@ async function BlogContent({ slug }: { slug: string }) {
         const blog = await fetchSingleBlog(locale, slug);
         return (
             <article>
-                <SectionWrapper className="mt-24">
+                <SectionWrapper className="">
                     {/* Heading */}
                     <div className="container mx-auto flex flex-col justify-center items-start gap-8 ">
                         <h2 className="bg-black text-white uppercase w-fit py-1 px-2 rounded-sm italic tracking-wide">{t("dimaBlogs")}</h2>

@@ -5,7 +5,7 @@ import SectionWrapper from "@/components/shared/SectionWrapper";
 async function HeroSection() {
     const t = await getTranslations("CaseStudies");
     return (
-        <SectionWrapper className="mt-24">
+        <SectionWrapper className="">
             <div className="container mx-auto flex flex-col justify-center items-center gap-8 ">
                 {/* Heading */}
                 <h1 className="text-2xl lg:text-[66px] text-center font-bold text-[#282943]">{t("title")}</h1>

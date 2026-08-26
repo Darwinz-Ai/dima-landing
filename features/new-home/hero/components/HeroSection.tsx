@@ -40,7 +40,6 @@ export const HeroSection = () => {
         "relative flex h-[calc(100svh-var(--spacing-chrome))] flex-col overflow-clip max-md:h-auto",
         gridBackdrop
       )}
-      id="top"
     >
       <PlatformScatter className="max-md:hidden" />
 

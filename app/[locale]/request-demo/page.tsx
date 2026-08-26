@@ -67,7 +67,7 @@ async function RequestDemoPage({ searchParams }: RequestDemoPageProps) {
         >
             <JsonLd data={[requestDemoJsonLd]} />
 
-            <SectionWrapper className="min-h-dvh mt-12">
+            <SectionWrapper className="min-h-dvh">
                 <div className="container mx-auto flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-12 flex-1">
                     {/* Text & Form Section */}
                     <div className="flex-1 flex flex-col justify-center gap-4">

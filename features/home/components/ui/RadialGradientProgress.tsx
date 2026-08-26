@@ -40,28 +40,42 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
 }) => {
     const radius = (size - strokeWidth) / 2;
     const circumference = 2 * Math.PI * radius;
-
-    // Calculating final offset
     const gap = gapValue * circumference;
     const finalOffset = circumference - (progress / maxValue) * (circumference - gap);
 
     const [displayValue, setDisplayValue] = useState(0);
     const [mounted, setMounted] = useState<boolean>(false);
+
+    // NEW: State to hold the actual DOM node of the scroller
+    const [scrollerEl, setScrollerEl] = useState<Element | null>(null);
+
     const containerRef = useRef<HTMLDivElement>(null);
     const circleRef = useRef<SVGCircleElement>(null);
 
+    useEffect(() => {
+        setMounted(true);
+        // Find the scroller node in the DOM and save it to state
+        const el = document.querySelector('#app-scroll-area [data-slot="scroll-area-viewport"]');
+        if (el) {
+            setScrollerEl(el);
+        }
+    }, []);
+
     useGSAP(() => {
+        // GUARD: Do not let GSAP run until React finds the scroller element
+        if (!scrollerEl || !containerRef.current || !circleRef.current) return;
+
         gsap.registerPlugin(ScrollTrigger);
 
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: containerRef.current,
+                scroller: scrollerEl, // Pass the actual DOM element, not a string
                 start: "top bottom-=100px",
                 toggleActions: "play none none none",
             }
         });
 
-        // strokeDashoffset Animation
         tl.fromTo(circleRef.current,
             { strokeDashoffset: circumference },
             {
@@ -72,7 +86,6 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
             0
         );
 
-        // Number count animation
         const counter = { val: 0 };
         tl.to(counter, {
             val: progress,
@@ -83,11 +96,8 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
             }
         }, 0);
 
-    }, { scope: containerRef, dependencies: [progress, finalOffset] });
-
-    useEffect(() => {
-        setMounted(true);
-    }, [])
+        // ADD scrollerEl to the dependencies array so GSAP runs once it is found
+    }, { scope: containerRef, dependencies: [progress, finalOffset, scrollerEl] });
 
     return (
         <div
@@ -109,7 +119,6 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                     </radialGradient>
                 </defs>
 
-                {/* Track Circle */}
                 <circle
                     cx={size / 2}
                     cy={size / 2}
@@ -119,7 +128,6 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                     fill="none"
                 />
 
-                {/* Progress Circle */}
                 <circle
                     ref={circleRef}
                     cx={size / 2}
@@ -134,7 +142,6 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                 />
             </svg>
 
-            {/* Value */}
             <span
                 className="absolute font-bold text-xl inline-flex items-center gap-1"
                 style={{ color: textColor }}
@@ -145,4 +152,4 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
     );
 };
 
-export default RadialGradientProgress;
+export default RadialGradientProgress;  

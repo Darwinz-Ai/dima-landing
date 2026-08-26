@@ -61,7 +61,7 @@ async function ArabicDialectTool() {
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
 
-            <SectionWrapper className="min-h-dvh mt-24">
+            <SectionWrapper className="min-h-dvh">
                 <div className="container mx-auto py-8 sm:py-12">
                     {/* Title Section */}
                     <div className="text-center mb-8 sm:mb-12 px-4">

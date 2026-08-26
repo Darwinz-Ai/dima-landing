@@ -63,7 +63,7 @@ async function BlogsPage() {
     return (
         <main>
             <JsonLd data={[blogsJsonLd]} />
-            <SectionWrapper className="mt-20">
+            <SectionWrapper className="">
                 <HeroSection />
                 <AllArticlesSection />
             </SectionWrapper>
