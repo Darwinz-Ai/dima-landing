@@ -2,20 +2,30 @@
 
 import { useRef } from "react"
 import { useScrollProgress } from "../hooks"
+import { useTranslations } from "next-intl"
 
 import { HorizontalTimeline } from "./HorizontalTimeline"
 import { TimelineIntro } from "./TimelineIntro"
 import { VerticalTimeline } from "./VerticalTimeline"
 
 import { currentMilestone } from "../helpers"
+import { MILESTONE_AT } from "../constants"
+import { type MilestoneType } from "../types"
 
 const TITLE_ID = "implementation-title"
 
-/**
- * Client Component by necessity: every mark on the track is driven by live
- * scroll position, which has no server-rendered equivalent.
- */
 export const ImplementationTimeline = () => {
+  const t = useTranslations("Home_New.implementation")
+  const milestoneCopy = t.raw("milestones") as {
+    title: string
+    detail: string
+  }[]
+  const milestones: MilestoneType[] = MILESTONE_AT.map((at, index) => ({
+    at,
+    title: milestoneCopy[index].title,
+    detail: milestoneCopy[index].detail,
+  }))
+
   const sectionRef = useRef<HTMLElement>(null)
   const progress = useScrollProgress(sectionRef)
 
@@ -25,7 +35,7 @@ export const ImplementationTimeline = () => {
     "aria-valuemin": 0,
     "aria-valuemax": 100,
     "aria-valuenow": Math.round(progress * 100),
-    "aria-valuetext": currentMilestone(progress).title,
+    "aria-valuetext": currentMilestone(progress, milestones).title,
   }
 
   return (
@@ -42,27 +52,15 @@ export const ImplementationTimeline = () => {
             className="relative mt-18.5 hidden h-52.5 md:block"
             {...progressLabel}
           >
-            <HorizontalTimeline progress={progress} />
+            <HorizontalTimeline progress={progress} milestones={milestones} />
           </div>
 
-          {/*
-           * The end cards are centred on the ends of the track, so half of each
-           * hangs outside the wrapper: the top margin has to clear that overhang
-           * as well as the gap the copy above it needs, and the bottom one keeps
-           * the last card off the edge of the section.
-           *
-           * The track itself takes whatever height is left over rather than a
-           * fixed one — on a short screen the intro copy wraps to more lines and
-           * a fixed track would push the last card past the bottom of the
-           * sticky viewport, where `overflow-hidden` clips it.
-           */}
           <div
             className="relative mt-15.5 mb-10 ml-1 max-h-77.5 min-h-45 flex-1 max-sm:mt-18 md:hidden"
             {...progressLabel}
           >
-            <VerticalTimeline progress={progress} />
+            <VerticalTimeline progress={progress} milestones={milestones} />
           </div>
-
         </div>
       </div>
     </section>

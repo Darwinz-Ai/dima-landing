@@ -1,14 +1,19 @@
 import { MilestoneCard } from "./MilestoneCard"
 
-import { MILESTONES } from "../constants"
-
 import { hasReached } from "../helpers"
 import { cn } from "@/lib/utils"
+import { type MilestoneType } from "../types"
 
 const progressFill =
   "bg-[linear-gradient(90deg,var(--timeline-start),var(--brand),var(--brand-dark))]"
 
-export const HorizontalTimeline = ({ progress }: { progress: number }) => (
+export const HorizontalTimeline = ({
+  progress,
+  milestones,
+}: {
+  progress: number
+  milestones: MilestoneType[]
+}) => (
   <div className="absolute inset-x-[8%] top-28 h-px bg-timeline-line">
     <div
       className={cn(
@@ -23,8 +28,7 @@ export const HorizontalTimeline = ({ progress }: { progress: number }) => (
       aria-hidden="true"
     />
 
-    {/* One mark per milestone — the track carries no decorative ruler. */}
-    {MILESTONES.map((milestone) => (
+    {milestones.map((milestone) => (
       <span
         className="absolute top-1/2 h-20 w-px -translate-x-1/2 -translate-y-1/2 bg-timeline-tick"
         style={{ left: `${milestone.at * 100}%` }}
@@ -35,7 +39,7 @@ export const HorizontalTimeline = ({ progress }: { progress: number }) => (
       </span>
     ))}
 
-    {MILESTONES.map((milestone) => {
+    {milestones.map((milestone) => {
       const reached = hasReached(progress, milestone)
 
       return (

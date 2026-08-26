@@ -1,10 +1,8 @@
 import { CheckmarkCircle02Icon } from "@hugeicons/core-free-icons"
-import { METRICS, SAMPLES, DIFFERENTIATORS } from "../constants"
 import { cn } from "@/lib/utils"
 import { Icon } from "@/components/shared/Icon"
 import { SampleRow } from "./SampleRow"
-
-// Translated helper for "arabic-intelligence" section
+import { type MetricType, type SampleType } from "../types"
 import { useTranslations } from "next-intl"
 
 const arabicBackdrop = cn(
@@ -20,8 +18,8 @@ function useArabicIntelligenceStrings() {
     sectionKicker: t("title"),
     mainHeading: t("mainHeading"),
     differentiators: t.raw("differentiators") as string[],
-    samples: t.raw("samples") as typeof SAMPLES,
-    metrics: t.raw("metrics") as typeof METRICS,
+    samples: t.raw("samples") as SampleType[],
+    metrics: t.raw("metrics") as MetricType[],
   }
 }
 

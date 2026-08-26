@@ -344,6 +344,9 @@
     }
   },
   "Home_New": {
+    "common": {
+      "seeDimaCta": "See dima with your market"
+    },
     "hero": {
       "mainTitle": "Arabic-first media intelligence",
       "mainSubTitle": "Built for agencies & enterprises",
@@ -446,6 +449,102 @@
           "alt": "dima influencer intelligence and performance analysis workspace"
         }
       ]
+    },
+    "copilot": {
+      "title": "Ask dima anything about your market.",
+      "description": "In English or in Arabic, and it answers in the same dialect it was asked in.",
+      "mcpNote": "Or connect over MCP",
+      "prompts": [
+        {
+          "label": "Competitor benchmarking",
+          "prompt": "Compare us with our two closest competitors over the last 30 days. What changed?"
+        },
+        {
+          "label": "Market trends",
+          "prompt": "Which topics are gaining momentum with Gulf audiences this month?"
+        },
+        {
+          "label": "Sentiment analysis",
+          "prompt": "Break down sentiment on our launch by dialect and platform."
+        },
+        {
+          "label": "Ask in Arabic",
+          "prompt": "لخّص لي شكاوى العملاء هذا الأسبوع، ووش أكثر موضوع تكرر؟"
+        }
+      ]
+    },
+    "customer-trust": {
+      "heading": "Trusted by the agencies and enterprises shaping the region."
+    },
+    "mobile-application": {
+      "timePlace": "3:00 AM. Riyadh.",
+      "sectionKicker": "While your team sleeps · <brand>dima</brand>",
+      "title": "Be the first to know, wherever you are.",
+      "description": "Even at 3am, dima’s mobile app delivers alerts to your pocket, so you’re always one step ahead of your client.",
+      "benefits": [
+        {
+          "title": "Every channel",
+          "description": "Social, news, print, TV, radio."
+        },
+        {
+          "title": "Arabic-first AI",
+          "description": "Dialect, context, emotion."
+        },
+        {
+          "title": "Send it as it is",
+          "description": "Reports a client can read as they are."
+        },
+        {
+          "title": "Live in 48-72 hours",
+          "description": "Configured around your team.."
+        }
+      ]
+    },
+    "implementation": {
+      "kicker": "Up and running, fast",
+      "title": "It couldn’t be simpler.",
+      "description": "Skip the long implementations. Your data starts flowing on day one, and by day three, your dashboards, alerts, and reports are fully tailored to your team and ready to use.",
+      "milestones": [
+        {
+          "title": "Get started",
+          "detail": "We map your market, sources and reporting goals."
+        },
+        {
+          "title": "Data ingested in 24 hours",
+          "detail": "Your channels and priority conversations begin flowing."
+        },
+        {
+          "title": "Live in 48-72 hours",
+          "detail": "Dashboards, alerts and reports are ready for your team."
+        }
+      ]
+    },
+    "testimonials": {
+      "eyebrow": "From the teams inside",
+      "title": "What listening better sounds like."
+    },
+    "case-studies": {
+      "eyebrow": "The proof, not the pitch",
+      "title": "Built for moments that matter.",
+      "viewAll": "View all case studies",
+      "readStory": "Read story",
+      "captions": {
+        "crisis": "crisis detection",
+        "coverage": "Where the volume comes from",
+        "insights": "Response time"
+      }
+    },
+    "faq": {
+      "kicker": "Your questions, answered",
+      "title": "A clear view, from the start.",
+      "description": "See dima with your own market and use case."
+    },
+    "final-cta": {
+      "kicker": "Your market is already talking",
+      "titleLine1": "The question is whether",
+      "titleLine2": "you hear it first.",
+      "description": "See what dima finds in your own brand, your own competitors and your own dialects, before you commit to anything.",
+      "liveIn": "Live in 48-72 hours."
     }
   },
   "Solutions": {

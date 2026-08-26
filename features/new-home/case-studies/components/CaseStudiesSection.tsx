@@ -1,4 +1,4 @@
-import { getLocale } from "next-intl/server"
+import { getLocale, getTranslations } from "next-intl/server"
 import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions"
 import { StudyCard } from "./StudyCard"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
@@ -11,19 +11,22 @@ import { Link } from "@/i18n/navigation"
 import { CaseStudy } from "@/types"
 
 export const CaseStudiesSection = async () => {
-  const locale = await getLocale();
-  let caseStudies: CaseStudy[] = [];
+  const locale = await getLocale()
+  const t = await getTranslations("Home_New.case-studies")
+  let caseStudies: CaseStudy[] = []
 
   try {
-    caseStudies = await fetchCaseStudies(locale, { featured: true }, 3);
+    caseStudies = await fetchCaseStudies(locale, { featured: true }, 3)
   } catch (error) {
-    console.error("Failed to fetch case studies", error);
+    console.error("Failed to fetch case studies", error)
   }
 
-  const fallbackVisuals = ["crisis", "coverage", "insights"] as const;
+  const fallbackVisuals = ["crisis", "coverage", "insights"] as const
 
   const mappedStories = caseStudies.map((study, index) => {
-    const primaryMetric = study.content.metrics?.[1] || study.content.metrics?.[0] || { value: "", suffix: "", title: "" };
+    const primaryMetric =
+      study.content.metrics?.[1] ||
+      study.content.metrics?.[0] || { value: "", suffix: "", title: "" }
 
     return {
       id: study.id,
@@ -33,8 +36,8 @@ export const CaseStudiesSection = async () => {
       metric: primaryMetric.title,
       visual: fallbackVisuals[index % fallbackVisuals.length],
       url: `/case-studies/${study.id}`,
-    };
-  });
+    }
+  })
 
   return (
     <section
@@ -43,11 +46,11 @@ export const CaseStudiesSection = async () => {
     >
       <div className="page-container">
         <SectionHeading
-          eyebrow="The proof, not the pitch"
-          title="Built for moments that matter."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
           action={
             <TextArrowLink className="gap-2.25 text-4.5" href={CASE_STUDIES_URL}>
-              View all case studies
+              {t("viewAll")}
             </TextArrowLink>
           }
         />
@@ -85,10 +88,10 @@ export const CaseStudiesSection = async () => {
                     className="mt-auto inline-flex items-center gap-2 pt-6.25 text-3.5 font-medium"
                     href={story.url}
                   >
-                    Read story <Icon icon={ArrowRight01Icon} size={16} />
+                    {t("readStory")}{" "}
+                    <Icon icon={ArrowRight01Icon} size={16} />
                   </Link>
                 </div>
-
               </article>
             )
           })}
