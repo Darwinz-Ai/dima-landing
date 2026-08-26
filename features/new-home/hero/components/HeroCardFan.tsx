@@ -21,6 +21,7 @@ export const HeroCardFan = () => (
     className="flex w-max items-start justify-center perspective-[1600px]"
     aria-label="Panels from the dima workspace"
     role="group"
+    dir="ltr"
   >
     {FAN_CARDS.map((card, index) => (
       <div

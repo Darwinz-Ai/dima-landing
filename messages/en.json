@@ -343,6 +343,26 @@
       ]
     }
   },
+  "Home_New": {
+    "hero": {
+      "mainTitle": "Arabic-first media intelligence",
+      "mainSubTitle": "Built for agencies & enterprises",
+      "headline": "Know what your market is saying.",
+      "headlineMark": "Before anyone else.",
+      "description": "dima watches social, news, TV and radio in every Arabic dialect, then tells you what changed, why it happened, and what to do about it.",
+      "form": {
+        "emailLabel": "Work email",
+        "emailPlaceholder": "Work email",
+        "cta": "Book a demo"
+      },
+      "heroProof": {
+        "trustedBy": "250+ leading agencies & enterprises trust dima"
+      },
+      "askAI": {
+        "prompt": "Want a third-party opinion? Ask AI:"
+      }
+    }
+  },
   "Solutions": {
     "social-listening-analytics": {
       "hero": {
