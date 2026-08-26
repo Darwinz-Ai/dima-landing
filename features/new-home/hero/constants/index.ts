@@ -44,7 +44,7 @@ export const AI_ASSISTANTS = [
     href: (prompt: string) =>
       `https://www.google.com/search?q=${encodeURIComponent(prompt)}&udm=50`,
     color:
-      "text-[#755cff] bg-gradient-to-br from-[#f2f0ff] via-[#ebeaff] to-[#ede7fb] border border-[#d2cfff] shadow-sm",
+      "[&_path]:[fill:url(#mcp-gemini-gradient)] [&_path]:[stroke:url(#mcp-gemini-gradient)] bg-gradient-to-br from-[#E2EEFA] via-[#C9E1F6] to-[#F2F6FA] border border-[#B6E0FE] shadow-sm",
     label: "gemini",
   },
   {

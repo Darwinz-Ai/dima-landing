@@ -67,7 +67,7 @@ export const PromptConsole = () => {
         <div className="flex items-start gap-6 max-sm:gap-4">
           <p
             className={cn(
-              "min-h-[5rem] min-w-0 flex-1 text-4.5 leading-[1.6] text-ink max-sm:min-h-[4.5rem] max-sm:text-3.875",
+              "h-[6rem] max-sm:h-[5rem] overflow-hidden min-w-0 flex-1 text-4.5 leading-[1.6] text-ink max-sm:text-3.875",
               current.arabic && "text-right"
             )}
             dir={current.arabic ? "rtl" : undefined}

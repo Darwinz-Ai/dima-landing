@@ -44,9 +44,18 @@ export const ImplementationTimeline = () => {
       ref={sectionRef}
       aria-labelledby={TITLE_ID}
     >
+      {/* Mobile timeline*/}
+      <div className="page-container pt-12 md:hidden">
+        <TimelineIntro titleId={`${TITLE_ID}-mobile`} />
+      </div>
+
+      {/* 2. THE STICKY LOCK */}
       <div className="sticky top-nav flex h-[calc(100svh-var(--spacing-nav))] items-center overflow-hidden">
-        <div className="page-container flex h-full flex-col justify-center py-12 max-md:justify-start max-md:pt-9 max-md:pb-8">
-          <TimelineIntro titleId={TITLE_ID} />
+        <div className="page-container flex h-full w-full flex-col justify-center py-12 max-md:justify-center max-md:py-6">
+
+          <div className="hidden md:block">
+            <TimelineIntro titleId={TITLE_ID} />
+          </div>
 
           <div
             className="relative mt-18.5 hidden h-52.5 md:block"
@@ -56,7 +65,7 @@ export const ImplementationTimeline = () => {
           </div>
 
           <div
-            className="relative mt-15.5 mb-10 ml-1 max-h-77.5 min-h-45 flex-1 max-sm:mt-18 md:hidden"
+            className="relative w-full h-80 my-auto md:hidden"
             {...progressLabel}
           >
             <VerticalTimeline progress={progress} milestones={milestones} />

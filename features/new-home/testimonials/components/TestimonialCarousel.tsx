@@ -51,7 +51,7 @@ export const TestimonialCarousel = () => {
       onFocusCapture={handlePause}
       onBlurCapture={resume}
       dir={isRTL ? 'rtl' : 'ltr'}
-      className="grid items-stretch gap-4 max-md:grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr] lg:grid-rows-2"
+      className="grid overflow-hidden items-stretch gap-4 max-md:grid-cols-1 max-md:grid-rows-[minmax(0,1fr)_auto] md:grid-cols-2 lg:grid-cols-[1.5fr_1fr] lg:grid-rows-[minmax(0,1fr)_minmax(0,1fr)_auto] h-[600px] md:h-[480px] lg:h-[540px]"
       aria-roledescription="carousel"
       aria-label="Customer testimonials"
     >

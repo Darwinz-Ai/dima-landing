@@ -40,7 +40,7 @@ export const PlatformSection = () => {
         </div>
 
         <div className="relative z-3 py-22.5 max-md:py-18.75 desktop-fit:py-8.75">
-          <span className="section-kicker text-4 gap-1 text-brand">
+          <span className="section-kicker text-4 gap-1 text-brand max-sm:text-3.5">
             {t.rich("sectionKicker", {
               brand: (chunks) => <span className="lowercase">{chunks}</span>,
             })}
