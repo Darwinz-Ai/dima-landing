@@ -14,7 +14,7 @@ import { type MilestoneType } from "../types"
 
 const TITLE_ID = "implementation-title"
 
-export const ImplementationTimeline = () => {
+const ImplementationTimeline = () => {
   const t = useTranslations("Home_New.implementation")
   const milestoneCopy = t.raw("milestones") as {
     title: string
@@ -75,3 +75,5 @@ export const ImplementationTimeline = () => {
     </section>
   )
 }
+
+export default ImplementationTimeline;

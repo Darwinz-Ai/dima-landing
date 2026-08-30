@@ -67,7 +67,7 @@ const MapSection = () => {
                             [createLongitude(800), createLatitude(350)]
                         )}
                         filterZoomEvent={(event: any) => {
-                            console.log("event:", event)
+                            // console.log("event:", event)
                             if (event.type === "wheel") {
                                 return event.ctrlKey;
                             }

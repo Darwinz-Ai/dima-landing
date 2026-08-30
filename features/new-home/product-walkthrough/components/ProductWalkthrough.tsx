@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server"
 
-import { ProductWalkthroughShell } from "./ProductWalkthroughShell"
 import { ProductFrame } from "./ProductFrame"
+import ProductWalkthroughShell from "./ProductWalkthroughShell"
 
 import { PRODUCT_ASSETS } from "../constants"
 

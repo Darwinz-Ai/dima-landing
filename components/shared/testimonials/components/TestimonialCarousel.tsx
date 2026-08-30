@@ -9,7 +9,7 @@ import { TestimonialProgress } from "./TestimonialProgress"
 import { TESTIMONIAL_DURATION_MS, TESTIMONIAL_ASSETS } from "../constants"
 import { TestimonialType } from "../types"
 
-export const TestimonialCarousel = () => {
+const TestimonialCarousel = () => {
   const t = useTranslations("Home.testimonials.items")
   const locale = useLocale()
   const isRTL = locale === 'ar'
@@ -80,3 +80,5 @@ export const TestimonialCarousel = () => {
     </div>
   )
 }
+
+export default TestimonialCarousel;

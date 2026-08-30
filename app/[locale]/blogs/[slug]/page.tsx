@@ -52,7 +52,7 @@ export async function generateMetadata(
         };
     } catch (error) {
         const errorMessage = error instanceof Error ? error.message : "Error occurred"
-        console.log("Error:", errorMessage)
+        // console.log("Error:", errorMessage)
         return {
             title: "Blog Not Found - dima",
             description: "The requested blog does not exist.",
@@ -86,8 +86,8 @@ export default async function SingleViewBlogPage({ params }: SingleViewBlogPageP
             </main>
         );
     } catch (error: unknown) {
-        const errorMessage = error instanceof Error ? `Error: ${error.message}` : "An Error has occurred";
-        console.log(errorMessage);
+        // const errorMessage = error instanceof Error ? `Error: ${error.message}` : "An Error has occurred";
+        // console.log(errorMessage);
         return notFound()
     }
 }

@@ -54,7 +54,6 @@ async function RequestDemoPage({ searchParams }: RequestDemoPageProps) {
     const requestDemoJsonLd = await getRequestDemonJsonLd();
     const { email } = await searchParams;
 
-    console.log("email:", email)
     return (
         <main
             style={{

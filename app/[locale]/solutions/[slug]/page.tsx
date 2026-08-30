@@ -15,6 +15,7 @@ import { QuestionAccordion } from "@/types";
 import { buildLocalizedMetadata, SolutionsSeoKey } from "@/lib/seo";
 import { getFAQJsonLd, getSolutionSchema } from "@/lib/jsonLd";
 import { getTranslations } from "next-intl/server";
+import { FaqWidget } from "@/components/shared/faq/components/FaqSection";
 
 type SolutionPageParams = {
     slug: string;
@@ -150,7 +151,7 @@ async function SolutionPage({ params }: SolutionPageProps) {
             <CardsGrid slug={slug} />
             <TestimonialSection slug={slug} />
             <RequestDemoSection />
-            <QuestionsAnsweredSection faqs={faqs} />
+            <FaqWidget faqs={faqs} />
         </main>
     );
 }

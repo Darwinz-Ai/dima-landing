@@ -1,7 +1,6 @@
 import HeroSection from '@/features/faq/sections/HeroSection'
 import FAQSection from '@/features/faq/sections/FAQSection'
 import RequestDemoSection from '@/components/shared/form/RequestDemoSection'
-import TestimonialSection from '@/features/home/sections/TestimonialSection'
 import JsonLd from '@/components/shared/JsonLd'
 
 import { Metadata } from 'next'
@@ -10,6 +9,7 @@ import { QuestionAccordion } from '@/types'
 import { buildLocalizedMetadata } from '@/lib/seo'
 import { getTranslations } from 'next-intl/server'
 import { getFAQJsonLd } from '@/lib/jsonLd'
+import { TestimonialsSection } from '@/components/shared/testimonials/components/TestimonialsSection'
 
 interface FAQPageProps {
     params: Promise<{ locale: string }>
@@ -61,7 +61,7 @@ const FAQPage = async () => {
             <HeroSection />
             <FAQSection />
             <RequestDemoSection />
-            <TestimonialSection />
+            <TestimonialsSection />
         </main>
     )
 }

@@ -1,7 +1,7 @@
+import dynamic from "next/dynamic";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { McpNote } from "./McpNote"
-import { PromptConsole } from "./PromptConsole"
 
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 
@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils"
 import { Icon } from "@/components/shared/Icon"
 
 import { DEMO_URL } from "@/constants"
+
+const PromptConsole = dynamic(() => import("@/features/new-home/copilot/components/PromptConsole"), { ssr: true });
 
 const copilotBackdrop = cn(
   "bg-surface",

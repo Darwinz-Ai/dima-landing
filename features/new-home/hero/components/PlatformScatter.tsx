@@ -127,34 +127,52 @@ const SCATTERED_PLATFORMS = PLATFORMS_IMAGES.map((platform, index) => {
 export const PlatformScatter = ({ className }: { className?: string }) => (
   <div
     className={cn("absolute inset-0", className)}
-    aria-hidden
+  // aria-hidden
   >
-    {SCATTERED_PLATFORMS.map((platform) => (
-      <span
-        className={cn(
-          "absolute top-(--y-sm) left-(--x-sm) -translate-x-1/2 -translate-y-1/2 animate-drift motion-reduce:animate-none md:top-(--y) md:left-(--x)",
-          platform.fade
-        )}
-        style={platform.style}
-        key={platform.label}
-      >
-        <a
-          className="grid size-9 place-items-center rounded-full border border-line bg-white/80 text-ink/45 md:size-11"
-          href={platform.href ?? undefined}
-          target="_blank"
-          style={{ scale: platform.scale }}
+    {SCATTERED_PLATFORMS.map((platform) => {
+      const wrapperClasses = "grid size-9 place-items-center rounded-full border border-line bg-white/80 text-ink/45 md:size-11"
+
+      const imageContent = (
+        <Image
+          src={platform.image}
+          alt={platform.label}
+          width={28}
+          height={28}
+          className="object-contain"
+          draggable={false}
+          priority={false}
+        />
+      )
+
+      return (
+        <span
+          className={cn(
+            "absolute top-(--y-sm) left-(--x-sm) -translate-x-1/2 -translate-y-1/2 animate-drift motion-reduce:animate-none md:top-(--y) md:left-(--x)",
+            platform.fade
+          )}
+          style={platform.style}
+          key={platform.label}
         >
-          <Image
-            src={platform.image}
-            alt={platform.label}
-            width={28}
-            height={28}
-            className="object-contain"
-            draggable={false}
-            priority={false}
-          />
-        </a>
-      </span>
-    ))}
+          {platform.href ? (
+            <a
+              className={wrapperClasses}
+              href={platform.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ scale: platform.scale }}
+            >
+              {imageContent}
+            </a>
+          ) : (
+            <div
+              className={wrapperClasses}
+              style={{ scale: platform.scale }}
+            >
+              {imageContent}
+            </div>
+          )}
+        </span>
+      )
+    })}
   </div>
 )

@@ -4,7 +4,7 @@ import { useRef } from "react"
 import { useProductTimeline } from "../hooks"
 import { type ProductStepType } from "../types"
 
-export const ProductWalkthroughShell = ({
+const ProductWalkthroughShell = ({
   steps,
   sectionKicker,
   children,
@@ -71,3 +71,5 @@ export const ProductWalkthroughShell = ({
     </section>
   )
 }
+
+export default ProductWalkthroughShell;

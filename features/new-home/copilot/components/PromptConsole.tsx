@@ -15,7 +15,7 @@ import { Icon } from "@/components/shared/Icon"
 import { useTranslations } from "next-intl"
 import { type PromptInputType } from "../types"
 
-export const PromptConsole = () => {
+const PromptConsole = () => {
   const t = useTranslations("Home_New.copilot")
   const prompts = (t.raw("prompts") as PromptInputType[]).map((prompt, index) => ({
     ...prompt,
@@ -127,3 +127,5 @@ export const PromptConsole = () => {
     </div>
   )
 }
+
+export default PromptConsole;

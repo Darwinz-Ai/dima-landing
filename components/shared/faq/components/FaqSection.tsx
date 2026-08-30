@@ -2,11 +2,11 @@ import { FaqIntro } from "./FaqIntro"
 import { FaqItem } from "./FaqItem"
 import { QuestionAccordion } from "@/types"
 
-interface FaqSectionProps {
+interface FaqWidgetProps {
   faqs: QuestionAccordion[]
 }
 
-export const FaqSection = ({ faqs }: FaqSectionProps) => (
+export const FaqWidget = ({ faqs }: FaqWidgetProps) => (
   <section
     className="section-viewport bg-surface desktop-fit:scroll-mt-nav"
     id="faq"
@@ -15,7 +15,6 @@ export const FaqSection = ({ faqs }: FaqSectionProps) => (
       <FaqIntro />
 
       <div className="border-t border-line-strong">
-        {/* Changed FAQS constant to the faqs prop */}
         {faqs.map((faq, index) => (
           <FaqItem faq={faq} defaultOpen={index === 0} key={`faq-${index}`} />
         ))}

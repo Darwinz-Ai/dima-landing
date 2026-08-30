@@ -42,7 +42,7 @@ export const BrandMark = ({
         "flex shrink-0 items-center justify-center overflow-hidden rounded-1.5 bg-white",
         slot === "lead"
           ? "h-13.5 w-32.5 p-2.5 max-sm:h-11.5 max-sm:w-26"
-          : "h-9.5 w-23 p-2"
+          : "h-9.5 w-nav p-2"
       )}
     >
       <Image

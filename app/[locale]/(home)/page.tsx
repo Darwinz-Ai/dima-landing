@@ -12,13 +12,17 @@ import { ProductWalkthrough } from "@/features/new-home/product-walkthrough/comp
 import { CopilotSection } from "@/features/new-home/copilot/components/CopilotSection";
 import { PlatformSection } from "@/features/new-home/mobile-application/components/PlatformSection";
 import { CaseStudiesSection } from "@/features/new-home/case-studies/components/CaseStudiesSection";
-import { TestimonialsSection } from "@/features/new-home/testimonials/components/TestimonialsSection";
-import { CustomerTrust } from "@/features/new-home/customer-trust/components/CustomerTrust";
-import { ImplementationTimeline } from "@/features/new-home/implementation/components/ImplementationTimeline";
-import { FaqSection } from "@/features/new-home/faq/components/FaqSection";
 import { FinalCta } from "@/features/new-home/final-cta/components/FinalCta";
+import { TestimonialsSection } from "@/components/shared/testimonials/components/TestimonialsSection";
+import { FaqWidget } from "@/components/shared/faq/components/FaqSection";
+import { CustomerTrust } from "@/components/shared/customer-trust/components/CustomerTrust";
 
 import { QuestionAccordion } from "@/types";
+
+const ImplementationTimeline = dynamic(
+  () => import("@/features/new-home/implementation/components/ImplementationTimeline"),
+  { ssr: true }
+);
 
 type HomePageProps = {
   params: Promise<{ locale: string }>
@@ -63,7 +67,7 @@ export async function generateMetadata(
 
 async function HomePage() {
   const tHomeQuestions = await getTranslations("Home.questionsAnswered");
-  const faqs = (tHomeQuestions.raw("faqs") as QuestionAccordion[]) ?? [];
+  const faqs = tHomeQuestions.raw("faqs") as QuestionAccordion[] ?? [];
 
   const orgJsonLd = await getOrganizationJsonLd();
   const productJsonLd = await getProductJsonLd();
@@ -82,7 +86,7 @@ async function HomePage() {
       <ImplementationTimeline />
       <TestimonialsSection />
       <CaseStudiesSection />
-      <FaqSection faqs={faqs} />
+      <FaqWidget faqs={faqs} />
       <FinalCta />
 
     </main>
