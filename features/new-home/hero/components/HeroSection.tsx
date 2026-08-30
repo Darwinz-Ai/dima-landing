@@ -1,8 +1,8 @@
+import dynamic from "next/dynamic"
 import { getLocale, getTranslations } from "next-intl/server"
 
 import { HeroCardFan } from "./HeroCardFan"
 import { HeroProof } from "./HeroProof"
-import { PlatformScatter } from "./PlatformScatter"
 import HeroAskAI from "./HeroAskAI"
 import { Icon } from "@/components/shared/Icon"
 
@@ -10,6 +10,8 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 
 import { cn } from "@/lib/utils"
 import { DEMO_URL } from "@/constants"
+
+const PlatformScatter = dynamic(() => import("@/features/new-home/hero/components/PlatformScatter"), { ssr: true })
 
 const gridBackdrop = cn(
   "bg-surface",
@@ -56,8 +58,8 @@ export const HeroSection = async () => {
         <h1 className="pointer-events-auto max-w-[15ch] shrink-0 text-[clamp(2.6rem,4.2vw,3.95rem)] leading-[.95] font-bold tracking-[-.075em] text-balance max-sm:text-[clamp(2.35rem,10vw,2.9rem)]">
           {t("headline")}
           <span className={cn("block", headlineMarkMarginClass)}>
-            <mark className="bg-transparent bg-[linear-gradient(transparent_52%,rgba(30,185,212,0.5)_52%)] bg-no-repeat bg-size-[0%_100%] animate-highlight box-decoration-clone px-[0.04em] font-normal text-ink">
-              {t("headlineMark")}
+            <mark className="relative box-decoration-clone px-[0.04em] font-normal text-ink after:absolute after:inset-x-0 after:bottom-0 after:h-[48%] after:origin-left after:scale-x-0 after:bg-brand/50 after:animate-highlight after:content-['']">
+              <span className="relative z-10">{t("headlineMark")}</span>
             </mark>
           </span>
         </h1>

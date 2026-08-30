@@ -40,7 +40,7 @@ export function ProductFrame({
             src={screen.src}
             alt={screen.alt}
             fill
-            preload={index === 0}
+            // preload={index === 0}
             sizes="(max-width: 800px) 100vw, 64vw"
           />
         </div>

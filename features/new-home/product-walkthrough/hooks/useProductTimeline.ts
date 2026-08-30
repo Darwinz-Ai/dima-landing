@@ -1,8 +1,6 @@
 "use client"
 
-import { getAppScrollViewport } from "@/lib/app-scroll"
 import { useEffect, useState, type RefObject } from "react"
-
 
 /** Marks the scroll-tracked frames so the rail can measure them without a shared ref. */
 export const PRODUCT_FRAME_SELECTOR = "[data-product-frame]"
@@ -13,11 +11,10 @@ const READING_LINE_RATIO = 0.18
 /** How far into a frame a click should land, so it reads as "just started". */
 const CLICKED_PROGRESS = 0.25
 
-function getReadingLine(scrollViewport: HTMLElement) {
+function getReadingLine() {
   return (
-    scrollViewport.getBoundingClientRect().top +
     NAV_HEIGHT +
-    (scrollViewport.clientHeight - NAV_HEIGHT) * READING_LINE_RATIO
+    (window.innerHeight - NAV_HEIGHT) * READING_LINE_RATIO
   )
 }
 
@@ -35,8 +32,7 @@ export const useProductTimeline = (
 
   useEffect(() => {
     const section = sectionRef.current
-    const scrollViewport = getAppScrollViewport()
-    if (!section || !scrollViewport) return
+    if (!section) return
 
     const frames = Array.from(
       section.querySelectorAll<HTMLElement>(PRODUCT_FRAME_SELECTOR)
@@ -45,7 +41,7 @@ export const useProductTimeline = (
 
     const updateTimeline = () => {
       animationFrame = 0
-      const readingLine = getReadingLine(scrollViewport)
+      const readingLine = getReadingLine()
       let activeIndex = 0
 
       frames.forEach((frame, index) => {
@@ -75,11 +71,12 @@ export const useProductTimeline = (
     }
 
     updateTimeline()
-    scrollViewport.addEventListener("scroll", requestUpdate, { passive: true })
+
+    window.addEventListener("scroll", requestUpdate, { passive: true })
     window.addEventListener("resize", requestUpdate)
 
     return () => {
-      scrollViewport.removeEventListener("scroll", requestUpdate)
+      window.removeEventListener("scroll", requestUpdate)
       window.removeEventListener("resize", requestUpdate)
       if (animationFrame) window.cancelAnimationFrame(animationFrame)
     }
@@ -89,19 +86,20 @@ export const useProductTimeline = (
     const target = sectionRef.current?.querySelectorAll<HTMLElement>(
       PRODUCT_FRAME_SELECTOR
     )[index]
-    const scrollViewport = getAppScrollViewport()
-    if (!target || !scrollViewport) return
+
+    if (!target) return
 
     const top =
-      scrollViewport.scrollTop +
+      window.scrollY +
       target.getBoundingClientRect().top +
       target.offsetHeight * CLICKED_PROGRESS -
-      getReadingLine(scrollViewport)
+      getReadingLine()
+
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches
 
-    scrollViewport.scrollTo({
+    window.scrollTo({
       top,
       behavior: reduceMotion ? "auto" : "smooth",
     })

@@ -124,7 +124,7 @@ const SCATTERED_PLATFORMS = PLATFORMS_IMAGES.map((platform, index) => {
   return { ...platform, fade: slot.fade, scale: slot.scale, style }
 })
 
-export const PlatformScatter = ({ className }: { className?: string }) => (
+const PlatformScatter = ({ className }: { className?: string }) => (
   <div
     className={cn("absolute inset-0", className)}
   // aria-hidden
@@ -176,3 +176,5 @@ export const PlatformScatter = ({ className }: { className?: string }) => (
     })}
   </div>
 )
+
+export default PlatformScatter;

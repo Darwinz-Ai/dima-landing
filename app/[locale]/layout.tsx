@@ -87,27 +87,22 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={isAr ? "rtl" : "ltr"}
-      className={`h-full overflow-hidden antialiased ${displayFont.variable}`}
+      className={`antialiased ${displayFont.variable}`}
       suppressHydrationWarning
     >
       <body
-        className={`h-full overflow-hidden bg-surface font-sans text-ink ${isAr ? cairo.className : geistSans.className
+        className={`bg-surface font-sans text-ink ${isAr ? cairo.className : geistSans.className
           }`}
       >
         <NextIntlClientProvider>
-          <ScrollArea
-            className="h-dvh w-full"
-            viewportClassName="scroll-smooth motion-reduce:scroll-auto"
-            id="app-scroll-area"
-          >
-            <Navbar />
-            <main className="flex-1">
-              {children}
-              <PostHogInit />
-            </main>
-            <Toaster richColors />
-            <SiteFooter />
-          </ScrollArea>
+
+          <Navbar />
+          <main className="flex-1">
+            {children}
+            <PostHogInit />
+          </main>
+          <Toaster richColors />
+          <SiteFooter />
         </NextIntlClientProvider>
 
         {/* Claydar Script */}

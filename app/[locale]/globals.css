@@ -200,10 +200,10 @@
 
   @keyframes highlight-expand {
     from {
-      background-size: 0% 100%;
+      transform: scaleX(0);
     }
     to {
-      background-size: 100% 100%;
+      transform: scaleX(1);
     }
   }
 

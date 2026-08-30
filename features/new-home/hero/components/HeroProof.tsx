@@ -29,7 +29,6 @@ export const HeroProof = async ({ className }: { className?: string }) => {
                 width={200}
                 height={90}
                 sizes="(max-width: 600px) 130px, 200px"
-                priority
               />
             </div>
           </li>

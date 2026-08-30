@@ -51,7 +51,7 @@ export const requestDemo = async (data: FormInputs, posthog_session_id: string) 
 
     return { success: true };
   } catch (error) {
-    console.log("Error when sending request:", error);
+    // console.log("Error when sending request:", error);
     return {
       success: false,
     };
