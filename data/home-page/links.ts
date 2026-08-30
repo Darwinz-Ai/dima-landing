@@ -115,8 +115,3 @@ export const socialMediaLinks: SocialMediaLink[] = [
     label: "Visit Our Youtube"
   },
 ];
-
-export const languages: LanguageLink[] = [
-  { locale: "en", label: "English", flag: enFlag },
-  { locale: "ar", label: "العربية", flag: arFlag },
-];

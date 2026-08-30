@@ -1,6 +1,5 @@
-"use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
 import {
@@ -16,7 +15,6 @@ import {
 import { cn } from "@/lib/utils";
 import { BrandLogo } from "../BrandLogo";
 import { Icon } from "../Icon";
-import LanguageSwitcher from "../LanguageSwitcher";
 import { SOLUTIONS_CONSUMER_INSIGHTS_URL, SOLUTIONS_INFLUENCER_MARKETING_URL, SOLUTIONS_MARKET_INSIGHTS_URL, SOLUTIONS_OWN_INTELLIGENCE_URL, SOLUTIONS_PR_COMMS_URL, SOLUTIONS_SOCIAL_LISTENING_URL } from "@/constants/links";
 
 const FooterColumn = ({
@@ -41,9 +39,9 @@ const FooterColumn = ({
   </div>
 );
 
-export const SiteFooter = () => {
-  const t = useTranslations("Footer");
-  const locale = useLocale();
+export const SiteFooter = async () => {
+  const t = await getTranslations("Footer");
+  const locale = await getLocale();
   const isRTL = locale === "ar";
 
   // Moved inside the component to access translations dynamically

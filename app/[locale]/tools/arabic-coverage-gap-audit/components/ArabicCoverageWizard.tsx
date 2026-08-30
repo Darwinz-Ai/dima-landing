@@ -1,7 +1,7 @@
 "use client";
 
 import { analyzeKeywords } from "../../actions";
-import posthog from "posthog-js";
+import { posthog } from "posthog-js";
 
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";

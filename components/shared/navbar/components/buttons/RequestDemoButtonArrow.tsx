@@ -1,7 +1,5 @@
 "use client";
 
-import posthog from 'posthog-js';
-
 import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button'
@@ -16,15 +14,20 @@ interface RequestDemoButtonArrowProps {
 const RequestDemoButtonArrow = ({ location }: RequestDemoButtonArrowProps) => {
     const t = useTranslations("Navbar");
 
-    const handleClick = () => {
-        posthog.capture("clicked_request_demo", {
-            location,
-            style: "navbar_arrow_variant"
-        })
+    const handleClick = async () => {
+        try {
+            const posthog = (await import("posthog-js")).default;
+            posthog.capture("clicked_request_demo", {
+                location,
+                style: "navbar_arrow_variant"
+            });
+        } catch (error) {
+            console.error("Failed to load analytics", error);
+        }
     }
 
     return (
-        <Link href="/request-demo" className="text-[15px]" aria-label="Go To Request A Demo">
+        <Link href="/request-demo" className="text-[15px]" aria-label="Go To Request A Demo" onClick={handleClick}>
             <Button className="hidden lg:flex justify-between py-2 pl-4 pr-2.5">
                 {t("requestDemo")}
                 <div className="w-7 h-7 rounded-full bg-white flex justify-center items-center">

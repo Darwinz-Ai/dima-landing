@@ -5,15 +5,12 @@ import "./globals.css";
 import Navbar from "@/components/shared/navbar/Navbar";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import Footer from "@/components/shared/footer/Footer";
-import ReactQueryProvider from "../providers/ReactQueryProvider";
 import { Toaster } from "sonner";
 import Script from "next/script";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { MotionProvider } from "../providers/MotionProvider";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { SiteFooter } from "@/components/shared/footer/SiteFooter";
+import PostHogInit from "@/components/PostHogInit";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -93,33 +90,45 @@ export default async function RootLayout({
       className={`h-full overflow-hidden antialiased ${displayFont.variable}`}
       suppressHydrationWarning
     >
-      <GoogleAnalytics gaId="G-JJGJEDJL2Q" />
       <body
         className={`h-full overflow-hidden bg-surface font-sans text-ink ${isAr ? cairo.className : geistSans.className
           }`}
       >
         <NextIntlClientProvider>
-          <ReactQueryProvider>
-            <MotionProvider>
-              <ScrollArea
-                className="h-dvh w-full"
-                viewportClassName="scroll-smooth motion-reduce:scroll-auto"
-                id="app-scroll-area"
-              >
-                <Navbar />
-                <main className="flex-1">{children}</main>
-                <Toaster richColors />
-                {/* <Footer /> */}
-                <SiteFooter />
-              </ScrollArea>
-            </MotionProvider>
-          </ReactQueryProvider>
+          <ScrollArea
+            className="h-dvh w-full"
+            viewportClassName="scroll-smooth motion-reduce:scroll-auto"
+            id="app-scroll-area"
+          >
+            <Navbar />
+            <main className="flex-1">
+              {children}
+              <PostHogInit />
+            </main>
+            <Toaster richColors />
+            <SiteFooter />
+          </ScrollArea>
         </NextIntlClientProvider>
 
+        {/* Claydar Script */}
         <Script
           src="https://static.claydar.com/init.v1.js?id=cxOAeXXAB5"
           strategy="lazyOnload"
         />
+
+        {/* Google Analytics */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-JJGJEDJL2Q`}
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JJGJEDJL2Q');
+          `}
+        </Script>
 
         {/* LinkedIn Insight Tag JS */}
         <Script id="linkedin-insight-tag" strategy="lazyOnload">
@@ -140,7 +149,6 @@ export default async function RootLayout({
 
         {/* LinkedIn Insight Tag NoScript Fallback */}
         <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             height="1"
             width="1"

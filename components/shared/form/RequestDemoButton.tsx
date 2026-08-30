@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import posthog from "posthog-js";
 
 import { cn } from "@/lib/utils";
 
@@ -23,10 +22,15 @@ function RequestDemoButton({
 }: RequestDemoButtonProps) {
   const t = useTranslations("Home.hero");
 
-  const handleClick = () => {
-    posthog.capture("clicked_request_demo", {
-      location
-    })
+  const handleClick = async () => {
+    try {
+      const posthog = (await import("posthog-js")).default;
+      posthog.capture("clicked_request_demo", {
+        location
+      });
+    } catch (error) {
+      console.error("Failed to load analytics", error);
+    }
   }
   return (
     <Link href="/request-demo" onClick={handleClick}>

@@ -16,6 +16,7 @@ import { buildLocalizedMetadata, SolutionsSeoKey } from "@/lib/seo";
 import { getFAQJsonLd, getSolutionSchema } from "@/lib/jsonLd";
 import { getTranslations } from "next-intl/server";
 import { FaqWidget } from "@/components/shared/faq/components/FaqSection";
+import { MotionProvider } from "@/app/providers/MotionProvider";
 
 type SolutionPageParams = {
     slug: string;
@@ -143,15 +144,17 @@ async function SolutionPage({ params }: SolutionPageProps) {
 
     return (
         <main>
-            <JsonLd data={[breadcrumbsJsonLd, serviceJsonLd, faqJsonLd]} />
+            <MotionProvider>
+                <JsonLd data={[breadcrumbsJsonLd, serviceJsonLd, faqJsonLd]} />
 
-            <HeroSection slug={slug} />
-            <ExpandingCardsSection slug={slug} />
-            <ScrollingSection slug={slug} />
-            <CardsGrid slug={slug} />
-            <TestimonialSection slug={slug} />
-            <RequestDemoSection />
-            <FaqWidget faqs={faqs} />
+                <HeroSection slug={slug} />
+                <ExpandingCardsSection slug={slug} />
+                <ScrollingSection slug={slug} />
+                <CardsGrid slug={slug} />
+                <TestimonialSection slug={slug} />
+                <RequestDemoSection />
+                <FaqWidget faqs={faqs} />
+            </MotionProvider>
         </main>
     );
 }
