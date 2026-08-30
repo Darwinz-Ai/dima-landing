@@ -1,9 +1,10 @@
+import { getTranslations } from "next-intl/server"
+
 import { SectionHeading } from "@/components/shared/SectionHeading"
 import { TestimonialCarousel } from "./TestimonialCarousel"
-import { useTranslations } from "next-intl"
 
-export const TestimonialsSection = () => {
-  const t = useTranslations("Home_New.testimonials")
+export const TestimonialsSection = async () => {
+  const t = await getTranslations("Home_New.testimonials")
 
   return (
     <section className="section-viewport bg-white">

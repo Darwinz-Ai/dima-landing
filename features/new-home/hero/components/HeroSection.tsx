@@ -1,3 +1,5 @@
+import { getLocale, getTranslations } from "next-intl/server"
+
 import { HeroCardFan } from "./HeroCardFan"
 import { HeroProof } from "./HeroProof"
 import { PlatformScatter } from "./PlatformScatter"
@@ -9,30 +11,28 @@ import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { cn } from "@/lib/utils"
 import { DEMO_URL } from "@/constants"
 
-import { useTranslations, useLocale } from "next-intl"
-
 const gridBackdrop = cn(
   "bg-surface",
   "[background-image:radial-gradient(circle_at_50%_28%,rgba(247,250,249,0.25),var(--surface)_76%),linear-gradient(rgba(10,35,51,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(10,35,51,0.045)_1px,transparent_1px)]",
   "[background-size:auto,3rem_3rem,3rem_3rem]"
 )
 
-export const HeroSection = () => {
-  const t = useTranslations("Home_New.hero")
-  const locale = useLocale()
+export const HeroSection = async () => {
+  const t = await getTranslations("Home_New.hero")
+  const locale = await getLocale()
   const isRTL = locale === "ar";
 
-  // Apply extra margin between headline and mark if in Arabic
+  // Apply extra margin between headline and highlight mark if in Arabic
   const headlineMarkMarginClass =
     locale === "ar"
-      ? "mt-8 max-sm:mt-2" // More space for Arabic (mobile + desktop)
-      : "max-sm:mt-1" // Default as before
+      ? "mt-8 max-sm:mt-2" // More space for Arabic
+      : "max-sm:mt-1" // Default
 
   // Add extra margin to the description if locale is Arabic
   const descriptionMarginClass =
     locale === "ar"
-      ? "mt-9 max-sm:mt-7" // More space for Arabic (desktop + mobile)
-      : "mt-4 max-sm:mt-4" // Default as before
+      ? "mt-9 max-sm:mt-7" // More space for Arabic
+      : "mt-4 max-sm:mt-4" // Default
 
   return (
     <section

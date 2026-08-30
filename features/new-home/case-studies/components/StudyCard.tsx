@@ -1,8 +1,8 @@
+import { getTranslations } from "next-intl/server"
 import { type CaseStudyBriefType } from "../types"
-import { useTranslations } from "next-intl"
 
-export const StudyCard = ({ story }: { story: CaseStudyBriefType }) => {
-  const t = useTranslations("Home_New.case-studies")
+export const StudyCard = async ({ story }: { story: CaseStudyBriefType }) => {
+  const t = await getTranslations("Home_New.case-studies")
 
   return (
     <div className="flex min-h-20 flex-col justify-between gap-6 overflow-hidden bg-night-panel p-6 text-white">

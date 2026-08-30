@@ -1,9 +1,11 @@
-import { Icon } from "@/components/shared/Icon"
-import { BENEFIT_ICONS } from "../constants"
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
 
-export const PlatformBenefits = () => {
-  const t = useTranslations("Home_New.mobile-application")
+import { Icon } from "@/components/shared/Icon"
+
+import { BENEFIT_ICONS } from "../constants"
+
+export const PlatformBenefits = async () => {
+  const t = await getTranslations("Home_New.mobile-application")
   const benefits = t.raw("benefits") as { title: string; description: string }[]
 
   return (

@@ -1,11 +1,13 @@
+import { getTranslations } from "next-intl/server"
+
 import { Icon } from "@/components/shared/Icon"
-import { GEMINI_GRADIENT_ID, MCP_CLIENTS } from "../constants"
 
 import { cn } from "@/lib/utils"
-import { useTranslations } from "next-intl"
 
-export const McpNote = () => {
-  const t = useTranslations("Home_New.copilot")
+import { GEMINI_GRADIENT_ID, MCP_CLIENTS } from "../constants"
+
+export const McpNote = async () => {
+  const t = await getTranslations("Home_New.copilot")
 
   return (
     <div className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-5 text-3.625 text-copy max-sm:mt-6 max-sm:gap-x-5 max-sm:text-3.25">

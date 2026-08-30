@@ -1,19 +1,11 @@
 import dynamic from "next/dynamic";
-
-// import HeroSection from "@/features/home/sections/HeroSection";
-import DimaAiSection from "@/features/home/sections/DimaAiSection";
-import DimaSuiteSection from "@/features/home/sections/DimaSuiteSection";
-// import CaseStudiesSection from "@/features/home/sections/CaseStudiesSection";
-import QuestionsAnsweredSection from "@/features/home/sections/QuestionsAnsweredSection";
-import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
-import JsonLd from "@/components/shared/JsonLd";
-
 import type { Metadata } from "next";
-import { QuestionAccordion } from "@/types";
-
 import { getTranslations } from "next-intl/server";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
+
+import JsonLd from "@/components/shared/JsonLd";
+
 import { HeroSection } from "@/features/new-home/hero/components/HeroSection";
 import { ArabicIntelligence } from "@/features/new-home/arabicIntelligence/component/ArabicIntelligence";
 import { ProductWalkthrough } from "@/features/new-home/product-walkthrough/components/ProductWalkthrough";
@@ -26,6 +18,7 @@ import { ImplementationTimeline } from "@/features/new-home/implementation/compo
 import { FaqSection } from "@/features/new-home/faq/components/FaqSection";
 import { FinalCta } from "@/features/new-home/final-cta/components/FinalCta";
 
+import { QuestionAccordion } from "@/types";
 
 type HomePageProps = {
   params: Promise<{ locale: string }>
@@ -68,18 +61,6 @@ export async function generateMetadata(
   });
 }
 
-const EmpoweringAgenciesSection = dynamic(() => import("@/features/home/sections/EmpoweringAgenciesSection"), {
-  ssr: true,
-});
-
-const OwnConversationSection = dynamic(() => import("@/features/home/sections/OwnConversationSection"), {
-  ssr: true,
-});
-
-// const TestimonialSection = dynamic(() => import("@/features/home/sections/TestimonialSection"), {
-//   ssr: true,
-// });
-
 async function HomePage() {
   const tHomeQuestions = await getTranslations("Home.questionsAnswered");
   const faqs = (tHomeQuestions.raw("faqs") as QuestionAccordion[]) ?? [];
@@ -88,21 +69,9 @@ async function HomePage() {
   const productJsonLd = await getProductJsonLd();
   const faqJsonLd = await getFAQJsonLd(faqs);
 
-
-
   return (
     <main className="h-full">
       <JsonLd data={[orgJsonLd, productJsonLd, faqJsonLd]} />
-
-      {/* <HeroSection /> */}
-      {/* <EmpoweringAgenciesSection /> */}
-      {/* <OwnConversationSection /> */}
-      {/* <DimaAiSection /> */}
-      {/* <DimaSuiteSection /> */}
-      {/* <CaseStudiesSection /> */}
-      {/* <TestimonialSection /> */}
-      {/* <RequestDemoSection /> */}
-      {/* <QuestionsAnsweredSection faqs={faqs} /> */}
 
       <HeroSection />
       <ArabicIntelligence />

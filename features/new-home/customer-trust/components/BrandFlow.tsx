@@ -1,5 +1,6 @@
+import { getLocale } from "next-intl/server"
+
 import Image from "next/image"
-import { useLocale } from "next-intl"
 
 import { BRANDS } from "@/constants"
 import { cn } from "@/lib/utils"
@@ -20,14 +21,14 @@ const flowMask =
 const edgeFade =
   "after:pointer-events-none after:absolute after:inset-y-0 after:z-1 after:w-8.5 after:content-['']"
 
-export const BrandFlow = ({
+export const BrandFlow = async ({
   brands,
   side,
 }: {
   brands: typeof BRANDS
   side: "left" | "right"
 }) => {
-  const locale = useLocale();
+  const locale = await getLocale();
   // Flip the side if locale is 'ar'
   const isArabic = locale === "ar"
   const effectiveSide = isArabic

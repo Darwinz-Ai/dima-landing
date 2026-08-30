@@ -1,17 +1,18 @@
+import { getLocale, getTranslations } from "next-intl/server";
+
 import Image from "next/image"
 import { PlatformBenefits } from "./PlatformBenefits"
 import { SourceMarquee } from "./SourceMarquee"
-
-import { DEMO_URL } from "@/constants"
-import dimaPhone from "@/public/dima-phone.png"
 import { ArrowLink } from "@/components/shared/ArrowLink"
-import { useLocale, useTranslations } from "next-intl"
-import { cn } from "@/lib/utils"
+import dimaPhone from "@/public/dima-phone.png"
 
-export const PlatformSection = () => {
-  const t = useTranslations("Home_New.mobile-application")
-  const tCommon = useTranslations("Home_New.common")
-  const locale = useLocale();
+import { cn } from "@/lib/utils"
+import { DEMO_URL } from "@/constants"
+
+export const PlatformSection = async () => {
+  const t = await getTranslations("Home_New.mobile-application")
+  const tCommon = await getTranslations("Home_New.common")
+  const locale = await getLocale();
   const isRTL = locale === "ar";
 
   return (

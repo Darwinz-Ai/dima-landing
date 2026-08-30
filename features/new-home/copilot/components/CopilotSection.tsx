@@ -1,13 +1,14 @@
+import { getLocale, getTranslations } from "next-intl/server";
+
 import { McpNote } from "./McpNote"
 import { PromptConsole } from "./PromptConsole"
 
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 
-import { DEMO_URL } from "@/constants"
-
 import { cn } from "@/lib/utils"
 import { Icon } from "@/components/shared/Icon"
-import { useLocale, useTranslations } from "next-intl"
+
+import { DEMO_URL } from "@/constants"
 
 const copilotBackdrop = cn(
   "bg-surface",
@@ -15,10 +16,10 @@ const copilotBackdrop = cn(
   "[background-size:auto,3rem_3rem,3rem_3rem]"
 )
 
-export const CopilotSection = () => {
-  const t = useTranslations("Home_New.copilot")
-  const tCommon = useTranslations("Home_New.common")
-  const locale = useLocale();
+export const CopilotSection = async () => {
+  const t = await getTranslations("Home_New.copilot")
+  const tCommon = await getTranslations("Home_New.common")
+  const locale = await getLocale();
   const isRTL = locale === "ar";
 
   return (

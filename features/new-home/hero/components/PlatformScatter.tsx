@@ -1,7 +1,8 @@
 
-import { cn } from "@/lib/utils"
-import { PLATFORMS } from "@/constants"
 import Image from "next/image"
+
+import { cn } from "@/lib/utils"
+
 import { PLATFORMS_IMAGES } from "@/constants/platforms"
 
 const SCATTER = [

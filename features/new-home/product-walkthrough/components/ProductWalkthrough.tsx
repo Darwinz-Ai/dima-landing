@@ -1,10 +1,12 @@
-import { useTranslations } from "next-intl"
+import { getTranslations } from "next-intl/server"
+
 import { ProductWalkthroughShell } from "./ProductWalkthroughShell"
 import { ProductFrame } from "./ProductFrame"
+
 import { PRODUCT_ASSETS } from "../constants"
 
-export const ProductWalkthrough = () => {
-  const t = useTranslations("Home_New.product-walkthrough")
+export const ProductWalkthrough = async () => {
+  const t = await getTranslations("Home_New.product-walkthrough")
   const totalSteps = String(PRODUCT_ASSETS.length).padStart(2, "0")
 
   // Hydrate the steps with translations

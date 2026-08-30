@@ -1,12 +1,13 @@
+import { getTranslations } from "next-intl/server"
+
 import { ArrowLink } from "@/components/shared/ArrowLink"
 import { CtaPattern } from "./CtaPattern"
 
 import { DEMO_URL } from "@/constants"
-import { useTranslations } from "next-intl"
 
-export const FinalCta = () => {
-  const t = useTranslations("Home_New.final-cta")
-  const tCommon = useTranslations("Home_New.common")
+export const FinalCta = async () => {
+  const t = await getTranslations("Home_New.final-cta")
+  const tCommon = await getTranslations("Home_New.common")
 
   return (
     <section className="bg-surface">

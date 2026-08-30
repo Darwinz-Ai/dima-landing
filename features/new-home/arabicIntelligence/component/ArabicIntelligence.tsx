@@ -1,9 +1,13 @@
-import { CheckmarkCircle02Icon } from "@hugeicons/core-free-icons"
-import { cn } from "@/lib/utils"
-import { Icon } from "@/components/shared/Icon"
+import { getTranslations } from "next-intl/server"
+
 import { SampleRow } from "./SampleRow"
+import { Icon } from "@/components/shared/Icon"
+
+import { CheckmarkCircle02Icon } from "@hugeicons/core-free-icons"
+
 import { type MetricType, type SampleType } from "../types"
-import { useTranslations } from "next-intl"
+
+import { cn } from "@/lib/utils"
 
 const arabicBackdrop = cn(
   "bg-muted",
@@ -11,9 +15,8 @@ const arabicBackdrop = cn(
 )
 
 // Helper: for robust t pathing for this block
-function useArabicIntelligenceStrings() {
-  // Namespace matches en.json: Home_New.arabic-intelligence
-  const t = useTranslations("Home_New.arabic-intelligence")
+async function useArabicIntelligenceStrings() {
+  const t = await getTranslations("Home_New.arabic-intelligence")
   return {
     sectionKicker: t("title"),
     mainHeading: t("mainHeading"),
@@ -23,8 +26,8 @@ function useArabicIntelligenceStrings() {
   }
 }
 
-export const ArabicIntelligence = () => {
-  const { sectionKicker, mainHeading, differentiators, samples, metrics } = useArabicIntelligenceStrings()
+export const ArabicIntelligence = async () => {
+  const { sectionKicker, mainHeading, differentiators, samples, metrics } = await useArabicIntelligenceStrings()
 
   // Split mainHeading on \n (per en.json), with <br/> inserted
   const headingParts = mainHeading.split("\n")

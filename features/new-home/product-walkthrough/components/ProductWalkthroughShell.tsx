@@ -1,4 +1,3 @@
-// ProductWalkthroughShell.tsx
 "use client"
 
 import { useRef } from "react"
@@ -11,7 +10,7 @@ export const ProductWalkthroughShell = ({
   children,
 }: {
   steps: ProductStepType[]
-  sectionKicker: React.ReactNode // <--- Added prop
+  sectionKicker: React.ReactNode
   children: React.ReactNode
 }) => {
   const sectionRef = useRef<HTMLElement>(null)

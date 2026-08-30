@@ -1,12 +1,13 @@
+import { getTranslations } from "next-intl/server"
+
 import Image from "next/image"
 import { BrandFlow } from "./BrandFlow"
 
 import { leftRowBrands, rightRowBrands } from "../constants"
-import { useTranslations } from "next-intl"
 
-export const CustomerTrust = () => {
-  const t = useTranslations("Home_New.customer-trust")
-  const tHero = useTranslations("Home_New.hero")
+export const CustomerTrust = async () => {
+  const t = await getTranslations("Home_New.customer-trust")
+  const tHero = await getTranslations("Home_New.hero")
 
   return (
     <section

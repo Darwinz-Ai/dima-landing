@@ -1,10 +1,10 @@
-import { AI_ASSISTANTS } from '../constants'
+import { getTranslations } from 'next-intl/server'
 import { Icon } from '@/components/shared/Icon'
 import { cn } from '@/lib/utils'
-import { useTranslations } from "next-intl"
+import { AI_ASSISTANTS } from '../constants'
 
-const HeroAskAI = () => {
-    const t = useTranslations("Home_New.hero")
+const HeroAskAI = async () => {
+    const t = await getTranslations("Home_New.hero")
     return (
         <div className="mt-4 flex shrink-0 items-center justify-center gap-3 max-sm:mt-6 max-sm:flex-col max-sm:gap-2">
             <span className="text-[1.05rem] font-medium text-label max-sm:text-[0.95rem]">

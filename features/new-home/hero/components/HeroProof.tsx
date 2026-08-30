@@ -1,10 +1,11 @@
+import { getTranslations } from "next-intl/server"
+
 import Image from "next/image"
 import { BRANDS } from "@/constants/brands"
 import { cn } from "@/lib/utils"
-import { useTranslations } from "next-intl"
 
-export const HeroProof = ({ className }: { className?: string }) => {
-  const t = useTranslations("Home_New.hero")
+export const HeroProof = async ({ className }: { className?: string }) => {
+  const t = await getTranslations("Home_New.hero")
 
   return (
     <div className={cn("w-[min(100%,600px)]", className)}>
@@ -22,7 +23,7 @@ export const HeroProof = ({ className }: { className?: string }) => {
           >
             <div className="flex items-center justify-center h-full w-full">
               <Image
-                className={cn("h-[48px] max-h-full w-auto object-contain", brand.fit)}
+                className={cn("h-12 max-h-full w-auto object-contain", brand.fit)}
                 src={brand.src}
                 alt={`${brand.name} logo`}
                 width={200}
