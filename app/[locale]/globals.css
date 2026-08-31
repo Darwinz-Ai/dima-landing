@@ -164,7 +164,7 @@
   --animate-trust-rightward: trust-rightward 38s linear infinite;
   --animate-drift: drift 8s ease-in-out infinite alternate;
   --animate-highlight: highlight-expand 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s
-    forwards;
+    both;
   --animate-fade-in: fade-in 0.4s ease-out forwards;
   --animate-fade-out: fade-out 0.3s ease-in forwards;
 

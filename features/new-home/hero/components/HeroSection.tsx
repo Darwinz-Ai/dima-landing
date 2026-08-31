@@ -58,7 +58,7 @@ export const HeroSection = async () => {
         <h1 className="pointer-events-auto max-w-[15ch] shrink-0 text-[clamp(2.6rem,4.2vw,3.95rem)] leading-[.95] font-bold tracking-[-.075em] text-balance max-sm:text-[clamp(2.35rem,10vw,2.9rem)]">
           {t("headline")}
           <span className={cn("block", headlineMarkMarginClass)}>
-            <mark className="relative box-decoration-clone px-[0.04em] font-normal text-ink after:absolute after:inset-x-0 after:bottom-0 after:h-[48%] after:origin-left after:scale-x-0 after:bg-brand/50 after:animate-highlight after:content-['']">
+            <mark className="relative bg-transparent box-decoration-clone px-[0.04em] font-normal text-ink after:absolute after:inset-x-0 after:bottom-0 after:h-[48%] after:origin-left after:bg-brand/50 after:animate-highlight after:content-['']">
               <span className="relative z-10">{t("headlineMark")}</span>
             </mark>
           </span>
