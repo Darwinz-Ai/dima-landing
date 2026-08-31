@@ -1,7 +1,7 @@
 
 import LogoCarousel from "@/features/home/components/carousels/LogoCarousel";
 import HeroSection from "@/features/case-studies/sections/HeroSection";
-import FilterSection from "@/features/case-studies/sections/FilterSection";
+// import FilterSection from "@/features/case-studies/sections/FilterSection";
 import DimaSection from "@/features/case-studies/sections/DimaSection";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import JsonLd from "@/components/shared/JsonLd";
@@ -65,7 +65,7 @@ async function CaseStudiesPage() {
 
             <HeroSection />
             <LogoCarousel />
-            <FilterSection />
+            {/* <FilterSection /> */}
             <DimaSection />
             <RequestDemoSection />
         </main>

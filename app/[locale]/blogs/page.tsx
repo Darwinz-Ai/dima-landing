@@ -10,10 +10,11 @@ import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getBlogsPageJsonLd } from "@/lib/jsonLd";
-import { fetchBlogs } from "@/lib/firebase/blogsFunctions";
+import { fetchBlogsByPageNumber, getBlogsCount } from "@/lib/firebase/blogsFunctions";
 
 type BlogsPageProps = {
     params: Promise<{ locale: string }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata(
@@ -53,19 +54,36 @@ export async function generateMetadata(
     });
 }
 
+const PAGE_SIZE = 16;
 
-
-async function BlogsPage() {
+async function BlogsPage({ params, searchParams }: BlogsPageProps) {
     const locale = await getLocale();
-    const blogs = await fetchBlogs(locale, [], null)
+    const resolvedSearchParams = await searchParams;
 
+    // Parse the page number from the URL (?page=2), default to 1
+    const pageQuery = resolvedSearchParams?.page;
+    const parsedPage = typeof pageQuery === "string" ? parseInt(pageQuery, 10) : 1;
+    const requestedPage = isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage;
+
+    // Fetch total count and calculate total pages
+    const totalCount = await getBlogsCount();
+    const totalPages = totalCount > 0 ? Math.ceil(totalCount / PAGE_SIZE) : 1;
+    const validCurrentPage = Math.min(requestedPage, totalPages);
+
+    // Fetch only the 16 blogs for the current page
+    const blogs = await fetchBlogsByPageNumber(locale, validCurrentPage, PAGE_SIZE);
     const blogsJsonLd = await getBlogsPageJsonLd(blogs);
+
     return (
         <main>
             <JsonLd data={[blogsJsonLd]} />
             <SectionWrapper className="">
                 <HeroSection />
-                <AllArticlesSection />
+                <AllArticlesSection
+                    blogs={blogs}
+                    currentPage={validCurrentPage}
+                    totalPages={totalPages}
+                />
             </SectionWrapper>
             <RequestDemoSection />
         </main>

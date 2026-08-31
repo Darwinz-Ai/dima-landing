@@ -1,4 +1,5 @@
-import { useLocale } from "next-intl";
+import { getLocale } from "next-intl/server";
+
 import {
   Pagination,
   PaginationContent,
@@ -6,81 +7,40 @@ import {
   PaginationLink,
   PaginationEllipsis
 } from "@/components/ui/pagination";
-import { MouseEvent } from "react";
+
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+
 import { cn } from "@/lib/utils";
 
 type PaginationWrapperProps = {
   currentPage: number;
   totalPages: number;
-  canGoPrevious: boolean;
-  canGoNext: boolean;
-  onPrevious: () => void;
-  onNext: () => void | Promise<void>;
-  onSelectPage?: (pageNumber: number) => void | Promise<void>;
-  isLoadingNext?: boolean;
 };
 
-// Helper function to calculate which page numbers to show
 const getVisiblePages = (current: number, total: number) => {
-  if (total <= 5) {
-    return Array.from({ length: total }, (_, i) => i + 1);
-  }
-  // If at beginning of pagination, render first few pages
-  if (current <= 3) {
-    return [1, 2, 3, 4, "...", total];
-  }
-
-  // If at end of pagination, render last few pages
-  if (current >= total - 2) {
-    return [1, "...", total - 3, total - 2, total - 1, total];
-  }
-
-  // If middle of pagination, render around current then add ellipses
+  if (total <= 5) return Array.from({ length: total }, (_, i) => i + 1);
+  if (current <= 3) return [1, 2, 3, 4, "...", total];
+  if (current >= total - 2) return [1, "...", total - 3, total - 2, total - 1, total];
   return [1, "...", current - 1, current, current + 1, "...", total];
 };
 
-function PaginationWrapper({
-  currentPage,
-  totalPages,
-  canGoPrevious,
-  canGoNext,
-  onPrevious,
-  onNext,
-  onSelectPage,
-}: PaginationWrapperProps) {
-  const locale = useLocale();
+export default async function PaginationWrapper({ currentPage, totalPages }: PaginationWrapperProps) {
+  const locale = await getLocale();
   const isRTL = locale === "ar";
-
-  const handlePreviousClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    if (!canGoPrevious) return;
-    onPrevious();
-  };
-
-  const handleNextClick = async (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    if (!canGoNext) return;
-    await onNext();
-  };
-
-  const handlePageClick = async (event: MouseEvent<HTMLAnchorElement>, pageNumber: number) => {
-    event.preventDefault();
-    if (!onSelectPage || pageNumber === currentPage) return;
-    await onSelectPage(pageNumber);
-  };
-
   const safeTotalPages = totalPages > 0 ? totalPages : 1;
   const visiblePages = getVisiblePages(currentPage, safeTotalPages);
+
+  const canGoPrevious = currentPage > 1;
+  const canGoNext = currentPage < safeTotalPages;
 
   return (
     <Pagination className="mb-4">
       <PaginationContent className="space-x-1 sm:space-x-2">
         <PaginationItem>
+          {/* Previous Page Link */}
           <PaginationLink
-            href="#"
+            href={canGoPrevious ? `?page=${currentPage - 1}#articles-grid` : "#"}
             size="icon"
-            onClick={handlePreviousClick}
             aria-disabled={!canGoPrevious}
             className={cn(
               "size-8 sm:size-10 rounded-full flex items-center justify-center",
@@ -103,11 +63,11 @@ function PaginationWrapper({
           const pageNumber = page as number;
           return (
             <PaginationItem key={pageNumber}>
+              {/* Numbered Page Link */}
               <PaginationLink
-                href="#"
+                href={`?page=${pageNumber}#articles-grid`}
                 isActive={pageNumber === currentPage}
                 className="tabular-nums h-8 w-8 sm:h-10 sm:w-10 p-0 flex items-center justify-center text-xs sm:text-sm"
-                onClick={(event) => handlePageClick(event, pageNumber)}
               >
                 {pageNumber}
               </PaginationLink>
@@ -116,10 +76,10 @@ function PaginationWrapper({
         })}
 
         <PaginationItem>
+          {/* Next Page Link */}
           <PaginationLink
-            href="#"
+            href={canGoNext ? `?page=${currentPage + 1}#articles-grid` : "#"}
             size="icon"
-            onClick={handleNextClick}
             aria-disabled={!canGoNext}
             className={cn(
               "size-8 sm:size-10 rounded-full flex items-center justify-center",
@@ -133,5 +93,3 @@ function PaginationWrapper({
     </Pagination>
   );
 }
-
-export default PaginationWrapper;
