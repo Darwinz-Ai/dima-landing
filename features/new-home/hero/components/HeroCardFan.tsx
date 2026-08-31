@@ -1,49 +1,53 @@
-import Image from "next/image"
-import { HERO_CARDS } from "../constants/cards"
+import { getImageProps } from "next/image"
+import heroImageDesktop from "@/public/hero-slides/dima-hero-desktop.webp"
+import heroImageTablet from "@/public/hero-slides/dima-hero-tablet.webp"
+import heroImageMobile from "@/public/hero-slides/dima-hero-mobile.webp"
 
-const FAN_CARDS = HERO_CARDS.map((card, index) => {
-  const middle = (HERO_CARDS.length - 1) / 2
-  const offset = (index - middle) / middle
-
-  return {
-    ...card,
-    zIndex: HERO_CARDS.length - Math.abs(index - middle),
-    transform: `translateY(${(offset * offset * 2.4).toFixed(2)}rem) rotate(${(
-      offset * 13
-    ).toFixed(2)}deg) rotateY(${(offset * -14).toFixed(2)}deg)`,
+export const HeroCardFan = () => {
+  const commonProps = {
+    alt: "Panels from the dima workspace",
+    priority: true,
+    className: "h-auto w-full object-contain transition-transform duration-500 ease-out",
   }
-})
 
-const CENTRE_CARD = Math.floor(HERO_CARDS.length / 2)
+  const { props: desktopProps } = getImageProps({ ...commonProps, src: heroImageDesktop })
+  const { props: tabletProps } = getImageProps({ ...commonProps, src: heroImageTablet })
+  const { props: mobileProps } = getImageProps({ ...commonProps, src: heroImageMobile })
 
-export const HeroCardFan = () => (
-  <div
-    className="flex w-max items-start justify-center perspective-[1600px]"
-    aria-label="Panels from the dima workspace"
-    role="group"
-    dir="ltr"
-  >
-    {FAN_CARDS.map((card, index) => {
-      const isMiddleThree = Math.abs(index - CENTRE_CARD) <= 1;
-
-      return (
-        <div
-          className="-ml-10 shrink-0 first:ml-0"
-          style={{ transform: card.transform, zIndex: card.zIndex }}
-          key={card.alt}
-        >
-          <figure className="h-54 w-46 overflow-hidden border border-line-strong bg-white transition-transform duration-500 ease-out hover:-translate-y-1 motion-reduce:transition-none">
-            <Image
-              className="size-full object-cover object-top-left"
-              src={card.src}
-              alt={card.alt}
-              quality={90}
-              sizes="(max-width: 640px) 130px, 184px"
-              priority={isMiddleThree}
-            />
-          </figure>
-        </div>
-      )
-    })}
-  </div>
-)
+  return (
+    <div
+      className="flex w-full items-start justify-center"
+      aria-label="Panels from the dima workspace"
+      dir="ltr"
+    >
+      <picture className="w-full">
+        {/* Desktop: lg breakpoint (68.75rem / 1100px) */}
+        <source
+          media="(min-width: 68.75rem)"
+          srcSet={desktopProps.src}
+          width={1280}
+          height={286}
+        />
+        {/* Tablet: md breakpoint (50rem / 800px) */}
+        <source
+          media="(min-width: 50rem)"
+          srcSet={tabletProps.src}
+          width={868}
+          height={286}
+        />
+        {/* Mobile / Fallback */}
+        <img
+          src={mobileProps.src}
+          alt="Panels from the dima workspace"
+          width={558}
+          height={286}
+          style={{
+            width: "100%",
+            height: "auto",
+            objectFit: "contain",
+          }}
+        />
+      </picture>
+    </div>
+  )
+}

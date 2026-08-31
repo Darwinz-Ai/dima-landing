@@ -115,7 +115,7 @@ export const HeroSection = async () => {
           <HeroAskAI />
         </div>
 
-        <div className="pointer-events-auto mt-auto flex w-full min-w-0 shrink-0 justify-center overflow-x-clip deck-fade pt-6 pb-16 max-sm:pt-5 max-sm:pb-12">
+        <div className="pointer-events-auto mt-auto flex w-full min-w-0 shrink-0 justify-center overflow-x-clip deck-fade pt-1 pb-16 max-sm:pt-5 max-sm:pb-12">
           <HeroCardFan />
         </div>
       </div>
