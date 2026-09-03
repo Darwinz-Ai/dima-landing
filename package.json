@@ -1,6 +1,13 @@
 {
   "name": "thedar.ai-nextjs",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all",
+    "supports es6-module"
+  ],
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",

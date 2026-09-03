@@ -10,9 +10,10 @@ export const HeroCardFan = () => {
     className: "h-auto w-full object-contain transition-transform duration-500 ease-out",
   }
 
-  const { props: desktopProps } = getImageProps({ ...commonProps, src: heroImageDesktop })
-  const { props: tabletProps } = getImageProps({ ...commonProps, src: heroImageTablet })
-  const { props: mobileProps } = getImageProps({ ...commonProps, src: heroImageMobile })
+  // 1. Explicitly tell Next.js the exact display widths for each device layout
+  const { props: desktopProps } = getImageProps({ ...commonProps, src: heroImageDesktop, sizes: "100vw" })
+  const { props: tabletProps } = getImageProps({ ...commonProps, src: heroImageTablet, sizes: "100vw" })
+  const { props: mobileProps } = getImageProps({ ...commonProps, src: heroImageMobile, sizes: "220px" })
 
   return (
     <div
@@ -21,26 +22,21 @@ export const HeroCardFan = () => {
       dir="ltr"
     >
       <picture className="w-full">
-        {/* Desktop: lg breakpoint (68.75rem / 1100px) */}
+        {/* Desktop */}
         <source
           media="(min-width: 68.75rem)"
-          srcSet={desktopProps.src}
-          width={1280}
-          height={286}
+          srcSet={desktopProps.srcSet}
+          sizes={desktopProps.sizes} // 2. Pass sizes explicitly so it doesn't inherit 220px
         />
-        {/* Tablet: md breakpoint (50rem / 800px) */}
+        {/* Tablet */}
         <source
           media="(min-width: 50rem)"
-          srcSet={tabletProps.src}
-          width={868}
-          height={286}
+          srcSet={tabletProps.srcSet}
+          sizes={tabletProps.sizes} // 2. Pass sizes explicitly
         />
         {/* Mobile / Fallback */}
         <img
-          src={mobileProps.src}
-          alt="Panels from the dima workspace"
-          width={558}
-          height={286}
+          {...mobileProps}
           style={{
             width: "100%",
             height: "auto",

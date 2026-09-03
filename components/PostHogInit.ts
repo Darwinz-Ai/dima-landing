@@ -20,7 +20,7 @@ export default function PostHogInit() {
         };
 
         // Safari doesn't support requestIdleCallback natively, so we fall back to setTimeout
-        const requestIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+        const requestIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 3000));
 
         requestIdle(() => {
             initPostHog();
