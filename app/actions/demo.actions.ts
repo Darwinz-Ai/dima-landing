@@ -12,14 +12,18 @@ export const requestDemo = async (data: FormInputs, posthog_session_id: string) 
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        'X-POSTHOG-SESSION-ID': posthog_session_id
+        'X-POSTHOG-SESSION-ID': posthog_session_id,
+        "X-Client-Platform": "web",
       },
       body: JSON.stringify(data),
     });
 
     if (!response.ok) {
+      const errorResponse = await response.json().catch(() => null);
       return {
         success: false,
+        message: errorResponse?.message || "Failed to submit demo request",
+        errorCode: errorResponse?.error || null
       };
     }
     const posthog = getPostHogClient();
@@ -54,6 +58,7 @@ export const requestDemo = async (data: FormInputs, posthog_session_id: string) 
     // console.log("Error when sending request:", error);
     return {
       success: false,
+      message: "A network or server error occurred.",
     };
   }
 };

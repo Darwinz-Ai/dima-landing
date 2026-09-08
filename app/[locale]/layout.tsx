@@ -21,7 +21,6 @@ const cairo = Cairo({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
-  preload: false,
 });
 
 const displayFont = Space_Grotesk({
