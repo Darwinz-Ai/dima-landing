@@ -57,7 +57,7 @@ function NavigationDropdown({ triggerName, children }: CustomDropdownProps) {
             <PopoverContent
                 align="center"
                 side="bottom"
-                sideOffset={5}
+                sideOffset={96}
                 avoidCollisions={false}
                 onOpenAutoFocus={(event) => event.preventDefault()}
                 onClick={(event) => {

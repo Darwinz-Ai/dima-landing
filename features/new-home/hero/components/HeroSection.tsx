@@ -39,7 +39,7 @@ export const HeroSection = async () => {
   return (
     <section
       className={cn(
-        "relative flex h-[calc(100svh-var(--spacing-chrome))] flex-col overflow-clip max-md:h-auto",
+        "relative flex h-[calc(100svh-var(--spacing-chrome))] flex-col overflow-clip max-md:h-auto mt-24",
         gridBackdrop
       )}
     >

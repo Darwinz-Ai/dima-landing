@@ -1,12 +1,13 @@
 import { notFound } from "next/navigation";
 
-import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
-import MoreCaseStudies from "@/features/case-studies/sections/case-study/MoreCaseStudies";
-import StackedCardsSection from "@/features/case-studies/sections/case-study/StackedCardsSection";
-import CaseContent from "@/features/case-studies/sections/case-study/CaseContent";
+// import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
+// import MoreCaseStudies from "@/features/case-studies/sections/case-study/MoreCaseStudies";
+// import StackedCardsSection from "@/features/case-studies/sections/case-study/StackedCardsSection";
+// import CaseContent from "@/features/case-studies/sections/case-study/CaseContent";
 
 import { fetchSingleCaseStudy } from "@/lib/firebase/caseStudiesFunctions";
 import { getLocale } from "next-intl/server";
+import HeroSection from "@/features/new-case-studies/components/HeroSection";
 
 
 async function CaseStudyContent({ slug }: { slug: string }) {
@@ -15,10 +16,12 @@ async function CaseStudyContent({ slug }: { slug: string }) {
         const caseStudy = await fetchSingleCaseStudy(locale, slug)
         return (
             <article>
-                <StackedCardsSection caseStudy={caseStudy} />
+                <HeroSection caseStudy={caseStudy} />
+                {/* <StackedCardsSection caseStudy={caseStudy} />
                 <CaseContent caseStudy={caseStudy} />
                 <MoreCaseStudies />
-                <RequestDemoSection />
+                <RequestDemoSection /> */}
+
             </article>
         );
     } catch (error) {

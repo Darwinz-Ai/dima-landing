@@ -1,7 +1,7 @@
 
 import LogoCarousel from "@/features/home/components/carousels/LogoCarousel";
 import HeroSection from "@/features/case-studies/sections/HeroSection";
-// import FilterSection from "@/features/case-studies/sections/FilterSection";
+import FilterSection from "@/features/case-studies/sections/FilterSection";
 import DimaSection from "@/features/case-studies/sections/DimaSection";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import JsonLd from "@/components/shared/JsonLd";
@@ -10,11 +10,12 @@ import type { Metadata } from "next";
 
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getLocale } from "next-intl/server";
-import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
+import { fetchCaseStudiesByPageNumber, getCaseStudiesCount } from "@/lib/firebase/caseStudiesFunctions";
 import { getCaseStudiesPageJsonLd } from "@/lib/jsonLd";
 
 type CaseStudiesPageProps = {
     params: Promise<{ locale: string }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata(
@@ -54,22 +55,44 @@ export async function generateMetadata(
     });
 }
 
-async function CaseStudiesPage() {
-    const locale = await getLocale();
+const PAGE_SIZE = 6;
 
-    const caseStudies = await fetchCaseStudies(locale, undefined, null)
+export default async function CaseStudiesPage({ searchParams }: CaseStudiesPageProps) {
+    const locale = await getLocale();
+    const resolvedSearchParams = await searchParams;
+
+    // 1. Parse URL Parameters
+    const pageQuery = resolvedSearchParams?.page;
+    const parsedPage = typeof pageQuery === "string" ? parseInt(pageQuery, 10) : 1;
+    const requestedPage = isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage;
+
+    const defaultType = locale === "ar" ? "الكل" : "all";
+    const currentType = typeof resolvedSearchParams?.type === "string"
+        ? resolvedSearchParams.type
+        : defaultType;
+
+    // 2. Fetch Data
+    const totalCount = await getCaseStudiesCount(currentType);
+    const totalPages = totalCount > 0 ? Math.ceil(totalCount / PAGE_SIZE) : 1;
+    const validCurrentPage = Math.min(requestedPage, totalPages);
+
+    const caseStudies = await fetchCaseStudiesByPageNumber(locale, validCurrentPage, PAGE_SIZE, currentType);
     const caseStudiesJsonLd = await getCaseStudiesPageJsonLd(caseStudies);
+
+
     return (
         <main>
             <JsonLd data={[caseStudiesJsonLd]} />
-
             <HeroSection />
             <LogoCarousel />
-            {/* <FilterSection /> */}
+            <FilterSection
+                caseStudies={caseStudies}
+                currentPage={validCurrentPage}
+                totalPages={totalPages}
+                currentType={currentType}
+            />
             <DimaSection />
             <RequestDemoSection />
         </main>
     );
 }
-
-export default CaseStudiesPage;

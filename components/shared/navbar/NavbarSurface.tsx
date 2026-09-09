@@ -19,7 +19,7 @@ function NavbarSurface({ children }: NavbarSurfaceProps) {
         <NavbarSurfaceContext.Provider value={surface}>
             <header
                 ref={setSurface}
-                className="container relative overflow-visible bg-white shadow-[0_0_15px_rgba(0,0,0,0.12)] md:mt-4 md:rounded-full"
+                className="container relative overflow-visible"
                 dir="ltr"
             >
                 {children}

@@ -1361,7 +1361,16 @@
     "readMore": "Read more"
   },
   "CaseStudy": {
-    "moreCases": "MORE CASES"
+    "moreCases": "MORE CASES",
+    "by": "By",
+    "useCases": "Use Cases",
+    "customerSuccessStories": "Customer Success Stories",
+    "industry": "Industry",
+    "organization": "Organization",
+    "headquarters": "headquarters",
+    "challenge": "the challenge",
+    "solution": "the solution",
+    "result": "the result"
   },
   "Tools": {
     "badge": "Tools & Calculators",

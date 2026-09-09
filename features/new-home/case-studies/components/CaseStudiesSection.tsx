@@ -1,5 +1,4 @@
 import { getLocale, getTranslations } from "next-intl/server"
-import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions"
 import { StudyCard } from "./StudyCard"
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons"
 import { CASE_STUDIES_URL } from "@/constants"
@@ -9,15 +8,20 @@ import { TextArrowLink } from "@/components/shared/TextArrowLink"
 import { Icon } from "@/components/shared/Icon"
 import { Link } from "@/i18n/navigation"
 import { CaseStudy } from "@/types"
+import { fetchCaseStudiesByPageNumber } from "@/lib/firebase/caseStudiesFunctions"
 
 export const CaseStudiesSection = async () => {
   const locale = await getLocale()
   const t = await getTranslations("Home_New.case-studies")
+
   const isRTL = locale === "ar";
+  const page = 1;
+  const limitCount = 3;
+
   let caseStudies: CaseStudy[] = []
 
   try {
-    caseStudies = await fetchCaseStudies(locale, { featured: true }, 3)
+    caseStudies = await fetchCaseStudiesByPageNumber(locale, page, limitCount,)
   } catch (error) {
     console.error("Failed to fetch case studies", error)
   }
@@ -31,8 +35,8 @@ export const CaseStudiesSection = async () => {
 
     return {
       id: study.id,
-      eyebrow: study.content.type,
-      title: study.content.title,
+      eyebrow: study.type,
+      title: study.content.headline.text,
       stat: `${primaryMetric.value}${primaryMetric.suffix}`,
       metric: primaryMetric.title,
       visual: fallbackVisuals[index % fallbackVisuals.length],

@@ -110,7 +110,7 @@
   --breakpoint-md: 50rem;
   --breakpoint-lg: 68.75rem;
   --container-page: 80rem;
-  --spacing-nav: 5.75rem;
+  --spacing-nav: 4rem;
   --spacing-chrome: 7rem;
 
   --shadow-panel: 0 22px 55px rgba(10, 35, 51, 0.13);
@@ -249,9 +249,9 @@
   /* Brand Colors */
   --primary: #1eb9d4;
   --primary-foreground: #ffffff;
-  --secondary: #ae3794;
+  --secondary: #ff4ac6;
   --secondary-foreground: #ffffff;
-  --accent: #f26329;
+  --accent: #ffd600;
   --accent-foreground: #ffffff;
   --brand: #1eb9d4;
   --brand-dark: #087c91;
@@ -273,7 +273,7 @@
   --label: #59717e;
 
   /* Feedback */
-  --destructive: #e53935;
+  --destructive: #e61f5b;
   --destructive-foreground: #ffffff;
 
   /* Soft Palette */

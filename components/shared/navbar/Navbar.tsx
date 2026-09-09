@@ -42,9 +42,9 @@ async function Navbar() {
             <JsonLd data={[linksJsonLd]} />
             <AdvertisementBar />
 
-            <div className="sticky top-0 z-50 flex w-full justify-center">
+            <div className="sticky top-0 z-50 flex w-full justify-center h-0">
                 <NavbarSurface>
-                    <div className="flex max-h-20 items-center justify-between p-4 md:mx-8">
+                    <div className="flex max-h-20 items-center justify-between p-4 md:px-8 bg-white shadow-[0_0_15px_rgba(0,0,0,0.12)] md:mt-4 md:rounded-full">
                         <Link href="/" className="order-1">
                             <figure>
                                 <Image

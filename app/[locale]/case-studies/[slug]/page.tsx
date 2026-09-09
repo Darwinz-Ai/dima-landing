@@ -23,12 +23,10 @@ export async function generateMetadata(
         const caseStudy = await fetchSingleCaseStudy(locale, slug);
 
         return {
-            title: `${caseStudy.content.title} - dima`,
-            description: caseStudy.content.description,
+            title: `${caseStudy.content.headline} - dima`,
             metadataBase: new URL("https://thedar.ai"),
             openGraph: {
-                title: `${caseStudy.content.title} - dima`,
-                description: caseStudy.content.description,
+                title: `${caseStudy.content.headline} - dima`,
                 url: `https://thedar.ai/${locale}/case-studies/${slug}`,
                 locale,
                 siteName: "TheDar.AI",
@@ -79,7 +77,7 @@ async function SingleViewCaseStudiesPage({ params }: SingleViewCaseStudiesPagePr
         const breadcrumbsJsonLd = createBreadcrumbs([
             { name: "Home", path: `/${locale}` },
             { name: "Case Studies", path: `/${locale}/case-studies` },
-            { name: caseStudy.content.title, path: `/${locale}/case-studies/${slug}` },
+            { name: caseStudy.content.headline.text, path: `/${locale}/case-studies/${slug}` },
         ]);
         return (
             <main>

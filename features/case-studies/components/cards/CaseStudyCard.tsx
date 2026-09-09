@@ -12,7 +12,7 @@ function CaseStudyCard(caseStudy: CaseStudy) {
             <article className="flex flex-col gap-4 p-8 shadow-[0_0_15px_rgba(0,0,0,0.07)] rounded-xl rounded-br-[96px] max-w-lg h-full bg-white">
                 {/* Type */}
                 <div className="flex justify-end">
-                    <Badge className="bg-black">{caseStudy.content.type}</Badge>
+                    <Badge className="bg-black capitalize">{caseStudy.type}</Badge>
                 </div>
 
                 {/* Metric */}
@@ -22,9 +22,8 @@ function CaseStudyCard(caseStudy: CaseStudy) {
                 </div>
 
                 {/* Text */}
-                <h3 className="text-lg lg:text-[22px] font-bold">{caseStudy.content.title}</h3>
-                <p>{caseStudy.content.description}</p>
-                <p aria-label={`Read more about ${caseStudy.content.title}`} className="text-primary font-medium">{t("readMore")}</p>
+                <h3 className="text-lg lg:text-[22px] font-bold">{caseStudy.content.headline.text}</h3>
+                <p aria-label={`Read more about ${caseStudy.content.headline.text}`} className="text-primary font-medium">{t("readMore")}</p>
             </article></Link>
     );
 }

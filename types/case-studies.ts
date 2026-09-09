@@ -1,4 +1,3 @@
-import { SolutionKey } from "./solutions";
 import { Timestamp } from "firebase/firestore";
 
 export type CaseStudyAttributes = {
@@ -8,27 +7,42 @@ export type CaseStudyAttributes = {
 
 export type CaseStudyValue = number | string;
 
+export type CaseStudyCompanyProfile = {
+    industry: string;
+    organization: string;
+    headquarters: string;
+}
+
+type CaseStudyBodyItem = {
+    header: string;
+    body: string;
+    image?: string
+}
+
+export type CaseStudyBody = {
+    challenge: CaseStudyBodyItem;
+    solution: CaseStudyBodyItem;
+    result: CaseStudyBodyItem;
+}
+
 export type CaseStudyMetrics = {
     title: string;
     value: CaseStudyValue;
     suffix: string;
 };
 
-export type CaseStudySideInfo = {
-    index: number;
-    title: string;
-    description: string;
-};
+export type CaseStudyHeadline = {
+    text: string;
+    highlight_blue: string;
+    highlight_orange: string;
+    highlight_pink: string
+}
 
 export type CaseStudyContent = {
-    type: string;
-    title: string;
+    companyProfile: CaseStudyCompanyProfile;
+    body: CaseStudyBody;
     metrics: CaseStudyMetrics[];
-    description: string;
-    attributes: CaseStudyAttributes[];
-    body: string;
-    sideInfo: CaseStudySideInfo[];
-    usedSolutions: SolutionKey[];
+    headline: CaseStudyHeadline;
 };
 
 export type CaseStudyFlags = {
@@ -41,5 +55,6 @@ export type CaseStudy = {
     content: CaseStudyContent;
     flags: CaseStudyFlags;
     dateCreated: Timestamp;
+    type: "use cases" | "customer success stories"
     ogImage?: string;
 };

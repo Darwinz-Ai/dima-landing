@@ -1,12 +1,12 @@
 import GroupedBlogs from "@/features/blogs/components/ui/GroupedBlogs";
 import BlogCard from "@/features/blogs/components/cards/BlogCard";
 import BlogCardSkeleton from "@/features/blogs/components/cards/BlogCardSkeleton";
-import CaseStudyCard from "@/features/case-studies/components/cards/CaseStudyCard";
+// import CaseStudyCard from "@/features/case-studies/components/cards/CaseStudyCard";
 import CaseStudyCardSkeleton from "@/features/case-studies/components/cards/CaseStudyCardSkeleton";
 
 import { fetchEditorsPickBlogs } from "@/lib/firebase/blogsFunctions";
 import { getLocale, getTranslations } from "next-intl/server";
-import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
+// import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
 
 async function HeroSection() {
     const t = await getTranslations("Blogs");
@@ -23,11 +23,11 @@ async function HeroSection() {
         blogsError = true;
     }
 
-    try {
-        caseStudy = await fetchCaseStudies(locale, { featured: true }, 1);
-    } catch (error) {
-        caseStudyError = true;
-    }
+    // try {
+    //     caseStudy = await fetchCaseStudies(locale, { featured: true }, 1);
+    // } catch (error) {
+    //     caseStudyError = true;
+    // }
 
     return (
         <div className="container mx-auto flex flex-col justify-center items-start gap-2">
@@ -39,7 +39,7 @@ async function HeroSection() {
                 <GroupedBlogs title={t("featuredCaseStudy")} className="flex-1 w-full lg:min-w-lg" includeViewAll={false}>
                     {caseStudyError && <p>Failed to load featured case study</p>}
                     {!caseStudyError && !caseStudy && <CaseStudyCardSkeleton />}
-                    {!caseStudyError && caseStudy && <CaseStudyCard {...caseStudy[0]} />}
+                    {/* {!caseStudyError && caseStudy && <CaseStudyCard {...caseStudy[0]} />} */}
                 </GroupedBlogs>
 
                 {/* Editor's Picks */}

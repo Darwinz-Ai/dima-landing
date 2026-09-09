@@ -1362,7 +1362,16 @@
     "readMore": "اقرأ المزيد"
   },
   "CaseStudy": {
-    "moreCases": "مزيد من الحالات"
+    "moreCases": "مزيد من الحالات",
+    "by": "من",
+    "useCases": "حالات الاستخدام",
+    "customerSuccessStories": "قصص نجاح العملاء",
+    "industry": "القطاع",
+    "organization": "نوع الجهة",
+    "headquarters": "المقر الرئيسي",
+    "challenge": "التحدي",
+    "solution": "الحل",
+    "result": "النتيجة"
   },
   "Tools": {
     "badge": "أدوات وحاسبات",

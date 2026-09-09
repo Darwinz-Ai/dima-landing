@@ -524,8 +524,7 @@ export const getCaseStudiesPageJsonLd = async (caseStudies: CaseStudy[]) => {
         itemListElement: caseStudies.map((caseStudy, idx) => ({
             "@type": "ListItem",
             position: idx + 1,
-            name: caseStudy.content.title,
-            description: caseStudy.content.description,
+            name: caseStudy.content.headline.text,
             url: `https://thedar.ai/${locale}/case-studies/${caseStudy.id}`,
         }))
     }
@@ -539,14 +538,13 @@ export const getSingleCaseStudyPageJsonLd = async (caseStudy: CaseStudy) => {
     const jsonLd: WithContext<Article> = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        name: caseStudy.content.title,
+        name: caseStudy.content.headline.text,
         mainEntity: {
             "@type": "WebPage",
             "@id": `https://thedar.ai/${locale}/case-studies/${caseStudy.id}`
         },
-        headline: caseStudy.content.title,
-        description: caseStudy.content.description,
-        articleBody: caseStudy.content.body,
+        headline: caseStudy.content.headline.text,
+        articleBody: [caseStudy.content.body.challenge, caseStudy.content.body.solution, caseStudy.content.body.result].join(" "),
         author: {
             "@type": "Organization",
             name: "TheDar.AI",

@@ -8,7 +8,6 @@ import { notFound } from "next/navigation";
 import { Toaster } from "sonner";
 import Script from "next/script";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { SiteFooter } from "@/components/shared/footer/SiteFooter";
 import PostHogInit from "@/components/PostHogInit";
 
