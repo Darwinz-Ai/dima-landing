@@ -89,3 +89,12 @@ export const fetchBlogsByPageNumber = async (
         tags: doc.data().tags?.[locale] || doc.data().tags?.en
     })) as Blog[];
 };
+
+export const getAllBlogIds = async (): Promise<string[]> => {
+    const snapshot = await adminDb.collection("blogs")
+        .where("active", "==", true)
+        .select()
+        .get();
+
+    return snapshot.docs.map(doc => doc.id);
+};

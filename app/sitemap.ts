@@ -2,8 +2,8 @@ import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
 import { SOLUTIONS_METADATA } from "./[locale]/solutions/[slug]/page";
-import { fetchBlogs } from "@/lib/firebase/blogsFunctions";
-import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
+import { getAllBlogIds } from "@/lib/firebase/blogsFunctions";
+import { getAllCaseStudyIds } from "@/lib/firebase/caseStudiesFunctions";
 
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -11,10 +11,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const locales = ["en", "ar"];
 
     const localeDirectory = path.join(process.cwd(), 'app', '[locale]');
-    const [allBlogs, allCases] = await Promise.all([
-        fetchBlogs("en"),
-        fetchCaseStudies("en")
-    ])
+    const [blogIds, caseIds] = await Promise.all([
+        getAllBlogIds(),
+        getAllCaseStudyIds()
+    ]);
 
     // Parsing static files
     const getRoutes = (dir: string, routes: string[] = []) => {
@@ -38,8 +38,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const allStaticRoutes = ["/", ...getRoutes(localeDirectory)];
     const solutionRoutes = Object.keys(SOLUTIONS_METADATA).map((slug) => `/solutions/${slug}`);
-    const blogRoutes = allBlogs.map(blog => `/blogs/${blog.id}`);
-    const caseRoutes = allCases.map(study => `/case-studies/${study.id}`);
+    const blogRoutes = blogIds.map(id => `/blogs/${id}`);
+    const caseRoutes = caseIds.map(id => `/case-studies/${id}`);
 
     const allPaths = [
         ...allStaticRoutes,

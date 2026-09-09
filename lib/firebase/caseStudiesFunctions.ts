@@ -57,3 +57,12 @@ export const fetchCaseStudiesByPageNumber = async (
         } as CaseStudy;
     });
 };
+
+export const getAllCaseStudyIds = async (): Promise<string[]> => {
+    const snapshot = await adminDb.collection("case-studies")
+        .where("flags.active", "==", true)
+        .select()
+        .get();
+
+    return snapshot.docs.map(doc => doc.id);
+};
