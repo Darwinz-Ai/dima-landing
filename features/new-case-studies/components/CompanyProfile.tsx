@@ -21,7 +21,7 @@ const CompanyProfile = async ({ companyProfile }: CompanyProfileProps) => {
                         <span className="text-gray-900 font-semibold text-lg md:text-xl">{organization}</span>
                     </div>
                     <div className="flex flex-col gap-2">
-                        <span className="text-destructive text-sm md:text-base font-bold uppercase tracking-widest">{t("solution")}</span>
+                        <span className="text-destructive text-sm md:text-base font-bold uppercase tracking-widest">{t("headquarters")}</span>
                         <span className="text-gray-900 font-semibold text-lg md:text-xl">{headquarters}</span>
                     </div>
                 </div>

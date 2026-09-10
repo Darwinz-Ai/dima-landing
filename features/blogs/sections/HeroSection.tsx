@@ -1,12 +1,11 @@
 import GroupedBlogs from "@/features/blogs/components/ui/GroupedBlogs";
 import BlogCard from "@/features/blogs/components/cards/BlogCard";
 import BlogCardSkeleton from "@/features/blogs/components/cards/BlogCardSkeleton";
-// import CaseStudyCard from "@/features/case-studies/components/cards/CaseStudyCard";
 import CaseStudyCardSkeleton from "@/features/case-studies/components/cards/CaseStudyCardSkeleton";
 
 import { fetchEditorsPickBlogs } from "@/lib/firebase/blogsFunctions";
 import { getLocale, getTranslations } from "next-intl/server";
-// import { fetchCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
+import { fetchCaseStudiesByPageNumber } from "@/lib/firebase/caseStudiesFunctions";
 
 async function HeroSection() {
     const t = await getTranslations("Blogs");
@@ -23,14 +22,9 @@ async function HeroSection() {
         blogsError = true;
     }
 
-    // try {
-    //     caseStudy = await fetchCaseStudies(locale, { featured: true }, 1);
-    // } catch (error) {
-    //     caseStudyError = true;
-    // }
 
     return (
-        <div className="container mx-auto flex flex-col justify-center items-start gap-2">
+        <div className="container mx-auto flex flex-col justify-center items-start gap-2 mt-24">
             <h2 className="bg-black text-white uppercase w-fit py-1 px-2 rounded-sm italic tracking-wide">{t("dimaBlogs")}</h2>
 
             {/* Content sections */}

@@ -105,7 +105,7 @@ async function ToolsPage() {
             <JsonLd data={[toolsJsonLd]} />
 
             {/* Header */}
-            <SectionWrapper className="lg:py-0 px-0 justify-start">
+            <SectionWrapper className="lg:py-0 px-0 justify-start mt-24">
                 <div className="w-full rounded-b-[80px]">
                     <div className="flex flex-col justify-center items-center text-center gap-4 py-24">
                         <h2 className="bg-black text-white uppercase py-1 rounded-sm italic tracking-wide font-semibold px-4 text-sm mb-4">{t("badge")}</h2>

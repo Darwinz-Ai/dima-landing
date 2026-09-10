@@ -7,10 +7,11 @@ export const fetchSingleCaseStudy = async (locale: string, slug: string) => {
     if (!docSnap.exists) throw new Error("Case Study not found");
 
     const data = docSnap.data()!;
+    const rawContent = data.contentV2 || data.content;
     return {
         id: docSnap.id,
         ...data,
-        content: data.content?.[locale] || data.content?.["en"]
+        content: rawContent?.[locale] || rawContent?.en,
     } as CaseStudy;
 };
 
@@ -50,10 +51,11 @@ export const fetchCaseStudiesByPageNumber = async (
 
     return snapshot.docs.map((doc) => {
         const data = doc.data();
+        const rawContent = data.contentV2 || data.content;
         return {
             id: doc.id,
             ...data,
-            content: data.content?.[locale] || data.content?.en
+            content: rawContent?.[locale] || rawContent?.en,
         } as CaseStudy;
     });
 };

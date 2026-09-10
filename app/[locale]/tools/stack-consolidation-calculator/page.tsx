@@ -59,7 +59,7 @@ async function StackConsolidationCalculatorPage() {
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
 
-            <SectionWrapper className="min-h-dvh">
+            <SectionWrapper className="min-h-dvh mt-24">
                 <TCOCalculator />
             </SectionWrapper>
         </main>

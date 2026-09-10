@@ -62,7 +62,7 @@ async function ArabicCoverageGapAudit() {
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
 
-            <SectionWrapper className="min-h-dvh ">
+            <SectionWrapper className="min-h-dvh mt-24">
                 <div className="container mx-auto">
                     {/* Main heading */}
                     <div className="text-center mb-12 space-y-4">

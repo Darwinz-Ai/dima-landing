@@ -61,7 +61,7 @@ async function CrisisReadinessScorePage() {
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
 
-            <SectionWrapper className="min-h-dvh space-y-4">
+            <SectionWrapper className="min-h-dvh space-y-4 mt-24">
                 {/* Header */}
                 <div className="text-center space-y-4">
                     <h1 className="text-4xl font-bold">{t('title')}</h1>

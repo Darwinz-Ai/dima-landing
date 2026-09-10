@@ -13,7 +13,7 @@ export type CaseStudyCompanyProfile = {
     headquarters: string;
 }
 
-type CaseStudyBodyItem = {
+export type CaseStudyBodyItem = {
     header: string;
     body: string;
     image?: string

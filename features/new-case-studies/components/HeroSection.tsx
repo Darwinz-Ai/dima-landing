@@ -81,8 +81,8 @@ const HeroSection = async ({ caseStudy }: HeroSectionProps) => {
                 />
                 <CaseStudyBodyBlock
                     type="result"
-                    title={caseStudy.content.body.solution.header}
-                    body={caseStudy.content.body.solution.body}
+                    title={caseStudy.content.body.result.header}
+                    body={caseStudy.content.body.result.body}
                     orientation="image-text"
                 />
             </div>
