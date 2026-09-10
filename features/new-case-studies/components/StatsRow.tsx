@@ -6,15 +6,15 @@ interface StatsRowProps {
 
 const StatsRow = ({ metrics }: StatsRowProps) => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {metrics?.slice(0, 3).map((metric, idx) => (
                 <div
                     key={metric.title + idx}
-                    className="border border-white/30 bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 flex flex-col justify-center"
+                    className="border border-white/30 bg-white/10 backdrop-blur-sm rounded-2xl p-5 md:p-8 flex flex-col justify-center"
                 >
                     <div className={
                         [
-                            "text-4xl md:text-5xl font-bold mb-3",
+                            "text-4xl md:text-5xl font-bold mb-2 md:mb-3",
                             idx === 0 ? "text-brand" :
                                 idx === 1 ? "text-accent" :
                                     "text-secondary"
