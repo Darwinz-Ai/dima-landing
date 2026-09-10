@@ -385,15 +385,6 @@
       ],
       "samples": [
         {
-          "post": "طبعاً الخدمة ممتازة 👏 تلات ساعات وأنا مستني",
-          "script": "arabic",
-          "gloss": "“Of course the service is excellent 👏 three hours and I'm still waiting.”",
-          "dialect": "Egyptian · sarcasm",
-          "verdict": "Negative",
-          "tone": "negative",
-          "tags": "Frustration · Wait time"
-        },
-        {
           "post": "el delivery dayman met2akhar bas el akl gamed",
           "script": "latin",
           "gloss": "“Delivery is always late, but the food is great.”",
@@ -406,10 +397,19 @@
           "post": "الصراحة التطبيق الجديد وايد أفضل من الأول",
           "script": "arabic",
           "gloss": "“Honestly, the new app is much better than the old one.”",
-          "dialect": "Gulf",
+          "dialect": "Khaleeji",
           "verdict": "Positive",
           "tone": "positive",
           "tags": "Relief · App release"
+        },
+        {
+          "post": "طبعاً الخدمة ممتازة 👏 تلات ساعات وأنا مستني",
+          "script": "arabic",
+          "gloss": "“Of course the service is excellent 👏 three hours and I'm still waiting.”",
+          "dialect": "Egyptian · sarcasm",
+          "verdict": "Negative",
+          "tone": "negative",
+          "tags": "Frustration · Wait time"
         }
       ],
       "metrics": [
@@ -471,7 +471,7 @@
         },
         {
           "label": "Market trends",
-          "prompt": "Which topics are gaining momentum with Gulf audiences this month?"
+          "prompt": "Which topics are gaining momentum with Khaleeji audiences this month?"
         },
         {
           "label": "Sentiment analysis",
@@ -488,7 +488,7 @@
     },
     "mobile-application": {
       "timePlace": "3:00 AM. Riyadh.",
-      "sectionKicker": "While your team sleeps · <brand>dima</brand>",
+      "sectionKicker": "While your team sleeps",
       "title": "Be the first to know, wherever you are.",
       "description": "Even at 3am, dima’s mobile app delivers alerts to your pocket, so you’re always one step ahead of your client.",
       "benefits": [
@@ -501,11 +501,11 @@
           "description": "Dialect, context, emotion."
         },
         {
-          "title": "Send it as it is",
+          "title": "Actionable insights",
           "description": "Reports a client can read as they are."
         },
         {
-          "title": "Live in 48-72 hours",
+          "title": "Live in 48 hours",
           "description": "Configured around your team.."
         }
       ]
@@ -513,7 +513,7 @@
     "implementation": {
       "kicker": "Up and running, fast",
       "title": "It couldn’t be simpler.",
-      "description": "Skip the long implementations. Your data starts flowing on day one, and by day three, your dashboards, alerts, and reports are fully tailored to your team and ready to use.",
+      "description": "Skip the long implementations. Your data starts flowing on day one, and by day two, your dashboards, alerts, and reports are fully tailored to your team and ready to use.",
       "milestones": [
         {
           "title": "Get started",
@@ -524,7 +524,7 @@
           "detail": "Your channels and priority conversations begin flowing."
         },
         {
-          "title": "Live in 48-72 hours",
+          "title": "Live in 48 hours",
           "detail": "Dashboards, alerts and reports are ready for your team."
         }
       ]
@@ -554,7 +554,7 @@
       "titleLine1": "The question is whether",
       "titleLine2": "you hear it first.",
       "description": "See what dima finds in your own brand, your own competitors and your own dialects, before you commit to anything.",
-      "liveIn": "Live in 48-72 hours."
+      "liveIn": "Live in 48 hours."
     }
   },
   "Solutions": {
@@ -1674,10 +1674,10 @@
     },
     "arabic-dialect": {
       "title": "Arabic Dialect Accuracy Lab",
-      "description": "Live sandbox for testing sentiment and entity extraction across KSA, Egyptian, Levantine, Maghrebi, and Gulf Arabic dialects",
+      "description": "Live sandbox for testing sentiment and entity extraction across KSA, Egyptian, Levantine, Maghrebi, and Khaleeji Arabic dialects",
       "input": {
         "selectDialect": "select arabic dialect",
-        "dialects": ["KSA", "Egyptian", "Levantine", "Maghrebi", "Gulf"],
+        "dialects": ["KSA", "Egyptian", "Levantine", "Maghrebi", "Khaleeji"],
         "pasteText": "paste arabic text",
         "placeholder": "Enter arabic text here for processing",
         "analyze": "analyze text",
@@ -2045,7 +2045,7 @@
     },
     "Tools-arabic-dialect": {
       "title": "Arabic Dialect Accuracy Lab - dima Tool",
-      "description": "Live sandbox for testing sentiment and entity extraction across KSA, Egyptian, Levantine, Maghrebi, and Gulf Arabic dialects.",
+      "description": "Live sandbox for testing sentiment and entity extraction across KSA, Egyptian, Levantine, Maghrebi, and Khaleeji Arabic dialects.",
       "keywords": [
         "Arabic dialect accuracy",
         "sentiment analysis Arabic",
@@ -2054,7 +2054,7 @@
         "Egyptian Arabic",
         "Levantine Arabic",
         "Maghrebi Arabic",
-        "Gulf Arabic",
+        "Khaleeji Arabic",
         "Arabic NLP"
       ]
     },

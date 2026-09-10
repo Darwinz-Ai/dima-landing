@@ -24,22 +24,13 @@ export const HeroSection = async () => {
   const locale = await getLocale()
   const isRTL = locale === "ar";
 
-  // Apply extra margin between headline and highlight mark if in Arabic
-  const headlineMarkMarginClass =
-    locale === "ar"
-      ? "mt-8 max-sm:mt-2" // More space for Arabic
-      : "max-sm:mt-1" // Default
-
-  // Add extra margin to the description if locale is Arabic
-  const descriptionMarginClass =
-    locale === "ar"
-      ? "mt-9 max-sm:mt-7" // More space for Arabic
-      : "mt-4 max-sm:mt-4" // Default
+  const headlineMarkMarginClass = locale === "ar" ? "mt-8 max-sm:mt-2" : "max-sm:mt-1"
+  const descriptionMarginClass = locale === "ar" ? "mt-9 max-sm:mt-7" : "mt-4 max-sm:mt-4"
 
   return (
     <section
       className={cn(
-        "relative flex h-[calc(100svh-var(--spacing-chrome))] flex-col overflow-clip max-md:h-auto mt-24",
+        "relative flex min-h-[calc(100svh-var(--spacing-chrome))] flex-col overflow-clip max-md:h-auto mt-24",
         gridBackdrop
       )}
     >
@@ -101,8 +92,6 @@ export const HeroSection = async () => {
                   ? "group-hover:-translate-x-1 rotate-180"
                   : "group-hover:translate-x-1"
               )}
-
-
               icon={ArrowRight01Icon}
               size={18}
             />
@@ -115,7 +104,7 @@ export const HeroSection = async () => {
           <HeroAskAI />
         </div>
 
-        <div className="pointer-events-auto mt-auto flex w-full min-w-0 shrink-0 justify-center overflow-x-clip deck-fade pt-1 pb-16 max-sm:pt-5 max-sm:pb-12">
+        <div className="pointer-events-auto mt-auto flex w-full min-w-0 shrink-0 justify-center overflow-x-clip deck-fade pt-1 max-sm:pt-5">
           <HeroCardFan />
         </div>
       </div>
