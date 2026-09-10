@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { MetadataRoute } from "next";
 import fs from "fs";
 import path from "path";
