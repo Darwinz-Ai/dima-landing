@@ -36,7 +36,7 @@ export const fetchCaseStudiesByPageNumber = async (
     const offsetCount = (pageNumber - 1) * limitCount;
 
     let query: FirebaseFirestore.Query = adminDb.collection("case-studies")
-        .where("flags.active", "==", false)
+        .where("flags.active", "==", true)
         .orderBy("dateCreated", "desc");
 
     // Apply filter if it's not "all"
@@ -46,6 +46,28 @@ export const fetchCaseStudiesByPageNumber = async (
 
     const snapshot = await query
         .offset(offsetCount)
+        .limit(limitCount)
+        .get();
+
+    return snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const rawContent = data.contentV2 || data.content;
+        return {
+            id: doc.id,
+            ...data,
+            content: rawContent?.[locale] || rawContent?.en,
+        } as CaseStudy;
+    });
+};
+
+export const fetchFeaturedCaseStudies = async (
+    locale: string,
+    limitCount: number = 1
+): Promise<CaseStudy[]> => {
+    const snapshot = await adminDb.collection("case-studies")
+        .where("flags.active", "==", true)
+        .where("flags.featured", "==", true)
+        .orderBy("dateCreated", "desc")
         .limit(limitCount)
         .get();
 

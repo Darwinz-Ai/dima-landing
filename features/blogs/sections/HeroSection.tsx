@@ -1,11 +1,13 @@
+import { fetchEditorsPickBlogs } from "@/lib/firebase/blogsFunctions";
+import { getLocale, getTranslations } from "next-intl/server";
+import { fetchFeaturedCaseStudies } from "@/lib/firebase/caseStudiesFunctions";
+
 import GroupedBlogs from "@/features/blogs/components/ui/GroupedBlogs";
 import BlogCard from "@/features/blogs/components/cards/BlogCard";
 import BlogCardSkeleton from "@/features/blogs/components/cards/BlogCardSkeleton";
 import CaseStudyCardSkeleton from "@/features/case-studies/components/cards/CaseStudyCardSkeleton";
+import CaseStudyCard from "@/features/case-studies/components/cards/CaseStudyCard";
 
-import { fetchEditorsPickBlogs } from "@/lib/firebase/blogsFunctions";
-import { getLocale, getTranslations } from "next-intl/server";
-import { fetchCaseStudiesByPageNumber } from "@/lib/firebase/caseStudiesFunctions";
 
 async function HeroSection() {
     const t = await getTranslations("Blogs");
@@ -15,6 +17,12 @@ async function HeroSection() {
     let caseStudy = null;
     let blogsError = false;
     let caseStudyError = false;
+
+    try {
+        caseStudy = await fetchFeaturedCaseStudies(locale, 1)
+    } catch (error) {
+        caseStudyError = true;
+    }
 
     try {
         blogs = await fetchEditorsPickBlogs(locale, 3);
@@ -33,7 +41,7 @@ async function HeroSection() {
                 <GroupedBlogs title={t("featuredCaseStudy")} className="flex-1 w-full lg:min-w-lg" includeViewAll={false}>
                     {caseStudyError && <p>Failed to load featured case study</p>}
                     {!caseStudyError && !caseStudy && <CaseStudyCardSkeleton />}
-                    {/* {!caseStudyError && caseStudy && <CaseStudyCard {...caseStudy[0]} />} */}
+                    {!caseStudyError && caseStudy && <CaseStudyCard {...caseStudy[0]} />}
                 </GroupedBlogs>
 
                 {/* Editor's Picks */}

@@ -8,20 +8,19 @@ import { TextArrowLink } from "@/components/shared/TextArrowLink"
 import { Icon } from "@/components/shared/Icon"
 import { Link } from "@/i18n/navigation"
 import { CaseStudy } from "@/types"
-import { fetchCaseStudiesByPageNumber } from "@/lib/firebase/caseStudiesFunctions"
+import { fetchFeaturedCaseStudies } from "@/lib/firebase/caseStudiesFunctions"
 
 export const CaseStudiesSection = async () => {
   const locale = await getLocale()
   const t = await getTranslations("Home_New.case-studies")
 
   const isRTL = locale === "ar";
-  const page = 1;
   const limitCount = 3;
 
   let caseStudies: CaseStudy[] = []
 
   try {
-    caseStudies = await fetchCaseStudiesByPageNumber(locale, page, limitCount,)
+    caseStudies = await fetchFeaturedCaseStudies(locale, limitCount,)
   } catch (error) {
     console.error("Failed to fetch case studies", error)
   }
