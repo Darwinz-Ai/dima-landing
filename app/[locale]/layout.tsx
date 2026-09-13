@@ -10,6 +10,8 @@ import Script from "next/script";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { SiteFooter } from "@/components/shared/footer/SiteFooter";
 import PostHogInit from "@/components/PostHogInit";
+import { Partytown } from '@qwik.dev/partytown/react';
+
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -92,6 +94,7 @@ export default async function RootLayout({
         className={`bg-surface font-sans text-ink ${isAr ? cairo.className : geistSans.className
           }`}
       >
+        <Partytown forward={['dataLayer.push', 'gtag']} />
         <NextIntlClientProvider>
 
           <Navbar />
@@ -110,35 +113,44 @@ export default async function RootLayout({
         />
 
         {/* Google Analytics */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=G-JJGJEDJL2Q`}
-          strategy="lazyOnload"
+        <script
+          type="text/partytown"
+          src="https://www.googletagmanager.com/gtag/js?id=G-JJGJEDJL2Q"
         />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-JJGJEDJL2Q');
-          `}
-        </Script>
+        <script
+          type="text/partytown"
+          id="google-analytics"
+          dangerouslySetInnerHTML={{
+            __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JJGJEDJL2Q');
+    `,
+          }}
+        />
 
         {/* LinkedIn Insight Tag JS */}
-        <Script id="linkedin-insight-tag" strategy="lazyOnload">
-          {`
-            _linkedin_partner_id = "10781313";
-            window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-            window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-            (function(l) {
-              if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
-              window.lintrk.q=[]}
-              var s = document.getElementsByTagName("script")[0];
-              var b = document.createElement("script");
-              b.type = "text/javascript";b.async = true;
-              b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-              s.parentNode.insertBefore(b, s);})(window.lintrk);
-          `}
-        </Script>
+        <script
+          type="text/partytown"
+          id="linkedin-insight-tag"
+          dangerouslySetInnerHTML={{
+            __html: `
+      _linkedin_partner_id = "10781313";
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+      (function(l) {
+        if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+        window.lintrk.q=[]}
+        var s = document.getElementsByTagName("script")[0];
+        var b = document.createElement("script");
+        b.type = "text/partytown"; b.async = true;
+        b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+        s.parentNode.insertBefore(b, s);
+      })(window.lintrk);
+    `,
+          }}
+        />
 
         {/* LinkedIn Insight Tag NoScript Fallback */}
         <noscript>

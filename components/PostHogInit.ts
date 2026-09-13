@@ -15,7 +15,9 @@ export default function PostHogInit() {
                 defaults: '2026-05-30',
                 autocapture: false,
                 disable_session_recording: true,
-                capture_heatmaps: true
+                capture_heatmaps: true,
+                disable_surveys: true,
+                enable_recording_console_log: false
             });
         };
 
