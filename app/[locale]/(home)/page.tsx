@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
 
@@ -18,6 +18,8 @@ import { FaqWidget } from "@/components/shared/faq/components/FaqSection";
 import { CustomerTrust } from "@/components/shared/customer-trust/components/CustomerTrust";
 
 import { QuestionAccordion } from "@/types";
+import pick from "lodash/pick";
+import { NextIntlClientProvider } from "next-intl";
 
 const ImplementationTimeline = dynamic(
   () => import("@/features/new-home/implementation/components/ImplementationTimeline"),
@@ -73,21 +75,26 @@ async function HomePage() {
   const productJsonLd = await getProductJsonLd();
   const faqJsonLd = await getFAQJsonLd(faqs);
 
+  const messages = await getMessages();
+  const clientMessages = pick(messages, ["Home.testimonials.items", "Home_New.copilot", "Home_New.common", "Home_New.implementation"])
+
   return (
     <main className="h-full">
       <JsonLd data={[orgJsonLd, productJsonLd, faqJsonLd]} />
 
-      <HeroSection />
-      <ArabicIntelligence />
-      <ProductWalkthrough />
-      <CustomerTrust />
-      <CopilotSection />
-      <PlatformSection />
-      <ImplementationTimeline />
-      <TestimonialsSection />
-      <CaseStudiesSection />
-      <FaqWidget faqs={faqs} />
-      <FinalCta />
+      <NextIntlClientProvider messages={clientMessages}>
+        <HeroSection />
+        <ArabicIntelligence />
+        <ProductWalkthrough />
+        <CustomerTrust />
+        <CopilotSection />
+        <PlatformSection />
+        <ImplementationTimeline />
+        <TestimonialsSection />
+        <CaseStudiesSection />
+        <FaqWidget faqs={faqs} />
+        <FinalCta />
+      </NextIntlClientProvider>
 
     </main>
   );

@@ -8,18 +8,23 @@ import { SupportTestimonial } from "./SupportTestimonial"
 import { TestimonialProgress } from "./TestimonialProgress"
 import { TESTIMONIAL_DURATION_MS, TESTIMONIAL_ASSETS } from "../constants"
 import { TestimonialType } from "../types"
+import { useEffect, useMemo } from "react"
 
 const TestimonialCarousel = () => {
   const t = useTranslations("Home.testimonials.items")
   const locale = useLocale()
   const isRTL = locale === 'ar'
 
-  const localizedTestimonials: TestimonialType[] = TESTIMONIAL_ASSETS.map((asset) => ({
-    ...asset,
-    quote: t(`${asset.translationKey}.quote`),
-    name: t(`${asset.translationKey}.name`),
-    role: t(`${asset.translationKey}.jobRole`),
-  }))
+
+  const localizedTestimonials: TestimonialType[] = useMemo(
+    () => TESTIMONIAL_ASSETS.map((asset) => ({
+      ...asset,
+      quote: t(`${asset.translationKey}.quote`),
+      name: t(`${asset.translationKey}.name`),
+      role: t(`${asset.translationKey}.jobRole`),
+    })),
+    [t] // next-intl's t reference is stable per-locale, so this effectively runs once per locale
+  );
 
   const count = localizedTestimonials.length
 
@@ -42,6 +47,10 @@ const TestimonialCarousel = () => {
       pause()
     }
   }
+
+  useEffect(() => {
+    console.log("TestimonialCarousel mounted at", performance.now());
+  }, []);
 
   return (
     <div

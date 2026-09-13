@@ -14,9 +14,11 @@ import { QuestionAccordion } from "@/types";
 
 import { buildLocalizedMetadata, SolutionsSeoKey } from "@/lib/seo";
 import { getFAQJsonLd, getSolutionSchema } from "@/lib/jsonLd";
-import { getTranslations } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { FaqWidget } from "@/components/shared/faq/components/FaqSection";
 import { MotionProvider } from "@/app/providers/MotionProvider";
+import pick from "lodash/pick";
+import { NextIntlClientProvider } from "next-intl";
 
 type SolutionPageParams = {
     slug: string;
@@ -142,18 +144,23 @@ async function SolutionPage({ params }: SolutionPageProps) {
     const faqs = (tSolutions.raw(`${slug}.faqs`) as QuestionAccordion[]) ?? [];
     const faqJsonLd = await getFAQJsonLd(faqs);
 
+    const messages = await getMessages();
+    const clientMessages = pick(messages, [`Solutions.${slug}`, "Home.requestDemo.form"])
+
     return (
         <main>
             <MotionProvider>
                 <JsonLd data={[breadcrumbsJsonLd, serviceJsonLd, faqJsonLd]} />
 
-                <HeroSection slug={slug} />
-                <ExpandingCardsSection slug={slug} />
-                <ScrollingSection slug={slug} />
-                <CardsGrid slug={slug} />
-                <TestimonialSection slug={slug} />
-                <RequestDemoSection />
-                <FaqWidget faqs={faqs} />
+                <NextIntlClientProvider messages={clientMessages}>
+                    <HeroSection slug={slug} />
+                    <ExpandingCardsSection slug={slug} />
+                    <ScrollingSection slug={slug} />
+                    <CardsGrid slug={slug} />
+                    <TestimonialSection slug={slug} />
+                    <RequestDemoSection />
+                    <FaqWidget faqs={faqs} />
+                </NextIntlClientProvider>
             </MotionProvider>
         </main>
     );

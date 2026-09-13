@@ -1,16 +1,22 @@
-import { NextIntlClientProvider, hasLocale } from "next-intl";
-import type { Metadata } from "next";
-import { Cairo, Geist, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/navbar/Navbar";
-import { routing } from "@/i18n/routing";
+
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { Cairo, Geist, Space_Grotesk } from "next/font/google";
 import { notFound } from "next/navigation";
-import { Toaster } from "sonner";
-import Script from "next/script";
-import { buildLocalizedMetadata } from "@/lib/seo";
-import { SiteFooter } from "@/components/shared/footer/SiteFooter";
-import PostHogInit from "@/components/PostHogInit";
+import { routing } from "@/i18n/routing";
+import pick from "lodash/pick";
+
 import { Partytown } from '@qwik.dev/partytown/react';
+import Navbar from "@/components/shared/navbar/Navbar";
+import PostHogInit from "@/components/PostHogInit";
+import { SiteFooter } from "@/components/shared/footer/SiteFooter";
+import Script from "next/script";
+import { Toaster } from "sonner";
+
+import type { Metadata } from "next";
+
+import { buildLocalizedMetadata } from "@/lib/seo";
+import { getMessages } from "next-intl/server";
 
 
 const geistSans = Geist({
@@ -82,6 +88,8 @@ export default async function RootLayout({
   }
 
   const isAr = locale === "ar";
+  const messages = await getMessages();
+  const layoutMessages = pick(messages, ["Navbar", "Footer"])
 
   return (
     <html
@@ -95,7 +103,7 @@ export default async function RootLayout({
           }`}
       >
         <Partytown forward={['dataLayer.push', 'gtag']} />
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={layoutMessages}>
 
           <Navbar />
           <main className="flex-1">
