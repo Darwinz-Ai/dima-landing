@@ -1,18 +1,14 @@
-import { getLocale } from "next-intl/server";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationEllipsis
-} from "@/components/ui/pagination";
-import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { getLocale, getTranslations } from "next-intl/server";
+import Link from "next/link";
+import { Icon } from "@/components/shared/Icon";
+import { ArrowLeft01Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
 import { cn } from "@/lib/utils";
 
 type PaginationWrapperProps = {
   currentPage: number;
   totalPages: number;
   currentType?: string;
+  gridId?: string;
 };
 
 const getVisiblePages = (current: number, total: number) => {
@@ -22,7 +18,8 @@ const getVisiblePages = (current: number, total: number) => {
   return [1, "...", current - 1, current, current + 1, "...", total];
 };
 
-export default async function PaginationWrapper({ currentPage, totalPages, currentType }: PaginationWrapperProps) {
+export default async function PaginationWrapper({ currentPage, totalPages, currentType, gridId }: PaginationWrapperProps) {
+  const t = await getTranslations("Blogs.pagination");
   const locale = await getLocale();
   const isRTL = locale === "ar";
   const safeTotalPages = totalPages > 0 ? totalPages : 1;
@@ -38,63 +35,83 @@ export default async function PaginationWrapper({ currentPage, totalPages, curre
     if (currentType) {
       params.set("type", currentType);
     }
-    return `?${params.toString()}#case-studies-grid`;
+    return `?${params.toString()}#${gridId}`;
   };
 
   return (
-    <Pagination className="mb-4">
-      <PaginationContent className="space-x-1 sm:space-x-2">
-        <PaginationItem>
-          <PaginationLink
-            href={canGoPrevious ? buildHref(currentPage - 1) : "#"}
-            size="icon"
-            aria-disabled={!canGoPrevious}
-            className={cn(
-              "size-8 sm:size-10 rounded-full flex items-center justify-center",
-              !canGoPrevious && "pointer-events-none opacity-50"
-            )}
-          >
-            <IconChevronLeft className={`size-4 ${isRTL ? "rotate-180" : ""}`} />
-          </PaginationLink>
-        </PaginationItem>
+    <nav
+      className={cn("flex items-center justify-between border-t border-line pt-7 mt-8")}
+    >
+      {canGoPrevious ? (
+        <Link
+          className="inline-flex h-11 items-center gap-2 border border-line px-4 text-3 font-medium hover:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          href={buildHref(currentPage - 1)}
+        >
+          <Icon className={isRTL ? "rotate-180" : ""} icon={ArrowLeft01Icon} size={16} />
+          <span className="max-sm:sr-only">{t("previous")}</span>
+        </Link>
+      ) : (
+        <span
+          className="inline-flex h-11 items-center gap-2 border border-line px-4 text-3 text-copy/35"
+          aria-hidden="true"
+        >
+          <Icon className={isRTL ? "rotate-180" : ""} icon={ArrowLeft01Icon} size={16} />
+          <span className="max-sm:sr-only">{t("previous")}</span>
+        </span>
+      )}
 
+      <ol className="flex items-center gap-1.5">
         {visiblePages.map((page, index) => {
           if (page === "...") {
             return (
-              <PaginationItem key={`ellipsis-${index}`}>
-                <PaginationEllipsis className="w-5 sm:w-9 flex justify-center" />
-              </PaginationItem>
+              <li key={`ellipsis-${index}`} className="flex items-center gap-1.5">
+                <span
+                  className="grid size-10 place-items-center text-3 text-copy"
+                  aria-hidden="true"
+                >
+                  …
+                </span>
+              </li>
             );
           }
 
           const pageNumber = page as number;
           return (
-            <PaginationItem key={pageNumber}>
-              <PaginationLink
+            <li className="flex items-center gap-1.5" key={pageNumber}>
+              <Link
+                className="grid size-10 place-items-center border border-transparent text-3 font-medium hover:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand aria-[current=page]:bg-ink aria-[current=page]:text-white"
                 href={buildHref(pageNumber)}
-                isActive={pageNumber === currentPage}
-                className="tabular-nums h-8 w-8 sm:h-10 sm:w-10 p-0 flex items-center justify-center text-xs sm:text-sm"
+                aria-current={pageNumber === currentPage ? "page" : undefined}
+                aria-label={
+                  pageNumber === currentPage
+                    ? `Page ${pageNumber}, current page`
+                    : `Go to page ${pageNumber}`
+                }
               >
                 {pageNumber}
-              </PaginationLink>
-            </PaginationItem>
+              </Link>
+            </li>
           );
         })}
+      </ol>
 
-        <PaginationItem>
-          <PaginationLink
-            href={canGoNext ? buildHref(currentPage + 1) : "#"}
-            size="icon"
-            aria-disabled={!canGoNext}
-            className={cn(
-              "size-8 sm:size-10 rounded-full flex items-center justify-center",
-              !canGoNext && "pointer-events-none opacity-50"
-            )}
-          >
-            <IconChevronRight className={`size-4 ${isRTL ? "rotate-180" : ""}`} />
-          </PaginationLink>
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+      {canGoNext ? (
+        <Link
+          className="inline-flex h-11 items-center gap-2 border border-line px-4 text-3 font-medium hover:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          href={buildHref(currentPage + 1)}
+        >
+          <span className="max-sm:sr-only">{t("next")}</span>
+          <Icon className={isRTL ? "rotate-180" : ""} icon={ArrowRight01Icon} size={16} />
+        </Link>
+      ) : (
+        <span
+          className="inline-flex h-11 items-center gap-2 border border-line px-4 text-3 text-copy/35"
+          aria-hidden="true"
+        >
+          <span className="max-sm:sr-only">{t("next")}</span>
+          <Icon className={isRTL ? "rotate-180" : ""} icon={ArrowRight01Icon} size={16} />
+        </span>
+      )}
+    </nav>
   );
 }

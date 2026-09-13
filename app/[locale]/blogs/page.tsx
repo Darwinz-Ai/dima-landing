@@ -10,7 +10,10 @@ import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getBlogsPageJsonLd } from "@/lib/jsonLd";
-import { fetchBlogsByPageNumber, getBlogsCount } from "@/lib/firebase/blogsFunctions";
+import { fetchBlogsByPageNumber, fetchEditorsPickBlogs, getBlogsCount } from "@/lib/firebase/blogsFunctions";
+import { AllBlogs } from "@/features/new-blogs/components/AllBlogs";
+import { BlogHero } from "@/features/new-blogs/components/BlogHero";
+import { FinalCta } from "@/features/new-home/final-cta/components/FinalCta";
 
 type BlogsPageProps = {
     params: Promise<{ locale: string }>;
@@ -54,38 +57,41 @@ export async function generateMetadata(
     });
 }
 
-const PAGE_SIZE = 16;
+const PAGE_SIZE = 12;
 
 async function BlogsPage({ params, searchParams }: BlogsPageProps) {
     const locale = await getLocale();
     const resolvedSearchParams = await searchParams;
 
-    // Parse the page number from the URL (?page=2), default to 1
     const pageQuery = resolvedSearchParams?.page;
     const parsedPage = typeof pageQuery === "string" ? parseInt(pageQuery, 10) : 1;
     const requestedPage = isNaN(parsedPage) || parsedPage < 1 ? 1 : parsedPage;
 
-    // Fetch total count and calculate total pages
     const totalCount = await getBlogsCount();
     const totalPages = totalCount > 0 ? Math.ceil(totalCount / PAGE_SIZE) : 1;
     const validCurrentPage = Math.min(requestedPage, totalPages);
 
-    // Fetch only the 16 blogs for the current page
     const blogs = await fetchBlogsByPageNumber(locale, validCurrentPage, PAGE_SIZE);
+    const latestBlogs = await fetchBlogsByPageNumber(locale, validCurrentPage, 4);
+    const featuredBlogArray = await fetchEditorsPickBlogs(locale, 1);
+    const featuredBlog = featuredBlogArray[0] || null;
+
     const blogsJsonLd = await getBlogsPageJsonLd(blogs);
 
     return (
         <main>
             <JsonLd data={[blogsJsonLd]} />
-            <SectionWrapper className="">
-                <HeroSection />
-                <AllArticlesSection
-                    blogs={blogs}
-                    currentPage={validCurrentPage}
-                    totalPages={totalPages}
-                />
-            </SectionWrapper>
-            <RequestDemoSection />
+
+            <BlogHero featured={featuredBlog} latest={latestBlogs} />
+            <AllBlogs
+                posts={blogs}
+                pagination={{
+                    currentPage: validCurrentPage,
+                    totalPages,
+                    totalItems: totalCount
+                }}
+            />
+            <FinalCta />
         </main>
     );
 }

@@ -1327,22 +1327,32 @@
   },
   "Blogs": {
     "dimaBlogs": "DIMA BLOGS",
-    "featuredCaseStudy": "Featured Case Study",
-    "editorsPick": "editor's pick",
+    "readSignal": "Read the signal.",
+    "moveContext": "Move with context.",
     "allBlogs": "All Blogs",
-    "videosSection": {
-      "title": "Learn more from dima.ai on social media",
-      "follow": "Follow us"
+    "heroDescription": "Practical thinking for teams navigating Arabic media, audience behavior, reputation, and the decisions behind the dashboard.",
+    "latestBlogs": "Latest Blogs",
+    "new": "New",
+    "readArticle": "Read article",
+    "emptyStates": {
+      "featured": {
+        "title": "Stories are on the way.",
+        "description": "New thinking from the dima team will appear here soon."
+      },
+      "latest": {
+        "title": "No recent blogs.",
+        "description": "New articles from the dima team will appear here soon."
+      },
+      "grid": {
+        "title": "No articles founds.",
+        "description": "New insights from the dima team will appear here soon."
+      }
     },
-    "socialMediaAnalytics": "social media analytics",
-    "guides": "guides",
-    "dataReports": "data reports",
-    "allMarketingInsights": "all marketing insights",
-    "viewAll": "View all",
-    "cta": {
-      "title": "Boost your business with dima",
-      "description": "Ready to see how dima can transform your media monitoring? Get your personalized demo today.",
-      "buttonText": "Request a Demo"
+    "blogsGridDescription": "{count} articles on media intelligence, research, measurement, and the Arabic conversations shaping the region.",
+    "pageProgress": "Page {currentPage} of {totalPages}",
+    "pagination": {
+      "next": "Next",
+      "previous": "Previous"
     }
   },
   "Blog": {
