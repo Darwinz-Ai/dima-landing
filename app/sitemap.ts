@@ -52,7 +52,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ...topicRoutes,
         ...caseRoutes
     ]
-    console.log("");
+    // console.log("");
 
     return locales.flatMap((currentLocale) => {
         return allPaths.map((path) => {
