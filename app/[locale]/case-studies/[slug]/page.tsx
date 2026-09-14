@@ -23,10 +23,10 @@ export async function generateMetadata(
         const caseStudy = await fetchSingleCaseStudy(locale, slug);
 
         return {
-            title: `${caseStudy.content.headline} - dima`,
+            title: `${caseStudy.content.headline.text} - dima`,
             metadataBase: new URL("https://thedar.ai"),
             openGraph: {
-                title: `${caseStudy.content.headline} - dima`,
+                title: `${caseStudy.content.headline.text} - dima`,
                 url: `https://thedar.ai/${locale}/case-studies/${slug}`,
                 locale,
                 siteName: "TheDar.AI",
