@@ -1346,6 +1346,9 @@
       "grid": {
         "title": "No articles founds.",
         "description": "New insights from the dima team will appear here soon."
+      },
+      "topic": {
+        "description": "No articles for this topic yet. New insights from the dima team will appear here soon."
       }
     },
     "blogsGridDescription": "{count} articles on media intelligence, research, measurement, and the Arabic conversations shaping the region.",
@@ -1353,6 +1356,43 @@
     "pagination": {
       "next": "Next",
       "previous": "Previous"
+    },
+    "topics": {
+      "kicker": "Topic pillar",
+      "explore": "Explore topics",
+      "allTopics": "All topics",
+      "articleCount": "{count} articles",
+      "latestInTopic": "Latest in this topic",
+      "relatedTopics": "Related topics",
+      "relatedTopicsDescription": "Keep reading across dima's media intelligence library.",
+      "gridTitle": "Articles on {topic}",
+      "gridDescription": "{count} articles covering {topic} for teams working across MENA and the GCC.",
+      "items": {
+        "media-monitoring": {
+          "name": "Media Monitoring",
+          "description": "Coverage, share of voice, and the stories shaping brands across Arabic print, broadcast, and digital media."
+        },
+        "social-listening-and-reputation-monitoring": {
+          "name": "Social Listening & Reputation",
+          "description": "How Arabic conversations, sentiment, reputation signals move and what teams should do next."
+        },
+        "monitoring-and-analytics-tools": {
+          "name": "Monitoring & Analytics Tools",
+          "description": "Practical guides to measurement stacks, dashboards, and the tools behind clearer media intelligence."
+        },
+        "competitor-analysis": {
+          "name": "Competitor Analysis",
+          "description": "Benchmark campaigns, share of conversation, and competitor moves across GCC markets."
+        },
+        "influencer-monitoring": {
+          "name": "Influencer Marketing",
+          "description": "Find, vet, and measure creators with audience, dialect, and performance context for the region."
+        },
+        "crisis-management": {
+          "name": "Crisis Management",
+          "description": "Detect spikes early, brief stakeholders, and respond with context when reputation is on the line."
+        }
+      }
     }
   },
   "Blog": {

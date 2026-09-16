@@ -4,6 +4,7 @@ type BlogContent = { title: string; description: string; body: string };
 
 export type Blog = {
     id: string;
+    topic: string;
     content: BlogContent;
     dateCreated: Timestamp;
     tags: string[];

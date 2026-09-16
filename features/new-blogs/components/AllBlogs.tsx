@@ -1,13 +1,12 @@
+import { getTranslations } from "next-intl/server";
 
-
-
-import { Blog } from "@/types/blog"
 import { SectionHeading } from "@/components/shared/SectionHeading";
+import { Blog } from "@/types/blog"
 import PaginationWrapper from "@/features/case-studies/components/ui/PaginationWrapper";
 import { PageSection } from "@/components/shared/PageSection";
 import { EmptyState } from "@/components/shared/EmptyState";
 import { BlogCard } from "./BlogCard";
-import { getTranslations } from "next-intl/server";
+import { TopicNav } from "./TopicNav";
 
 interface AllBlogsProps {
     posts: Blog[]
@@ -16,9 +15,20 @@ interface AllBlogsProps {
         totalPages: number;
         totalItems: number;
     }
+    title?: string
+    description?: string
+    currentTopicSlug?: string
+    showTopicNav?: boolean
 }
 
-export const AllBlogs = async ({ posts, pagination }: AllBlogsProps) => {
+export const AllBlogs = async ({
+    posts,
+    pagination,
+    title,
+    description,
+    currentTopicSlug,
+    showTopicNav = false,
+}: AllBlogsProps) => {
     const t = await getTranslations("Blogs")
 
     return (
@@ -28,11 +38,17 @@ export const AllBlogs = async ({ posts, pagination }: AllBlogsProps) => {
                     currentPage: pagination.currentPage,
                     totalPages: pagination.totalPages
                 })}
-                title={t("allBlogs")}
-                description={t("blogsGridDescription", {
+                title={title ?? t("allBlogs")}
+                description={description ?? t("blogsGridDescription", {
                     count: pagination.totalItems
                 })}
             />
+
+            {showTopicNav ? (
+                <div className="mb-8">
+                    <TopicNav currentSlug={currentTopicSlug} />
+                </div>
+            ) : null}
 
             {posts.length > 0 ? (
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -44,7 +60,9 @@ export const AllBlogs = async ({ posts, pagination }: AllBlogsProps) => {
                 <EmptyState
                     className="py-12"
                     title={t("emptyStates.grid.title")}
-                    description={t("emptyStates.grid.description")}
+                    description={currentTopicSlug
+                        ? t("emptyStates.topic.description")
+                        : t("emptyStates.grid.description")}
                     headingLevel={3}
                 />
             )}

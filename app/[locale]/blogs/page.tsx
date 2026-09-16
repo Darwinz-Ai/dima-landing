@@ -1,16 +1,11 @@
-
-import SectionWrapper from "@/components/shared/SectionWrapper";
-import HeroSection from "@/features/blogs/sections/HeroSection";
-import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
-import AllArticlesSection from "@/features/blogs/sections/AllArticlesSection";
-import JsonLd from "@/components/shared/JsonLd";
-
-import type { Metadata } from "next";
-
 import { getLocale } from "next-intl/server";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getBlogsPageJsonLd } from "@/lib/jsonLd";
 import { fetchBlogsByPageNumber, fetchEditorsPickBlogs, getBlogsCount } from "@/lib/firebase/blogsFunctions";
+
+import type { Metadata } from "next";
+
+import JsonLd from "@/components/shared/JsonLd";
 import { AllBlogs } from "@/features/new-blogs/components/AllBlogs";
 import { BlogHero } from "@/features/new-blogs/components/BlogHero";
 import { FinalCta } from "@/features/new-home/final-cta/components/FinalCta";
@@ -85,6 +80,7 @@ async function BlogsPage({ params, searchParams }: BlogsPageProps) {
             <BlogHero featured={featuredBlog} latest={latestBlogs} />
             <AllBlogs
                 posts={blogs}
+                showTopicNav
                 pagination={{
                     currentPage: validCurrentPage,
                     totalPages,

@@ -6,6 +6,7 @@ import path from "path";
 import { SOLUTIONS_METADATA } from "./[locale]/solutions/[slug]/page";
 import { getAllBlogIds } from "@/lib/firebase/blogsFunctions";
 import { getAllCaseStudyIds } from "@/lib/firebase/caseStudiesFunctions";
+import { BLOG_TOPICS } from "@/features/new-blogs/constants/topics";
 
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -41,12 +42,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const allStaticRoutes = ["/", ...getRoutes(localeDirectory)];
     const solutionRoutes = Object.keys(SOLUTIONS_METADATA).map((slug) => `/solutions/${slug}`);
     const blogRoutes = blogIds.map(id => `/blogs/${id}`);
+    const topicRoutes = BLOG_TOPICS.map((topic) => `/blogs/topics/${topic.slug}`);
     const caseRoutes = caseIds.map(id => `/case-studies/${id}`);
 
     const allPaths = [
         ...allStaticRoutes,
         ...solutionRoutes,
         ...blogRoutes,
+        ...topicRoutes,
         ...caseRoutes
     ]
     console.log("");

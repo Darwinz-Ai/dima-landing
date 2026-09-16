@@ -5,11 +5,23 @@
 // import SectionWrapper from "@/components/shared/SectionWrapper";
 // import { Link } from "@/i18n/navigation";
 
+// const BLOG_TOPICS = [
+//     { name: "Media Monitoring", slug: "media-monitoring" },
+//     { name: "Social Listening & Reputation", slug: "social-listening-and-reputation-monitoring" },
+//     { name: "Monitoring & Analytics Tools", slug: "monitoring-and-analytics-tools" },
+//     { name: "Competitor Analysis", slug: "competitor-analysis" },
+//     { name: "Influencer Monitoring", slug: "influencer-monitoring" },
+//     { name: "Crisis Management", slug: "crisis-management" },
+// ];
+
 
 // export default function AddBlogPage() {
 //     const [jsonInput, setJsonInput] = useState("");
+//     const [selectedTopic, setSelectedTopic] = useState(BLOG_TOPICS[0].slug);
 //     const [status, setStatus] = useState("");
 //     const [previewLocale, setPreviewLocale] = useState<"en" | "ar">("en");
+
+
 
 //     // Automatically parse the JSON as you paste it to feed the preview
 //     const parsedData = useMemo(() => {
@@ -25,15 +37,21 @@
 //         try {
 //             if (!parsedData) throw new Error("Invalid JSON");
 
+//             // Inject the selected topic into the payload
+//             const finalPayload = {
+//                 ...parsedData,
+//                 topic: selectedTopic
+//             };
+
 //             const response = await fetch("/api/blogs", {
 //                 method: "POST",
 //                 headers: { "Content-Type": "application/json" },
-//                 body: JSON.stringify(parsedData),
+//                 body: JSON.stringify(finalPayload),
 //             });
 
 //             if (!response.ok) throw new Error("Failed to save to database.");
 
-//             setStatus(`✅ Success! Blog saved with ID: ${parsedData.id}`);
+//             setStatus(`✅ Success! Blog saved with ID: ${finalPayload.id}`);
 //             setJsonInput("");
 //         } catch (error) {
 //             setStatus("❌ Error: Please ensure you pasted valid JSON.");
@@ -64,6 +82,21 @@
 //                     value={jsonInput}
 //                     onChange={(e) => setJsonInput(e.target.value)}
 //                 />
+
+//                 <div className="flex flex-col mb-4">
+//                     <label className="font-semibold text-sm text-gray-600 mb-2">Assign Topic</label>
+//                     <select
+//                         value={selectedTopic}
+//                         onChange={(e) => setSelectedTopic(e.target.value)}
+//                         className="w-full p-2 border border-gray-300 rounded-md bg-white text-sm"
+//                     >
+//                         {BLOG_TOPICS.map((topic) => (
+//                             <option key={topic.slug} value={topic.slug}>
+//                                 {topic.name}
+//                             </option>
+//                         ))}
+//                     </select>
+//                 </div>
 
 //                 {status && (
 //                     <p className={`mt-4 text-sm font-medium ${status.includes("❌") ? "text-red-600" : "text-green-600"}`}>

@@ -471,6 +471,40 @@ export const getBlogsPageJsonLd = async (blogs: Blog[]) => {
     return jsonLd
 }
 
+export const getTopicBlogsPageJsonLd = async (
+    slug: string,
+    topicName: string,
+    blogs: Blog[]
+) => {
+    const locale = await getLocale();
+
+    const jsonLd: WithContext<ItemList> = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: topicName,
+        description: topicName,
+        url: `https://thedar.ai/${locale}/blogs/topics/${slug}`,
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `https://thedar.ai/${locale}/blogs/topics/${slug}`
+        },
+        itemListElement: blogs.map((blog, idx) => ({
+            "@type": "ListItem",
+            position: idx + 1,
+            name: blog.content.title,
+            description: blog.content.description,
+            url: `https://thedar.ai/${locale}/blogs/${blog.id}`,
+            image: {
+                "@type": "ImageObject",
+                url: blog.thumbnail,
+                caption: `Thumbnail of blog ${blog.content.title}`
+            }
+        }))
+    }
+
+    return jsonLd
+}
+
 export const getSingleBlogJsonLd = async (blog: Blog) => {
     const locale = await getLocale();
 
