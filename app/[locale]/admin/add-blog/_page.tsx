@@ -7,7 +7,7 @@
 
 // const BLOG_TOPICS = [
 //     { name: "Media Monitoring", slug: "media-monitoring" },
-//     { name: "Social Listening & Reputation", slug: "social-listening-and-reputation-monitoring" },
+//     { name: "Social Listening & Brand Reputation", slug: "social-listening-and-reputation-monitoring" },
 //     { name: "Monitoring & Analytics Tools", slug: "monitoring-and-analytics-tools" },
 //     { name: "Competitor Analysis", slug: "competitor-analysis" },
 //     { name: "Influencer Monitoring", slug: "influencer-monitoring" },

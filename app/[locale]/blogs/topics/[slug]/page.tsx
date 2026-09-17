@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -18,9 +20,9 @@ type TopicPageProps = {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export function generateStaticParams() {
-    return BLOG_TOPICS.map((topic) => ({ slug: topic.slug }));
-}
+// export function generateStaticParams() {
+//     return BLOG_TOPICS.map((topic) => ({ slug: topic.slug }));
+// }
 
 export async function generateMetadata(
     { params }: TopicPageProps
