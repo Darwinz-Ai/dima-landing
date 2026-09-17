@@ -1,10 +1,13 @@
+import pick from "lodash/pick";
+
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import CrisisReadinessScore from "./components/CrisisReadinessScore";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { getToolPageJsonLd } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
+import { NextIntlClientProvider } from "next-intl";
 
 type CrisisReadinessScorePageProps = {
     params: Promise<{ locale: string }>;
@@ -57,6 +60,10 @@ async function CrisisReadinessScorePage() {
         displayName: "Crisis Readiness Scorecard",
         imagePath: "https://thedar.ai/og/tools/crisis-readiness.png"
     });
+
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["Tools.crisis-readiness-score"])
+
     return (
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
@@ -75,7 +82,9 @@ async function CrisisReadinessScorePage() {
                 </div>
 
                 {/* Tool */}
-                <CrisisReadinessScore />
+                <NextIntlClientProvider messages={clientMessages}>
+                    <CrisisReadinessScore />
+                </NextIntlClientProvider>
             </SectionWrapper>
         </main>
     );

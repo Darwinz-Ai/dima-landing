@@ -1,10 +1,13 @@
+import pick from "lodash/pick";
+
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { ArabicCoverageWizard } from "./components/ArabicCoverageWizard";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getToolPageJsonLd } from "@/lib/jsonLd";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import JsonLd from "@/components/shared/JsonLd";
+import { NextIntlClientProvider } from "next-intl";
 
 type ArabicCoverageGapAuditPageProps = {
     params: Promise<{ locale: string }>;
@@ -58,6 +61,9 @@ async function ArabicCoverageGapAudit() {
         displayName: "Arabic Coverage Gap Audit",
         imagePath: "https://thedar.ai/og/tools/arabic-coverage.png"
     });
+
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["Tools.arabic-coverage-gap-audit"]);
     return (
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
@@ -75,7 +81,9 @@ async function ArabicCoverageGapAudit() {
                     </div>
 
                     {/* Wizard Component */}
-                    <ArabicCoverageWizard />
+                    <NextIntlClientProvider messages={clientMessages}>
+                        <ArabicCoverageWizard />
+                    </NextIntlClientProvider>
                 </div>
             </SectionWrapper>
         </main>

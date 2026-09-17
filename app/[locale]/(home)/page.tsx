@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getMessages, getTranslations } from "next-intl/server";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getFAQJsonLd, getOrganizationJsonLd, getProductJsonLd } from "@/lib/jsonLd";
+import pick from "lodash/pick";
 
 import JsonLd from "@/components/shared/JsonLd";
 
@@ -18,7 +19,6 @@ import { FaqWidget } from "@/components/shared/faq/components/FaqSection";
 import { CustomerTrust } from "@/components/shared/customer-trust/components/CustomerTrust";
 
 import { QuestionAccordion } from "@/types";
-import pick from "lodash/pick";
 import { NextIntlClientProvider } from "next-intl";
 
 const ImplementationTimeline = dynamic(

@@ -1,10 +1,13 @@
+import pick from "lodash/pick";
+
 import Calculator from "./components/Calculator";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { getLocale } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import { getToolPageJsonLd } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
+import { NextIntlClientProvider } from "next-intl";
 
 type ArabicMentionAnalyzerPageProps = {
     params: Promise<{ locale: string }>;
@@ -55,13 +58,18 @@ async function ArabicMentionAnalyzerPage() {
         displayName: "Lost Mentions & Missed Sentiment Calculator",
         imagePath: "https://thedar.ai/og/tools/lost-mentions.png"
     });
+
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["Tools.arabic-mention-analyzer"])
     return (
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
 
             <SectionWrapper className="min-h-dvh mt-24">
                 <div className="max-w-7xl mx-auto space-y-12">
-                    <Calculator />
+                    <NextIntlClientProvider messages={clientMessages}>
+                        <Calculator />
+                    </NextIntlClientProvider>
                 </div>
             </SectionWrapper>
         </main>

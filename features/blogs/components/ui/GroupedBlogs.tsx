@@ -1,4 +1,4 @@
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { Link } from "@/i18n/navigation";
 
@@ -14,9 +14,9 @@ type ContentSectionProps = {
     hrefViewAll?: string;
 }
 
-function GroupedBlogs({ className, children, title, includeViewAll = true, hrefViewAll = "#" }: ContentSectionProps) {
-    const t = useTranslations("Blogs")
-    const locale = useLocale();
+async function GroupedBlogs({ className, children, title, includeViewAll = true, hrefViewAll = "#" }: ContentSectionProps) {
+    const t = await getTranslations("Blogs")
+    const locale = await getLocale();
     const isRTL = locale === "ar";
     return (
         <div>

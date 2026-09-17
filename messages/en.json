@@ -1332,6 +1332,7 @@
     "allBlogs": "All Blogs",
     "heroDescription": "Practical thinking for teams navigating Arabic media, audience behavior, reputation, and the decisions behind the dashboard.",
     "latestBlogs": "Latest Blogs",
+    "viewAll": "View all",
     "new": "New",
     "readArticle": "Read article",
     "emptyStates": {
@@ -1397,7 +1398,12 @@
   },
   "Blog": {
     "dimaBlogs": "DIMA BLOGS",
-    "checkMoreBlogs": "Check More Blogs"
+    "checkMoreBlogs": "Check More Blogs",
+    "cta": {
+      "title": "Boost your business with dima",
+      "description": "Ready to see how dima can transform your media monitoring? Get your personalized demo today.",
+      "buttonText": "Request a Demo"
+    }
   },
   "CaseStudies": {
     "title": "Case Studies",

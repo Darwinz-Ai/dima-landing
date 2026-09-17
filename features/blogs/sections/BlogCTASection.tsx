@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { getTranslations } from "next-intl/server";
 
 export default async function BlogCTA() {
-    const t = await getTranslations("Blogs.cta");
+    const t = await getTranslations("Blog.cta");
 
     return (
         <div className="bg-[#053A60]">

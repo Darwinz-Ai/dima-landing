@@ -1,3 +1,4 @@
+import pick from "lodash/pick";
 
 import LogoCarousel from "@/features/home/components/carousels/LogoCarousel";
 import HeroSection from "@/features/case-studies/sections/HeroSection";
@@ -5,11 +6,12 @@ import FilterSection from "@/features/case-studies/sections/FilterSection";
 import DimaSection from "@/features/case-studies/sections/DimaSection";
 import RequestDemoSection from "@/components/shared/form/RequestDemoSection";
 import JsonLd from "@/components/shared/JsonLd";
+import { NextIntlClientProvider } from "next-intl";
 
 import type { Metadata } from "next";
 
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { getLocale } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import { fetchCaseStudiesByPageNumber, getCaseStudiesCount } from "@/lib/firebase/caseStudiesFunctions";
 import { getCaseStudiesPageJsonLd } from "@/lib/jsonLd";
 
@@ -79,6 +81,8 @@ export default async function CaseStudiesPage({ searchParams }: CaseStudiesPageP
     const caseStudies = await fetchCaseStudiesByPageNumber(locale, validCurrentPage, PAGE_SIZE, currentType);
     const caseStudiesJsonLd = await getCaseStudiesPageJsonLd(caseStudies);
 
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["Home.requestDemo"]);
 
     return (
         <main>
@@ -92,7 +96,9 @@ export default async function CaseStudiesPage({ searchParams }: CaseStudiesPageP
                 currentType={currentType}
             />
             <DimaSection />
-            <RequestDemoSection />
+            <NextIntlClientProvider messages={clientMessages}>
+                <RequestDemoSection />
+            </NextIntlClientProvider>
         </main>
     );
 }

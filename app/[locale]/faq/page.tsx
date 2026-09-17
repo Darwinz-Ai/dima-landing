@@ -1,3 +1,5 @@
+import pick from "lodash/pick";
+
 import HeroSection from '@/features/faq/sections/HeroSection'
 import FAQSection from '@/features/faq/sections/FAQSection'
 import RequestDemoSection from '@/components/shared/form/RequestDemoSection'
@@ -7,9 +9,10 @@ import { Metadata } from 'next'
 import { QuestionAccordion } from '@/types'
 
 import { buildLocalizedMetadata } from '@/lib/seo'
-import { getTranslations } from 'next-intl/server'
+import { getMessages, getTranslations } from 'next-intl/server'
 import { getFAQJsonLd } from '@/lib/jsonLd'
 import { TestimonialsSection } from '@/components/shared/testimonials/components/TestimonialsSection'
+import { NextIntlClientProvider } from "next-intl";
 
 interface FAQPageProps {
     params: Promise<{ locale: string }>
@@ -54,14 +57,19 @@ const FAQPage = async () => {
     const t = await getTranslations("FAQ");
     const faqs = t.raw("faqs") as QuestionAccordion[]
     const FAQJsonLd = await getFAQJsonLd(faqs);
+
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["FAQ", "Solutions", "Home.requestDemo", "Home.testimonials.items"])
     return (
         <main>
             <JsonLd data={[FAQJsonLd]} />
 
             <HeroSection />
-            <FAQSection />
-            <RequestDemoSection />
-            <TestimonialsSection />
+            <NextIntlClientProvider messages={clientMessages}>
+                <FAQSection />
+                <RequestDemoSection />
+                <TestimonialsSection />
+            </NextIntlClientProvider>
         </main>
     )
 }

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic"
+import pick from "lodash/pick";
 
 import HeroSection from "@/features/about-us/sections/HeroSection"
 import ServingCustomersSection from "@/features/about-us/sections/ServingCustomersSection"
@@ -9,6 +10,8 @@ import { Metadata } from "next"
 
 import { buildLocalizedMetadata } from "@/lib/seo"
 import { getOrganizationJsonLd } from "@/lib/jsonLd"
+import { getMessages } from "next-intl/server"
+import { NextIntlClientProvider } from "next-intl";
 
 interface AboutUsPageProps {
     params: Promise<{ locale: string }>
@@ -62,16 +65,21 @@ const ConnectSection = dynamic(() => import("@/features/about-us/sections/Connec
 
 const AboutUsPage = async () => {
     const AboutUsJsonLd = await getOrganizationJsonLd();
+
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["Home.hero"])
     return (
         <main>
             <JsonLd data={[AboutUsJsonLd]} />
 
-            <HeroSection />
-            <ForTheRegionSection />
-            <ServingCustomersSection />
-            <MapSection />
-            {/* <TeamSection /> */}
-            <ConnectSection />
+            <NextIntlClientProvider messages={clientMessages}>
+                <HeroSection />
+                <ForTheRegionSection />
+                <ServingCustomersSection />
+                <MapSection />
+                {/* <TeamSection /> */}
+                <ConnectSection />
+            </NextIntlClientProvider>
         </main>
     )
 }

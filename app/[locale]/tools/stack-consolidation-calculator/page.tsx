@@ -1,10 +1,13 @@
+import pick from "lodash/pick";
+
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { TCOCalculator } from "./components/TCOCalculator";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { getLocale } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import { getToolPageJsonLd } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
+import { NextIntlClientProvider } from "next-intl";
 
 type StackConsolidationCalculatorPageProps = {
     params: Promise<{ locale: string }>;
@@ -55,12 +58,17 @@ async function StackConsolidationCalculatorPage() {
         displayName: "Monitoring Stack Consolidation Calculator",
         imagePath: "https://thedar.ai/og/tools/monitoring-stack.png"
     });
+
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["Tools.stack-consolidation-calculator"])
     return (
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
 
             <SectionWrapper className="min-h-dvh mt-24">
-                <TCOCalculator />
+                <NextIntlClientProvider messages={clientMessages}>
+                    <TCOCalculator />
+                </NextIntlClientProvider>
             </SectionWrapper>
         </main>
     );

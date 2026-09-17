@@ -1,3 +1,5 @@
+import pick from "lodash/pick";
+
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import Image from "next/image";
 import RequestDemoForm from "../../../components/shared/form/RequestDemoForm";
@@ -5,7 +7,8 @@ import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getRequestDemonJsonLd } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
-import { getTranslations } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 
 type RequestDemoPageProps = {
     params: { locale: string; };
@@ -54,6 +57,9 @@ async function RequestDemoPage({ searchParams }: RequestDemoPageProps) {
     const requestDemoJsonLd = await getRequestDemonJsonLd();
     const { email } = await searchParams;
 
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["Home.requestDemo"])
+
     return (
         <main
             style={{
@@ -79,9 +85,11 @@ async function RequestDemoPage({ searchParams }: RequestDemoPageProps) {
                         </div>
 
                         {/* Form */}
-                        <div>
-                            <RequestDemoForm className="p-0" initialEmail={email} />
-                        </div>
+                        <NextIntlClientProvider messages={clientMessages}>
+                            <div>
+                                <RequestDemoForm className="p-0" initialEmail={email} />
+                            </div>
+                        </NextIntlClientProvider>
                     </div>
 
                     {/* Image Section */}

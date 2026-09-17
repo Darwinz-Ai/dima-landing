@@ -1,8 +1,3 @@
-"use client";
-import { useEffect, useState, useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type RadialGradientProgressProps = {
     size?: number;
@@ -33,7 +28,7 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
     outerColor = "#95DDEE",
     trackColor = "#ffffff",
     textColor = "#1f2937",
-    duration = 1.5,
+    // duration = 1.5, // Unused when not animated
     suffix = "%",
     maxValue = 100,
     gapValue = 0
@@ -43,65 +38,8 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
     const gap = gapValue * circumference;
     const finalOffset = circumference - (progress / maxValue) * (circumference - gap);
 
-    const [displayValue, setDisplayValue] = useState(0);
-    const [mounted, setMounted] = useState<boolean>(false);
-
-    // NEW: State to hold the actual DOM node of the scroller
-    const [scrollerEl, setScrollerEl] = useState<Element | null>(null);
-
-    const containerRef = useRef<HTMLDivElement>(null);
-    const circleRef = useRef<SVGCircleElement>(null);
-
-    useEffect(() => {
-        setMounted(true);
-        // Find the scroller node in the DOM and save it to state
-        const el = document.querySelector('#app-scroll-area [data-slot="scroll-area-viewport"]');
-        if (el) {
-            setScrollerEl(el);
-        }
-    }, []);
-
-    useGSAP(() => {
-        // GUARD: Do not let GSAP run until React finds the scroller element
-        if (!scrollerEl || !containerRef.current || !circleRef.current) return;
-
-        gsap.registerPlugin(ScrollTrigger);
-
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: containerRef.current,
-                scroller: scrollerEl, // Pass the actual DOM element, not a string
-                start: "top bottom-=100px",
-                toggleActions: "play none none none",
-            }
-        });
-
-        tl.fromTo(circleRef.current,
-            { strokeDashoffset: circumference },
-            {
-                strokeDashoffset: finalOffset,
-                duration: duration,
-                ease: "power2.out"
-            },
-            0
-        );
-
-        const counter = { val: 0 };
-        tl.to(counter, {
-            val: progress,
-            duration: duration,
-            ease: "power2.out",
-            onUpdate: () => {
-                setDisplayValue(counter.val);
-            }
-        }, 0);
-
-        // ADD scrollerEl to the dependencies array so GSAP runs once it is found
-    }, { scope: containerRef, dependencies: [progress, finalOffset, scrollerEl] });
-
     return (
         <div
-            ref={containerRef}
             className="relative flex items-center justify-center"
             style={{ width: size, height: size, filter: "drop-shadow(0px 4px 10px rgba(0,0,0,0.05))" }}
         >
@@ -129,7 +67,6 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                 />
 
                 <circle
-                    ref={circleRef}
                     cx={size / 2}
                     cy={size / 2}
                     r={radius}
@@ -137,7 +74,7 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                     strokeWidth={strokeWidth}
                     fill="none"
                     strokeDasharray={circumference}
-                    strokeDashoffset={circumference}
+                    strokeDashoffset={finalOffset}
                     strokeLinecap="round"
                 />
             </svg>
@@ -146,10 +83,10 @@ const RadialGradientProgress: React.FC<RadialGradientProgressProps> = ({
                 className="absolute font-bold text-xl inline-flex items-center gap-1"
                 style={{ color: textColor }}
             >
-                {formatNumber(mounted ? displayValue : progress, suffix)}
+                {formatNumber(progress, suffix)}
             </span>
         </div>
     );
 };
 
-export default RadialGradientProgress;  
+export default RadialGradientProgress;

@@ -1,3 +1,5 @@
+import pick from "lodash/pick";
+
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "@/i18n/navigation";
@@ -11,9 +13,10 @@ import type { Metadata } from "next";
 
 import { buildLocalizedMetadata } from "@/lib/seo";
 import { getToolsPageJsonLd, ToolJsonLdParams } from "@/lib/jsonLd";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 
 import { toolLinks } from "@/data/tools";
+import { NextIntlClientProvider } from "next-intl";
 
 type ToolsPageProps = {
     params: Promise<{ locale: string }>;
@@ -100,46 +103,51 @@ async function ToolsPage() {
 
     const toolsJsonLd = await getToolsPageJsonLd(toolsArr);
 
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["Home.hero", "Home.requestDemo"])
+
     return (
         <main>
             <JsonLd data={[toolsJsonLd]} />
+            <NextIntlClientProvider messages={clientMessages}>
 
-            {/* Header */}
-            <SectionWrapper className="lg:py-0 px-0 justify-start mt-24">
-                <div className="w-full rounded-b-[80px]">
-                    <div className="flex flex-col justify-center items-center text-center gap-4 py-24">
-                        <h2 className="bg-black text-white uppercase py-1 rounded-sm italic tracking-wide font-semibold px-4 text-sm mb-4">{t("badge")}</h2>
-                        <h1 className="text-2xl md:text-[44px] lg:text-[60px] text-[#142828] font-semibold">{t("title")}</h1>
-                        <p className="text-lg md:text-2xl lg:text-[35px] max-w-7xl">{t("description")}</p>
-                        <RequestDemoButton className="px-4 mt-4" size={"xl"} location="Tools_hero" />
+                {/* Header */}
+                <SectionWrapper className="lg:py-0 px-0 justify-start mt-24">
+                    <div className="w-full rounded-b-[80px]">
+                        <div className="flex flex-col justify-center items-center text-center gap-4 py-24">
+                            <h2 className="bg-black text-white uppercase py-1 rounded-sm italic tracking-wide font-semibold px-4 text-sm mb-4">{t("badge")}</h2>
+                            <h1 className="text-2xl md:text-[44px] lg:text-[60px] text-[#142828] font-semibold">{t("title")}</h1>
+                            <p className="text-lg md:text-2xl lg:text-[35px] max-w-7xl">{t("description")}</p>
+                            <RequestDemoButton className="px-4 mt-4" size={"xl"} location="Tools_hero" />
+                        </div>
                     </div>
-                </div>
-                <div className="container mx-auto pt-10 px-6">
-                    <h2 className="text-[14px] sm:text-3xl text-center">{t("trustedBy")}</h2>
-                    <LogoCarousel />
-                </div>
-            </SectionWrapper>
+                    <div className="container mx-auto pt-10 px-6">
+                        <h2 className="text-[14px] sm:text-3xl text-center">{t("trustedBy")}</h2>
+                        <LogoCarousel />
+                    </div>
+                </SectionWrapper>
 
-            {/* Tools */}
-            <SectionWrapper>
-                <h3 className="text-[22px] md:text-[44px] text-center max-w-5xl">{t("toolsTitle")}</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mt-12">
-                    {
-                        toolLinks.map((tool) => (
-                            <Link key={tool.href} href={tool.href}>
-                                <article className="h-full space-y-4 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.07)] p-6">
-                                    <Badge className="capitalize">{t("tryNow")}</Badge>
-                                    <h2 className="text-lg sm:text-2xl font-medium">{t(`${tool.translationKey}.title`)}</h2>
-                                    <p className="text-[#6d6d6d]">{t(`${tool.translationKey}.description`)}</p>
-                                </article>
-                            </Link>
-                        ))
-                    }
-                </div>
-            </SectionWrapper>
+                {/* Tools */}
+                <SectionWrapper>
+                    <h3 className="text-[22px] md:text-[44px] text-center max-w-5xl">{t("toolsTitle")}</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mt-12">
+                        {
+                            toolLinks.map((tool) => (
+                                <Link key={tool.href} href={tool.href}>
+                                    <article className="h-full space-y-4 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.07)] p-6">
+                                        <Badge className="capitalize">{t("tryNow")}</Badge>
+                                        <h2 className="text-lg sm:text-2xl font-medium">{t(`${tool.translationKey}.title`)}</h2>
+                                        <p className="text-[#6d6d6d]">{t(`${tool.translationKey}.description`)}</p>
+                                    </article>
+                                </Link>
+                            ))
+                        }
+                    </div>
+                </SectionWrapper>
 
-            <EmpoweringAgenciesSection />
-            <RequestDemoSection />
+                <EmpoweringAgenciesSection />
+                <RequestDemoSection />
+            </NextIntlClientProvider>
         </main>
     );
 }

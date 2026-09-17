@@ -1,10 +1,13 @@
+import pick from "lodash/pick";
+
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { DialectAnalyzer } from "./components/DialectAnalyzer";
 import type { Metadata } from "next";
 import { buildLocalizedMetadata } from "@/lib/seo";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { getToolPageJsonLd } from "@/lib/jsonLd";
 import JsonLd from "@/components/shared/JsonLd";
+import { NextIntlClientProvider } from "next-intl";
 
 type ArabicDialectToolPageProps = {
     params: Promise<{ locale: string }>;
@@ -57,6 +60,9 @@ async function ArabicDialectTool() {
         displayName: "Arabic Dialect Accuracy Lab",
         imagePath: "https://thedar.ai/og/tools/arabic-dialect.png"
     });
+
+    const messages = await getMessages();
+    const clientMessages = pick(messages, ["Tools.arabic-dialect"])
     return (
         <main>
             <JsonLd data={[breadcrumbsJsonLd, toolJsonLd]} />
@@ -74,7 +80,9 @@ async function ArabicDialectTool() {
                     </div>
 
                     {/* Analyzer Component */}
-                    <DialectAnalyzer />
+                    <NextIntlClientProvider messages={clientMessages}>
+                        <DialectAnalyzer />
+                    </NextIntlClientProvider>
                 </div>
             </SectionWrapper>
         </main>
